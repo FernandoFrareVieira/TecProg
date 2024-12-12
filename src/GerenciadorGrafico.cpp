@@ -52,4 +52,10 @@ namespace Gerenciadores
     {
         return pJanela;
     }
+
+    void GerenciadorGrafico::desenhar(sf::RectangleShape& corpo)
+    {
+        pJanela->draw(corpo);
+    }
+
 }
