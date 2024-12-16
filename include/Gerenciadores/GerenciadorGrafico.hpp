@@ -14,6 +14,7 @@ namespace Gerenciadores
         public:
             static GerenciadorGrafico* getInstancia();
             ~GerenciadorGrafico();
+            sf::Texture* carregarTextura(std::string caminhoTextura);
             bool janelaAberta() const;
             void mostrar();
             void limpar();

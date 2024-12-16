@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Gerenciadores/GerenciadorGrafico.hpp"
+#include "Entidades/Personagens/Jogador.hpp"
 
 namespace Gerenciadores
 {
@@ -9,12 +10,13 @@ namespace Gerenciadores
     {
         private:
             GerenciadorGrafico* pGG;
+            Entidades::Personagens::Jogador*  pJogador;
             static GerenciadorEventos* instancia;
 
-            GerenciadorEventos();
+            GerenciadorEventos(Entidades::Personagens::Jogador* jogador);
 
         public:
-            static GerenciadorEventos* getInstancia();
+            static GerenciadorEventos* getInstancia(Entidades::Personagens::Jogador* jogador);
             ~GerenciadorEventos();
             void executar();
     };

@@ -1,5 +1,7 @@
 #include "Gerenciadores/GerenciadorGrafico.hpp"
 
+#include <iostream>
+
 namespace Gerenciadores
 {
     GerenciadorGrafico* GerenciadorGrafico::instancia = nullptr;
@@ -14,12 +16,26 @@ namespace Gerenciadores
 
     GerenciadorGrafico::GerenciadorGrafico():
         pJanela(new sf::RenderWindow(sf::VideoMode(800, 600), "Teste"))
-    {}
+    {
+        pJanela->setFramerateLimit(60);
+    }
 
     GerenciadorGrafico::~GerenciadorGrafico() 
     {
         pJanela = nullptr;
         delete pJanela;
+    }
+
+    sf::Texture* GerenciadorGrafico::carregarTextura(std::string caminhoTextura)
+    {
+        sf::Texture* textura = new sf::Texture();
+        if(!textura->loadFromFile(caminhoTextura)) {
+            std::cout << "Textura não carregada";
+            delete textura;
+            return nullptr;
+        }
+
+        return textura;
     }
 
     bool GerenciadorGrafico::janelaAberta() const 
@@ -37,7 +53,7 @@ namespace Gerenciadores
     void GerenciadorGrafico::limpar() 
     {
         if(janelaAberta()) {
-            pJanela->clear(sf::Color::Black);
+            pJanela->clear();
         }
     }
 
