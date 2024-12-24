@@ -19,5 +19,8 @@ namespace Entidades
 
             virtual void executar() = 0;
             virtual void desenhar() = 0;
+            sf::Vector2f getTamanho();
+            sf::Vector2f getPosicao();
+            void setPosicao(float posX, float posY);
     };  
 }

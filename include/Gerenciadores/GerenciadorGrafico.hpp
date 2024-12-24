@@ -1,4 +1,6 @@
 #pragma once
+#define LARGURA 800
+#define ALTURA 600
 
 #include <SFML/Graphics.hpp>
 

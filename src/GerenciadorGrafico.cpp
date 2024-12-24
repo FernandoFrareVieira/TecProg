@@ -1,5 +1,4 @@
 #include "Gerenciadores/GerenciadorGrafico.hpp"
-
 #include <iostream>
 
 namespace Gerenciadores
@@ -15,7 +14,7 @@ namespace Gerenciadores
     }
 
     GerenciadorGrafico::GerenciadorGrafico():
-        pJanela(new sf::RenderWindow(sf::VideoMode(800, 600), "Teste"))
+        pJanela(new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "Teste"))
     {
         pJanela->setFramerateLimit(60);
     }

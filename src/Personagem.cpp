@@ -21,5 +21,9 @@ namespace Entidades
         {
             vida = vida - dano;
         }
+
+        sf::RectangleShape& Personagem::getCorpo() {
+            return corpo;
+        }
     }
 }

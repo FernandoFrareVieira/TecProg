@@ -8,8 +8,10 @@ namespace Entidades
             Inimigo(pos, tam, vel)
         {
             textura = pGG->carregarTextura("assets/esqueleto.png");
+            corpo.setTextureRect(sf::IntRect(10,15,32,30));
+            corpo.setSize(sf::Vector2f(LARGURA/17.0f,ALTURA/7.50f));
             corpo.setTexture(textura);
-            corpo.setTextureRect(sf::IntRect(0, 0, 60, 60));
+            //corpo.setFillColor(sf::Color::White);
         }
          Esqueleto::~Esqueleto() {}
 

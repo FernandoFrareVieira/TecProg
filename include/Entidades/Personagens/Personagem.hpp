@@ -1,4 +1,4 @@
-#pragma once
+    #pragma once
 
 #include "../Entidade.hpp"
 
@@ -19,6 +19,7 @@ namespace Entidades
                 virtual void executar() = 0;
                 virtual void desenhar() = 0;
                 void tomarDano(int dano);
+                sf::RectangleShape& getCorpo();
         };
     }
 }
