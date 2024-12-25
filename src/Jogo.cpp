@@ -20,7 +20,7 @@ void Jogo::executar()
     while(pGG->janelaAberta()) {
         pGG->limpar();
         pGE->executar();
-        pGC->gerenciar(jogador, esqueleto);
+        pGC->colisao(jogador, esqueleto);   
         jogador->desenhar();
         esqueleto->desenhar();
         pGG->mostrar();

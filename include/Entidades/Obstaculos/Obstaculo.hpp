@@ -11,6 +11,7 @@ namespace Entidades
         {
             protected:   
                 bool nocivo;
+                sf::RectangleShape corpo;
             public:
                 Obstaculo(sf::Vector2f pos = sf::Vector2f(0.0f, 0.0f), sf::Vector2f tam = sf::Vector2f(0.0f, 0.0f));
                 ~Obstaculo();

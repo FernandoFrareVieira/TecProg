@@ -10,7 +10,7 @@ namespace Gerenciadores {
 
     }
 
-    void GerenciadorColisoes::gerenciar(Entidades::Personagens::Personagem* ente1, Entidades::Personagens::Personagem* ente2) {
+    void GerenciadorColisoes::colisao(Entidades::Personagens::Personagem* ente1, Entidades::Personagens::Personagem* ente2) {
     // Verifica se os ponteiros são válidos
     if (!ente1 || !ente2) return;
 
@@ -59,8 +59,9 @@ namespace Gerenciadores {
         // Atualiza a posição do corpo da entidade 1
         ente1->getCorpo().setPosition(novaPosicao);
     }
-}
 
-
-
+    }
+    void GerenciadorColisoes::gerenciar() {
+        
+    }
 }

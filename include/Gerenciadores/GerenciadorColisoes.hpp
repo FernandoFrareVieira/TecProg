@@ -1,6 +1,7 @@
 #pragma once
 #include "Entidades/Entidade.hpp"
 #include "Entidades/Personagens/Personagem.hpp"
+#include "Listas/ListaEntidades.hpp"
 
 namespace Gerenciadores {
     class GerenciadorColisoes {
@@ -11,7 +12,8 @@ namespace Gerenciadores {
         GerenciadorColisoes();
         ~GerenciadorColisoes();
         //void colisao();
-        void gerenciar(Entidades::Personagens::Personagem *ente1, Entidades::Personagens::Personagem *ente2);
+        void colisao(Entidades::Personagens::Personagem *ente1, Entidades::Personagens::Personagem *ente2);
+        void gerenciar();
 
                
     };
