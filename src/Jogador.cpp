@@ -10,50 +10,45 @@ namespace Entidades
             Personagem(pos, tam, vel)
         {   
             vivo = true;
-            textura = pGG->carregarTextura("assets/IDLE.png"); 
-            corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
-            corpo.setTextureRect(sf::IntRect(40,48,15,33));
+            vida = 100;
+
+            corpo.setFillColor(sf::Color::Red);
+
+            //textura = pGG->carregarTextura("assets/IDLE.png"); 
+            //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
+            //corpo.setTextureRect(sf::IntRect(40,48,15,33));
             //corpo.setFillColor(sf::Color::White);
-            corpo.setTexture(textura);
+            //corpo.setTexture(textura);
         }
 
         Jogador::~Jogador()
         {
-
+            
         }
 
         void Jogador::executar()
         {
-
+            //Desenhar();
+            //Mover();
         }
 
         void Jogador::desenhar()
         {
-            if(vivo) {
-                pGG->desenhar(corpo);
-            }
+            pGG->desenhar(corpo);
         }
 
         void Jogador::mover(sf::Keyboard::Key tecla)
         {
             if(tecla == sf::Keyboard::D) {
-                sf::Vector2f pos = corpo.getPosition();
-                pos.x = pos.x + velocidade.x;
-                corpo.setPosition(pos);
+                corpo.move(velocidade.x, 0.0f);
             }else if(tecla == sf::Keyboard::A) {
-                sf::Vector2f pos = corpo.getPosition();
-                pos.x = pos.x - velocidade.x;
-                corpo.setPosition(pos);
+                corpo.move(-velocidade.x, 0.0f);
             }
             else if (tecla == sf::Keyboard::W) {
-                sf::Vector2f pos = corpo.getPosition();
-                pos.y = pos.y - velocidade.y;
-                corpo.setPosition(pos);
+                corpo.move(0.0f, -velocidade.y);
             }
             else if (tecla == sf::Keyboard::S) {
-                sf::Vector2f pos = corpo.getPosition();
-                pos.y = pos.y + velocidade.y;
-                corpo.setPosition(pos);
+                corpo.move(0.0f, velocidade.y);
             }
         }
 

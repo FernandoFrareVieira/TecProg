@@ -1,6 +1,6 @@
 #pragma once
-#define LARGURA 800
-#define ALTURA 600
+#define LARGURA 1600
+#define ALTURA 900
 
 #include <SFML/Graphics.hpp>
 
@@ -9,7 +9,7 @@ namespace Gerenciadores
     class GerenciadorGrafico
     {
         private:
-            sf::RenderWindow* pJanela;
+            sf::RenderWindow* janela;
             static GerenciadorGrafico* instancia;
         
             GerenciadorGrafico();

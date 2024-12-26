@@ -11,11 +11,10 @@ namespace Entidades
             private:
                 sf::Texture* textura;
             public:
-                Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel);
+                Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador);
                 ~Esqueleto();
                 void executar();
                 void desenhar();
-                void mover();
         };
     }
     }

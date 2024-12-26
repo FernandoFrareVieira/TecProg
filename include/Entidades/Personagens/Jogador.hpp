@@ -12,7 +12,7 @@ namespace Entidades
                 int pontos;
                 sf::Texture* textura;
             public:
-                Jogador(sf::Vector2f pos = sf::Vector2f(0.0f, 0.0f), sf::Vector2f tam = sf::Vector2f(0.0f, 0.0f), sf::Vector2f velocidade = sf::Vector2f(0.0f, 0.0f));
+                Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f velocidade);
                 ~Jogador();
                 void executar();
                 void desenhar();

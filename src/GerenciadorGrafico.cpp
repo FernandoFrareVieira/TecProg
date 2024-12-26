@@ -14,15 +14,17 @@ namespace Gerenciadores
     }
 
     GerenciadorGrafico::GerenciadorGrafico():
-        pJanela(new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "Teste"))
+        janela(new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "Teste"))
     {
-        pJanela->setFramerateLimit(60);
+        janela->setFramerateLimit(60);
     }
 
     GerenciadorGrafico::~GerenciadorGrafico() 
     {
-        pJanela = nullptr;
-        delete pJanela;
+        if(janela) {
+            janela = nullptr;
+            delete janela;
+        }
     }
 
     sf::Texture* GerenciadorGrafico::carregarTextura(std::string caminhoTextura)
@@ -39,38 +41,38 @@ namespace Gerenciadores
 
     bool GerenciadorGrafico::janelaAberta() const 
     {
-        return pJanela->isOpen();
+        return janela->isOpen();
     }
 
     void GerenciadorGrafico::mostrar() 
     {
         if(janelaAberta()) {
-            pJanela->display();
+            janela->display();
         }
     }
 
     void GerenciadorGrafico::limpar() 
     {
         if(janelaAberta()) {
-            pJanela->clear();
+            janela->clear();
         }
     }
 
     void GerenciadorGrafico::fechar()
     {
         if(janelaAberta()) {
-            pJanela->close();
+            janela->close();
         }
     }
 
     sf::RenderWindow* GerenciadorGrafico::getJanela() const
     {
-        return pJanela;
+        return janela;
     }
 
     void GerenciadorGrafico::desenhar(sf::RectangleShape& corpo)
     {
-        pJanela->draw(corpo);
+        janela->draw(corpo);
     }
 
 }

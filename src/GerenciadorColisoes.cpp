@@ -1,5 +1,6 @@
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include <cmath>
+#include <iostream>
 
 namespace Gerenciadores {
     GerenciadorColisoes::GerenciadorColisoes(){
@@ -11,6 +12,9 @@ namespace Gerenciadores {
     }
 
     void GerenciadorColisoes::gerenciar(Entidades::Personagens::Personagem* ente1, Entidades::Personagens::Personagem* ente2) {
+
+    //std::cout << "Jogador: (" << ente1->getCorpo().getPosition().x << ", " << ente1->getCorpo().getPosition().y << ") ";
+    //std::cout << "Inimigo: (" << ente2->getCorpo().getPosition().x << ", " << ente2->getCorpo().getPosition().y << ")\n";
     // Verifica se os ponteiros são válidos
     if (!ente1 || !ente2) return;
 

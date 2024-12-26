@@ -7,10 +7,7 @@ namespace Entidades
         Personagem::Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
             Entidade(pos, tam),
             velocidade(vel)
-        {
-            corpo.setPosition(posicao);
-            corpo.setSize(tamanho);
-        }
+        {}
 
         Personagem::~Personagem()
         {
@@ -22,7 +19,7 @@ namespace Entidades
             vida = vida - dano;
         }
 
-        sf::RectangleShape& Personagem::getCorpo() {
+        sf::RectangleShape Personagem::getCorpo(){
             return corpo;
         }
     }
