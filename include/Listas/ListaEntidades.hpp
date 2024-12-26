@@ -1,6 +1,8 @@
 #include "Lista.hpp"
 #include "Entidades/Entidade.hpp"
 
+#pragma once
+
 namespace Listas
 {
     class ListaEntidades
@@ -11,16 +13,12 @@ namespace Listas
             ListaEntidades();
             ~ListaEntidades();
 
+            void adicionarEntidade(Entidades::Entidade* entidade);
+            void removerEntidade(Entidades::Entidade* entidade);
             void executar();
-
             void desenhar();
-
             int getTamanho();
-
             void limpar();
-
-            void incluir(Entidades::Entidade* ent);
-
-
+            Entidades::Entidade* operator[](int pos);
     };
 }

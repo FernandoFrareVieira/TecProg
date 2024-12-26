@@ -120,6 +120,29 @@ namespace Listas
             }
         }
 
+        void remover(TL* elemento) {
+            if (!elemento || !pPrimeiro)
+                return;
+
+            Elemento<TL>* anterior = nullptr;
+            Elemento<TL>* atual = pPrimeiro;
+
+            while (atual) {
+                if (atual->getInfo() == elemento) {
+                    if (anterior) {
+                        anterior->setProximo(atual->getProximo());
+                    } else {
+                        pPrimeiro = atual->getProximo();
+                    }
+                    delete atual;
+                    tamanho--;
+                    return;
+                }
+                anterior = atual;
+                atual = atual->getProximo();
+            }
+        }
+
         void limpar()
         {
             Elemento<TL>* temp =  nullptr;

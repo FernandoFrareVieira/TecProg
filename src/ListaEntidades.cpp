@@ -10,6 +10,16 @@ namespace Listas
 
     }
 
+    void ListaEntidades::adicionarEntidade(Entidades::Entidade* entidade)
+    {
+        LE.incluir(entidade);
+    }
+
+    void ListaEntidades::removerEntidade(Entidades::Entidade* entidade)
+    {
+        LE.remover(entidade);
+    }
+
     void ListaEntidades::executar(){
         Listas::Lista<Entidades::Entidade>::Iterator<Entidades::Entidade> it = LE.getPrimeiro();
         while (it != nullptr) {
@@ -34,8 +44,9 @@ namespace Listas
         LE.limpar();
     }
 
-    void ListaEntidades::incluir(Entidades::Entidade* ent) {
-        LE.incluir(ent);
+    Entidades::Entidade* ListaEntidades::operator[](int pos)
+    {
+        //TODO - Implementar na lista template
+        //LE.operator[](pos);
     }
-
 }

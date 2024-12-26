@@ -5,6 +5,7 @@
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Entidades/Personagens/Esqueleto.hpp"
+#include "Listas/ListaEntidades.hpp"
 
 class Jogo
 {
@@ -13,10 +14,8 @@ class Jogo
         Gerenciadores::GerenciadorEventos* pGE;
         Gerenciadores::GerenciadorColisoes* pGC;
         Entidades::Personagens::Jogador* jogador;
-        Entidades::Personagens::Esqueleto* esqueleto;
 
-        //Vetor para teste da implementação de jogador e inimigos lista
-        std::vector<Entidades::Personagens::Personagem*> personagens;
+        Listas::ListaEntidades listaEntidades;
     public:
         Jogo();
         ~Jogo();

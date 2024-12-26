@@ -4,14 +4,15 @@ Jogo::Jogo():
 pGG(Gerenciadores::GerenciadorGrafico::getInstancia()),
 pGC(new Gerenciadores::GerenciadorColisoes()) 
 {
+    //Adicionando jogador listaTemplate
     jogador = new Entidades::Personagens::Jogador(sf::Vector2f(600.0f, 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
-    //Loop para testar vários inimigos
-    for(int i = 0; i < 3; i++) {
-        esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(100.0f + (i*100.0f), 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
-        personagens.push_back(static_cast<Entidades::Personagens::Personagem*>(esqueleto));
-    }
+    listaEntidades.adicionarEntidade(static_cast<Entidades::Personagens::Personagem*>(jogador));
 
-    personagens.push_back(static_cast<Entidades::Personagens::Personagem*>(jogador));
+    //Adicionar Inimigos lista Template
+    for(int i = 0; i < 3; i++) {
+        Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(100.0f + (i*100.0f), 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
+        listaEntidades.adicionarEntidade(static_cast<Entidades::Personagens::Personagem*>(esqueleto));
+    }
 
     pGE = Gerenciadores::GerenciadorEventos::getInstancia(jogador);
 
@@ -28,12 +29,11 @@ void Jogo::executar()
     while(pGG->janelaAberta()) {
         pGG->limpar();
         pGE->executar();
-        pGC->colisao(jogador, esqueleto);   
+
+        //Todo - Fazer colisão na lista
+        //pGC->colisao(jogador, );   
         
-        //Loop no vetor para teste de jogador e inimigo em uma lista    
-        for(int i = 0; i < personagens.size(); i++) {
-            personagens[i]->executar();
-        }
+        listaEntidades.executar();
         pGG->mostrar();
     }
 }
