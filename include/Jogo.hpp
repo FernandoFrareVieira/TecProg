@@ -14,6 +14,9 @@ class Jogo
         Gerenciadores::GerenciadorColisoes* pGC;
         Entidades::Personagens::Jogador* jogador;
         Entidades::Personagens::Esqueleto* esqueleto;
+
+        //Vetor para teste da implementação de jogador e inimigos lista
+        std::vector<Entidades::Personagens::Personagem*> personagens;
     public:
         Jogo();
         ~Jogo();

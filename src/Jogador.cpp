@@ -28,8 +28,7 @@ namespace Entidades
 
         void Jogador::executar()
         {
-            //Desenhar();
-            //Mover();
+            desenhar();
         }
 
         void Jogador::desenhar()
