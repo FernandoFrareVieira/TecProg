@@ -10,7 +10,6 @@ namespace Gerenciadores {
     public:
         GerenciadorColisoes(Listas::ListaEntidades* LE);
         ~GerenciadorColisoes();
-        //void colisao();
         void colisao(Entidades::Entidade* ente1, Entidades::Entidade* ente2);
         void gerenciar();
 

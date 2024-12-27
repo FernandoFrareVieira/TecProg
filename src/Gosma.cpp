@@ -18,7 +18,7 @@ namespace Entidades
 
         void Gosma::desenhar()
         {
-            //pGG->desenhar(corpo);
+            pGG->desenhar(corpo);
         }
 
         void Gosma::obstacular(Personagens::Jogador* pJogador)

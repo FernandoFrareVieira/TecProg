@@ -7,18 +7,21 @@ namespace Entidades
     namespace Personagens
     {
         Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Personagem(pos, tam, vel, ID::jogador)
+            Personagem(pos, tam, vel, ID::jogador),
+            animacao(&corpo)
         {   
             vivo = true;
             vida = 100;
 
+            animacao.adicionarAnimacao(Animacoes::ID_animacao::andando, "assets/jogador/andando.png", 10);
+
             //corpo.setFillColor(sf::Color::Red);
 
-            textura = pGG->carregarTextura("assets/IDLE.png"); 
-            corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
-            corpo.setTextureRect(sf::IntRect(40,48,15,33));
-            corpo.setFillColor(sf::Color::White);
-            corpo.setTexture(textura);
+            //textura = pGG->carregarTextura("assets/jogador/IDLE.png"); 
+            //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
+            //corpo.setTextureRect(sf::IntRect(40,48,15,33));
+            //corpo.setFillColor(sf::Color::White);
+            //corpo.setTexture(textura);
         }
 
         Jogador::~Jogador()
@@ -28,12 +31,18 @@ namespace Entidades
 
         void Jogador::executar()
         {
+            atualizar(pGG->getTempo());
             desenhar();
         }
 
         void Jogador::desenhar()
         {
-            pGG->desenhar(corpo);
+            animacao.renderizar();
+        }
+
+        void Jogador::atualizar(float dt)
+        {
+            animacao.atualizar(Animacoes::ID_animacao::andando, false, corpo.getPosition(), dt);
         }
 
         void Jogador::mover(sf::Keyboard::Key tecla)

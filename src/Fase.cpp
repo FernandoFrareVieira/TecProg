@@ -1,7 +1,4 @@
 namespace Fases
 {
-    class Fase
-    {   
-                
-    };
+
 }

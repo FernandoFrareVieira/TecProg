@@ -34,7 +34,10 @@ void Jogo::executar()
         pGE->executar();
 
         pGC->gerenciar();
-        
+        //Teste - Centralizar camera no jogador, não sei se é assim que faz
+        //pGG->cententralizarCamera(jogador->getCorpo().getPosition());
+        pGG->atualizarTempo();
+
         listaEntidades.executar();
         pGG->mostrar();
     }

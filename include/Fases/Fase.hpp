@@ -10,8 +10,7 @@ namespace Fases
     {
         protected:
             Listas::ListaEntidades listaObstaculos;
-            Listas::ListaEntidades listaInimigos;
-            Entidades::Personagens::Jogador* jogador;
+            Listas::ListaEntidades listaPersonagens;
         public:
             Fase();
             ~Fase();

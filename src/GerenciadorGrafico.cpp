@@ -14,7 +14,9 @@ namespace Gerenciadores
     }
 
     GerenciadorGrafico::GerenciadorGrafico():
-        janela(new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "Teste"))
+        janela(new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "Teste")),
+        camera(sf::Vector2f(LARGURA / 2, ALTURA / 2), sf::Vector2f(LARGURA, ALTURA)),
+        tempo(0.0f)
     {
         janela->setFramerateLimit(60);
     }
@@ -70,9 +72,25 @@ namespace Gerenciadores
         return janela;
     }
 
+    void GerenciadorGrafico::cententralizarCamera(sf::Vector2f pos)
+    {
+        camera.setCenter(pos);
+        janela->setView(camera);
+    }
+
     void GerenciadorGrafico::desenhar(sf::RectangleShape& corpo)
     {
         janela->draw(corpo);
     }
 
+    void GerenciadorGrafico::atualizarTempo()
+    {
+        tempo = relogio.getElapsedTime().asSeconds();
+        relogio.restart();
+    }
+
+    float GerenciadorGrafico::getTempo()
+    {
+        return tempo;
+    }
 }
