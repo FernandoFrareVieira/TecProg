@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Entidade(pos, tam),
+        Personagem::Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, int identificador):
+            Entidade(pos, tam, identificador),
             velocidade(vel)
         {}
 

@@ -5,7 +5,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador *jogador) : Personagem(pos, tam, vel)
+        Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador *jogador, int identificador) : Personagem(pos, tam, vel, identificador)
         {
             pjogador = jogador;
             srand(time(NULL));

@@ -5,6 +5,7 @@
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Entidades/Personagens/Esqueleto.hpp"
+#include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Listas/ListaEntidades.hpp"
 
 class Jogo

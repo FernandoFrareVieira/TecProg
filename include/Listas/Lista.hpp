@@ -70,7 +70,7 @@ namespace Listas
             }
             
             Iterator& operator++(){
-                pAtual = pAtual->pProximo;  
+                pAtual = pAtual->getProximo();  
                 return *this;
             }
 
@@ -164,5 +164,19 @@ namespace Listas
             return tamanho;
         }
 
+        TL* operator[](int pos)
+        {
+            if (pos < 0 || pos >= tamanho) {
+                // A posição está fora dos limites
+                return nullptr; // Ou lançar uma exceção, como throw std::out_of_range("Posição inválida");
+            }
+
+            Elemento<TL>* atual = pPrimeiro;
+            for (int i = 0; i < pos; i++) {
+                atual = atual->getProximo();
+            }
+
+            return atual->getInfo();
+        }
     };
 }

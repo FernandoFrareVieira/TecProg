@@ -6,19 +6,19 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Personagem(pos, tam, vel)
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, int identificador):
+            Personagem(pos, tam, vel, identificador)
         {   
             vivo = true;
             vida = 100;
 
-            corpo.setFillColor(sf::Color::Red);
+            //corpo.setFillColor(sf::Color::Red);
 
-            //textura = pGG->carregarTextura("assets/IDLE.png"); 
-            //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
-            //corpo.setTextureRect(sf::IntRect(40,48,15,33));
-            //corpo.setFillColor(sf::Color::White);
-            //corpo.setTexture(textura);
+            textura = pGG->carregarTextura("assets/IDLE.png"); 
+            corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
+            corpo.setTextureRect(sf::IntRect(40,48,15,33));
+            corpo.setFillColor(sf::Color::White);
+            corpo.setTexture(textura);
         }
 
         Jogador::~Jogador()

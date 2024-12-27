@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Gosma::Gosma(sf::Vector2f pos, sf::Vector2f tam):
-            Obstaculo(pos, tam)
+        Gosma::Gosma(sf::Vector2f pos, sf::Vector2f tam, int identificador):
+            Obstaculo(pos, tam, identificador)
         {}
 
         Gosma::~Gosma()

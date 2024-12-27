@@ -39,6 +39,11 @@ namespace Listas
     int ListaEntidades::getTamanho(){
         return LE.getTamanho();
     }
+    
+    Listas::Lista<Entidades::Entidade>::Iterator<Entidades::Entidade> ListaEntidades::getPrimeiro()
+    {
+        return LE.getPrimeiro();
+    }
 
     void ListaEntidades::limpar() {
         LE.limpar();
@@ -46,7 +51,6 @@ namespace Listas
 
     Entidades::Entidade* ListaEntidades::operator[](int pos)
     {
-        //TODO - Implementar na lista template
-        //LE.operator[](pos);
+        return LE.operator[](pos);
     }
 }

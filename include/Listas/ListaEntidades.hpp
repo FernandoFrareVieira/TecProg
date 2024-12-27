@@ -18,6 +18,7 @@ namespace Listas
             void executar();
             void desenhar();
             int getTamanho();
+            Listas::Lista<Entidades::Entidade>::Iterator<Entidades::Entidade> getPrimeiro();
             void limpar();
             Entidades::Entidade* operator[](int pos);
     };

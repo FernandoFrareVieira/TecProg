@@ -4,19 +4,26 @@ namespace Entidades
 {
     int Entidade::contador = 0;
 
-    Entidade::Entidade(sf::Vector2f pos, sf::Vector2f tam):
+    Entidade::Entidade(sf::Vector2f pos, sf::Vector2f tam, int identificador):
         Ente(),
-        id(contador++)
+        id(identificador)
     {
         corpo.setPosition(pos);
         corpo.setSize(tam);
+
+        contador++;
     }
 
     Entidade::~Entidade()
     {}
 
-    const sf::RectangleShape Entidade::getCorpo() const
+    sf::RectangleShape* Entidade::getCorpo()
     {
-        return corpo;
+        return &corpo;
+    }
+
+    int Entidade::getId()
+    {
+        return id;
     }
 }

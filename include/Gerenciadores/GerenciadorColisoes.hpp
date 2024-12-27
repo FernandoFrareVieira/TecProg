@@ -6,13 +6,12 @@
 namespace Gerenciadores {
     class GerenciadorColisoes {
     private:
-        Entidades::Personagens::Personagem* ent1;
-        Entidades::Personagens::Personagem* ent2;
+        Listas::ListaEntidades* listaEntidades;
     public:
-        GerenciadorColisoes();
+        GerenciadorColisoes(Listas::ListaEntidades* LE);
         ~GerenciadorColisoes();
         //void colisao();
-        void colisao(Entidades::Personagens::Personagem *ente1, Entidades::Personagens::Personagem *ente2);
+        void colisao(Entidades::Entidade* ente1, Entidades::Entidade* ente2);
         void gerenciar();
 
                
