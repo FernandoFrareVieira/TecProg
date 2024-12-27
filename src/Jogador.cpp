@@ -6,8 +6,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, int identificador):
-            Personagem(pos, tam, vel, identificador)
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
+            Personagem(pos, tam, vel, ID::jogador)
         {   
             vivo = true;
             vida = 100;

@@ -12,7 +12,7 @@ namespace Entidades
             private:
 
             public:
-                Gosma(sf::Vector2f pos, sf::Vector2f tam, int identificador);
+                Gosma(sf::Vector2f pos, sf::Vector2f tam);
                 ~Gosma();
                 void executar();
                 void desenhar();

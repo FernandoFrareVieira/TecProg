@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Esqueleto::Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador, int identificador):
-            Inimigo(pos, tam, vel, jogador, identificador)
+        Esqueleto::Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador):
+            Inimigo(pos, tam, vel, jogador)
         {
             //corpo.setFillColor(sf::Color::White);
             vivo = true;

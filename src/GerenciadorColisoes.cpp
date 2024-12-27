@@ -41,11 +41,11 @@ namespace Gerenciadores {
             float overlap_y = limite_y - fabs(dist_y);
 
             // Verifica a combinação de IDs
-            int id1 = ente1->getId();
-            int id2 = ente2->getId();
+            Entidades::ID id1 = ente1->getId();
+            Entidades::ID id2 = ente2->getId();
 
             // Ajusta as posições para evitar sobreposição
-            if (id1 == 0 || id1 == 1) { // Jogador ou inimigo
+            if (id1 == Entidades::ID::jogador|| id1 == Entidades::ID::inimigo) { // Jogador ou inimigo
                 if (overlap_x < overlap_y) {
                     if (dist_x > 0.0f) {
                         corpo1->move(overlap_x, 0); // Move para a direita
@@ -61,7 +61,7 @@ namespace Gerenciadores {
                 }
             }
 
-            if (id2 == 0 || id2 == 1) { // Jogador ou inimigo
+            if (id2 == Entidades::ID::jogador|| id2 == Entidades::ID::inimigo) { // Jogador ou inimigo
                 if (overlap_x < overlap_y) {
                     if (dist_x > 0.0f) {
                         corpo2->move(-overlap_x, 0); // Move para a esquerda

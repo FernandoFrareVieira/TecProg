@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Obstaculo::Obstaculo(sf::Vector2f pos, sf::Vector2f tam, int identificador):
-            Entidade(pos, tam, identificador)
+        Obstaculo::Obstaculo(sf::Vector2f pos, sf::Vector2f tam):
+            Entidade(pos, tam, ID::obstaculo)
         {}
 
         Obstaculo::~Obstaculo()

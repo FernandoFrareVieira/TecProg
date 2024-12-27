@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam, int identificador):
-        Obstaculo(pos, tam, identificador)
+        Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam):
+        Obstaculo(pos, tam)
         {
             corpo.setFillColor(sf::Color::Green);
         }

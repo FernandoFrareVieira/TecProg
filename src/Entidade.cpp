@@ -4,7 +4,7 @@ namespace Entidades
 {
     int Entidade::contador = 0;
 
-    Entidade::Entidade(sf::Vector2f pos, sf::Vector2f tam, int identificador):
+    Entidade::Entidade(sf::Vector2f pos, sf::Vector2f tam, ID identificador):
         Ente(),
         id(identificador)
     {
@@ -22,7 +22,7 @@ namespace Entidades
         return &corpo;
     }
 
-    int Entidade::getId()
+    ID Entidade::getId()
     {
         return id;
     }

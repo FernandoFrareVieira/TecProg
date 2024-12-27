@@ -4,21 +4,28 @@
  
 namespace Entidades
 {
+    enum ID
+    {
+        vazio = 0,
+        jogador, 
+        inimigo,
+        obstaculo
+    };
+
     class Entidade : public Ente
     {
         protected:
+            ID id;
             static int contador;
             sf::RectangleShape corpo;
-
-            //Identificador baseado em número, por enquanto: Jogador: 0, Inimigo: 1, Obstaculo: 2
-            const int id;
+            
         public:
-            Entidade(sf::Vector2f pos, sf::Vector2f tam, int identificador);
+            Entidade(sf::Vector2f pos, sf::Vector2f tam, ID identificador = vazio);
             ~Entidade();
 
             virtual void executar() = 0;
             virtual void desenhar() = 0;
             sf::RectangleShape* getCorpo();
-            int getId();
+            ID getId();
     };  
 }

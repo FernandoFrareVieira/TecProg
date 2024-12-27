@@ -12,7 +12,7 @@ namespace Entidades
             private:
 
             public:
-                Plataforma(sf::Vector2f pos, sf::Vector2f tam, int identificador);
+                Plataforma(sf::Vector2f pos, sf::Vector2f tam);
                 ~Plataforma();
                 void executar();
                 void desenhar();
