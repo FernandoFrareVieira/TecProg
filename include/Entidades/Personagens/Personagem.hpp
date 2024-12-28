@@ -12,7 +12,7 @@ namespace Entidades
                 int vida;
                 bool vivo;
             public:
-                Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f velocidade, ID identificador = vazio);
+                Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
                 ~Personagem();
                 virtual void executar() = 0;
                 virtual void desenhar() = 0;
