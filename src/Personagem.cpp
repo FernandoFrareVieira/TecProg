@@ -5,7 +5,12 @@ namespace Entidades
     namespace Personagens
     {
         Personagem::Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador):
+<<<<<<< HEAD
             Entidade(pos, tam, vel, identificador)
+=======
+            Entidade(pos, tam, identificador),
+            velocidade(vel)
+>>>>>>> parent of ae350ee (colocando velocidade em Entidade, mudando construtores)
         {}
 
         Personagem::~Personagem()
