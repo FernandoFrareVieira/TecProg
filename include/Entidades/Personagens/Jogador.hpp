@@ -15,7 +15,7 @@ namespace Entidades
 
                 Animacoes::Animacao animacao;
             public:
-                Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f velocidade);
+                Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel = sf::Vector2f(0.0f, 0.0f));
                 ~Jogador();
                 void executar();
                 void desenhar();

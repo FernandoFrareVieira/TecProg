@@ -9,7 +9,6 @@ namespace Entidades
         class Personagem : public Entidade
         {
             protected:
-                sf::Vector2f velocidade;
                 int vida;
                 bool vivo;
             public:

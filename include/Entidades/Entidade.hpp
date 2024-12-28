@@ -18,14 +18,16 @@ namespace Entidades
             ID id;
             static int contador;
             sf::RectangleShape corpo;
+            sf::Vector2f velocidade;
             
         public:
-            Entidade(sf::Vector2f pos, sf::Vector2f tam, ID identificador = vazio);
+            Entidade(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
             ~Entidade();
 
             virtual void executar() = 0;
             virtual void desenhar() = 0;
             sf::RectangleShape* getCorpo();
             ID getId();
-    };  
+            sf::Vector2f getVelocidade();
+     };  
 }

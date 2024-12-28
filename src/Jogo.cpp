@@ -14,7 +14,7 @@ pGC(new Gerenciadores::GerenciadorColisoes(&listaEntidades))
         listaEntidades.adicionarEntidade(static_cast<Entidades::Entidade*>(esqueleto));
     }
 
-    Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(800.0f, 700.0f), sf::Vector2f(200.0f, 40.0f));
+    Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(800.0f, 700.0f), sf::Vector2f(200.0f, 40.0f), sf::Vector2f(0.0f, 0.0f));
     listaEntidades.adicionarEntidade(static_cast<Entidades::Entidade*>(plataforma));
 
     pGE = Gerenciadores::GerenciadorEventos::getInstancia(jogador);
