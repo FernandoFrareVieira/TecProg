@@ -1,4 +1,4 @@
-#include "Animacoes/animacao.hpp"
+#include "Animacoes/Animacao.hpp"
 
 namespace Animacoes
 {
@@ -62,6 +62,7 @@ namespace Animacoes
 
     void Animacao::renderizar()
     {
+        
         pGG->desenhar(*corpo);
     }
 }

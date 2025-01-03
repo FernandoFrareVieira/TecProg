@@ -12,6 +12,7 @@ namespace Gerenciadores {
         ~GerenciadorColisoes();
         void colisao(Entidades::Entidade* ente1, Entidades::Entidade* ente2);
         void gerenciar();
+        void colisaoPersonagens(Entidades::Entidade* ente1, Entidades::Entidade* ente2, float overlap_x, float overlap_y, float dist_x, float dist_y);
 
                
     };

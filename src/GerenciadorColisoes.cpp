@@ -13,6 +13,29 @@ namespace Gerenciadores {
     {
 
     }
+
+
+    void GerenciadorColisoes::colisaoPersonagens(Entidades::Entidade* ente1, Entidades::Entidade* ente2, float overlap_x, float overlap_y, float dist_x, float dist_y) {
+        sf::RectangleShape* corpo1 = ente1->getCorpo();
+        sf::RectangleShape* corpo2 = ente2->getCorpo();
+        if (overlap_x < overlap_y) {
+            if (dist_x > 0.0f) {
+                corpo2->move(-overlap_x, 0); // Move para a esquerda
+            } 
+            else {
+                corpo2->move(overlap_x, 0); // Move para a direita
+            }
+        }
+        else {
+            if (dist_y > 0.0f) {
+                corpo2->move(0, -overlap_y); // Move para cima
+            } 
+            else {
+                corpo2->move(0, overlap_y); // Move para baixo
+            }
+        }
+        
+    }
     void GerenciadorColisoes::colisao(Entidades::Entidade* ente1, Entidades::Entidade* ente2) 
     {
         // Verifica se os ponteiros são válidos
@@ -45,37 +68,12 @@ namespace Gerenciadores {
             Entidades::ID id2 = ente2->getId();
 
             // Ajusta as posições para evitar sobreposição
-            if (id1 == Entidades::ID::jogador|| id1 == Entidades::ID::inimigo) { // Jogador ou inimigo
-                if (overlap_x < overlap_y) {
-                    if (dist_x > 0.0f) {
-                        corpo1->move(overlap_x, 0); // Move para a direita
-                    } else {
-                        corpo1->move(-overlap_x, 0); // Move para a esquerda
-                    }
-                } else {
-                    if (dist_y > 0.0f) {
-                        corpo1->move(0, overlap_y); // Move para baixo
-                    } else {
-                        corpo1->move(0, -overlap_y); // Move para cima
-                    }
-                }
-            }
 
-            if (id2 == Entidades::ID::jogador|| id2 == Entidades::ID::inimigo) { // Jogador ou inimigo
-                if (overlap_x < overlap_y) {
-                    if (dist_x > 0.0f) {
-                        corpo2->move(-overlap_x, 0); // Move para a esquerda
-                    } else {
-                        corpo2->move(overlap_x, 0); // Move para a direita
-                    }
-                } else {
-                    if (dist_y > 0.0f) {
-                        corpo2->move(0, -overlap_y); // Move para cima
-                    } else {
-                        corpo2->move(0, overlap_y); // Move para baixo
-                    }
-                }
+            if (id1 == Entidades::ID::inimigo && id2 == Entidades::ID::jogador) { // Jogador ou inimigo
+                colisaoPersonagens(ente1, ente2, overlap_x,overlap_y,dist_x,dist_y);
             }
+            else if (id1 == Entidades::ID::obstaculo && id2 == Entidades::ID::inimigo)
+                colisaoPersonagens(ente1, ente2, overlap_x,overlap_y,dist_x,dist_y);
         }
     }
     
