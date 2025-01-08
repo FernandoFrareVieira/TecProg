@@ -2,12 +2,11 @@
 
 Jogo::Jogo():
 pGG(Gerenciadores::GerenciadorGrafico::getInstancia()),
-pGC(new Gerenciadores::GerenciadorColisoes(&listaEntidades)) 
-{
+pGC(new Gerenciadores::GerenciadorColisoes(&listaEntidades))
+    {
     //Adicionando jogador listaTemplate
     jogador = new Entidades::Personagens::Jogador(sf::Vector2f(600.0f, 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
     listaEntidades.adicionarEntidade(static_cast<Entidades::Entidade*>(jogador));
-
     //Adicionar Inimigos lista Template
     for(int i = 0; i < 3; i++) {
         Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(100.0f + (i*100.0f), 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
@@ -37,8 +36,7 @@ void Jogo::executar()
         //Teste - Centralizar camera no jogador, não sei se é assim que faz
         //pGG->cententralizarCamera(jogador->getCorpo().getPosition());
         pGG->atualizarTempo();
-
-        listaEntidades.executar();
+        listaEntidades.executar(); 
         pGG->mostrar();
     }
 }

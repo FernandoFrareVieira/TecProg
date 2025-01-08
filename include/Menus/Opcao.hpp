@@ -5,6 +5,7 @@
 namespace Menus {
     class Opcao {
         private:
+            sf::Font fonte;
             sf::RectangleShape corpo;
             sf::Text texto;
             Gerenciadores::GerenciadorGrafico* pGG;
@@ -14,5 +15,6 @@ namespace Menus {
             void desenhar();
             void setPosicao(sf::Vector2f posicao);
             void setTexto(const std::string text);
+            void mudarCor();
     };
 }

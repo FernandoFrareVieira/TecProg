@@ -7,6 +7,7 @@
 #include "Entidades/Personagens/Esqueleto.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Listas/ListaEntidades.hpp"
+#include "Menus/MenuPrincipal.hpp"
 
 class Jogo
 {
@@ -16,7 +17,10 @@ class Jogo
         Gerenciadores::GerenciadorColisoes* pGC;
         Entidades::Personagens::Jogador* jogador;
 
+        Menus::MenuPrincipal* pMenu;
+        Observadores::MenuObservador* pM;
         Listas::ListaEntidades listaEntidades;
+        
     public:
         Jogo();
         ~Jogo();
