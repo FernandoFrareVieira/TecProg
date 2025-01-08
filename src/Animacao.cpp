@@ -11,7 +11,7 @@ namespace Animacoes
         animacaoMap(),
         ID_atual(ID_animacao::andando) 
     {
-        corpo->setScale(sf::Vector2f(7, 7));
+        //corpo->setScale(sf::Vector2f(7, 7));
     }
 
     Animacao::~Animacao()

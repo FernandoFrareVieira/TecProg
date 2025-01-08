@@ -3,8 +3,7 @@
 #include <iostream>
 
 namespace Gerenciadores {
-    GerenciadorColisoes::GerenciadorColisoes(Listas::ListaEntidades* LE):
-    listaEntidades(LE)
+    GerenciadorColisoes::GerenciadorColisoes()
     {
 
     }
@@ -15,7 +14,27 @@ namespace Gerenciadores {
     }
 
 
+    void GerenciadorColisoes::setObstaculos(Listas::ListaEntidades* LO)
+    {
+        if(LO)
+            listaObstaculos = LO;
+    }
+
+    void GerenciadorColisoes::setInimigos(Listas::ListaEntidades* LI)
+    {
+        if(LI)
+            listaInimigos = LI;
+    }
+
+    void GerenciadorColisoes::setJogadores(Listas::ListaEntidades* LJ)
+    {
+        if(LJ)
+            listaJogadores = LJ;
+    }
+
     void GerenciadorColisoes::colisaoPersonagens(Entidades::Entidade* ente1, Entidades::Entidade* ente2, float overlap_x, float overlap_y, float dist_x, float dist_y) {
+        //Problema nesse algoritmo, o corpo que se move depende da ordem dos parametros
+        //TODO - Criar método virtual puro colidir na classe Entidade para tratar a colisão para cada Entidade em especifico, deve arrumar o problema
         sf::RectangleShape* corpo1 = ente1->getCorpo();
         sf::RectangleShape* corpo2 = ente2->getCorpo();
         if (overlap_x < overlap_y) {
@@ -69,24 +88,38 @@ namespace Gerenciadores {
 
             // Ajusta as posições para evitar sobreposição
 
-            if (id1 == Entidades::ID::inimigo && id2 == Entidades::ID::jogador) { // Jogador ou inimigo
-                colisaoPersonagens(ente1, ente2, overlap_x,overlap_y,dist_x,dist_y);
-            }
-            else if (id1 == Entidades::ID::obstaculo && id2 == Entidades::ID::inimigo)
-                colisaoPersonagens(ente1, ente2, overlap_x,overlap_y,dist_x,dist_y);
+            if (id1 == Entidades::ID::inimigo && id2 == Entidades::ID::jogador) // Jogador e inimigo
+                colisaoPersonagens(ente1, ente2, overlap_x, overlap_y, dist_x, dist_y);
+            else if (id1 == Entidades::ID::obstaculo && id2 == Entidades::ID::inimigo) //Obstaculo e inimigo
+                colisaoPersonagens(ente1, ente2, overlap_x, overlap_y, dist_x, dist_y);
+            else // Jogador e Obstaculo 
+                colisaoPersonagens(ente1, ente2, overlap_x, overlap_y, dist_x, dist_y);
         }
     }
     
     void GerenciadorColisoes::gerenciar() {
-        //TODO - Implementar o loop com a classe Iterador
-        for(int i = 0; i < listaEntidades->getTamanho() - 1; i++) {
-            Entidades::Entidade* entidade1 = listaEntidades->operator[](i);
-            for(int j = 0; j < listaEntidades->getTamanho(); j++) {
-                Entidades::Entidade* entidade2 = listaEntidades->operator[](j);
-                if(entidade1->getId() != entidade2->getId()) {
-                    colisao(entidade1, entidade2);
-                }
+        //Colisão jogadores com obstaculos e inimigos
+        for(int i = 0; i < listaJogadores->getTamanho(); i++) {
+            Entidades::Entidade* entidade1 = listaJogadores->operator[](i);
+            for(int j = 0; j < listaInimigos->getTamanho(); j++) {
+                Entidades::Entidade* entidade2 = listaInimigos->operator[](j);
+                colisao(entidade1, entidade2);
+            }
+            for(int j = 0; j < listaObstaculos->getTamanho(); j++) {
+                Entidades::Entidade* entidade2 = listaObstaculos->operator[](j);
+                colisao(entidade2, entidade1);
             }
         }
+
+        //Colisão Inimigos e obstaculos
+        for(int i = 0; i < listaInimigos->getTamanho(); i++) {
+            Entidades::Entidade* entidade1 = listaInimigos->operator[](i);
+            for(int j = 0; j < listaObstaculos->getTamanho(); j++) {
+                Entidades::Entidade* entidade2 = listaObstaculos->operator[](j);
+                colisao(entidade2, entidade1);
+            }
+        }
+
+        //TODO - Colisão inimigo com inimigo ?
     }
 }

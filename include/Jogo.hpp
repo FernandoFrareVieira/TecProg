@@ -14,13 +14,10 @@ class Jogo
     private:
         Gerenciadores::GerenciadorGrafico* pGG;
         Gerenciadores::GerenciadorEventos* pGE;
-        Gerenciadores::GerenciadorColisoes* pGC;
+        Gerenciadores::GerenciadorColisoes pGC;
         Entidades::Personagens::Jogador* jogador;
 
-        Menus::MenuPrincipal* pMenu;
-        Observadores::MenuObservador* pM;
         Listas::ListaEntidades listaEntidades;
-        
     public:
         Jogo();
         ~Jogo();
