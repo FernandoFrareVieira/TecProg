@@ -13,7 +13,11 @@ namespace Entidades
             vivo = true;
             vida = 100;
 
+<<<<<<< HEAD
             //animacao.adicionarAnimacao(Animacoes::ID_animacao::andando, "assets/jogador/correndo.png", 10);
+=======
+            animacao.adicionarAnimacao(Animacoes::ID_animacao::andando, "assets/jogador/correndo.png", 10);
+>>>>>>> 66663f3c035762bd59289e872a2b37287de82623
 
             //corpo.setFillColor(sf::Color::Red);
 
