@@ -19,12 +19,8 @@ listaObstaculos()
     pGC.setInimigos(&listaInimigos);
 
     Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));
-<<<<<<< HEAD
     listaObstaculos.adicionarEntidade(static_cast<Entidades::Entidade*>(plataforma));
     pGC.setObstaculos(&listaObstaculos);
-=======
-    listaEntidades.adicionarEntidade(static_cast<Entidades::Entidade*>(plataforma));
->>>>>>> 66663f3c035762bd59289e872a2b37287de82623
 
     pGE = Gerenciadores::GerenciadorEventos::getInstancia(jogador);
 

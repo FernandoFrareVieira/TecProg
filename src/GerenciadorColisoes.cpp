@@ -14,7 +14,6 @@ namespace Gerenciadores {
     }
 
 
-<<<<<<< HEAD
     void GerenciadorColisoes::setObstaculos(Listas::ListaEntidades* LO)
     {
         if(LO)
@@ -36,9 +35,6 @@ namespace Gerenciadores {
     void GerenciadorColisoes::colisaoPersonagens(Entidades::Entidade* ente1, Entidades::Entidade* ente2, float overlap_x, float overlap_y, float dist_x, float dist_y) {
         //Problema nesse algoritmo, o corpo que se move depende da ordem dos parametros
         //TODO - Criar método virtual puro colidir na classe Entidade para tratar a colisão para cada Entidade em especifico, deve arrumar o problema
-=======
-    void GerenciadorColisoes::colisaoPersonagens(Entidades::Entidade* ente1, Entidades::Entidade* ente2, float overlap_x, float overlap_y, float dist_x, float dist_y) {
->>>>>>> 66663f3c035762bd59289e872a2b37287de82623
         sf::RectangleShape* corpo1 = ente1->getCorpo();
         sf::RectangleShape* corpo2 = ente2->getCorpo();
         if (overlap_x < overlap_y) {
@@ -92,20 +88,12 @@ namespace Gerenciadores {
 
             // Ajusta as posições para evitar sobreposição
 
-<<<<<<< HEAD
             if (id1 == Entidades::ID::inimigo && id2 == Entidades::ID::jogador) // Jogador e inimigo
                 colisaoPersonagens(ente1, ente2, overlap_x, overlap_y, dist_x, dist_y);
             else if (id1 == Entidades::ID::obstaculo && id2 == Entidades::ID::inimigo) //Obstaculo e inimigo
                 colisaoPersonagens(ente1, ente2, overlap_x, overlap_y, dist_x, dist_y);
             else // Jogador e Obstaculo 
                 colisaoPersonagens(ente1, ente2, overlap_x, overlap_y, dist_x, dist_y);
-=======
-            if (id1 == Entidades::ID::inimigo && id2 == Entidades::ID::jogador) { // Jogador ou inimigo
-                colisaoPersonagens(ente1, ente2, overlap_x,overlap_y,dist_x,dist_y);
-            }
-            else if (id1 == Entidades::ID::obstaculo && id2 == Entidades::ID::inimigo)
-                colisaoPersonagens(ente1, ente2, overlap_x,overlap_y,dist_x,dist_y);
->>>>>>> 66663f3c035762bd59289e872a2b37287de82623
         }
     }
     
