@@ -29,6 +29,7 @@ namespace Gerenciadores
             sf::RenderWindow* getJanela() const;
             void cententralizarCamera(sf::Vector2f pos);
             void desenhar(sf::RectangleShape& corpo);
+            void desenhar(sf::Text& texto);
             void atualizarTempo();
             float getTempo();
     };      

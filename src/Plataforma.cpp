@@ -7,7 +7,8 @@ namespace Entidades
         Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
         Obstaculo(pos, tam, vel)
         {
-            corpo.setFillColor(sf::Color::Green);
+            corpo.setFillColor(sf::Color::White);
+            corpo.setSize(sf::Vector2f(LARGURA,ALTURA/7.5f));
         }
 
         Plataforma::~Plataforma(){}

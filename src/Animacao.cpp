@@ -1,4 +1,4 @@
-#include "Animacoes/animacao.hpp"
+#include "Animacoes/Animacao.hpp"
 
 namespace Animacoes
 {
@@ -11,7 +11,7 @@ namespace Animacoes
         animacaoMap(),
         ID_atual(ID_animacao::andando) 
     {
-        corpo->setScale(sf::Vector2f(7, 7));
+        //corpo->setScale(sf::Vector2f(7, 7));
     }
 
     Animacao::~Animacao()
@@ -62,6 +62,7 @@ namespace Animacoes
 
     void Animacao::renderizar()
     {
+        
         pGG->desenhar(*corpo);
     }
 }

@@ -13,10 +13,12 @@ class Jogo
     private:
         Gerenciadores::GerenciadorGrafico* pGG;
         Gerenciadores::GerenciadorEventos* pGE;
-        Gerenciadores::GerenciadorColisoes* pGC;
+        Gerenciadores::GerenciadorColisoes pGC;
         Entidades::Personagens::Jogador* jogador;
 
-        Listas::ListaEntidades listaEntidades;
+        Listas::ListaEntidades listaObstaculos;
+        Listas::ListaEntidades listaInimigos;
+        Listas::ListaEntidades listaJogadores;
     public:
         Jogo();
         ~Jogo();
