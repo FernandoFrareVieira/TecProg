@@ -1,12 +1,16 @@
 #include "Jogo.hpp"
+#include "Observadores/MenuObservador.hpp"
 
 Jogo::Jogo():
 pGG(Gerenciadores::GerenciadorGrafico::getInstancia()),
-pGC(new Gerenciadores::GerenciadorColisoes(&listaEntidades)) 
+listaJogadores(),
+listaInimigos(),
+listaObstaculos()
 {
     //Adicionando jogador listaTemplate
     jogador = new Entidades::Personagens::Jogador(sf::Vector2f(600.0f, 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
-    listaEntidades.adicionarEntidade(static_cast<Entidades::Entidade*>(jogador));
+    listaJogadores.adicionarEntidade(static_cast<Entidades::Entidade*>(jogador));
+    pGC.setJogadores(&listaJogadores);
 
     //Adicionar Inimigos lista Template
     for(int i = 0; i < 3; i++) {
@@ -40,7 +44,10 @@ void Jogo::executar()
         //pGG->cententralizarCamera(jogador->getCorpo().getPosition()); - Tá estranho
         pGG->atualizarTempo();
 
-        listaEntidades.executar();
+        listaJogadores.executar();
+        listaInimigos.executar();
+        listaObstaculos.executar();
+
         pGG->mostrar();
     }
 }

@@ -4,7 +4,6 @@
 
 namespace Observadores {
     MenuObservador::MenuObservador() {
-
     }
 
     MenuObservador::~MenuObservador() {
@@ -23,9 +22,11 @@ namespace Observadores {
             return;
         if (tecla == sf::Keyboard::Key::Up) {
                 pMenu->moverCima();
+                pMenu->desenhar();
         }
         else if (tecla == sf::Keyboard::Key::Down) {
                 pMenu->moverBaixo();
+                pMenu->desenhar();
         }
     }
 }
