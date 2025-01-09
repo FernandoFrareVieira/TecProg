@@ -13,15 +13,15 @@ namespace Entidades
             vivo = true;
             vida = 100;
 
-            animacao.adicionarAnimacao(Animacoes::ID_animacao::andando, "assets/jogador/correndo.png", 10);
+            //animacao.adicionarAnimacao(Animacoes::ID_animacao::andando, "assets/jogador/correndo.png", 10);
 
-            //corpo.setFillColor(sf::Color::Red);
+            corpo.setFillColor(sf::Color::Red);
 
-            textura = pGG->carregarTextura("assets/jogador/parado.png"); 
-            corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
-            corpo.setTextureRect(sf::IntRect(40,48,15,33));
-            corpo.setFillColor(sf::Color::White);
-            corpo.setTexture(textura);
+            //textura = pGG->carregarTextura("assets/jogador/parado.png"); 
+            //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
+            //corpo.setTextureRect(sf::IntRect(40,48,15,33));
+            //corpo.setFillColor(sf::Color::White);
+            //corpo.setTexture(textura);
         }
 
         Jogador::~Jogador()
