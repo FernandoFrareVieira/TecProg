@@ -23,9 +23,9 @@ namespace Fases
             virtual void executar() = 0;
             virtual void desenhar() = 0;
 
-            void criarInimigos(Entidades::Entidade* inimigo);
-            void criarObstaculos(Entidades::Entidade* obstaculo);
-            void criarJogador(Entidades::Entidade* jogador);
+            void adicionarInimigos(Entidades::Entidade* inimigo);
+            void adicionarObstaculos(Entidades::Entidade* obstaculo);
+            void adicionarJogador(Entidades::Entidade* jogador);
             
     };
 }

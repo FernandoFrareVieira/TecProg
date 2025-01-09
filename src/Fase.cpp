@@ -19,21 +19,21 @@ namespace Fases
         
     }
 
-    void Fase::criarObstaculos(Entidades::Entidade* obstaculo)
+    void Fase::adicionarObstaculos(Entidades::Entidade* obstaculo)
     {
         if(obstaculo) {
             listaObstaculos.adicionarEntidade(obstaculo);
         }
     }
 
-    void Fase::criarInimigos(Entidades::Entidade* inimigo)
+    void Fase::adicionarInimigos(Entidades::Entidade* inimigo)
     {
         if(inimigo) {
             listaInimigos.adicionarEntidade(inimigo);
         }
     }
 
-    void Fase::criarJogador(Entidades::Entidade* jogador)
+    void Fase::adicionarJogador(Entidades::Entidade* jogador)
     {
         if(jogador) {
             listaJogadores.adicionarEntidade(jogador);

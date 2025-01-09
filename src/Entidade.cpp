@@ -11,8 +11,7 @@ namespace Entidades
     {
         corpo.setPosition(pos);
         corpo.setSize(tam);
-        corpo.setOrigin(tam / 2.0f);
-
+        
         contador++;
     }
 

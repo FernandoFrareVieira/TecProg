@@ -2,50 +2,31 @@
 
 Jogo::Jogo():
 pGG(Gerenciadores::GerenciadorGrafico::getInstancia()),
-listaJogadores(),
-listaInimigos(),
-listaObstaculos()
+fase1()
 {
-    //Adicionando jogador listaTemplate
-    jogador = new Entidades::Personagens::Jogador(sf::Vector2f(600.0f, 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
-    listaJogadores.adicionarEntidade(static_cast<Entidades::Entidade*>(jogador));
-    pGC.setJogadores(&listaJogadores);
-
-    //Adicionar Inimigos lista Template
-    for(int i = 0; i < 3; i++) {
-        Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(100.0f + (i*100.0f), 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
-        listaInimigos.adicionarEntidade(static_cast<Entidades::Entidade*>(esqueleto));
-    }
-    pGC.setInimigos(&listaInimigos);
-
-    Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));
-    listaObstaculos.adicionarEntidade(static_cast<Entidades::Entidade*>(plataforma));
-    pGC.setObstaculos(&listaObstaculos);
-
-    pGE = Gerenciadores::GerenciadorEventos::getInstancia(jogador);
+    //Solução terrível e provisoria
+    //TODO - implementar a lógica do jogador de mover dentro de uma função no próprio jogador, não dependendo do gerenciador de eventos
+    pGE = Gerenciadores::GerenciadorEventos::getInstancia(fase1.getJogador());
 
     executar();
 }
 
 Jogo::~Jogo()
 {
-    delete jogador;
 }
 
 void Jogo::executar()
 {  
     while(pGG->janelaAberta()) {
         pGG->limpar();
+
         pGE->executar();
 
-        pGC.gerenciar();
-        //Teste - Centralizar camera no jogador, não sei se é assim que faz
-        //pGG->cententralizarCamera(jogador->getCorpo().getPosition()); - Tá estranho
+        //Teste - Centralizar camera no jogador, não sei se é assim que faz, tá bem estranho
+        //pGG->cententralizarCamera(jogador->getCorpo().getPosition());
         pGG->atualizarTempo();
 
-        listaJogadores.executar();
-        listaInimigos.executar();
-        listaObstaculos.executar();
+        fase1.executar();
 
         pGG->mostrar();
     }
