@@ -1,4 +1,5 @@
 #include "Jogo.hpp"
+#include "Observadores/MenuObservador.hpp"
 
 Jogo::Jogo():
 pGG(Gerenciadores::GerenciadorGrafico::getInstancia()),

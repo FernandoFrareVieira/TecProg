@@ -1,7 +1,11 @@
 #pragma once
 
-#include "Observadores/Observador.hpp"
+#include "Ente.hpp"
 #include "Menus/Opcao.hpp"
+
+namespace Observadores {
+    class MenuObservador;  // Declaração antecipada
+}
 
 
 namespace Menus {
@@ -10,7 +14,7 @@ namespace Menus {
             Gerenciadores::GerenciadorGrafico* pGG;
             sf::RectangleShape corpo;
 
-            const int num_opcoes;
+            int num_opcoes;
             int indice_selecionado;
 
             std::vector<Opcao*> opcoes;
@@ -21,6 +25,9 @@ namespace Menus {
             ~Menu();
             virtual void desenhar();
             void addOpcao(Opcao* op);
+            void moverBaixo();
+            void moverCima();
+            void executar();
             int getIndice() const;
     };
 }   

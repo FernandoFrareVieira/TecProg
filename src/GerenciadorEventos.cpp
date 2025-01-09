@@ -1,4 +1,5 @@
 #include "Gerenciadores/GerenciadorEventos.hpp"
+#include "Observadores/MenuObservador.hpp"
 
 namespace Gerenciadores
 {
@@ -31,6 +32,7 @@ namespace Gerenciadores
                 pGG->fechar();
             }else if(evento.type == sf::Event::KeyPressed) {
                 pJogador->mover(evento.key.code);
+                //pMenu->atualizar(evento.key.code);
             }
         }
     }
