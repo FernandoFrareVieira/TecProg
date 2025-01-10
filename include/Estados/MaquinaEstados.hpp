@@ -13,5 +13,6 @@ namespace Estados {
         void mudarEstadoAtual(Estados::estadoID id);
         void addEstado(Estados::Estado* pEstado);
         estadoID getEstadoAtual() const;
+        void executar();
     };
 }
