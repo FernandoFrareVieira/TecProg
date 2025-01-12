@@ -6,8 +6,8 @@
 
 
 Tilemap::Tilemap(std::string mapJson)
-{
-    carregarMapa("Tilemap/teste1.json", "");
+{   
+    carregarMapa(mapJson, "");    
     textura_mapa = new sf::Texture();
 }
 
@@ -43,7 +43,7 @@ void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
     std::ifstream arquivo(mapJson);
     
     if(!arquivo.is_open()){
-        std::cerr << "Erro ao abrir o mapa (caminho mapa)" << std::endl;
+        std::cerr << "Erro ao abrir o mapa " << mapJson <<std::endl;
         return;
     }
 
@@ -54,18 +54,19 @@ void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
     if (caminhoImagem == "")
         caminhoImagem = mapJson.substr(0, mapJson.find_last_of(".")) + ".png";
 
-    if(!textura_mapa->loadFromFile("Tilemap/Assets.png")){
+    /*if(!textura_mapa->loadFromFile("include/Tilemap/Assets.png")){ //Está dando seg fault"
         std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
         return;
-    }
+    }*/
+    
 
 
 }
 
-void Tilemap::criarMapa(std::vector<Entidades::Entidade*>* entidades, sf::Texture* textura_mapa)
+void Tilemap::criarMapa(Listas::ListaEntidades* LE)
 {
     // Pega as informações do mapa
-    int sizeTiled = mapa["tilewidth"]; //tamahno do tile
+    int sizeTiled = mapa["tilewidth"]; //tamanho do tile
     int width = mapa["width"];
     int height = mapa["height"]; // altura do mapa
 
@@ -78,8 +79,8 @@ void Tilemap::criarMapa(std::vector<Entidades::Entidade*>* entidades, sf::Textur
             if(tileId != 0){
                 sf::Vector2f posicao(x * sizeTiled, y * sizeTiled);
                 sf::Vector2f tamanho(sizeTiled, sizeTiled);
-                Entidades::Entidade* ent = criarEntidade(posicao, tamanho, tileId);
-                entidades->push_back(ent);
+                Entidades::Entidade* ent = static_cast<Entidades::Entidade*>(criarEntidade(posicao, tamanho, tileId));
+                LE->adicionarEntidade(ent);
             }
         }
     }

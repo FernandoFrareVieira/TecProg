@@ -7,6 +7,7 @@
 #include <string>
 #include "Entidades/Entidade.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
+#include "Listas/ListaEntidades.hpp"
 
 
 
@@ -25,13 +26,13 @@ class Entidade;
 class Tilemap{
     private:
         nlohmann::json mapa; // mapa.json  
-        sf::Texture* textura_mapa;
 
     public:
         Tilemap(std::string mapJson);
         ~Tilemap();
 
+        sf::Texture* textura_mapa;
         void carregarMapa(std::string mapJson, std::string caminhoImagem);
         Entidades::Entidade* criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
-        void criarMapa(std::vector<Entidades::Entidade*>* entidades, sf::Texture* textura_mapa);
+        void criarMapa(Listas::ListaEntidades* LE);
 };

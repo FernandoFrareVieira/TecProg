@@ -159,7 +159,7 @@ namespace Listas
             tamanho = 0;
         }
 
-        const int getTamanho() const 
+        const int getTamanho()  
         {   
             return tamanho;
         }
