@@ -5,6 +5,8 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include "Entidades/Entidade.hpp"
+#include "Entidades/Obstaculos/Plataforma.hpp"
 
 
 
@@ -23,6 +25,7 @@ class Entidade;
 class Tilemap{
     private:
         nlohmann::json mapa; // mapa.json  
+        sf::Texture* textura_mapa;
 
     public:
         Tilemap(std::string mapJson);

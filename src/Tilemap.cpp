@@ -6,11 +6,13 @@
 
 Tilemap::Tilemap(std::string mapJson)
 {
-    //carregarMapa(mapJson);
+    carregarMapa("Tilemap/teste1.json", "");
+    textura_mapa = new sf::Texture();
 }
 
 Tilemap::~Tilemap()
 {
+    delete textura_mapa;
 
 }
 
@@ -32,7 +34,7 @@ Entidade* Tilemap::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int
      - ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
     */
 }
-/*
+
 void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
     std::ifstream arquivo(mapJson);
     
@@ -46,36 +48,37 @@ void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
 
        //se o caminho da imagem não for passado, ele pega o caminho do json e troca a extensão para .png
     if (caminhoImagem == "")
-        caminhoImagem = caminhoMapa.substr(0, caminhoMapa.find_last_of(".")) + ".png";
+        caminhoImagem = mapJson.substr(0, mapJson.find_last_of(".")) + ".png";
 
-    if(!textura_mapa->loadFromFile(caminhoImagem)){
+    if(!textura_mapa->loadFromFile("Tilemap/Assets.png")){
         std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
         return;
     }
 
 
-}*/
+}
 
 void Tilemap::criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_mapa)
 {
     // Pega as informações do mapa
-    //int sizeTiled = mapa["tilewidth"]; //tamhno do tile
-    //int width = mapa["width"];
-    //int height = mapa["height"]; // altura do mapa
+    int sizeTiled = mapa["tilewidth"]; //tamahno do tile
+    int width = mapa["width"];
+    int height = mapa["height"]; // altura do mapa
 
-    //int indice = 0;
+    int indice = 0;
 
     //loop de entidades com tamanho fixo (sizeTiled x sizeTiled)
-    /*for (int y = 0; y < height; y++) {
+    for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int tileId = mapa["layers"][0]["data"][indice++];
             if(tileId != 0){
                 sf::Vector2f posicao(x * sizeTiled, y * sizeTiled);
                 sf::Vector2f tamanho(sizeTiled, sizeTiled);
-                criarEntidade(posicao, tamanho, tileId, entidades);
+                Entidade* ent = criarEntidade(posicao, tamanho, tileId);
+                entidades->push_back(ent);
             }
         }
-    }*/
+    }
 
     //loop de entidades com tamanho variável em X
     /*for(int y = 0; y < height; y++)
