@@ -4,6 +4,7 @@
 //#include "classe/diversa/que/vc quer construir.hpp
 
 
+
 Tilemap::Tilemap(std::string mapJson)
 {
     carregarMapa("Tilemap/teste1.json", "");
@@ -16,13 +17,16 @@ Tilemap::~Tilemap()
 
 }
 
-Entidade* Tilemap::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
+Entidades::Entidade* Tilemap::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
 {
-    /*
-    switch (tipo){
+    
+    switch (tipo){  
         case 1 : //jogador
-            return new Jogador(posicao, tamanho);
-            break;
+            return new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+        default:
+            return nullptr;
+    }
+    /*
         case 2 : //plataforma sprite 1
             return new Plataforma(posicao, tamanho, tipo);
             break;
@@ -58,7 +62,7 @@ void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
 
 }
 
-void Tilemap::criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_mapa)
+void Tilemap::criarMapa(std::vector<Entidades::Entidade*>* entidades, sf::Texture* textura_mapa)
 {
     // Pega as informações do mapa
     int sizeTiled = mapa["tilewidth"]; //tamahno do tile
@@ -74,7 +78,7 @@ void Tilemap::criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_
             if(tileId != 0){
                 sf::Vector2f posicao(x * sizeTiled, y * sizeTiled);
                 sf::Vector2f tamanho(sizeTiled, sizeTiled);
-                Entidade* ent = criarEntidade(posicao, tamanho, tileId);
+                Entidades::Entidade* ent = criarEntidade(posicao, tamanho, tileId);
                 entidades->push_back(ent);
             }
         }

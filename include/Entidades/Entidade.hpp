@@ -22,7 +22,7 @@ namespace Entidades
             
         public:
             Entidade(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
-            ~Entidade();
+            virtual ~Entidade();
 
             virtual void executar() = 0;
             virtual void desenhar() = 0;

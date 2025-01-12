@@ -32,6 +32,6 @@ class Tilemap{
         ~Tilemap();
 
         void carregarMapa(std::string mapJson, std::string caminhoImagem);
-        Entidade* criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
-        void criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_mapa);
+        Entidades::Entidade* criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+        void criarMapa(std::vector<Entidades::Entidade*>* entidades, sf::Texture* textura_mapa);
 };
