@@ -5,6 +5,9 @@ OBJ_DIR = obj
 SFML_INCLUDE_DIR = /usr/include/SFML
 SFML_LIB_DIR = /usr/lib/x86_64-linux-gnu
 
+# Diretório de includes do projeto
+INCLUDE_DIR = include
+
 # Lista de todos os arquivos .cpp no diretório src
 CPP_FILES := $(wildcard src/*.cpp)
 
@@ -16,7 +19,7 @@ TARGET = main
 
 # Flags de compilação
 CXX = g++
-CXXFLAGS = -I$(SFML_INCLUDE_DIR) -Iinclude
+CXXFLAGS = -I$(SFML_INCLUDE_DIR) -I$(INCLUDE_DIR) -std=c++17 -Wall -Wextra
 LDFLAGS = -L$(SFML_LIB_DIR) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lstdc++
 
 # Regra padrão: compilar e linkar
