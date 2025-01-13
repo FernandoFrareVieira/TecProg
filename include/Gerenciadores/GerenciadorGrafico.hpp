@@ -30,6 +30,7 @@ namespace Gerenciadores
             void cententralizarCamera(sf::Vector2f pos);
             void desenhar(sf::RectangleShape& corpo);
             void desenhar(sf::Text& texto);
+            void desenharOutros(sf::Drawable& objeto);
             void atualizarTempo();
             float getTempo();
     };      

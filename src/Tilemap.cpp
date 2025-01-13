@@ -1,4 +1,5 @@
 #include "Tilemap/Tilemap.hpp"
+#include "Fases/Fase1.hpp"
 
 //#include "caminho/até/entidade.hpp"
 //#include "classe/diversa/que/vc quer construir.hpp
@@ -63,7 +64,7 @@ void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
 
 }
 
-void Tilemap::criarMapa(Listas::ListaEntidades* LE)
+void Tilemap::criarMapa(Listas::ListaEntidades LE)
 {
     // Pega as informações do mapa
     int sizeTiled = mapa["tilewidth"]; //tamanho do tile
@@ -80,7 +81,7 @@ void Tilemap::criarMapa(Listas::ListaEntidades* LE)
                 sf::Vector2f posicao(x * sizeTiled, y * sizeTiled);
                 sf::Vector2f tamanho(sizeTiled, sizeTiled);
                 Entidades::Entidade* ent = static_cast<Entidades::Entidade*>(criarEntidade(posicao, tamanho, tileId));
-                LE->adicionarEntidade(ent);
+                LE.adicionarEntidade(ent);
             }
         }
     }

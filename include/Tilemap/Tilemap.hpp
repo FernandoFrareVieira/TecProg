@@ -9,6 +9,10 @@
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Listas/ListaEntidades.hpp"
 
+namespace Fases {
+    class Fase1;
+}
+
 
 
 /*
@@ -34,5 +38,5 @@ class Tilemap{
         sf::Texture* textura_mapa;
         void carregarMapa(std::string mapJson, std::string caminhoImagem);
         Entidades::Entidade* criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
-        void criarMapa(Listas::ListaEntidades* LE);
+        void criarMapa(Listas::ListaEntidades LE);
 };

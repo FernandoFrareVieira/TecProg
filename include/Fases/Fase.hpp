@@ -4,6 +4,7 @@
 #include "Listas/ListaEntidades.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Gerenciadores/GerenciadorColisoes.hpp"
+#include "Tilemap/Tilemap.hpp"
 
 namespace Fases
 {
@@ -22,7 +23,7 @@ namespace Fases
             ~Fase();
             virtual void executar() = 0;
             virtual void desenhar() = 0;
-
+            void teste(Listas::ListaEntidades &LO) {listaObstaculos = LO;}
             void adicionarInimigos(Entidades::Entidade* inimigo);
             void adicionarObstaculos(Entidades::Entidade* obstaculo);
             void adicionarJogador(Entidades::Entidade* jogador);

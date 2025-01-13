@@ -92,6 +92,10 @@ namespace Gerenciadores
         relogio.restart();
     }
 
+    void GerenciadorGrafico::desenharOutros(sf::Drawable &objeto) {
+        janela->draw(objeto);
+    }
+
     float GerenciadorGrafico::getTempo()
     {
         return tempo;

@@ -13,6 +13,7 @@ namespace Fases
             const int maxEsqueletos;
             const int maxPlataformas;
 
+            sf::Texture background;
             //Provisorio
             Entidades::Personagens::Jogador* jogador;
         public:

@@ -1,5 +1,4 @@
 #include "Fases/Fase1.hpp"
-#include "Tilemap/Tilemap.hpp"
 
 namespace Fases
 {
@@ -23,9 +22,9 @@ namespace Fases
         }
         pGC.setInimigos(&listaInimigos);
 
-        //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));
-        //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
-        tilemap->criarMapa(&listaObstaculos);
+        Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));
+        adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
+        //listaObstaculos = tilemap->criarMapa(listaObstaculos);
         pGC.setObstaculos(&listaObstaculos);
     }
 
@@ -36,19 +35,25 @@ namespace Fases
 
     void Fase1::executar()
     {
+        desenhar();
         listaObstaculos.executar();
         listaInimigos.executar();
         listaJogadores.executar();
 
         pGC.gerenciar();
 
-        //desenhar();
     }
 
     void Fase1::desenhar()
     {
-        pGG->desenhar(corpo);
-    }
+        if(!background.loadFromFile("assets/cenarios/origbig.png")){ //Está dando seg fault"
+            std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
+            return;
+        }
+        sf::Sprite backgroundSprite(background);
+        backgroundSprite.setOrigin(sf::Vector2f(0,600));
+        pGG->desenharOutros(backgroundSprite);
+    }   
 
     Entidades::Personagens::Jogador* Fase1::getJogador()
     {
