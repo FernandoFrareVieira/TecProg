@@ -1,10 +1,15 @@
 #pragma once
 
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+#include "nlohmann/json.hpp"
 #include "Ente.hpp"
 #include "Listas/ListaEntidades.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Gerenciadores/GerenciadorColisoes.hpp"
-#include "Tilemap/Tilemap.hpp"
+#include "Entidades/Obstaculos/Plataforma.hpp"
 
 namespace Fases
 {
@@ -18,6 +23,9 @@ namespace Fases
             sf::RectangleShape corpo;
 
             Gerenciadores::GerenciadorColisoes pGC;
+
+            nlohmann::json mapa;
+            sf::Texture tilesetTextura;
         public:
             Fase();
             ~Fase();
@@ -27,6 +35,9 @@ namespace Fases
             void adicionarInimigos(Entidades::Entidade* inimigo);
             void adicionarObstaculos(Entidades::Entidade* obstaculo);
             void adicionarJogador(Entidades::Entidade* jogador);
+
+            void carregarMapa(std::string mapJson, std::string caminhoImagem);
+            void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
             
     };
 }

@@ -11,7 +11,7 @@ namespace Fases
         // TODO - Achaar o sprite do background da fase 1
 
         // TODO - Arrumar a lógica da criaçao dos objetos
-        Tilemap* tilemap = new Tilemap("include/Tilemap/teste2.json");
+        carregarMapa("include/Tilemap/teste2.json","include/Tilemap/Tileset.png");
         jogador = new Entidades::Personagens::Jogador(sf::Vector2f(600.0f, 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);
@@ -22,8 +22,8 @@ namespace Fases
         }
         pGC.setInimigos(&listaInimigos);
 
-        Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));
-        adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
+        //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));
+        //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
         //listaObstaculos = tilemap->criarMapa(listaObstaculos);
         pGC.setObstaculos(&listaObstaculos);
     }
