@@ -17,6 +17,7 @@ namespace Entidades
                 void executar();
                 void desenhar();
                 void obstacular(Personagens::Jogador* jogador);
+                void setTextura(std::string caminhoTextura);
         };
     }   
 }

@@ -80,7 +80,9 @@ namespace Fases
     
     switch (tipo){  
         case 16 : //plataforma
-            adicionarObstaculos(new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0)));
+        Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+        plataforma->setTextura("assets/obstaculos/plataforma1.png");
+        adicionarObstaculos(plataforma);
     }
     /*
         case 2 : //plataforma sprite 1

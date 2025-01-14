@@ -8,9 +8,7 @@ namespace Entidades
         Obstaculo(pos, tam, vel)
         {
             
-            textura = pGG->carregarTextura("assets/obstaculos/plataforma1.png");
-            corpo.setTexture(textura);
-            //corpo.setFillColor(sf::Color::Red);
+            corpo.setFillColor(sf::Color::White);
             //corpo.setSize(sf::Vector2f(LARGURA, ALTURA/7.5f));
         }
 
@@ -29,6 +27,11 @@ namespace Entidades
         void Plataforma::obstacular(Personagens::Jogador* jogador)
         {
             //Quando tiver colisão
+        }
+
+        void Plataforma::setTextura(std::string caminhoTextura) {
+            textura = pGG->carregarTextura(caminhoTextura);
+            corpo.setTexture(textura);
         }
     }
 }
