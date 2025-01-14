@@ -79,7 +79,7 @@ namespace Fases
 {
     
     switch (tipo){  
-        case 38 : //plataforma
+        case 16 : //plataforma
             adicionarObstaculos(new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0)));
     }
     /*

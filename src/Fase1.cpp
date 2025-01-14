@@ -11,7 +11,7 @@ namespace Fases
         // TODO - Achaar o sprite do background da fase 1
 
         // TODO - Arrumar a lógica da criaçao dos objetos
-        carregarMapa("include/Tilemap/teste2.json","include/Tilemap/Tileset.png");
+        carregarMapa("include/Tilemap/Tiles.json","include/Tilemap/Tileset.png");
         jogador = new Entidades::Personagens::Jogador(sf::Vector2f(600.0f, 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);

@@ -19,6 +19,7 @@ namespace Entidades
             static int contador;
             sf::RectangleShape corpo;
             sf::Vector2f velocidade;
+            sf::Texture* textura;
             
         public:
             Entidade(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
