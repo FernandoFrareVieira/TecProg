@@ -10,6 +10,7 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
+#include "Entidades/Personagens/Esqueleto.hpp"
 
 namespace Fases
 {
@@ -26,6 +27,8 @@ namespace Fases
 
             nlohmann::json mapa;
             sf::Texture tilesetTextura;
+
+            std::vector<sf::Vector2f> posicoes;
         public:
             Fase();
             ~Fase();
@@ -38,6 +41,8 @@ namespace Fases
 
             void carregarMapa(std::string mapJson, std::string caminhoImagem);
             void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+
+            void criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador);
             
     };
 }

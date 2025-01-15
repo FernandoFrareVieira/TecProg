@@ -2,7 +2,6 @@
 
 #include "Fase.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
-#include "Entidades/Personagens/Esqueleto.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
 
 namespace Fases

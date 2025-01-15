@@ -20,6 +20,7 @@ namespace Fases
             Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(100.0f + (i*100.0f), 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
             adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
         }
+        criarInimigos("include/Tilemap/Tiles.json",posicoes,jogador);
         pGC.setInimigos(&listaInimigos);
 
         //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));

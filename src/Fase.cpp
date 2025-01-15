@@ -75,25 +75,74 @@ namespace Fases
     
     }
 
-    void Fase::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
-{
+    void Fase::criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador) {
+    std::ifstream arquivo(mapJson);
     
-    switch (tipo){  
-        case 16 : //plataforma
-        Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-        plataforma->setTextura("assets/obstaculos/plataforma1.png");
-        adicionarObstaculos(plataforma);
+    if(!arquivo.is_open()){
+        std::cerr << "Erro ao abrir o mapa " << mapJson <<std::endl;
+        return;
     }
-    /*
-        case 2 : //plataforma sprite 1
-            return new Plataforma(posicao, tamanho, tipo);
-            break;
-        case 3 : //plataforma sprite 2
-            return new Plataforma(posicao, tamanho, tipo);
-            break;
-        ...
+
+    arquivo >> mapa;
+    
+    int sizeTiled = mapa["tilewidth"];
+    int width = mapa["width"];
+    int height = mapa["height"];
+
+    int indice = 0;
+    int firstgid = mapa["tilesets"][0]["firstgid"];
+    auto tileset = mapa["tilesets"][0]; 
+    for (const auto& objeto : mapa["layers"]) {
+    if (objeto["type"] == "objectgroup") {  // Verifica se a camada é de objetos
+        for (const auto& objetoDetalhes : objeto["objects"]) {
+            // Verifica o nome ou tipo do objeto para identificar inimigos
+            std::string nomeObjeto = objetoDetalhes["name"];
+            if (nomeObjeto == "inimigo") {
+                // Ou, alternativamente, use o "type" se for especificado como "inimigo"
+                // std::string tipoObjeto = objetoDetalhes["type"];
+                // if (tipoObjeto == "inimigo") {
+
+                printf("INIMIGO ACHADO\n");
+                fflush(stdout);
+
+                // Adicionar posição do inimigo ao vetor
+                sf::Vector2f posicao(
+                    static_cast<float>(objetoDetalhes["x"]),
+                    static_cast<float>(objetoDetalhes["y"])
+                );
+                posicoes_inimigos.push_back(posicao);
+            }
+        }
     }
-     - ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
-    */
 }
+
+    int tam = posicoes_inimigos.size();
+    int pos = rand() % tam;
+    sf::Vector2f tamanho(sizeTiled, sizeTiled);
+    Entidades::Personagens::Esqueleto* inimigo = new Entidades::Personagens::Esqueleto(posicoes_inimigos[pos],tamanho,sf::Vector2f(0,0),jogador);
+    adicionarInimigos(inimigo);
+    }
+
+    void Fase::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
+    {
+        
+        switch (tipo){  
+            case 17 : //plataforma
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/obstaculos/plataforma1.png");
+            adicionarObstaculos(plataforma);
+        }
+        /*
+            case 2 : //plataforma sprite 1
+                return new Plataforma(posicao, tamanho, tipo);
+                break;
+            case 3 : //plataforma sprite 2
+                return new Plataforma(posicao, tamanho, tipo);
+                break;
+            ...
+        }
+        - ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
+        */
+    } 
+
 }
