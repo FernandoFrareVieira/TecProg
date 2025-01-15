@@ -93,19 +93,14 @@ namespace Fases
     int firstgid = mapa["tilesets"][0]["firstgid"];
     auto tileset = mapa["tilesets"][0]; 
     for (const auto& objeto : mapa["layers"]) {
-    if (objeto["type"] == "objectgroup") {  // Verifica se a camada é de objetos
+    if (objeto["type"] == "objectgroup") {
         for (const auto& objetoDetalhes : objeto["objects"]) {
-            // Verifica o nome ou tipo do objeto para identificar inimigos
             std::string nomeObjeto = objetoDetalhes["name"];
             if (nomeObjeto == "inimigo") {
-                // Ou, alternativamente, use o "type" se for especificado como "inimigo"
-                // std::string tipoObjeto = objetoDetalhes["type"];
-                // if (tipoObjeto == "inimigo") {
 
                 printf("INIMIGO ACHADO\n");
                 fflush(stdout);
 
-                // Adicionar posição do inimigo ao vetor
                 sf::Vector2f posicao(
                     static_cast<float>(objetoDetalhes["x"]),
                     static_cast<float>(objetoDetalhes["y"])
