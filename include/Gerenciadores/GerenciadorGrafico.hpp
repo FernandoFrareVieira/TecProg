@@ -27,7 +27,7 @@ namespace Gerenciadores
             void limpar();
             void fechar();
             sf::RenderWindow* getJanela() const;
-            void cententralizarCamera(sf::Vector2f pos);
+            void centralizarCamera(sf::Vector2f pos);
             void desenhar(sf::RectangleShape& corpo);
             void desenhar(sf::Text& texto);
             void desenharOutros(sf::Drawable& objeto);

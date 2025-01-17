@@ -7,7 +7,7 @@ fase1()
 {
     //Solução terrível e provisoria
     //TODO - implementar a lógica do jogador de mover dentro de uma função no próprio jogador, não dependendo do gerenciador de eventos
-    pGE = Gerenciadores::GerenciadorEventos::getInstancia(fase1.getJogador());
+    pGE = Gerenciadores::GerenciadorEventos::getInstancia();
 
     executar();
 }
@@ -20,11 +20,9 @@ void Jogo::executar()
 {  
     while(pGG->janelaAberta()) {
         pGG->limpar();
-
         pGE->executar();
 
         //Teste - Centralizar camera no jogador, não sei se é assim que faz, tá bem estranho
-        pGG->cententralizarCamera(fase1.getJogador()->getCorpo().getPosition());
         pGG->atualizarTempo();
 
         fase1.executar();

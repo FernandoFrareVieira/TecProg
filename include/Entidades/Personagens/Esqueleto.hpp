@@ -15,6 +15,8 @@ namespace Entidades
                 ~Esqueleto();
                 void executar();
                 void desenhar();
+
+                void colidir(Entidade* entidade2, sf::Vector2f ds);
         };
     }
     }

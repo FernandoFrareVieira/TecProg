@@ -7,10 +7,13 @@ namespace Entidades
     Entidade::Entidade(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador):
         Ente(),
         id(identificador),
+        tamanho(tam),
+        posicao(pos),
         velocidade(vel)
     {
         corpo.setPosition(pos);
         corpo.setSize(tam);
+        //corpo.setOrigin(tam.x / 2.0f, tam.y / 2.0f);
         
         contador++;
     }
@@ -28,8 +31,33 @@ namespace Entidades
         return id;
     }
 
+    void Entidade::setPosicao(sf::Vector2f pos)
+    {
+        posicao = pos;
+    }
+
+    sf::Vector2f Entidade::getPosicao()
+    {
+        return posicao;
+    }
+
+    void Entidade::setTamanho(sf::Vector2f tam)
+    {
+        tamanho = tam;
+    }
+
+    sf::Vector2f Entidade::getTamanho()
+    {
+        return tamanho;
+    }
+
     sf::Vector2f Entidade::getVelocidade()
     {
         return velocidade;
+    }
+
+    void Entidade::setVelocidade(sf::Vector2f vel)
+    {
+        velocidade = vel;
     }
 }

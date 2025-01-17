@@ -5,23 +5,22 @@ namespace Gerenciadores
 {
     GerenciadorEventos* GerenciadorEventos::instancia = nullptr;
 
-    GerenciadorEventos* GerenciadorEventos::getInstancia(Entidades::Personagens::Jogador* jogador)
+    GerenciadorEventos* GerenciadorEventos::getInstancia()
     {
         if(instancia == nullptr) {
-            instancia = new GerenciadorEventos(jogador);
+            instancia = new GerenciadorEventos();
         }
         return instancia;
     }
 
-    GerenciadorEventos::GerenciadorEventos(Entidades::Personagens::Jogador* jogador):
+    GerenciadorEventos::GerenciadorEventos():
         pGG(Gerenciadores::GerenciadorGrafico::getInstancia())
     {
-        pJogador = jogador;
+
     }
 
     GerenciadorEventos::~GerenciadorEventos()
     {
-        pJogador = nullptr; 
     }
 
     void GerenciadorEventos::executar()
@@ -31,7 +30,7 @@ namespace Gerenciadores
             if(evento.type == sf::Event::Closed) {
                 pGG->fechar();
             }else if(evento.type == sf::Event::KeyPressed) {
-                pJogador->mover(evento.key.code);
+                //pJogador->mover(evento.key.code);
                 //pMenu->atualizar(evento.key.code);
             }
         }

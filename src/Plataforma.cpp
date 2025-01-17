@@ -33,5 +33,22 @@ namespace Entidades
             textura = pGG->carregarTextura(caminhoTextura);
             corpo.setTexture(textura);
         }
+
+        void Plataforma::colidir(Entidade* entidade2, sf::Vector2f ds)
+        {
+            switch(entidade2->getId())
+            {
+                case(ID::jogador):
+                {
+                    Personagens::Jogador* jogador = static_cast<Personagens::Jogador*>(entidade2);
+                    jogador->setPodePular(true);
+                    colisaoObstaculo(entidade2, ds);
+                }
+                case(ID::inimigo):
+                {
+                    colisaoObstaculo(entidade2, ds);
+                }
+            }   
+        }
     }
 }

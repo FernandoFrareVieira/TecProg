@@ -17,7 +17,8 @@ namespace Entidades
                 virtual void executar() = 0;
                 virtual void desenhar() = 0;
                 void tomarDano(int dano);
-                sf::RectangleShape getCorpo();
+
+                virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
         };
     }
 }

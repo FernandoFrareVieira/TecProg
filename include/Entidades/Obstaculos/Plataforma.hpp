@@ -18,6 +18,8 @@ namespace Entidades
                 void desenhar();
                 void obstacular(Personagens::Jogador* jogador);
                 void setTextura(std::string caminhoTextura);
+
+                void colidir(Entidade* entidade2, sf::Vector2f ds);
         };
     }   
 }

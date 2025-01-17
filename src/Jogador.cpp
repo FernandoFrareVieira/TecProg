@@ -6,33 +6,28 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Personagem(pos, tam, vel, ID::jogador),
-            animacao(&corpo)
-        {   
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel)
+            : Personagem(pos, tam, vel, ID::jogador), animacao(&corpo)
+        {
             vivo = true;
             vida = 100;
+            podePular = false;
 
-            //animacao.adicionarAnimacao(Animacoes::ID_animacao::andando, "assets/jogador/correndo.png", 10);
+            gravidade = 500.0f;        
+            velocidadePulo = -300.0f;  
 
             corpo.setFillColor(sf::Color::Red);
-
-            //textura = pGG->carregarTextura("assets/jogador/parado.png"); 
-            //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
-            //corpo.setTextureRect(sf::IntRect(40,48,15,33));
-            //corpo.setFillColor(sf::Color::White);
-            //corpo.setTexture(textura);
         }
 
         Jogador::~Jogador()
         {
-            
         }
 
         void Jogador::executar()
         {
-            //atualizar(pGG->getTempo());
+            atualizarPosicao();
             desenhar();
+            mover();
         }
 
         void Jogador::desenhar()
@@ -40,26 +35,76 @@ namespace Entidades
             pGG->desenhar(corpo);
         }
 
-        void Jogador::atualizar(float dt)
+        void Jogador::atualizarAnimacao(float dt)
         {
             animacao.atualizar(Animacoes::ID_animacao::andando, false, corpo.getPosition(), dt);
         }
 
-        void Jogador::mover(sf::Keyboard::Key tecla)
+        void Jogador::atualizarPosicao()
         {
-            if(tecla == sf::Keyboard::D) {
-                corpo.move(velocidade.x, 0.0f);
-            }else if(tecla == sf::Keyboard::A) {
-                corpo.move(-velocidade.x, 0.0f);
+            float dt = pGG->getTempo(); 
+
+       
+            if (!podePular)
+            {
+                velocidade.y += gravidade * dt;
             }
-            else if (tecla == sf::Keyboard::W) {
-                corpo.move(0.0f, -velocidade.y);
+
+            corpo.move(0, velocidade.y * dt);
+        }
+
+        void Jogador::mover()
+        {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            {
+                corpo.move(velocidade.x, 0);
             }
-            else if (tecla == sf::Keyboard::S) {
-                corpo.move(0.0f, velocidade.y);
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            {
+                corpo.move(-velocidade.x, 0);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            {
+                pular();
             }
         }
 
+        void Jogador::pular()
+        {
+            if (podePular)
+            {
+                velocidade.y = velocidadePulo; 
+                podePular = false;    
+            }
+        }
 
+        void Jogador::colidir(Entidade *entidade2, sf::Vector2f ds)
+        {
+            switch (entidade2->getId())
+            {
+            case (ID::inimigo):
+            {
+                tomarDano(10);
+            }
+            break;
+
+            case (ID::obstaculo):
+            {
+               
+            }
+            break;
+
+            default:
+            {
+            }
+            break;
+            }
+        }
+
+        void Jogador::setPodePular(bool pPular)
+        {
+            podePular = pPular;
+        }
     }
 }

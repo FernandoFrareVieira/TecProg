@@ -17,6 +17,9 @@ namespace Entidades
                 virtual void executar() = 0;
                 virtual void desenhar() = 0;
                 virtual void obstacular(Personagens::Jogador* pJogador) = 0;
+
+                virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
+                void colisaoObstaculo(Entidade* entidade2, sf::Vector2f ds);
         };
     }
 }

@@ -23,8 +23,8 @@ namespace Fases
         criarInimigos("include/Tilemap/Tiles.json",posicoes,jogador);
         pGC.setInimigos(&listaInimigos);
 
-        //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 600.0f), sf::Vector2f(100.0f, 30.0f), sf::Vector2f(0.0f, 0.0f));
-        //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
+        Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(500.0f, 400.0f), sf::Vector2f(400.0f, 100.0f), sf::Vector2f(0.0f, 0.0f));
+        adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
         //listaObstaculos = tilemap->criarMapa(listaObstaculos);
         pGC.setObstaculos(&listaObstaculos);
     }
@@ -42,7 +42,6 @@ namespace Fases
         listaJogadores.executar();
 
         pGC.gerenciar();
-
     }
 
     void Fase1::desenhar()
@@ -53,11 +52,8 @@ namespace Fases
         }
         sf::Sprite backgroundSprite(background);
         backgroundSprite.setOrigin(sf::Vector2f(0,600));
-        pGG->desenharOutros(backgroundSprite);
-    }   
 
-    Entidades::Personagens::Jogador* Fase1::getJogador()
-    {
-        return jogador;
-    }
+        pGG->desenharOutros(backgroundSprite);
+        pGG->centralizarCamera(jogador->getCorpo()->getPosition());
+    }   
 }

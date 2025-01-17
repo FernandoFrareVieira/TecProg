@@ -20,8 +20,5 @@ namespace Fases
             ~Fase1();
             void executar();
             void desenhar();
-
-            //Provisorio
-            Entidades::Personagens::Jogador* getJogador();
     };
 }

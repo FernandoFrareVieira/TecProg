@@ -18,6 +18,9 @@ namespace Entidades
             ID id;
             static int contador;
             sf::RectangleShape corpo;
+
+            sf::Vector2f posicao; 
+            sf::Vector2f tamanho;
             sf::Vector2f velocidade;
             sf::Texture* textura;
             
@@ -29,6 +32,16 @@ namespace Entidades
             virtual void desenhar() = 0;
             sf::RectangleShape* getCorpo();
             ID getId();
+
+            void setPosicao(sf::Vector2f pos);
+            sf::Vector2f getPosicao();
+
+            void setTamanho(sf::Vector2f tam);
+            sf::Vector2f getTamanho();
+            
+            void setVelocidade(sf::Vector2f vel);
             sf::Vector2f getVelocidade();
+
+            virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
      };  
 }

@@ -12,10 +12,10 @@ namespace Entidades
 
             //corpo.setFillColor(sf::Color::White);
 
-            textura = pGG->carregarTextura("assets/inimigos/esqueleto.png");
-            corpo.setTextureRect(sf::IntRect(10,15,32,30));
-            corpo.setSize(sf::Vector2f(LARGURA/17.0f,ALTURA/7.50f));
-            corpo.setTexture(textura);    
+            //textura = pGG->carregarTextura("assets/inimigos/esqueleto.png");
+            //corpo.setTextureRect(sf::IntRect(10,15,32,30));
+            //corpo.setSize(sf::Vector2f(LARGURA/17.0f,ALTURA/7.50f));
+            //corpo.setTexture(textura);    
         }
          Esqueleto::~Esqueleto() {}
 
@@ -27,5 +27,26 @@ namespace Entidades
         void Esqueleto::desenhar() {
             pGG->desenhar(corpo);
          }
+
+        void Esqueleto::colidir(Entidade* entidade2, sf::Vector2f ds)
+        {
+            switch(entidade2->getId()) {
+                case(ID::jogador):
+                {
+                    
+                }
+                break;
+                case(ID::obstaculo):
+                {
+                    
+                }
+                break;
+                default:
+                {
+                    
+                }
+                break;
+            }
+        }
     }
 }

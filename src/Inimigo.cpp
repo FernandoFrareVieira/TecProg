@@ -16,7 +16,7 @@ namespace Entidades
         Inimigo::~Inimigo() {}
 
         void Inimigo::mover() {
-            sf::Vector2f posicaoJogador = pjogador->getCorpo().getPosition();
+            sf::Vector2f posicaoJogador = pjogador->getCorpo()->getPosition();
             sf::Vector2f posicaoInimigo = corpo.getPosition();
 
             if (fabs(posicaoJogador.x - posicaoInimigo.x) <= DISTANCIA_PERSEGUIR_X && 

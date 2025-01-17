@@ -12,6 +12,10 @@ namespace Entidades
             private:
                 int pontos;
                 sf::Texture* textura;
+                bool podePular;
+
+                float gravidade; 
+                float velocidadePulo;
 
                 Animacoes::Animacao animacao;
             public:
@@ -19,8 +23,12 @@ namespace Entidades
                 ~Jogador();
                 void executar();
                 void desenhar();
-                void atualizar(float dt);
-                void mover(sf::Keyboard::Key tecla);
+                void atualizarAnimacao(float dt);
+                void atualizarPosicao();
+                void mover();
+                void colidir(Entidade* entidade2, sf::Vector2f ds);
+                void pular();
+                void setPodePular(bool pPular);
         };
     }
 }

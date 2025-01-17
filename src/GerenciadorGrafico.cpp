@@ -72,7 +72,7 @@ namespace Gerenciadores
         return janela;
     }
 
-    void GerenciadorGrafico::cententralizarCamera(sf::Vector2f pos)
+    void GerenciadorGrafico::centralizarCamera(sf::Vector2f pos)
     {
         camera.setCenter(pos);
         janela->setView(camera);
