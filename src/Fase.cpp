@@ -130,26 +130,43 @@ namespace Fases
         switch (tipo){  
             case 1 : { //plataforma
             Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+<<<<<<< HEAD
             plataforma->setTextura("assets/obstaculos/plataformas/grama1.png");
+=======
+            plataforma->setTextura("assets/plataformas/grama1.png");
+>>>>>>> 154116d (design do mapa)
             adicionarObstaculos(plataforma);
             }
             case 2: {
             Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+<<<<<<< HEAD
             plataforma->setTextura("assets/obstaculos/plataformas/grama2.png");
+=======
+            plataforma->setTextura("assets/plataformas/grama2.png");
+>>>>>>> 154116d (design do mapa)
             adicionarObstaculos(plataforma);
             }
             case 3: {
             Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+<<<<<<< HEAD
             plataforma->setTextura("assets/obstaculos/plataformas/grama3.png");
+=======
+            plataforma->setTextura("assets/plataformas/grama3.png");
+>>>>>>> 154116d (design do mapa)
             adicionarObstaculos(plataforma);
             }
             case 5: {
             Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+<<<<<<< HEAD
             plataforma->setTextura("assets/obstaculos/plataformas/grama5.png");
+=======
+            plataforma->setTextura("assets/plataformas/grama5.png");
+>>>>>>> 154116d (design do mapa)
             adicionarObstaculos(plataforma);
             }
             case 7: {
             Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+<<<<<<< HEAD
             plataforma->setTextura("assets/obstaculos/plataformas/grama7.png");
             adicionarObstaculos(plataforma);
             }
@@ -179,6 +196,21 @@ namespace Fases
             adicionarObstaculos(plataforma);
             }
             
+=======
+            plataforma->setTextura("assets/plataformas/grama7.png");
+            adicionarObstaculos(plataforma);
+            }
+            case 9: {
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama9.png");
+            adicionarObstaculos(plataforma);
+            }
+            case 10: {
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama10.png");
+            adicionarObstaculos(plataforma);
+            }
+>>>>>>> 154116d (design do mapa)
         }
         /*
             case 2 : //plataforma sprite 1

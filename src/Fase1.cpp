@@ -51,9 +51,8 @@ namespace Fases
             return;
         }
         sf::Sprite backgroundSprite(background);
-        backgroundSprite.setOrigin(sf::Vector2f(0,15));
-        backgroundSprite.setScale(2.78,3);
-
+        backgroundSprite.setScale(2.8,2);
+        backgroundSprite.setOrigin(sf::Vector2f(0,-140));
         pGG->desenharOutros(backgroundSprite);
         pGG->centralizarCamera(jogador->getCorpo()->getPosition());
     }   
