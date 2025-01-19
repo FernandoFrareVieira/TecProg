@@ -23,8 +23,8 @@ namespace Fases
         criarInimigos("include/Tilemap/Tiles.json",posicoes,jogador);
         pGC.setInimigos(&listaInimigos);
 
-        Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(500.0f, 400.0f), sf::Vector2f(400.0f, 100.0f), sf::Vector2f(0.0f, 0.0f));
-        adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
+        //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(500.0f, 400.0f), sf::Vector2f(400.0f, 100.0f), sf::Vector2f(0.0f, 0.0f));
+        //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
         //listaObstaculos = tilemap->criarMapa(listaObstaculos);
         pGC.setObstaculos(&listaObstaculos);
     }
@@ -46,12 +46,13 @@ namespace Fases
 
     void Fase1::desenhar()
     {
-        if(!background.loadFromFile("assets/cenarios/origbig.png")){ //Está dando seg fault"
+        if(!background.loadFromFile("assets/cenarios/Background.png")){ //Está dando seg fault"
             std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
             return;
         }
         sf::Sprite backgroundSprite(background);
-        backgroundSprite.setOrigin(sf::Vector2f(0,600));
+        backgroundSprite.setOrigin(sf::Vector2f(0,15));
+        backgroundSprite.setScale(2.78,3);
 
         pGG->desenharOutros(backgroundSprite);
         pGG->centralizarCamera(jogador->getCorpo()->getPosition());
