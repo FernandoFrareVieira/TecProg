@@ -11,8 +11,10 @@ namespace Entidades
         {
             private:
                 int pontos;
+                int dano;
                 sf::Texture* textura;
                 bool podePular;
+                bool estaAtacando;
 
                 float gravidade; 
                 float velocidadePulo;

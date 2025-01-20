@@ -23,11 +23,33 @@ namespace Entidades
 
         void Gosma::obstacular(Personagens::Jogador* pJogador)
         {
-            //while colisao {
-                //sf::Vector2f velocidade = pJogador->getVelocidade();
-                //velocidade.x = velocidade.x - 10;
-                //pJogador->setVelocidade(velocidade);
-            //}
+            sf::Vector2f velocidadeNova = pJogador->getVelocidade() / 2.0f;
+            pJogador->setVelocidade(velocidadeNova);
+        }
+
+        void Gosma::colidir(Entidade* entidade2, sf::Vector2f ds)
+        {
+            switch(entidade2->getId()) {
+                case(ID::jogador):
+                {
+                    Personagens::Jogador* pJogador = static_cast<Personagens::Jogador*>(entidade2);
+                    obstacular(pJogador);
+                }
+                break;
+
+                case(ID::inimigo):
+                {
+
+                }
+
+                break;
+
+                default:
+                {
+
+                }
+                break;
+            }
         }
     }
 }
