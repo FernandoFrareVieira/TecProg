@@ -8,11 +8,10 @@ namespace Fases
         Fase()
     {
         //Iniciar corpo
-        // TODO - Achaar o sprite do background da fase 1
 
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Tiles.json","include/Tilemap/Tileset.png");
-        jogador = new Entidades::Personagens::Jogador(sf::Vector2f(0.0f, 720.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
+        jogador = new Entidades::Personagens::Jogador(sf::Vector2f(150.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(10.0f, 30.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);
 
@@ -51,8 +50,8 @@ namespace Fases
             return;
         }
         sf::Sprite backgroundSprite(background);
-        backgroundSprite.setScale(4,4);
-        backgroundSprite.setOrigin(sf::Vector2f(50,50));
+        backgroundSprite.setScale(4,3.2);
+        backgroundSprite.setOrigin(sf::Vector2f(50,-30));
         pGG->desenharOutros(backgroundSprite);
         pGG->centralizarCamera(jogador->getCorpo()->getPosition());
     }   

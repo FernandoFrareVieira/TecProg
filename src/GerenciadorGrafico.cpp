@@ -76,7 +76,7 @@ namespace Gerenciadores
     void GerenciadorGrafico::centralizarCamera(sf::Vector2f pos)
     {
         camera.setSize(1200,1000);
-        sf::FloatRect limiteMundo(-100,100,2000,1000);
+        sf::FloatRect limiteMundo(-90,100,2000,1000);
 
         float suavidade = 0.05;
         sf::Vector2f centroAtual = camera.getCenter();
