@@ -60,4 +60,9 @@ namespace Entidades
     {
         velocidade = vel;
     }
+
+    void Entidade::setTextura(std::string caminhoTextura) {
+        textura = pGG->carregarTextura(caminhoTextura);
+        corpo.setTexture(textura);
+    }
 }

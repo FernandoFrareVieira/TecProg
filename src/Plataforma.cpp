@@ -29,11 +29,6 @@ namespace Entidades
             //Quando tiver colisão
         }
 
-        void Plataforma::setTextura(std::string caminhoTextura) {
-            textura = pGG->carregarTextura(caminhoTextura);
-            corpo.setTexture(textura);
-        }
-
         void Plataforma::colidir(Entidade* entidade2, sf::Vector2f ds)
         {
             switch(entidade2->getId())

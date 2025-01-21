@@ -146,19 +146,14 @@ namespace Fases
             plataforma->setTextura("assets/plataformas/grama5.png");
             adicionarObstaculos(plataforma);
             }
-            case 7: {
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama7.png");
-            adicionarObstaculos(plataforma);
+            case 10: {
+            Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicao, tamanho, sf::Vector2f(0,0));
+            gosma->setTextura("assets/plataformas/gosma.png");
+            adicionarObstaculos(gosma);
             }
             case 12: {
             Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
             plataforma->setTextura("assets/plataformas/grama12.png");
-            adicionarObstaculos(plataforma);
-            }
-            case 10: {
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama10.png");
             adicionarObstaculos(plataforma);
             }
             case 13: {

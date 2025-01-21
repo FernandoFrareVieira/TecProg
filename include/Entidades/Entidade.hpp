@@ -42,6 +42,8 @@ namespace Entidades
             void setVelocidade(sf::Vector2f vel);
             sf::Vector2f getVelocidade();
 
+            void setTextura(std::string caminhoTextura);
+
             virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
      };  
 }

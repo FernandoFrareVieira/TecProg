@@ -11,6 +11,7 @@
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Personagens/Esqueleto.hpp"
+#include "Entidades/Obstaculos/Gosma.hpp"
 
 namespace Fases
 {
