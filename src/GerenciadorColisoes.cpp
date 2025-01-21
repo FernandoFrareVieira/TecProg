@@ -46,7 +46,7 @@ namespace Gerenciadores {
 
                 if(ds.x > 0.0f && ds.y > 0.0f) {
                     entidade1->colidir(entidade2, ds);
-                    //entidade2->colidir(entidade1, ds);
+                    entidade2->colidir(entidade1, ds);
                 }
             }
 
@@ -71,7 +71,7 @@ namespace Gerenciadores {
 
                 if(ds.x > 0.0f && ds.y > 0.0f) {
                     //entidade1->colidir(entidade2, ds);
-                    //entidade2->colidir(entidade1, ds);
+                    entidade2->colidir(entidade1, ds);
                 }
             }
         }

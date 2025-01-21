@@ -12,7 +12,7 @@ namespace Fases
 
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Tiles.json","include/Tilemap/Tileset.png");
-        jogador = new Entidades::Personagens::Jogador(sf::Vector2f(600.0f, 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
+        jogador = new Entidades::Personagens::Jogador(sf::Vector2f(0.0f, 720.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(30.0f, 30.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);
 
@@ -51,8 +51,8 @@ namespace Fases
             return;
         }
         sf::Sprite backgroundSprite(background);
-        backgroundSprite.setScale(2.8,2);
-        backgroundSprite.setOrigin(sf::Vector2f(0,-140));
+        backgroundSprite.setScale(5,5);
+        backgroundSprite.setOrigin(sf::Vector2f(100,50));
         pGG->desenharOutros(backgroundSprite);
         pGG->centralizarCamera(jogador->getCorpo()->getPosition());
     }   

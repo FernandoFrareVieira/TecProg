@@ -8,7 +8,9 @@ namespace Entidades
             Inimigo(pos, tam, vel, jogador)
         {
             vivo = true;
-            vida = 50;
+            vida = 20;
+
+            dano = 10;
 
             //corpo.setFillColor(sf::Color::White);
 
@@ -33,7 +35,8 @@ namespace Entidades
             switch(entidade2->getId()) {
                 case(ID::jogador):
                 {
-                    
+                    Jogador* pJogador = static_cast<Jogador*>(entidade2);
+                    pJogador->tomarDano(dano);
                 }
                 break;
                 case(ID::obstaculo):

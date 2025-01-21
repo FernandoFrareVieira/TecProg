@@ -1,4 +1,5 @@
 #include "Gerenciadores/GerenciadorGrafico.hpp"
+#include "Entidades/Personagens/Jogador.hpp"
 #include <iostream>
 
 namespace Gerenciadores
@@ -74,7 +75,15 @@ namespace Gerenciadores
 
     void GerenciadorGrafico::centralizarCamera(sf::Vector2f pos)
     {
-        camera.setCenter(pos);
+        camera.setSize(1200,1000);
+        sf::FloatRect limiteMundo(-100,100,2000,1000);
+
+        float suavidade = 0.05;
+        sf::Vector2f centroAtual = camera.getCenter();
+        sf::Vector2f novoCentro = centroAtual +suavidade*(pos - centroAtual);
+        novoCentro.x = std::clamp(novoCentro.x, limiteMundo.left + camera.getSize().x / 2, limiteMundo.left + limiteMundo.width - camera.getSize().x / 2);
+        novoCentro.y = std::clamp(novoCentro.y, limiteMundo.top + camera.getSize().y / 2, limiteMundo.top + limiteMundo.height - camera.getSize().y / 2);
+        camera.setCenter(novoCentro);
         janela->setView(camera);
     }
 

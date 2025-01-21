@@ -1,5 +1,6 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Gerenciadores/GerenciadorGrafico.hpp"
+#include "Entidades/Personagens/Inimigo.hpp"
 #include <iostream>
 
 namespace Entidades
@@ -11,12 +12,21 @@ namespace Entidades
         {
             vivo = true;
             vida = 100;
+            dano = 10;
+
             podePular = false;
+            estaAtacando = false;
 
             gravidade = 500.0f;        
             velocidadePulo = -300.0f;  
 
-            corpo.setFillColor(sf::Color::Red);
+            //corpo.setFillColor(sf::Color::Red);
+
+            textura = pGG->carregarTextura("assets/IDLE.png"); 
+            corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
+            corpo.setTextureRect(sf::IntRect(40,48,15,33));
+            corpo.setFillColor(sf::Color::White);
+            corpo.setTexture(textura);
         }
 
         Jogador::~Jogador()
@@ -85,7 +95,10 @@ namespace Entidades
             {
             case (ID::inimigo):
             {
-                tomarDano(10);
+                if(estaAtacando) {
+                    Inimigo* pInimigo = static_cast<Inimigo*>(entidade2);
+                    pInimigo->tomarDano(dano);
+                }
             }
             break;
 
