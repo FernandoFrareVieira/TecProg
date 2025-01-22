@@ -10,7 +10,7 @@ namespace Entidades
         {
             pjogador = jogador;
             srand(time(NULL));
-            direcaoAleatoria = rand() % 4;
+            direcaoAleatoria = rand() % 9;
         }
 
         Inimigo::~Inimigo() {}
@@ -18,14 +18,20 @@ namespace Entidades
         void Inimigo::mover() {
             sf::Vector2f posicaoJogador = pjogador->getCorpo()->getPosition();
             sf::Vector2f posicaoInimigo = corpo.getPosition();
+            sf::Vector2f movimento(0.0f, 0.0f);
 
+            //Adiciona gravidade
+            float dt = pGG->getTempo(); 
+            if (!podePular) {
+                velocidade.y += gravidade * dt;
+            }
+
+            //Perseguição
             if (fabs(posicaoJogador.x - posicaoInimigo.x) <= DISTANCIA_PERSEGUIR_X && 
                 fabs(posicaoJogador.y - posicaoInimigo.y) <= DISTANCIA_PERSEGUIR_Y) {
 
                 float diferencaX = posicaoJogador.x - posicaoInimigo.x;
                 float diferencaY = posicaoJogador.y - posicaoInimigo.y;
-
-                sf::Vector2f movimento(0.0f, 0.0f);
 
                 if (fabs(diferencaX) > 0.0f) {
                     movimento.x = (diferencaX > 0.0f ? velocidade.x : -velocidade.x);
@@ -34,32 +40,39 @@ namespace Entidades
                     }
                 }
 
-                if (fabs(diferencaY) > 0.0f) {
+                //Apenas altera movimento.y se estiver no chão ou próximo ao jogador
+                if (podePular) {
                     movimento.y = (diferencaY > 0.0f ? velocidade.y : -velocidade.y);
                     if (fabs(diferencaY) < fabs(movimento.y)) {
                         movimento.y = diferencaY;
                     }
                 }
 
-                corpo.move(movimento);
             } else {
-                if (direcaoAleatoria == 0) {
-                    corpo.move(velocidade.x, 0.0f);
-                } else if (direcaoAleatoria == 1) {
-                    corpo.move(-velocidade.x, 0.0f);
-                } else if (direcaoAleatoria == 2) {
-                    corpo.move(0.0f, velocidade.y);
-                } else if (direcaoAleatoria == 3) {
-                    corpo.move(0.0f, -velocidade.y);
+               
+                //Movimento aleatório
+                if(direcaoAleatoria == 0 && podePular) {
+                    pular();
+                }else if(direcaoAleatoria < 5) {
+                    //Move para a direita
+                    movimento.x = velocidade.x;
+                }else{
+                    //Move para a esquerda
+                    movimento.x = -velocidade.x;
                 }
             }
 
-            // Atualiza direção aleatória periodicamente
+            //Adiciona o efeito da gravidade ao movimento
+            movimento.y += velocidade.y * dt;
+            corpo.move(movimento);
+
+            //Atualiza direção aleatória
             float tempoQuePassou = relogio.getElapsedTime().asSeconds();
             if (tempoQuePassou >= 1.0f) {
-                direcaoAleatoria = rand() % 4;
+                direcaoAleatoria = rand() % 9;
                 relogio.restart();
             }
         }
+
     }
 }

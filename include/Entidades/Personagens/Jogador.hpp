@@ -13,10 +13,6 @@ namespace Entidades
                 int pontos;
                 int dano;
                 sf::Texture* textura;
-                bool podePular;
-
-                float gravidade; 
-                float velocidadePulo;
 
                 Animacoes::Animacao animacao;
             public:
@@ -24,8 +20,11 @@ namespace Entidades
                 ~Jogador();
                 void executar();
                 void desenhar();
+
+                // Métodos de Animação
                 void atualizarAnimacao(float dt);
-                void atualizarPosicao();
+
+                //Métodos movimetação e colisão
                 void mover();
                 void colidir(Entidade* entidade2, sf::Vector2f ds);
         };

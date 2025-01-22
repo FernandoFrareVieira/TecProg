@@ -26,6 +26,7 @@ namespace Entidades
         Esqueleto::~Esqueleto() {}
 
         void Esqueleto::executar() {
+            atualizarPosicao();
             atualizarAtaque();
             desenhar();
             mover();

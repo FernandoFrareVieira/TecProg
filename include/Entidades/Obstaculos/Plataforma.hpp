@@ -2,6 +2,7 @@
 
 #include "Obstaculo.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
+#include "Entidades/Personagens/Inimigo.hpp"
 
 namespace Entidades
 {

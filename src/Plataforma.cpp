@@ -35,8 +35,6 @@ namespace Entidades
             {
                 case(ID::jogador):
                 {
-                    Personagens::Jogador* jogador = static_cast<Personagens::Jogador*>(entidade2);
-                    jogador->setPodePular(true);
                     colisaoObstaculo(entidade2, ds);
                 }
                 case(ID::inimigo):

@@ -18,11 +18,6 @@ namespace Entidades
             tempoAtacarNovamente = 1.0f; 
             tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
-
-            podePular = false;
-
-            gravidade = 500.0f;        
-            velocidadePulo = -300.0f;  
         
             corpo.setFillColor(sf::Color::Red);
 
@@ -41,6 +36,7 @@ namespace Entidades
         {
             atualizarPosicao();
             atualizarAtaque();
+            
             desenhar();
             mover();
         }
@@ -53,19 +49,6 @@ namespace Entidades
         void Jogador::atualizarAnimacao(float dt)
         {
             animacao.atualizar(Animacoes::ID_animacao::andando, false, corpo.getPosition(), dt);
-        }
-
-        void Jogador::atualizarPosicao()
-        {
-            float dt = pGG->getTempo(); 
-
-       
-            if (!podePular)
-            {
-                velocidade.y += gravidade * dt;
-            }
-
-            corpo.move(0, velocidade.y * dt);
         }
 
         void Jogador::mover()
@@ -86,16 +69,6 @@ namespace Entidades
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                 atacar();
-            }
-        }
-
-
-        void Jogador::pular()
-        {
-            if (podePular)
-            {
-                velocidade.y = velocidadePulo; 
-                podePular = false;    
             }
         }
 
@@ -124,11 +97,6 @@ namespace Entidades
             }
             break;
             }
-        }
-
-        void Jogador::setPodePular(bool pPular)
-        {
-            podePular = pPular;
         }
     }
 }

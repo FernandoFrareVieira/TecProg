@@ -31,8 +31,11 @@ namespace Entidades
                     // Entidade está acima do obstaculo 
                     entidade2->getCorpo()->move(0.0f, -ds.y);
 
-                    Personagens::Jogador* pJogador = static_cast<Personagens::Jogador*>(entidade2);
-                    pJogador->setPodePular(true);
+                    if(entidade2->getId() == ID::jogador || entidade2->getId() == ID::inimigo) {
+                        Personagens::Personagem* pPersonagem = static_cast<Personagens::Personagem*>(entidade2);
+                        pPersonagem->setPodePular(true);
+                    }
+
                 } else {
                     // Entidade está abaixo do obstaculo
                     entidade2->getCorpo()->move(0.0f, ds.y);

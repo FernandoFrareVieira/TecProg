@@ -13,7 +13,10 @@ namespace Entidades
             podeAtacar(true),
             tempoAtacarNovamente(1.0f),
             tempoDesdeUltimoAtaque(0.0f),
-            dano(10)
+            dano(10),
+            podePular(false),
+            gravidade(500.0f),
+            velocidadePulo(-300.f)
         {}
 
         Personagem::~Personagem()
@@ -50,12 +53,51 @@ namespace Entidades
                 if(tempoDesdeUltimoAtaque >= tempoAtacarNovamente) {
                     podeAtacar = true;
                 }
+                
+                if(getId() == ID::jogador) {
+                    corpo.setFillColor(sf::Color::Green);
+                }else {
+                    corpo.setFillColor(sf::Color::Blue);
+                }
+            }else {
+                if(getId() == ID::jogador) {
+                    corpo.setFillColor(sf::Color::Red);
+                }else {
+                    corpo.setFillColor(sf::Color::White);
+                }
             }
         }
 
         void Personagem::iniciarAtaque()
         {
             estaAtacando = true;
+        }
+
+        void Personagem::atualizarPosicao()
+        {
+            float dt = pGG->getTempo(); 
+
+            if (!podePular)
+            {
+                velocidade.y += gravidade * dt;
+            }
+
+            corpo.move(0, velocidade.y * dt);
+        }
+
+        void Personagem::pular()
+        {
+            if (podePular)
+            {
+                float velocidade_x = getVelocidade().x;
+                setVelocidade(sf::Vector2f(velocidade.x, velocidadePulo));
+                podePular = false;    
+            }
+        }
+
+        void Personagem::setPodePular(bool pPular)
+        {
+            podePular = pPular;
         }
     }
 }
