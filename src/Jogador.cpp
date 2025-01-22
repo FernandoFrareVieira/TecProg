@@ -7,26 +7,30 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel)
-            : Personagem(pos, tam, vel, ID::jogador), animacao(&corpo)
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel): 
+            Personagem(pos, tam, vel, ID::jogador), 
+            animacao(&corpo)
         {
             vivo = true;
-            vida = 100;
+            pontosDeVida = 100;
+            estaAtacando = false;
+            podeAtacar = true;
+            tempoAtacarNovamente = 1.0f; 
+            tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
 
             podePular = false;
-            estaAtacando = false;
 
             gravidade = 500.0f;        
             velocidadePulo = -300.0f;  
+        
+            corpo.setFillColor(sf::Color::Red);
 
-            //corpo.setFillColor(sf::Color::Red);
-
-            textura = pGG->carregarTextura("assets/IDLE.png"); 
-            corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
-            corpo.setTextureRect(sf::IntRect(40,48,15,33));
-            corpo.setFillColor(sf::Color::White);
-            corpo.setTexture(textura);
+            //textura = pGG->carregarTextura("assets/IDLE.png"); 
+            //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
+            //corpo.setTextureRect(sf::IntRect(40,48,15,33));
+            //corpo.setFillColor(sf::Color::White);
+            //corpo.setTexture(textura);
         }
 
         Jogador::~Jogador()
@@ -36,6 +40,7 @@ namespace Entidades
         void Jogador::executar()
         {
             atualizarPosicao();
+            atualizarAtaque();
             desenhar();
             mover();
         }
@@ -69,7 +74,7 @@ namespace Entidades
             {
                 corpo.move(velocidade.x, 0);
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 corpo.move(-velocidade.x, 0);
             }
@@ -78,7 +83,12 @@ namespace Entidades
             {
                 pular();
             }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+                atacar();
+            }
         }
+
 
         void Jogador::pular()
         {
@@ -95,9 +105,10 @@ namespace Entidades
             {
             case (ID::inimigo):
             {
-                if(estaAtacando) {
+               if (estaAtacando) {
                     Inimigo* pInimigo = static_cast<Inimigo*>(entidade2);
                     pInimigo->tomarDano(dano);
+                    estaAtacando = false;
                 }
             }
             break;

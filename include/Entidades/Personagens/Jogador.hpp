@@ -14,7 +14,6 @@ namespace Entidades
                 int dano;
                 sf::Texture* textura;
                 bool podePular;
-                bool estaAtacando;
 
                 float gravidade; 
                 float velocidadePulo;
@@ -29,8 +28,6 @@ namespace Entidades
                 void atualizarPosicao();
                 void mover();
                 void colidir(Entidade* entidade2, sf::Vector2f ds);
-                void pular();
-                void setPodePular(bool pPular);
         };
     }
 }

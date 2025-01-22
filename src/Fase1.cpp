@@ -15,8 +15,8 @@ namespace Fases
         adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);
 
-        for(int i = 0; i < 3; i++) {
-            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(100.0f + (i*100.0f), 200.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
+        for(int i = 0; i < 1; i++) {
+            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(100.0f + (i*100.0f), 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
             adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
         }
         criarInimigos("include/Tilemap/Tiles.json",posicoes,jogador);

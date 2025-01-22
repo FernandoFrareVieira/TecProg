@@ -8,8 +8,11 @@ namespace Entidades
             Inimigo(pos, tam, vel, jogador)
         {
             vivo = true;
-            vida = 20;
-
+            pontosDeVida = 20;
+            estaAtacando = false;
+            podeAtacar = true;
+            tempoAtacarNovamente = 2.0f; 
+            tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
 
             //corpo.setFillColor(sf::Color::White);
@@ -19,24 +22,33 @@ namespace Entidades
             //corpo.setSize(sf::Vector2f(LARGURA/17.0f,ALTURA/7.50f));
             //corpo.setTexture(textura);    
         }
-         Esqueleto::~Esqueleto() {}
+
+        Esqueleto::~Esqueleto() {}
 
         void Esqueleto::executar() {
+            atualizarAtaque();
             desenhar();
             mover();
         }
 
         void Esqueleto::desenhar() {
-            pGG->desenhar(corpo);
+            if(vivo) {
+                pGG->desenhar(corpo);
+            }
+            
          }
 
         void Esqueleto::colidir(Entidade* entidade2, sf::Vector2f ds)
         {
             switch(entidade2->getId()) {
                 case(ID::jogador):
-                {
-                    Jogador* pJogador = static_cast<Jogador*>(entidade2);
-                    pJogador->tomarDano(dano);
+                {                    
+                    atacar();
+                    if (estaAtacando) {
+                        Jogador* pJogador = static_cast<Jogador*>(entidade2);
+                        pJogador->tomarDano(dano);;
+                        estaAtacando = false;
+                    }
                 }
                 break;
                 case(ID::obstaculo):
