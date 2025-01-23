@@ -7,6 +7,8 @@ namespace Entidades
 {
     namespace Personagens
     {
+        int Entidades::Personagens::Jogador::pontos = 0;
+
         Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel): 
             Personagem(pos, tam, vel, ID::jogador), 
             animacao(&corpo)
@@ -79,8 +81,10 @@ namespace Entidades
             case (ID::inimigo):
             {
                if (estaAtacando) {
-                    Inimigo* pInimigo = static_cast<Inimigo*>(entidade2);
-                    pInimigo->tomarDano(dano);
+                    Personagem* pPersonagem = static_cast<Personagem*>(entidade2);
+                    pPersonagem->tomarDano(dano);
+                    this->ganharPontos(10);
+
                     estaAtacando = false;
                 }
             }
@@ -97,6 +101,28 @@ namespace Entidades
             }
             break;
             }
+        }
+
+        void Jogador::ganharPontos(int pts)
+        {
+            pontos = pontos + pts;
+            
+            std::cout << pontos << std::endl;
+        }
+
+        void Jogador::perderPontos(int pts)
+        {
+            pontos = pontos - pts;
+            if(pontos < 0) {
+                pontos = 0;
+            }
+
+            std::cout << pontos << std::endl;
+        }
+
+        int Jogador::getPontuacao()
+        {
+            return pontos;
         }
     }
 }

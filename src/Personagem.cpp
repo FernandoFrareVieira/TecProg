@@ -1,4 +1,5 @@
 #include "Entidades/Personagens/Personagem.hpp"
+#include "Entidades/Personagens/Jogador.hpp"
 #include <iostream>
 
 namespace Entidades
@@ -33,6 +34,14 @@ namespace Entidades
             if(pontosDeVida <= 0) {
                 vivo = false;
             }
+
+            //Verifica se o Personagem é jogador
+            if(this->getId() == ID::jogador) {
+                auto jogador = dynamic_cast<Personagens::Jogador*>(this);
+                
+                if(jogador)
+                    jogador->perderPontos(5);
+            }
         }
 
         void Personagem::atacar()
@@ -54,13 +63,13 @@ namespace Entidades
                     podeAtacar = true;
                 }
                 
-                if(getId() == ID::jogador) {
+                if(this->getId() == ID::jogador) {
                     corpo.setFillColor(sf::Color::Green);
                 }else {
                     corpo.setFillColor(sf::Color::Blue);
                 }
             }else {
-                if(getId() == ID::jogador) {
+                if(this->getId() == ID::jogador) {
                     corpo.setFillColor(sf::Color::Red);
                 }else {
                     corpo.setFillColor(sf::Color::White);

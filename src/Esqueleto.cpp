@@ -46,8 +46,9 @@ namespace Entidades
                 {                    
                     atacar();
                     if (estaAtacando) {
-                        Jogador* pJogador = static_cast<Jogador*>(entidade2);
-                        pJogador->tomarDano(dano);;
+                        Personagem* pPersonagem = static_cast<Personagem*>(entidade2);
+                        pPersonagem->tomarDano(dano);
+
                         estaAtacando = false;
                     }
                 }

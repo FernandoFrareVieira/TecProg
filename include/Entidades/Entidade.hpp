@@ -16,7 +16,6 @@ namespace Entidades
     {
         protected:
             ID id;
-            static int contador;
             sf::RectangleShape corpo;
 
             sf::Vector2f posicao; 
@@ -25,6 +24,9 @@ namespace Entidades
             sf::Texture* textura;
             
         public:
+            static int contador;
+
+        public: 
             Entidade(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
             virtual ~Entidade();
 

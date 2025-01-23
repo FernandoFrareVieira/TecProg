@@ -1,14 +1,18 @@
-    #pragma once
+#pragma once
 
-#include "../Entidade.hpp"
+#include "Entidades/Entidade.hpp"
 
 namespace Entidades
 {
     namespace Personagens 
     {
+        class Jogador;
+
         class Personagem : public Entidade
         {
             protected:
+
+                //Atributos vida
                 bool vivo;
                 int pontosDeVida;
 
