@@ -9,9 +9,10 @@ fase1(new Fases::Fase1())
     //TODO - implementar a lógica do jogador de mover dentro de uma função no próprio jogador, não dependendo do gerenciador de eventos
     pMP = new Menus::MenuPrincipal();
     pGE = Gerenciadores::GerenciadorEventos::getInstancia();
+    pGE->add(pMP->getObservador());
     GE = Gerenciadores::GerenciadorEstados::getInstancia();
     GE->addEstado(fase1);
-    //GE->addEstado(pMP);
+    GE->addEstado(pMP);
     executar();
 }
 

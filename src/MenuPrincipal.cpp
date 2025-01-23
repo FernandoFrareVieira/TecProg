@@ -36,4 +36,8 @@ namespace Menus {
     void MenuPrincipal::executar() {
         desenhar();
     }
+
+    Observadores::MenuObservador* MenuPrincipal::getObservador() {
+        return pMenuObservador;
+    }
 }
