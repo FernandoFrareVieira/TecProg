@@ -4,6 +4,7 @@
 #include "Gerenciadores/GerenciadorEventos.hpp"
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Gerenciadores/GerenciadorEstados.hpp"
+#include "Menus/MenuPrincipal.hpp"
 #include "Fases/Fase1.hpp"
 
 class Jogo
@@ -13,6 +14,7 @@ class Jogo
         Gerenciadores::GerenciadorEventos* pGE;
         Gerenciadores::GerenciadorEstados* GE;
         //Gerenciadores::GerenciadorColisoes pGC;
+        Menus::MenuPrincipal* pMP;
 
         Fases::Fase1* fase1;
     public:

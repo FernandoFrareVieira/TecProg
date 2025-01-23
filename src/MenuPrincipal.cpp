@@ -22,10 +22,18 @@ namespace Menus {
         pMenuObservador = nullptr;
     }
 
+
     void MenuPrincipal::desenhar() {
-        pGG->desenhar((this->corpo));
-        for (int i = 0; i < num_opcoes; i++) {
+        corpo.setFillColor(sf::Color::White);
+        pGG->desenhar((corpo));
+        if (num_opcoes > 0) {
+            for (int i = 0; i < num_opcoes; i++) {
             opcoes[i]->desenhar();
+            }
         }
+    }
+
+    void MenuPrincipal::executar() {
+        desenhar();
     }
 }

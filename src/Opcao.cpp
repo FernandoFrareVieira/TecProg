@@ -9,10 +9,8 @@ namespace Menus {
         texto.setOrigin(500, 500);
         corpo.setOrigin(500,500);
 
-        corpo.setFillColor(sf::Color::White);
         texto.setFillColor(sf::Color::Green);
 
-        corpo.setPosition(sf::Vector2f(LARGURA/2,ALTURA/2));
         texto.setPosition(sf::Vector2f(LARGURA/2,ALTURA/2));
 
         texto.setCharacterSize(50);
@@ -24,7 +22,6 @@ namespace Menus {
 
     void Opcao::setPosicao(sf::Vector2f posicao) {
         texto.setPosition(posicao);
-        corpo.setPosition(posicao);
     }
 
     void Opcao::setTexto(const std::string text) {

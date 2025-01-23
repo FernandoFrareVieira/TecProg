@@ -14,6 +14,7 @@ namespace Menus {
         protected:
             Gerenciadores::GerenciadorGrafico* pGG;
             sf::RectangleShape corpo;
+            sf::Texture textura;
 
             int num_opcoes;
             int indice_selecionado;
@@ -24,7 +25,7 @@ namespace Menus {
         public:
             Menu(int n_opcoes);
             ~Menu();
-            virtual void desenhar();
+            void desenhar();
             void addOpcao(Opcao* op);
             void moverBaixo();
             void moverCima();

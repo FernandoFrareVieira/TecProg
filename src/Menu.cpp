@@ -16,6 +16,11 @@ namespace Menus {
 
         }
         corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
+        if (!textura.loadFromFile("assets/cenarios/cenarioMenu.png")){
+            printf("ERROU\n");
+            fflush(stdout);
+        }
+        corpo.setTexture(&textura);
     }
 
     Menu::~Menu() {
@@ -25,8 +30,10 @@ namespace Menus {
     }
 
     void Menu::desenhar() {
-        for (int i = 0; i < num_opcoes; i++) {
+        if (num_opcoes > 0) {
+            for (int i = 0; i < num_opcoes; i++) {
             opcoes[i]->desenhar();
+            }
         }
     }
 

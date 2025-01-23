@@ -11,6 +11,7 @@ namespace Menus {
     public:
         MenuPrincipal();
         ~MenuPrincipal();
-        void desenhar();    
+        void desenhar();   
+        void executar(); 
     };
 }

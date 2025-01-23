@@ -30,6 +30,8 @@ namespace Gerenciadores {
 
     void GerenciadorEstados::addEstado(Estados::Estado* pE) {
         if (pE) {
+            printf("ADICIONADO\n");
+            fflush(stdout);
             estados.push(pE);
         }
     }  
