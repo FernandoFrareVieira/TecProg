@@ -3,6 +3,7 @@
 namespace Fases
 {
     Fase::Fase():
+        Estado(),
         listaObstaculos(),
         listaInimigos(),
         listaJogadores(),

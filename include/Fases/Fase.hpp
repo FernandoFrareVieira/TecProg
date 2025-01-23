@@ -6,6 +6,7 @@
 #include <string>
 #include "nlohmann/json.hpp"
 #include "Ente.hpp"
+#include "Estados/Estado.hpp"
 #include "Listas/ListaEntidades.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Gerenciadores/GerenciadorColisoes.hpp"
@@ -15,7 +16,7 @@
 
 namespace Fases
 {
-    class Fase : public Ente
+    class Fase : public Ente, public Estados::Estado
     {
         protected:
             Listas::ListaEntidades listaObstaculos;
@@ -33,8 +34,6 @@ namespace Fases
         public:
             Fase();
             ~Fase();
-            virtual void executar() = 0;
-            virtual void desenhar() = 0;
             void teste(Listas::ListaEntidades &LO) {listaObstaculos = LO;}
             void adicionarInimigos(Entidades::Entidade* inimigo);
             void adicionarObstaculos(Entidades::Entidade* obstaculo);

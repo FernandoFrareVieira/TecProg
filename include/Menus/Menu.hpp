@@ -2,6 +2,7 @@
 
 #include "Ente.hpp"
 #include "Menus/Opcao.hpp"
+#include "Estados/Estado.hpp"
 
 namespace Observadores {
     class MenuObservador;  // Declaração antecipada
@@ -9,7 +10,7 @@ namespace Observadores {
 
 
 namespace Menus {
-    class Menu: public Ente  {
+    class Menu: public Ente, public Estados::Estado  {
         protected:
             Gerenciadores::GerenciadorGrafico* pGG;
             sf::RectangleShape corpo;

@@ -3,11 +3,13 @@
 
 Jogo::Jogo():
 pGG(Gerenciadores::GerenciadorGrafico::getInstancia()),
-fase1()
+fase1(new Fases::Fase1())
 {
     //Solução terrível e provisoria
     //TODO - implementar a lógica do jogador de mover dentro de uma função no próprio jogador, não dependendo do gerenciador de eventos
     pGE = Gerenciadores::GerenciadorEventos::getInstancia();
+    GE = Gerenciadores::GerenciadorEstados::getInstancia();
+    GE->addEstado(fase1);
 
     executar();
 }
@@ -25,7 +27,7 @@ void Jogo::executar()
         //Teste - Centralizar camera no jogador, não sei se é assim que faz, tá bem estranho
         pGG->atualizarTempo();
 
-        fase1.executar();
+        GE->executar();
 
         pGG->mostrar();
     }
