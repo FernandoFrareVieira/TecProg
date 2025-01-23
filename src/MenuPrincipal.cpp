@@ -1,9 +1,9 @@
 #include "Menus/MenuPrincipal.hpp"
 
 namespace Menus {
-    MenuPrincipal::MenuPrincipal():
+    MenuPrincipal::MenuPrincipal(int id):
     pMenuObservador(nullptr),
-    Menu(2) 
+    Menu(2,id) 
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         opcoes[0]->setTexto("Iniciar");

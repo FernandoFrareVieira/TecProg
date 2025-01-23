@@ -32,7 +32,7 @@ namespace Fases
 
             std::vector<sf::Vector2f> posicoes;
         public:
-            Fase();
+            Fase(int id);
             ~Fase();
             void teste(Listas::ListaEntidades &LO) {listaObstaculos = LO;}
             void adicionarInimigos(Entidades::Entidade* inimigo);

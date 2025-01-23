@@ -23,7 +23,7 @@ namespace Menus {
             sf::Color cor_normal;
             sf::Color cor_selecao;
         public:
-            Menu(int n_opcoes);
+            Menu(int n_opcoes, int id);
             ~Menu();
             void desenhar();
             void addOpcao(Opcao* op);

@@ -1,5 +1,7 @@
 #pragma once
 #include "Estados/Estado.hpp"
+#include "Fases/Fase1.hpp"
+#include "Menus/MenuPrincipal.hpp"
 #include <stack>
 
 namespace Gerenciadores {

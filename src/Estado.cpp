@@ -2,8 +2,10 @@
 #include "Gerenciadores/GerenciadorEstados.hpp"
 
 namespace Estados {
-    Estado::Estado(){
-
+    Estado::Estado(int id):
+    id(id)
+    {
+    
     }
     
     Estado::~Estado() {

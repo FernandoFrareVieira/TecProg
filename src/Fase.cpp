@@ -2,8 +2,8 @@
 
 namespace Fases
 {
-    Fase::Fase():
-        Estado(),
+    Fase::Fase(int id):
+        Estado(id),
         listaObstaculos(),
         listaInimigos(),
         listaJogadores(),
