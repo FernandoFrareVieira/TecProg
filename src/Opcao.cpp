@@ -9,7 +9,7 @@ namespace Menus {
         texto.setOrigin(500, 500);
         corpo.setOrigin(500,500);
 
-        texto.setFillColor(sf::Color::Green);
+        texto.setFillColor(sf::Color::Red);
 
         texto.setPosition(sf::Vector2f(LARGURA/2,ALTURA/2));
 

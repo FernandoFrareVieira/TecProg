@@ -15,14 +15,14 @@ namespace Gerenciadores
         private:
             GerenciadorGrafico* pGG;
             static GerenciadorEventos* instancia;
-            Observadores::MenuObservador* pMenu;
+            Observadores::MenuObservador* pMenuObservador;
 
             GerenciadorEventos();
 
         public:
             static GerenciadorEventos* getInstancia();
             ~GerenciadorEventos();
-            void add(Observadores::MenuObservador* pM) {pMenu = pM;}
+            void add(Observadores::MenuObservador* pM) {pMenuObservador = pM;}
             void executar();
     };
 }

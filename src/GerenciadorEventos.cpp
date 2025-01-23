@@ -31,7 +31,7 @@ namespace Gerenciadores
                 pGG->fechar();
             }else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
-                //pMenu->atualizar(evento.key.code);
+                pMenuObservador->atualizar(evento.key.code);
             }
         }
     }

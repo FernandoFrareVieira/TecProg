@@ -1,7 +1,7 @@
 #include "Menus/Menu.hpp"
 
 namespace Menus {
-    Menu::Menu(int n_opcoes):
+    Menu::Menu(int n_opcoes, int id):
     Ente(),
     opcoes(),
     indice_selecionado(0),

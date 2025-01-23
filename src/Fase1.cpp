@@ -2,10 +2,10 @@
 
 namespace Fases
 {
-    Fase1::Fase1():
+    Fase1::Fase1(int id):
+        Fase(id),
         maxEsqueletos(3),
-        maxPlataformas(3),
-        Fase()
+        maxPlataformas(3)
     {
         //Iniciar corpo
 

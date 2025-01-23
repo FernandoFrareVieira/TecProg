@@ -20,13 +20,21 @@ namespace Observadores {
     void MenuObservador::atualizar(sf::Keyboard::Key tecla) {
         if (!pMenu)
             return;
-        if (tecla == sf::Keyboard::Key::Up) {
+        if (tecla == sf::Keyboard::Key::Down) {
                 pMenu->moverCima();
                 pMenu->desenhar();
         }
-        else if (tecla == sf::Keyboard::Key::Down) {
+        else if (tecla == sf::Keyboard::Key::Up) {
                 pMenu->moverBaixo();
                 pMenu->desenhar();
+        }
+        else if (tecla == sf::Keyboard::Key::Escape) {
+
+        }
+        else if (tecla == sf::Keyboard::Key::Enter) {
+            printf("%d\n",pMenu->getIndice());
+            fflush(stdout);
+            pMenu->selecionar();
         }
     }
 }

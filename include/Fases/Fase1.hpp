@@ -16,7 +16,7 @@ namespace Fases
             //Provisorio
             Entidades::Personagens::Jogador* jogador;
         public:
-            Fase1();
+            Fase1(int id);
             ~Fase1();
             void executar();
             void desenhar();
