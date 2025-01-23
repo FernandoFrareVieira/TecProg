@@ -40,4 +40,15 @@ namespace Menus {
     Observadores::MenuObservador* MenuPrincipal::getObservador() {
         return pMenuObservador;
     }
+
+    int MenuPrincipal::getIndice() {
+        return indice_selecionado;
+    }
+
+    void MenuPrincipal::selecionar() {
+        switch(indice_selecionado) {
+            case 1:
+                pGG->fechar();
+        }
+    }
 }
