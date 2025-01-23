@@ -14,9 +14,8 @@ namespace Gerenciadores
     }
 
     GerenciadorEventos::GerenciadorEventos():
-        pGG(Gerenciadores::GerenciadorGrafico::getInstancia())
+    pGG(Gerenciadores::GerenciadorGrafico::getInstancia())
     {
-
     }
 
     GerenciadorEventos::~GerenciadorEventos()
@@ -25,13 +24,16 @@ namespace Gerenciadores
 
     void GerenciadorEventos::executar()
     {
+        gEstados = Gerenciadores::GerenciadorEstados::getInstancia();
         sf::Event evento;
         while(pGG->getJanela()->pollEvent(evento)) {
             if(evento.type == sf::Event::Closed) {
                 pGG->fechar();
             }else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
-                pMenuObservador->atualizar(evento.key.code);
+                if (gEstados->getEstadoAtual()->getID() == 0) {
+                    pMenuObservador->atualizar(evento.key.code);
+                }
             }
         }
     }

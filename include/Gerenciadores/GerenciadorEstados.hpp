@@ -5,6 +5,7 @@
 #include <stack>
 
 namespace Gerenciadores {
+    class GerenciadorEventos;
     class GerenciadorEstados {
     protected:
         std::stack<Estados::Estado*> estados;

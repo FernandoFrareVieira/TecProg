@@ -14,6 +14,7 @@ namespace Estados {
         virtual ~Estado();
         void setGerenciador(Gerenciadores::GerenciadorEstados* GE) {pEG = GE;}
         virtual void executar() = 0;
+        int getID();
 
     };
 }

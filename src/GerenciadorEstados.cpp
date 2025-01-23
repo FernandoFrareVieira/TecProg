@@ -1,4 +1,5 @@
 #include "Gerenciadores/GerenciadorEstados.hpp"
+#include "Gerenciadores/GerenciadorEventos.hpp"
 #include <stdio.h>
 
 namespace Gerenciadores {

@@ -3,6 +3,7 @@
 namespace Menus {
     Menu::Menu(int n_opcoes, int id):
     Ente(),
+    Estado(id),
     opcoes(),
     indice_selecionado(0),
     num_opcoes(n_opcoes)

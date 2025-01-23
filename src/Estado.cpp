@@ -12,6 +12,10 @@ namespace Estados {
         
     }
 
+    int Estado::getID(){
+        return id;
+    }
+
 
 
 }
