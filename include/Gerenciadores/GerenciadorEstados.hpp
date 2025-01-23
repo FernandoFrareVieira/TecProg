@@ -1,7 +1,7 @@
 #pragma once
 #include "Estados/Estado.hpp"
-#include "Fases/Fase1.hpp"
 #include "Menus/MenuPrincipal.hpp"
+#include "Fases/Fase1.hpp"
 #include <stack>
 
 namespace Gerenciadores {
@@ -10,13 +10,14 @@ namespace Gerenciadores {
         std::stack<Estados::Estado*> estados;
         int estadoAtual;
         static GerenciadorEstados* instancia;
+        Gerenciadores::GerenciadorEventos* pGE;
         GerenciadorEstados(); //Singletron
     public:
         ~GerenciadorEstados();
         static GerenciadorEstados* getInstancia();
         void setEstadoAtual(int id);
         Estados::Estado* getEstadoAtual() const;
-        void addEstado(Estados::Estado* pE);
+        void addEstado(int id);
         void removerEstado();   
         void executar(); 
     };

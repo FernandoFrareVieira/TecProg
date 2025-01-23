@@ -6,6 +6,7 @@ namespace Gerenciadores {
     GerenciadorEstados::GerenciadorEstados():
     estadoAtual(0)
     {
+        pGE = Gerenciadores::GerenciadorEventos::getInstancia();
     }
 
     GerenciadorEstados::~GerenciadorEstados(){
@@ -28,11 +29,14 @@ namespace Gerenciadores {
 
     }
 
-    void GerenciadorEstados::addEstado(Estados::Estado* pE) {
-        if (pE) {
-            printf("ADICIONADO\n");
-            fflush(stdout);
-            estados.push(pE);
+    void GerenciadorEstados::addEstado(int id) {
+        if (id == 0) {
+            Menus::MenuPrincipal* pMP = new Menus::MenuPrincipal(0);
+            pGE->add(pMP->getObservador());
+            estados.push(pMP);
+        }
+        else if (id == 1) {
+            estados.push(new Fases::Fase1(1));
         }
     }  
 
