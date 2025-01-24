@@ -1,7 +1,10 @@
+#include "Observadores/MenuObservador.hpp"
 #include "Menus/MenuPrincipal.hpp" 
 
 namespace Observadores {
-    MenuObservador::MenuObservador() {
+    MenuObservador::MenuObservador():
+    Observador()
+    {
     }
 
     MenuObservador::~MenuObservador() {
@@ -15,7 +18,7 @@ namespace Observadores {
         }
     }
 
-    void MenuObservador::atualizar(sf::Keyboard::Key tecla) {
+    void MenuObservador::notificar(sf::Keyboard::Key tecla) {
         if (!pMenu)
             return;
         if (tecla == sf::Keyboard::Key::Down) {

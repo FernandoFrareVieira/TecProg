@@ -4,9 +4,6 @@
 #include "Menus/Menu.hpp"  // Classe base
 #include "Gerenciadores/GerenciadorEstados.hpp"
 
-namespace Observadores {
-    class MenuObservador;
-}
 
 namespace Menus {
     class MenuPrincipal: public Menu {

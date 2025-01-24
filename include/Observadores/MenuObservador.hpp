@@ -4,10 +4,6 @@
 #include "Menus/MenuPrincipal.hpp"
 #include <SFML/Window/Keyboard.hpp>
 
-namespace Menus {
-    class MenuPrincipal;
-}
-
 namespace Observadores {
     class MenuObservador : public Observador {
     private:
@@ -15,7 +11,7 @@ namespace Observadores {
     public:
         MenuObservador();
         ~MenuObservador();
-        void atualizar(sf::Keyboard::Key tecla);
+        void notificar(sf::Keyboard::Key tecla);
         void setMenu(Menus::MenuPrincipal *pM);
     };
 }       
