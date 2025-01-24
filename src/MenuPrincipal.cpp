@@ -1,4 +1,5 @@
 #include "Menus/MenuPrincipal.hpp"
+#include "Observadores/MenuObservador.hpp"
 
 namespace Menus {
     MenuPrincipal::MenuPrincipal(int id):

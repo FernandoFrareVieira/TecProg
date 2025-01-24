@@ -2,8 +2,11 @@
 #pragma once
 
 #include "Menus/Menu.hpp"  // Classe base
-#include "Observadores/MenuObservador.hpp"
 #include "Gerenciadores/GerenciadorEstados.hpp"
+
+namespace Observadores {
+    class MenuObservador;
+}
 
 namespace Menus {
     class MenuPrincipal: public Menu {
