@@ -9,7 +9,6 @@ pGG(Gerenciadores::GerenciadorGrafico::getInstancia())
     pGE = Gerenciadores::GerenciadorEventos::getInstancia();
     GE = Gerenciadores::GerenciadorEstados::getInstancia();
     GE->addEstado(1);
-    GE->addEstado(0);
     executar();
 }
 

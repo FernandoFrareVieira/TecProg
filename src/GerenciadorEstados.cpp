@@ -26,6 +26,8 @@ namespace Gerenciadores {
     }
 
     Estados::Estado* GerenciadorEstados::getEstadoAtual() const {
+        printf("%d\n",estados.top()->getID());
+        fflush(stdout);
         return estados.top();
 
     }
@@ -35,6 +37,8 @@ namespace Gerenciadores {
             Menus::MenuPrincipal* pMP = new Menus::MenuPrincipal(0);
             pGE->add(pMP->getObservador());
             estados.push(pMP);
+            printf("MENU ADICIONADO\n");
+            fflush(stdout);
         }
         else if (id == 1) {
             estados.push(new Fases::Fase1(1));

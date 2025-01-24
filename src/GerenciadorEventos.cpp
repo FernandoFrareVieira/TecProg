@@ -34,6 +34,12 @@ namespace Gerenciadores
                 if (gEstados->getEstadoAtual()->getID() == 0) {
                     pMenuObservador->atualizar(evento.key.code);
                 }
+                else if (gEstados->getEstadoAtual()->getID() == 1) {
+                    if (evento.key.code == sf::Keyboard::Key::Escape) {
+                        gEstados->removerEstado();
+                        gEstados->addEstado(0);
+                    }
+                }
             }
         }
     }

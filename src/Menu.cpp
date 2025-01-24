@@ -9,19 +9,21 @@ namespace Menus {
     num_opcoes(n_opcoes)
     {
         pGG = Gerenciadores::GerenciadorGrafico::getInstancia();
-
+        corpo.setPosition(sf::Vector2f(1200,300));
         for (int i = 0; i < num_opcoes; i++) {
             Opcao* op = new Opcao();
-            op->setPosicao(sf::Vector2f(LARGURA/1.5,600 + 200*i));
+            op->setPosicao(sf::Vector2f(930,800 + 100*i));
             addOpcao(op);
 
         }
         corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
+        corpo.setScale(1,1.2);
         if (!textura.loadFromFile("assets/cenarios/cenarioMenu.png")){
             printf("ERROU\n");
             fflush(stdout);
         }
         corpo.setTexture(&textura);
+        corpo.setPosition(sf::Vector2f(-100,100));
     }
 
     Menu::~Menu() {

@@ -3,6 +3,7 @@
 
 #include "Menus/Menu.hpp"  // Classe base
 #include "Observadores/MenuObservador.hpp"
+#include "Gerenciadores/GerenciadorEstados.hpp"
 
 namespace Menus {
     class MenuPrincipal: public Menu {

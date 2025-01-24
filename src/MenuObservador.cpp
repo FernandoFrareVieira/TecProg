@@ -28,12 +28,7 @@ namespace Observadores {
                 pMenu->moverBaixo();
                 pMenu->desenhar();
         }
-        else if (tecla == sf::Keyboard::Key::Escape) {
-
-        }
         else if (tecla == sf::Keyboard::Key::Enter) {
-            printf("%d\n",pMenu->getIndice());
-            fflush(stdout);
             pMenu->selecionar();
         }
     }
