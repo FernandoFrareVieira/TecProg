@@ -25,7 +25,7 @@ namespace Menus {
     }
 
     void Opcao::setTexto(const std::string text) {
-        if (!fonte.loadFromFile("/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf")) {
+        if (!fonte.loadFromFile("assets/fontes/Ubuntu-R.ttf")) {
             std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
         }
         texto.setFont(fonte);

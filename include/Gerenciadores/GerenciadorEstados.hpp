@@ -6,13 +6,15 @@
 
 namespace Gerenciadores {
     class GerenciadorEventos;
+    
     class GerenciadorEstados {
     protected:
         std::stack<Estados::Estado*> estados;
         int estadoAtual;
         static GerenciadorEstados* instancia;
         Gerenciadores::GerenciadorEventos* pGE;
-        GerenciadorEstados(); //Singletron
+        GerenciadorEstados(); //Singleton
+
     public:
         ~GerenciadorEstados();
         static GerenciadorEstados* getInstancia();

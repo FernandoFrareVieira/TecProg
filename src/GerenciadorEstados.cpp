@@ -4,6 +4,7 @@
 
 namespace Gerenciadores {
     GerenciadorEstados* GerenciadorEstados::instancia = nullptr;
+    
     GerenciadorEstados::GerenciadorEstados():
     estadoAtual(0)
     {
