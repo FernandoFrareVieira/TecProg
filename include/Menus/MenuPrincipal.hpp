@@ -13,7 +13,5 @@ namespace Menus {
         void desenhar();   
         void executar(); 
         Observadores::MenuObservador* getObservador();
-        int getIndice();
-        void selecionar();
     };
 }

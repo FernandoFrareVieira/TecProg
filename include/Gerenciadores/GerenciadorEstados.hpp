@@ -1,6 +1,7 @@
 #pragma once
 #include "Estados/Estado.hpp"
 #include "Menus/MenuPrincipal.hpp"
+#include "Menus/MenuPause.hpp"
 #include "Fases/Fase1.hpp"
 #include <stack>
 

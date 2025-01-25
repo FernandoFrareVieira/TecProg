@@ -34,14 +34,4 @@ namespace Menus {
         return pMenuObservador;
     }
 
-    int MenuPrincipal::getIndice() {
-        return indice_selecionado;
-    }
-
-    void MenuPrincipal::selecionar() {
-        switch(indice_selecionado) {
-            case 1:
-                pGG->fechar();
-        }
-    }
 }

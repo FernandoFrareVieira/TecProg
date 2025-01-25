@@ -8,7 +8,7 @@ pGG(Gerenciadores::GerenciadorGrafico::getInstancia())
     //TODO - implementar a lógica do jogador de mover dentro de uma função no próprio jogador, não dependendo do gerenciador de eventos
     pGE = Gerenciadores::GerenciadorEventos::getInstancia();
     GE = Gerenciadores::GerenciadorEstados::getInstancia();
-    GE->addEstado(1);
+    GE->addEstado(0);
     executar();
 }
 

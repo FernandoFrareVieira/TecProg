@@ -30,6 +30,8 @@ namespace Gerenciadores
 
     void GerenciadorEventos::addObservador(Observadores::Observador* observador) {
         LO->add(observador);
+        printf("ADICIONADO OBSERVADOR!");
+        fflush(stdout);
     }
 
     void GerenciadorEventos::removerObservador(Observadores::Observador* observador) {
@@ -48,16 +50,16 @@ namespace Gerenciadores
                 /////
                 if (gEstados->getEstadoAtual()->getID() == 1) { //Fazer Observador fase
                     if (evento.key.code == sf::Keyboard::Key::Escape) {
-                        gEstados->addEstado(0);
+                        gEstados->addEstado(2);
 
                     }
                 }
-                if (gEstados->getEstadoAtual()->getID() == 0) {
+                if (gEstados->getEstadoAtual()->getID() == 0 || gEstados->getEstadoAtual()->getID() == 2) {
                     LO->notificarTeclaPressionada(evento.key.code);
                 }
             }
             else if(evento.type == sf::Event::KeyReleased) {
-                if (gEstados->getEstadoAtual()->getID() == 0) {
+                if (gEstados->getEstadoAtual()->getID() == 0 || gEstados->getEstadoAtual()->getID() == 2) {
                     LO->notificarTeclaSolta(evento.key.code);
                 }
             }

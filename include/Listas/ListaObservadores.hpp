@@ -13,7 +13,6 @@ namespace Listas {
         ~ListaObservadores();
         void add(Observadores::Observador* observador);
         void removerObservador(Observadores::Observador* observador);
-        void removerObservador(int pos);
         int getTam();
         Observadores::Observador* operator[](int pos);
         void notificarTeclaPressionada(const sf::Keyboard::Key tecla);

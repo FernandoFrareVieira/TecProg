@@ -24,10 +24,15 @@ namespace Observadores {
         if (tecla == sf::Keyboard::Key::Enter) {
             printf("ENTER RECEBIDO\n");
             fflush(stdout);
-            pMenu->selecionar(); //jogo fecha
             if (pMenu->getIndice() == 0 && pGEstados->getEstadoAtual()->getID() == 0){
                 pGEstados->removerEstado();
-                fflush(stdout);
+                pGEstados->addEstado(1);
+            }
+            else if (pMenu->getIndice() == 1 && pGEstados->getEstadoAtual()->getID() == 0) {
+                pGG->fechar();
+            }
+            else if (pMenu->getIndice() == 0 && pGEstados->getEstadoAtual()->getID() == 2){
+                pGEstados->removerEstado();
             }
         }
         
@@ -43,6 +48,13 @@ namespace Observadores {
         else if (tecla == sf::Keyboard::Key::Up) {
                 pMenu->moverBaixo();
                 pMenu->desenhar();
+        }
+        else if (tecla == sf::Keyboard::Key::Enter) {
+            if (pMenu->getIndice() == 1 && pGEstados->getEstadoAtual()->getID() == 2){
+                pGEstados->removerEstado();
+                pGEstados->removerEstado();
+                pGEstados->addEstado(0);
+            }
         }
     }
 }

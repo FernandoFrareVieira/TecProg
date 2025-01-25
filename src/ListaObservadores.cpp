@@ -18,6 +18,7 @@ namespace Listas {
         LO.remover(observador);
     }
 
+
     int ListaObservadores::getTam() {
         return LO.getTamanho();
     }

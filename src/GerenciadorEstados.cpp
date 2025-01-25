@@ -37,11 +37,13 @@ namespace Gerenciadores {
 
     void GerenciadorEstados::addEstado(int id) {
         if (id == 0) {
-            Menus::MenuPrincipal* pMP = new Menus::MenuPrincipal(0);
-            estados.push(pMP);
+            estados.push(new Menus::MenuPrincipal(0));
         }
         else if (id == 1) {
             estados.push(new Fases::Fase1(1));
+        }
+        else if (id == 2) {
+            estados.push(new Menus::MenuPause(2));
         }
     }  
 
