@@ -47,12 +47,15 @@ namespace Gerenciadores
                 //pJogador->mover(evento.key.code);
                 /////
                 if (gEstados->getEstadoAtual()->getID() == 0) {
-                    LO->notificarTeclaPressionada(evento.key.code);
+                    printf("ID: %d\n",gEstados->getEstadoAtual()->getID());
+                    LO->notificarTeclaSolta(evento.key.code);
                 }
                 else if (gEstados->getEstadoAtual()->getID() == 1) {
+                    printf("%d ID DO ESTADO ATUAL\n",gEstados->getEstadoAtual()->getID());
                     if (evento.key.code == sf::Keyboard::Key::Escape) {
-                        gEstados->removerEstado();
                         gEstados->addEstado(0);
+                        printf("%d ESTADOS NA PILHA DEPOIS DA ADICAO\n",gEstados->getTamanho());
+
                     }
                 }
             }

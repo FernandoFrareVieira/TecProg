@@ -11,6 +11,11 @@ namespace Gerenciadores {
     }
 
     GerenciadorEstados::~GerenciadorEstados(){
+        while (!estados.empty()) {
+            delete estados.top();
+            estados.top() == nullptr;
+            estados.pop();
+        }
     }
 
     GerenciadorEstados* GerenciadorEstados::getInstancia()
@@ -26,8 +31,6 @@ namespace Gerenciadores {
     }
 
     Estados::Estado* GerenciadorEstados::getEstadoAtual() const {
-        printf("%d\n",estados.top()->getID());
-        fflush(stdout);
         return estados.top();
 
     }
@@ -35,8 +38,6 @@ namespace Gerenciadores {
     void GerenciadorEstados::addEstado(int id) {
         if (id == 0) {
             Menus::MenuPrincipal* pMP = new Menus::MenuPrincipal(0);
-            printf("MENU ADICIONADO\n");
-            fflush(stdout);
             estados.push(pMP);
         }
         else if (id == 1) {
@@ -52,6 +53,10 @@ namespace Gerenciadores {
     void GerenciadorEstados::executar() {
         if (!estados.empty())
             estados.top()->executar();
+    }
+
+    int GerenciadorEstados::getTamanho(){
+        return estados.size();
     }
 
     

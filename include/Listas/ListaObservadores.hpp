@@ -17,6 +17,7 @@ namespace Listas {
         int getTam();
         Observadores::Observador* operator[](int pos);
         void notificarTeclaPressionada(const sf::Keyboard::Key tecla);
+        void notificarTeclaSolta(const sf::Keyboard::Key tecla);
 
     };
 }

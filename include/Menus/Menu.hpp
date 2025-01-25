@@ -31,5 +31,6 @@ namespace Menus {
             void moverCima();
             void executar();
             int getIndice() const;
+            virtual void selecionar() = 0;
     };
 }   

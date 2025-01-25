@@ -19,6 +19,7 @@ namespace Gerenciadores {
         void addEstado(int id);
         void removerEstado();   
         void executar(); 
+        int getTamanho();
     };
 }
 

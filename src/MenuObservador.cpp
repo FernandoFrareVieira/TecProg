@@ -18,7 +18,12 @@ namespace Observadores {
         }
     }
 
-    void MenuObservador::notificar(sf::Keyboard::Key tecla) {
+    void MenuObservador::notificarPressionada(sf::Keyboard::Key tecla) {
+        if (!pMenu)
+            return;
+    }
+
+    void MenuObservador::notificarSolta(sf::Keyboard::Key tecla) {
         if (!pMenu)
             return;
         if (tecla == sf::Keyboard::Key::Down) {
@@ -30,7 +35,12 @@ namespace Observadores {
                 pMenu->desenhar();
         }
         else if (tecla == sf::Keyboard::Key::Enter) {
-            pMenu->selecionar();
+            pMenu->selecionar(); //jogo fecha
+            if (pMenu->getIndice() == 0 && pGEstados->getEstadoAtual()->getID() == 0){
+                pGEstados->removerEstado();
+                printf("%d ESTADOS NA PILHA DEPOIS DA REMOCAO\n",pGEstados->getTamanho());
+                fflush(stdout);
+            }
         }
     }
 }

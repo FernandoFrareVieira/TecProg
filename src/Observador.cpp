@@ -7,7 +7,9 @@
 namespace Observadores {
     Gerenciadores::GerenciadorEstados* Observador::pGEstados = Gerenciadores::GerenciadorEstados::getInstancia();
     Gerenciadores::GerenciadorEventos* Observador::pGEventos = Gerenciadores::GerenciadorEventos::getInstancia();
-    Observador::Observador() {
+    Observador::Observador():
+    ativo(true)
+    {
         this->pGG = Gerenciadores::GerenciadorGrafico::getInstancia();
         pGEventos->addObservador(this);
         //this->pGE = Gerenciadores::GerenciadorEventos::getInstancia(jogador);

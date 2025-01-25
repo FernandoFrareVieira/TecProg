@@ -12,7 +12,7 @@ namespace Menus {
         opcoes[1]->setTexto("Sair");
         
         corpo.setFillColor(sf::Color::White);
-        pMenuObservador = new Observadores::MenuObservador;
+        pMenuObservador = new Observadores::MenuObservador();
         if (pMenuObservador != nullptr) {
             pMenuObservador->setMenu(this);     
         }

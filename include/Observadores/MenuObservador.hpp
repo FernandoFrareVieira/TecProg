@@ -7,11 +7,12 @@
 namespace Observadores {
     class MenuObservador : public Observador {
     private:
-        Menus::MenuPrincipal* pMenu;
+        Menus::Menu* pMenu;
     public:
         MenuObservador();
         ~MenuObservador();
-        void notificar(sf::Keyboard::Key tecla);
+        void notificarSolta(sf::Keyboard::Key tecla);
+        void notificarPressionada(sf::Keyboard::Key tecla);
         void setMenu(Menus::MenuPrincipal *pM);
     };
 }       
