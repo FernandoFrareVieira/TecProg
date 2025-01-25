@@ -1,12 +1,33 @@
 #include "Observadores/Observador.hpp"
 
+#include "Gerenciadores/GerenciadorEstados.hpp"
+#include "Gerenciadores/GerenciadorEventos.hpp"
+
+
 namespace Observadores {
-    Observador::Observador() {
+    Gerenciadores::GerenciadorEstados* Observador::pGEstados = Gerenciadores::GerenciadorEstados::getInstancia();
+    Gerenciadores::GerenciadorEventos* Observador::pGEventos = Gerenciadores::GerenciadorEventos::getInstancia();
+    Observador::Observador():
+    ativo(true)
+    {
         this->pGG = Gerenciadores::GerenciadorGrafico::getInstancia();
+        pGEventos->addObservador(this);
         //this->pGE = Gerenciadores::GerenciadorEventos::getInstancia(jogador);
     }
 
     Observador::~Observador() {
-        
+        removerObservador();
+    }
+
+    void Observador::mudarAtivar() {
+        ativo != ativo;
+    }
+
+    bool Observador::getAtivar() const {
+        return ativo;
+    }
+
+    void Observador::removerObservador() {
+        pGEventos->removerObservador(this);
     }
 }   

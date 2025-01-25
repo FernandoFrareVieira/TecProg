@@ -1,9 +1,10 @@
 #include "Gerenciadores/GerenciadorEventos.hpp"
-#include "Observadores/MenuObservador.hpp"
+#include "Gerenciadores/GerenciadorEstados.hpp"
 
 namespace Gerenciadores
 {
     GerenciadorEventos* GerenciadorEventos::instancia = nullptr;
+    Listas::ListaObservadores* GerenciadorEventos::LO = nullptr;
 
     GerenciadorEventos* GerenciadorEventos::getInstancia()
     {
@@ -16,10 +17,23 @@ namespace Gerenciadores
     GerenciadorEventos::GerenciadorEventos():
     pGG(Gerenciadores::GerenciadorGrafico::getInstancia())
     {
+        LO = new Listas::ListaObservadores();
     }
 
     GerenciadorEventos::~GerenciadorEventos()
     {
+        if(LO) {
+            delete(LO);
+            LO = nullptr;
+        }
+    }
+
+    void GerenciadorEventos::addObservador(Observadores::Observador* observador) {
+        LO->add(observador);
+    }
+
+    void GerenciadorEventos::removerObservador(Observadores::Observador* observador) {
+        LO->removerObservador(observador);
     }
 
     void GerenciadorEventos::executar()
@@ -31,14 +45,20 @@ namespace Gerenciadores
                 pGG->fechar();
             }else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
-                if (gEstados->getEstadoAtual()->getID() == 0) {
-                    pMenuObservador->atualizar(evento.key.code);
-                }
-                else if (gEstados->getEstadoAtual()->getID() == 1) {
+                /////
+                if (gEstados->getEstadoAtual()->getID() == 1) { //Fazer Observador fase
                     if (evento.key.code == sf::Keyboard::Key::Escape) {
-                        gEstados->removerEstado();
                         gEstados->addEstado(0);
+
                     }
+                }
+                if (gEstados->getEstadoAtual()->getID() == 0) {
+                    LO->notificarTeclaPressionada(evento.key.code);
+                }
+            }
+            else if(evento.type == sf::Event::KeyReleased) {
+                if (gEstados->getEstadoAtual()->getID() == 0) {
+                    LO->notificarTeclaSolta(evento.key.code);
                 }
             }
         }

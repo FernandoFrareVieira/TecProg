@@ -3,7 +3,6 @@
 
 namespace Menus {
     MenuPrincipal::MenuPrincipal(int id):
-    pMenuObservador(nullptr),
     Menu(2,id) 
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
@@ -12,15 +11,8 @@ namespace Menus {
         opcoes[1]->setTexto("Sair");
         
         corpo.setFillColor(sf::Color::White);
-        pMenuObservador = new Observadores::MenuObservador;
-        if (pMenuObservador != nullptr) {
-            pMenuObservador->setMenu(this);     
-        }
     }
     MenuPrincipal::~MenuPrincipal() {
-        if (pMenuObservador)
-            delete pMenuObservador;
-        pMenuObservador = nullptr;
     }
 
 

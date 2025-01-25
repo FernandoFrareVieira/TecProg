@@ -5,16 +5,12 @@
 #include <stack>
 
 namespace Gerenciadores {
-    class GerenciadorEventos;
-    
     class GerenciadorEstados {
     protected:
         std::stack<Estados::Estado*> estados;
         int estadoAtual;
         static GerenciadorEstados* instancia;
-        Gerenciadores::GerenciadorEventos* pGE;
-        GerenciadorEstados(); //Singleton
-
+        GerenciadorEstados(); //Singletron
     public:
         ~GerenciadorEstados();
         static GerenciadorEstados* getInstancia();
@@ -23,6 +19,7 @@ namespace Gerenciadores {
         void addEstado(int id);
         void removerEstado();   
         void executar(); 
+        int getTamanho();
     };
 }
 

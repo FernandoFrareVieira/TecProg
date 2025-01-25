@@ -2,30 +2,26 @@
 
 #include <SFML/Graphics.hpp>
 #include "Gerenciadores/GerenciadorGrafico.hpp"
-#include "Entidades/Personagens/Jogador.hpp"
-#include "Gerenciadores/GerenciadorEstados.hpp"
-
-namespace Observadores {
-    class MenuObservador;
-}
+#include "Listas/ListaObservadores.hpp"
 
 namespace Gerenciadores
 {
+    class GerenciadorEstados;
     class GerenciadorEventos
     {
         private:
             GerenciadorGrafico* pGG;
-            static GerenciadorEventos* instancia;
-            Observadores::MenuObservador* pMenuObservador;
-
             Gerenciadores::GerenciadorEstados* gEstados;
+            static Listas::ListaObservadores* LO;
 
+            static GerenciadorEventos* instancia;
             GerenciadorEventos();
 
         public:
             static GerenciadorEventos* getInstancia();
             ~GerenciadorEventos();
-            void add(Observadores::MenuObservador* pM) {pMenuObservador = pM;}
+            void addObservador(Observadores::Observador* observador);
+            void removerObservador(Observadores::Observador* observador);
             void executar();
     };
 }

@@ -1,7 +1,9 @@
 #include "Observadores/MenuObservador.hpp" 
 
 namespace Observadores {
-    MenuObservador::MenuObservador() {
+    MenuObservador::MenuObservador():
+    Observador()
+    {
     }
 
     MenuObservador::~MenuObservador() {
@@ -9,13 +11,28 @@ namespace Observadores {
             pMenu = nullptr;
     }
 
-    void MenuObservador::setMenu(Menus::MenuPrincipal* pM) {
+    void MenuObservador::setMenu(Menus::Menu* pM) {
         if (pM) {
             pMenu = pM;
         }
     }
 
-    void MenuObservador::atualizar(sf::Keyboard::Key tecla) {
+    void MenuObservador::notificarPressionada(sf::Keyboard::Key tecla) {
+        if (!pMenu)
+            return;
+        if (tecla == sf::Keyboard::Key::Enter) {
+            printf("ENTER RECEBIDO\n");
+            fflush(stdout);
+            pMenu->selecionar(); //jogo fecha
+            if (pMenu->getIndice() == 0 && pGEstados->getEstadoAtual()->getID() == 0){
+                pGEstados->removerEstado();
+                fflush(stdout);
+            }
+        }
+        
+    }
+
+    void MenuObservador::notificarSolta(sf::Keyboard::Key tecla) {
         if (!pMenu)
             return;
         if (tecla == sf::Keyboard::Key::Down) {
@@ -25,9 +42,6 @@ namespace Observadores {
         else if (tecla == sf::Keyboard::Key::Up) {
                 pMenu->moverBaixo();
                 pMenu->desenhar();
-        }
-        else if (tecla == sf::Keyboard::Key::Enter) {
-            pMenu->selecionar();
         }
     }
 }

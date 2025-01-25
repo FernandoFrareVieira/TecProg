@@ -1,18 +1,29 @@
 #pragma once
 
-#include "Gerenciadores/GerenciadorEventos.hpp"
 #include "Gerenciadores/GerenciadorGrafico.hpp"
 
 #include <SFML/Graphics.hpp>
 
+namespace Gerenciadores {
+    class GerenciadorEventos;
+    class GerenciadorEstados;
+}
+
 namespace Observadores {
     class Observador {
         protected: 
-            //Gerenciadores::GerenciadorEventos* pGE;
-            Gerenciadores::GerenciadorGrafico* pGG; 
+            static Gerenciadores::GerenciadorEventos* pGEventos;
+            Gerenciadores::GerenciadorGrafico* pGG;
+            static Gerenciadores::GerenciadorEstados* pGEstados; 
+        private:
+            bool ativo;
         public:
             Observador();
             virtual ~Observador();
-            virtual void atualizar(sf::Keyboard::Key tecla) = 0;
-    };
+            void removerObservador();
+            virtual void notificarSolta(sf::Keyboard::Key tecla) = 0;
+            virtual void notificarPressionada(sf::Keyboard::Key tecla) = 0;
+            void mudarAtivar();
+            bool getAtivar() const;
+    };  
 }
