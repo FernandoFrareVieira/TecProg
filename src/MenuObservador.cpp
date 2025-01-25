@@ -1,5 +1,4 @@
-#include "Observadores/MenuObservador.hpp"
-#include "Menus/MenuPrincipal.hpp" 
+#include "Observadores/MenuObservador.hpp" 
 
 namespace Observadores {
     MenuObservador::MenuObservador():

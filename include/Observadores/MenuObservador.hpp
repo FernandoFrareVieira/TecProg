@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Observador.hpp"  // Classe base para MenuObservador
+#include "Observador.hpp"  
 #include "Menus/MenuPrincipal.hpp"
 #include <SFML/Window/Keyboard.hpp>
 
