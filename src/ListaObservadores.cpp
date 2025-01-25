@@ -40,7 +40,7 @@ namespace Listas {
         for (int i = 0; i < LO.getTamanho(); i++) {
             Observadores::Observador* observador = LO.operator[](i);
             if(observador->getAtivar()) {
-                //observador->notificarPressionada(tecla);
+                observador->notificarPressionada(tecla);
             }
             observador = nullptr;
         }

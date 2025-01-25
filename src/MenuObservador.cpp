@@ -21,6 +21,16 @@ namespace Observadores {
     void MenuObservador::notificarPressionada(sf::Keyboard::Key tecla) {
         if (!pMenu)
             return;
+        if (tecla == sf::Keyboard::Key::Enter) {
+            printf("ENTER RECEBIDO\n");
+            fflush(stdout);
+            pMenu->selecionar(); //jogo fecha
+            if (pMenu->getIndice() == 0 && pGEstados->getEstadoAtual()->getID() == 0){
+                pGEstados->removerEstado();
+                fflush(stdout);
+            }
+        }
+        
     }
 
     void MenuObservador::notificarSolta(sf::Keyboard::Key tecla) {
@@ -33,14 +43,6 @@ namespace Observadores {
         else if (tecla == sf::Keyboard::Key::Up) {
                 pMenu->moverBaixo();
                 pMenu->desenhar();
-        }
-        else if (tecla == sf::Keyboard::Key::Enter) {
-            pMenu->selecionar(); //jogo fecha
-            if (pMenu->getIndice() == 0 && pGEstados->getEstadoAtual()->getID() == 0){
-                pGEstados->removerEstado();
-                printf("%d ESTADOS NA PILHA DEPOIS DA REMOCAO\n",pGEstados->getTamanho());
-                fflush(stdout);
-            }
         }
     }
 }

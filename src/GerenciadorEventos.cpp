@@ -46,17 +46,19 @@ namespace Gerenciadores
             }else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
                 /////
-                if (gEstados->getEstadoAtual()->getID() == 0) {
-                    printf("ID: %d\n",gEstados->getEstadoAtual()->getID());
-                    LO->notificarTeclaSolta(evento.key.code);
-                }
-                else if (gEstados->getEstadoAtual()->getID() == 1) {
-                    printf("%d ID DO ESTADO ATUAL\n",gEstados->getEstadoAtual()->getID());
+                if (gEstados->getEstadoAtual()->getID() == 1) { //Fazer Observador fase
                     if (evento.key.code == sf::Keyboard::Key::Escape) {
                         gEstados->addEstado(0);
-                        printf("%d ESTADOS NA PILHA DEPOIS DA ADICAO\n",gEstados->getTamanho());
 
                     }
+                }
+                if (gEstados->getEstadoAtual()->getID() == 0) {
+                    LO->notificarTeclaPressionada(evento.key.code);
+                }
+            }
+            else if(evento.type == sf::Event::KeyReleased) {
+                if (gEstados->getEstadoAtual()->getID() == 0) {
+                    LO->notificarTeclaSolta(evento.key.code);
                 }
             }
         }
