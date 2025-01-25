@@ -13,6 +13,6 @@ namespace Observadores {
         ~MenuObservador();
         void notificarSolta(sf::Keyboard::Key tecla);
         void notificarPressionada(sf::Keyboard::Key tecla);
-        void setMenu(Menus::MenuPrincipal *pM);
+        void setMenu(Menus::Menu *pM);
     };
 }       

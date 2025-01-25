@@ -22,6 +22,7 @@ namespace Menus {
             std::vector<Opcao*> opcoes;
             sf::Color cor_normal;
             sf::Color cor_selecao;
+            Observadores::MenuObservador* pMenuObservador;
         public:
             Menu(int n_opcoes, int id);
             ~Menu();

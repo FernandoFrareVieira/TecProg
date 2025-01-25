@@ -1,10 +1,12 @@
 #include "Menus/Menu.hpp"
+#include "Observadores/MenuObservador.hpp"
 
 namespace Menus {
     Menu::Menu(int n_opcoes, int id):
     Ente(),
     Estado(id),
     opcoes(),
+    pMenuObservador(nullptr),
     indice_selecionado(0),
     num_opcoes(n_opcoes)
     {
@@ -24,12 +26,19 @@ namespace Menus {
         }
         corpo.setTexture(&textura);
         corpo.setPosition(sf::Vector2f(-100,100));
+        pMenuObservador = new Observadores::MenuObservador();
+        if (pMenuObservador != nullptr) {
+            pMenuObservador->setMenu(this);     
+        }
     }
 
     Menu::~Menu() {
         for (int i = 0; i < num_opcoes; i++) {
             delete opcoes[i];
         }
+        if (pMenuObservador)
+            delete pMenuObservador;
+        pMenuObservador = nullptr;
     }
 
     void Menu::desenhar() {

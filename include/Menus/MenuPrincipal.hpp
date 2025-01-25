@@ -7,8 +7,6 @@
 
 namespace Menus {
     class MenuPrincipal: public Menu {
-    private:
-        Observadores::MenuObservador* pMenuObservador;
     public:
         MenuPrincipal(int id);
         ~MenuPrincipal();

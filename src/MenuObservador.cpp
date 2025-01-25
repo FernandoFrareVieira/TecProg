@@ -12,7 +12,7 @@ namespace Observadores {
             pMenu = nullptr;
     }
 
-    void MenuObservador::setMenu(Menus::MenuPrincipal* pM) {
+    void MenuObservador::setMenu(Menus::Menu* pM) {
         if (pM) {
             pMenu = pM;
         }
