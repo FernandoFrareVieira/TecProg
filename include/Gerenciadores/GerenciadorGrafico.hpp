@@ -40,5 +40,6 @@ namespace Gerenciadores
             void atualizarTempo();
             float getTempo();
             void setJogador(Entidades::Personagens::Jogador* jogador) {pJogador = jogador;}
+            sf::View getCamera();
     };      
 }

@@ -109,4 +109,8 @@ namespace Gerenciadores
     {
         return tempo;
     }
+
+    sf::View GerenciadorGrafico::getCamera() {
+        return camera;
+    }
 }

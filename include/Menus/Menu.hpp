@@ -26,11 +26,11 @@ namespace Menus {
         public:
             Menu(int n_opcoes, int id);
             ~Menu();
-            void desenhar();
+            virtual void desenhar();
             void addOpcao(Opcao* op);
             void moverBaixo();
             void moverCima();
-            void executar();
+            virtual void executar();
             int getIndice() const;
     };
 }   

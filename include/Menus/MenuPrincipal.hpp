@@ -10,8 +10,8 @@ namespace Menus {
     public:
         MenuPrincipal(int id);
         ~MenuPrincipal();
-        void desenhar();   
-        void executar(); 
+        void desenhar();
+        void executar();
         Observadores::MenuObservador* getObservador();
     };
 }

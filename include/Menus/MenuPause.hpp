@@ -5,6 +5,8 @@ namespace Menus {
     public:
         MenuPause(int id);
         ~MenuPause();
+        void executar();
+        void desenhar();
         
     };
 }
