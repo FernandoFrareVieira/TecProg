@@ -23,7 +23,12 @@ namespace Entidades
                 float tempoDesdeUltimoAtaque;
                 int dano;
 
-                // Atributos gravidade
+                //Atributo movimentação
+                float aceleracaoHorizontal;
+                float desaceleracaoHorizontal;
+                float velocidadeMaximaHorizontal;
+
+                //Atributo gravidade
                 bool podePular;
                 float gravidade; 
                 float velocidadePulo;
@@ -33,11 +38,13 @@ namespace Entidades
                 ~Personagem();
                 virtual void executar() = 0;
                 virtual void desenhar() = 0;
+                virtual void mover() = 0;
                 
-                // Método colisão
+                //Métodos colisão
                 virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
+                void colisaoPersonagem(Personagem* pPersonagem, sf::Vector2f ds);
 
-                // Métodos combates
+                //Métodos combates
                 void tomarDano(int dano);
                 void atacar();
                 void iniciarAtaque();
@@ -46,7 +53,7 @@ namespace Entidades
                 //Métodos gravidade
                 void atualizarPosicao();
                 void pular();
-                void setPodePular(bool pPular);
+                void setPodePular(bool pPular); 
         };
     }
 }

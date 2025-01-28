@@ -15,14 +15,61 @@ namespace Entidades
             tempoAtacarNovamente(1.0f),
             tempoDesdeUltimoAtaque(0.0f),
             dano(10),
+            aceleracaoHorizontal(400.0f),
+            desaceleracaoHorizontal(300.0f),
+            velocidadeMaximaHorizontal(350.0f),
             podePular(false),
-            gravidade(500.0f),
-            velocidadePulo(-300.f)
+            gravidade(600.0f),
+            velocidadePulo(-300.0f)
         {}
 
         Personagem::~Personagem()
         {
 
+        }
+
+        void Personagem::colisaoPersonagem(Personagem* pPersonagem, sf::Vector2f ds)
+        {
+            sf::Vector2f posicao = corpo.getPosition();
+            sf::Vector2f tamanho = corpo.getSize();
+
+            sf::Vector2f posicaoEntidade = pPersonagem->getCorpo()->getPosition();
+            sf::Vector2f tamanhoEntidade = pPersonagem->getCorpo()->getSize();
+            sf::Vector2f velocidadeEntidade = pPersonagem->getVelocidade();
+
+            sf::Vector2f novaVelocidade = velocidade;
+            sf::Vector2f novaVelocidadeEntidade = velocidadeEntidade;
+
+            if (ds.x < ds.y) {
+                // Colisão horizontal
+                if (posicaoEntidade.x < posicao.x) {
+                    // O objeto colidido está à esquerda
+                    corpo.setPosition(posicaoEntidade.x + tamanhoEntidade.x, posicao.y);
+                } else {
+                    // O objeto colidido está à direita
+                    corpo.setPosition(posicaoEntidade.x - tamanho.x, posicao.y);
+                }
+                novaVelocidade.x = 0.0f;
+
+            } else {
+                // Colisão vertical
+                if (posicaoEntidade.y < posicao.y) {
+                    // O objeto colidido está acima
+                    corpo.setPosition(posicao.x, posicaoEntidade.y + tamanhoEntidade.y);
+                    novaVelocidade.y = 0.0f;
+                } else {
+                    // O objeto colidido está abaixo
+                    corpo.setPosition(posicao.x, posicaoEntidade.y - tamanho.y);
+                    novaVelocidade.y = 0.0f;
+
+                    // Permitir pulo, pois está no chão
+                    setPodePular(true);
+                }
+            } 
+
+            // Apenas atualiza a velocidade do objeto atual
+            setVelocidade(novaVelocidade);
+            pPersonagem->setVelocidade(novaVelocidade);
         }
 
         void Personagem::tomarDano(int dano)
@@ -91,15 +138,17 @@ namespace Entidades
                 velocidade.y += gravidade * dt;
             }
 
-            corpo.move(0, velocidade.y * dt);
+            corpo.move(velocidade.x * dt, velocidade.y * dt);
         }
 
         void Personagem::pular()
         {
             if (podePular)
             {
-                float velocidade_x = getVelocidade().x;
-                setVelocidade(sf::Vector2f(velocidade.x, velocidadePulo));
+                float dt = pGG->getTempo();
+
+                velocidade.y = velocidadePulo;
+                corpo.move(0.0f, velocidade.y * dt);
                 podePular = false;    
             }
         }
@@ -107,6 +156,10 @@ namespace Entidades
         void Personagem::setPodePular(bool pPular)
         {
             podePular = pPular;
+
+            if(podePular) {
+                velocidade.y = 0.0f;
+            }
         }
     }
 }
