@@ -37,7 +37,7 @@ namespace Entidades
 
     sf::Vector2f Entidade::getPosicao()
     {
-        return posicao;
+        return corpo.getPosition();
     }
 
     void Entidade::setTamanho(sf::Vector2f tam)

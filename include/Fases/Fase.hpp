@@ -13,6 +13,7 @@
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Personagens/Esqueleto.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
+#include "Observadores/FaseObservador.hpp"
 
 namespace Fases
 {

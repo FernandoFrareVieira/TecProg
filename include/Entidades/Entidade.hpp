@@ -9,7 +9,11 @@ namespace Entidades
         vazio = 0,
         jogador, 
         inimigo,
-        obstaculo
+        obstaculo,
+        Nether,
+        MenuPrincipal,
+        MenuPause,
+        Pantano,
     };
 
     class Entidade : public Ente

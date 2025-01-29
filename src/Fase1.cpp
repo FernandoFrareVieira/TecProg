@@ -41,6 +41,7 @@ namespace Fases
         listaJogadores.executar();
 
         pGC.gerenciar();
+        mudarFase();
     }
 
     void Fase1::desenhar()
@@ -54,6 +55,8 @@ namespace Fases
         backgroundSprite.setOrigin(sf::Vector2f(50,-30));
         pGG->desenharOutros(backgroundSprite);
         pGG->centralizarCamera(jogador->getCorpo()->getPosition());
+        printf("%2.0f\n", jogador->getPosicao().x);
+        fflush(stdout);
     }   
 
     void Fase1::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
@@ -107,5 +110,14 @@ namespace Fases
         }
         - ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
         */
+    }
+
+    void Fase1::mudarFase() {
+        if (jogador->getPosicao().x > 1930) {
+            Observadores::FaseObservador* faseObservador = new Observadores::FaseObservador();
+            faseObservador->notificarMudarFase();
+            printf("mudou fase\n");
+            fflush(stdout);
+        }
     }
 }

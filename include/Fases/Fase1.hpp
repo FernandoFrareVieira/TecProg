@@ -21,5 +21,6 @@ namespace Fases
             void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
             void executar();
             void desenhar();
+            void mudarFase();
     };
 }
