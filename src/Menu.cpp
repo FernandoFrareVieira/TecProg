@@ -24,7 +24,7 @@ namespace Menus {
             fflush(stdout);
         }
         corpo.setTexture(&textura);
-        corpo.setPosition(sf::Vector2f(-100,0));
+        corpo.setPosition(sf::Vector2f(0,0));
         pGG->getJanela()->setView(pGG->getJanela()->getDefaultView());
         pMenuObservador = new Observadores::MenuObservador();
         if (pMenuObservador != nullptr) {

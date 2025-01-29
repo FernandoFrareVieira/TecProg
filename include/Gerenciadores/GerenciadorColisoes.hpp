@@ -19,5 +19,6 @@ namespace Gerenciadores {
 
         void gerenciar();
         sf::Vector2f calculaColisao(Entidades::Entidade* entidade1, Entidades::Entidade* entidade2);
+        void reiniciaPulo();
     };
 }

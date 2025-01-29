@@ -43,14 +43,17 @@ namespace Entidades
         {
             switch(entidade2->getId()) {
                 case(ID::jogador):
-                {                    
+                {       
+                    Personagem* pPersonagem = static_cast<Personagem*>(entidade2);             
                     atacar();
                     if (estaAtacando) {
-                        Personagem* pPersonagem = static_cast<Personagem*>(entidade2);
+                        
                         pPersonagem->tomarDano(dano);
 
                         estaAtacando = false;
                     }
+
+                    //colisaoPersonagem(pPersonagem, ds);
                 }
                 break;
                 case(ID::obstaculo):

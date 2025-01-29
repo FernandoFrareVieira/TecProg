@@ -26,8 +26,13 @@ namespace Entidades
                 //Métodos de Animação
                 void atualizarAnimacao(float dt);
 
-                //Métodos movimetação e colisão
+                //Métodos movimentação
                 void mover();
+                void atualizarVelocidadeHorizontal();
+                void atualizarVelocidadeVertical();
+                void aplicarDesaceleracao(float dt);
+
+                //Métodos colisão
                 void colidir(Entidade* entidade2, sf::Vector2f ds);
 
                 //Métodos pontuação

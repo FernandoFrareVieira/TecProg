@@ -13,8 +13,7 @@ namespace Entidades
     {
         corpo.setPosition(pos);
         corpo.setSize(tam);
-        //corpo.setOrigin(tam.x / 2.0f, tam.y / 2.0f);
-        
+ 
         contador++;
     }
 

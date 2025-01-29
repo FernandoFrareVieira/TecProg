@@ -11,22 +11,26 @@ namespace Entidades
 
         Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel): 
             Personagem(pos, tam, vel, ID::jogador), 
-            animacao(&corpo)
+            animacao(corpo, 0.2f)
         {
             vivo = true;
             pontosDeVida = 100;
+
             estaAtacando = false;
             podeAtacar = true;
             tempoAtacarNovamente = 1.0f; 
             tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
+
+            aceleracaoHorizontal = 400.0f;
+            desaceleracaoHorizontal = 300.0f;
+            velocidadeMaximaHorizontal= 350.0f;
         
             corpo.setFillColor(sf::Color::Red);
 
-            //textura = pGG->carregarTextura("assets/IDLE.png"); 
+            //textura = pGG->carregarTextura("assets/jogador/andando.png"); 
             //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
             //corpo.setTextureRect(sf::IntRect(40,48,15,33));
-            //corpo.setFillColor(sf::Color::White);
             //corpo.setTexture(textura);
         }
 
@@ -50,18 +54,36 @@ namespace Entidades
 
         void Jogador::atualizarAnimacao(float dt)
         {
-            animacao.atualizar(Animacoes::ID_animacao::andando, false, corpo.getPosition(), dt);
+            
         }
 
         void Jogador::mover()
         {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                corpo.move(velocidade.x, 0);
+            float dt = pGG->getTempo(); // Tempo entre frames
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                velocidade.x += aceleracaoHorizontal * dt;
+                if (velocidade.x > velocidadeMaximaHorizontal)
+                    velocidade.x = velocidadeMaximaHorizontal;
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                corpo.move(-velocidade.x, 0);
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                velocidade.x -= aceleracaoHorizontal * dt;
+                if (velocidade.x < -velocidadeMaximaHorizontal)
+                    velocidade.x = -velocidadeMaximaHorizontal;
+            }
+            else {
+                if (velocidade.x > 0.0f)
+                {
+                    velocidade.x -= desaceleracaoHorizontal * dt;
+                    if (velocidade.x < 0.0f)
+                        velocidade.x = 0.0f;
+                }
+                else if (velocidade.x < 0.0f)
+                {
+                    velocidade.x += desaceleracaoHorizontal * dt;
+                    if (velocidade.x > 0.0f)
+                        velocidade.x = 0.0f;
+                }
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -80,13 +102,15 @@ namespace Entidades
             {
             case (ID::inimigo):
             {
-               if (estaAtacando) {
-                    Personagem* pPersonagem = static_cast<Personagem*>(entidade2);
+                Personagem* pPersonagem = static_cast<Personagem*>(entidade2);
+                if (estaAtacando) {
                     pPersonagem->tomarDano(dano);
-                    this->ganharPontos(10);
 
+                    this->ganharPontos(10);
                     estaAtacando = false;
                 }
+
+                //colisaoPersonagem(pPersonagem, ds);
             }
             break;
 

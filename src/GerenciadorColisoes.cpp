@@ -35,6 +35,8 @@ namespace Gerenciadores {
     void GerenciadorColisoes::gerenciar() {
         sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f);
 
+        reiniciaPulo();
+
         //Colisão jogadores com obstaculos e inimigos
         for(int i = 0; i < listaJogadores->getTamanho(); i++) {
             Entidades::Entidade* entidade1 = listaJogadores->operator[](i);
@@ -98,5 +100,22 @@ namespace Gerenciadores {
         }
 
         return sf::Vector2f(0.0f, 0.0f);
+    }
+
+    void GerenciadorColisoes::reiniciaPulo()
+    {
+        for (int i = 0; i < listaJogadores->getTamanho(); i++) {
+            Entidades::Entidade* entidade = listaJogadores->operator[](i);
+
+            Entidades::Personagens::Personagem* pPersonagem = static_cast<Entidades::Personagens::Personagem*>(entidade);
+            pPersonagem->setPodePular(false); // Reseta para falso
+        }
+
+        for (int i = 0; i < listaInimigos->getTamanho(); i++) {
+            Entidades::Entidade* entidade = listaInimigos->operator[](i);
+
+            Entidades::Personagens::Personagem* pPersonagem = static_cast<Entidades::Personagens::Personagem*>(entidade);
+            pPersonagem->setPodePular(false); // Reseta para falso
+        }
     }
 }
