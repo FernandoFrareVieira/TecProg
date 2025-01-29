@@ -46,6 +46,9 @@ namespace Gerenciadores {
         else if (id == 2) {
             estados.push(new Menus::MenuPause(2));
         }
+        else if (id == 3) {
+            estados.push(new Fases::Nether(3));
+        }
     }  
 
     void GerenciadorEstados::removerEstado() {

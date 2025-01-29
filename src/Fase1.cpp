@@ -10,7 +10,7 @@ namespace Fases
         //Iniciar corpo
 
         // TODO - Arrumar a lógica da criaçao dos objetos
-        carregarMapa("include/Tilemap/Tiles.json","include/Tilemap/Tileset.png");
+        carregarMapa("include/Tilemap/Tiles.json","include/Tilemap/SwampTiles.png");
         jogador = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);
@@ -55,4 +55,57 @@ namespace Fases
         pGG->desenharOutros(backgroundSprite);
         pGG->centralizarCamera(jogador->getCorpo()->getPosition());
     }   
+
+    void Fase1::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
+    {
+        
+        switch (tipo){  
+            case 1 : { //plataforma
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama1.png");
+            adicionarObstaculos(plataforma);
+            }
+            case 2: {
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama2.png");
+            adicionarObstaculos(plataforma);
+            }
+            case 3: {
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama3.png");
+            adicionarObstaculos(plataforma);
+            }
+            case 5: {
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama5.png");
+            adicionarObstaculos(plataforma);
+            }
+            case 10: {
+            Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicao, tamanho, sf::Vector2f(0,0));
+            gosma->setTextura("assets/plataformas/gosma.png");
+            adicionarObstaculos(gosma);
+            }
+            case 12: {
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama12.png");
+            adicionarObstaculos(plataforma);
+            }
+            case 13: {
+            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            plataforma->setTextura("assets/plataformas/grama13.png");
+            adicionarObstaculos(plataforma);
+            }
+        }
+        /*
+            case 2 : //plataforma sprite 1
+                return new Plataforma(posicao, tamanho, tipo);
+                break;
+            case 3 : //plataforma sprite 2
+                return new Plataforma(posicao, tamanho, tipo);
+                break;
+            ...
+        }
+        - ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
+        */
+    }
 }

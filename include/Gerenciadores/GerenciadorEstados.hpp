@@ -3,6 +3,7 @@
 #include "Menus/MenuPrincipal.hpp"
 #include "Menus/MenuPause.hpp"
 #include "Fases/Fase1.hpp"
+#include "Fases/Nether.hpp"
 #include <stack>
 
 namespace Gerenciadores {

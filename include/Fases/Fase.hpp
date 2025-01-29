@@ -40,7 +40,7 @@ namespace Fases
             void adicionarJogador(Entidades::Entidade* jogador);
 
             void carregarMapa(std::string mapJson, std::string caminhoImagem);
-            void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+            virtual void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) = 0;
 
             void criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador);
             
