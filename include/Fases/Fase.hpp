@@ -25,6 +25,7 @@ namespace Fases
             Listas::ListaEntidades listaJogadores;
 
             Entidades::Personagens::Jogador* pJogador1;
+            Entidades::Personagens::Jogador* pJogador2;
 
             sf::RectangleShape corpo;
 

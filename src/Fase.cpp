@@ -12,8 +12,12 @@ namespace Fases
         corpo(),
         pGC()
     {
-        pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
+        pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(200.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), 1, sf::Vector2f(0.0f, 0.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador1));
+
+        pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), 2, sf::Vector2f(0.0f, 0.0f));
+        adicionarJogador(static_cast<Entidades::Entidade*>(pJogador2));
+
         pGC.setJogadores(&listaJogadores);
 
         pGC.setObstaculos(&listaObstaculos);
