@@ -2,6 +2,8 @@
 
 namespace Fases
 {
+    Observadores::FaseObservador* Fases::Fase::pObservadorFase = nullptr;
+
     Fase::Fase(int id):
         Estado(id),
         listaObstaculos(),
@@ -10,13 +12,30 @@ namespace Fases
         corpo(),
         pGC()
     {
+        pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
+        adicionarJogador(static_cast<Entidades::Entidade*>(pJogador1));
+        pGC.setJogadores(&listaJogadores);
+
         pGC.setObstaculos(&listaObstaculos);
         pGC.setInimigos(&listaInimigos);
         pGC.setJogadores(&listaJogadores);
+
+        if (pObservadorFase == nullptr) {
+            pObservadorFase = new Observadores::FaseObservador();
+        }
     }
 
     Fase::~Fase()
     {
+        if(pObservadorFase != nullptr){
+            delete(pObservadorFase);
+            pObservadorFase = nullptr;
+        }
+
+        if (pJogador1) {
+            delete(pJogador1);
+            pJogador1 = nullptr;
+        }
         
     }
 
@@ -39,6 +58,24 @@ namespace Fases
         if(jogador) {
             listaJogadores.adicionarEntidade(jogador);
         }
+    }
+
+    void Fase::mudarFase() {
+        if (pJogador1->getPosicao().x > 1920) {
+            pObservadorFase->notificarMudarFase();
+        }
+    }
+
+    void Fase::executar() {
+        desenhar();
+        listaObstaculos.executar();
+        listaInimigos.executar();
+        listaJogadores.executar();
+
+        pGC.gerenciar();
+        if (!pJogador1->getVivo())
+            pObservadorFase->notificarGameOver();
+        mudarFase();
     }
 
 

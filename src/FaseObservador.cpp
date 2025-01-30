@@ -13,13 +13,15 @@ namespace Observadores {
     }
 
     void FaseObservador::notificarMudarFase() {
-        pGEstados->removerEstado();
-        pGEstados->addEstado(3);
+        if (pGEstados->getEstadoAtual()->getID() == 1) {
+            pGEstados->removerEstado();
+            pGEstados->addEstado(3);
+        }
     }
 
     void FaseObservador::notificarGameOver() {
         pGEstados->removerEstado();
-        pGEstados->addEstado(4);
+        pGEstados->addEstado(0);
     }
 
     void FaseObservador::notificarPressionada(sf::Keyboard::Key tecla){

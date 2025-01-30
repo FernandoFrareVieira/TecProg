@@ -24,6 +24,8 @@ namespace Fases
             Listas::ListaEntidades listaInimigos;
             Listas::ListaEntidades listaJogadores;
 
+            Entidades::Personagens::Jogador* pJogador1;
+
             sf::RectangleShape corpo;
 
             Gerenciadores::GerenciadorColisoes pGC;
@@ -32,6 +34,7 @@ namespace Fases
             sf::Texture tilesetTextura;
 
             std::vector<sf::Vector2f> posicoes;
+            static Observadores::FaseObservador* pObservadorFase;
         public:
             Fase(int id);
             ~Fase();
@@ -44,6 +47,7 @@ namespace Fases
             virtual void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) = 0;
 
             void criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador);
-            
+            void executar();
+            void mudarFase();
     };
 }

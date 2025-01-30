@@ -11,15 +11,12 @@ namespace Fases
 
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Tiles.json","include/Tilemap/SwampTiles.png");
-        jogador = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
-        adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
-        pGC.setJogadores(&listaJogadores);
 
         for(int i = 0; i < 1; i++) {
-            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(200.0f + (i*100.0f), 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), jogador);
+            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(200.0f + (i*100.0f), 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
             adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
         }
-        criarInimigos("include/Tilemap/Tiles.json",posicoes,jogador);
+        criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
         pGC.setInimigos(&listaInimigos);
 
         //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(500.0f, 400.0f), sf::Vector2f(400.0f, 100.0f), sf::Vector2f(0.0f, 0.0f));
@@ -33,16 +30,6 @@ namespace Fases
         
     }
 
-    void Fase1::executar()
-    {
-        desenhar();
-        listaObstaculos.executar();
-        listaInimigos.executar();
-        listaJogadores.executar();
-
-        pGC.gerenciar();
-        mudarFase();
-    }
 
     void Fase1::desenhar()
     {
@@ -54,9 +41,7 @@ namespace Fases
         backgroundSprite.setScale(4,3.2);
         backgroundSprite.setOrigin(sf::Vector2f(50,-30));
         pGG->desenharOutros(backgroundSprite);
-        pGG->centralizarCamera(jogador->getCorpo()->getPosition());
-        printf("%2.0f\n", jogador->getPosicao().x);
-        fflush(stdout);
+        pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
     }   
 
     void Fase1::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
@@ -112,12 +97,4 @@ namespace Fases
         */
     }
 
-    void Fase1::mudarFase() {
-        if (jogador->getPosicao().x > 1930) {
-            Observadores::FaseObservador* faseObservador = new Observadores::FaseObservador();
-            faseObservador->notificarMudarFase();
-            printf("mudou fase\n");
-            fflush(stdout);
-        }
-    }
 }

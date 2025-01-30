@@ -45,11 +45,14 @@ namespace Entidades
             
             desenhar();
             mover();
+            if (this->getPosicao().y > 1090)
+                vivo = false;
         }
 
         void Jogador::desenhar()
         {
-            pGG->desenhar(corpo);
+            if (vivo)
+                pGG->desenhar(corpo);
         }
 
         void Jogador::atualizarAnimacao(float dt)

@@ -18,13 +18,6 @@ namespace Fases {
 
     }
 
-    void Nether::executar() {
-        desenhar();
-        listaObstaculos.executar();
-        listaInimigos.executar();
-        listaJogadores.executar();
-        pGC.gerenciar();
-    }
 
     void Nether::desenhar() {
         if(!background.loadFromFile("assets/cenarios/Nether.png")){ //Está dando seg fault"

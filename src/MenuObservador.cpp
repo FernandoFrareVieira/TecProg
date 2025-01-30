@@ -21,8 +21,6 @@ namespace Observadores {
         if (!pMenu)
             return;
         if (tecla == sf::Keyboard::Key::Enter) {
-            printf("ENTER RECEBIDO\n");
-            fflush(stdout);
             if (pMenu->getIndice() == 0 && pGEstados->getEstadoAtual()->getID() == 0){
                 pGEstados->removerEstado();
                 pGEstados->addEstado(1);
