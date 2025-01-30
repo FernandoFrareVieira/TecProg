@@ -30,8 +30,4 @@ namespace Menus {
         desenhar();
     }
 
-    Observadores::MenuObservador* MenuPrincipal::getObservador() {
-        return pMenuObservador;
-    }
-
 }

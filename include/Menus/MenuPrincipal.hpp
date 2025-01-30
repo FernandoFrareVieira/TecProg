@@ -12,6 +12,5 @@ namespace Menus {
         ~MenuPrincipal();
         void desenhar();
         void executar();
-        Observadores::MenuObservador* getObservador();
     };
 }
