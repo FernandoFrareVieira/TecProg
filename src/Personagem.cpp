@@ -115,12 +115,6 @@ namespace Entidades
                 }else {
                     corpo.setFillColor(sf::Color::Blue);
                 }
-            }else {
-                if(this->getId() == ID::jogador) {
-                    corpo.setFillColor(sf::Color::Red);
-                }else {
-                    corpo.setFillColor(sf::Color::White);
-                }
             }
         }
 

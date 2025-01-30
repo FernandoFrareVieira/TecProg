@@ -11,7 +11,7 @@ namespace Fases {
 
         sf::Texture background;
         //Provisorio
-        Entidades::Personagens::Jogador* jogador;
+        //Entidades::Personagens::Jogador* jogador;
     public:
         Nether(int id);
         ~Nether();

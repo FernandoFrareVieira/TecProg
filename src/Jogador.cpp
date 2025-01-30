@@ -9,24 +9,41 @@ namespace Entidades
     {
         int Entidades::Personagens::Jogador::pontos = 0;
 
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel): 
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, int idJogador, sf::Vector2f vel): 
             Personagem(pos, tam, vel, ID::jogador), 
             animacao(corpo, 0.2f)
         {
-            vivo = true;
-            pontosDeVida = 100;
+            id = idJogador;
 
+            vivo = true;
             estaAtacando = false;
             podeAtacar = true;
-            tempoAtacarNovamente = 1.0f; 
-            tempoDesdeUltimoAtaque = 0.0f;
-            dano = 10;
 
-            aceleracaoHorizontal = 400.0f;
-            desaceleracaoHorizontal = 300.0f;
-            velocidadeMaximaHorizontal= 350.0f;
+            tempoDesdeUltimoAtaque = 0.0f;
         
-            corpo.setFillColor(sf::Color::Red);
+            if(id == 1) {
+                pontosDeVida = 100;
+
+                tempoAtacarNovamente = 2.0f; 
+                dano = 10;
+
+                aceleracaoHorizontal = 400.0f;
+                desaceleracaoHorizontal = 300.0f;
+                velocidadeMaximaHorizontal= 300.0f;
+
+                corpo.setFillColor(sf::Color::Red);
+            }else {
+                pontosDeVida = 70;
+
+                tempoAtacarNovamente = 1.0f; 
+                dano = 20;
+
+                aceleracaoHorizontal = 450.0f;
+                desaceleracaoHorizontal = 350.0f;
+                velocidadeMaximaHorizontal= 400.0f;
+
+                corpo.setFillColor(sf::Color::Black);
+            }
 
             //textura = pGG->carregarTextura("assets/jogador/andando.png"); 
             //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
@@ -64,38 +81,63 @@ namespace Entidades
         {
             float dt = pGG->getTempo(); // Tempo entre frames
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-                velocidade.x += aceleracaoHorizontal * dt;
-                if (velocidade.x > velocidadeMaximaHorizontal)
-                    velocidade.x = velocidadeMaximaHorizontal;
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                velocidade.x -= aceleracaoHorizontal * dt;
-                if (velocidade.x < -velocidadeMaximaHorizontal)
-                    velocidade.x = -velocidadeMaximaHorizontal;
-            }
-            else {
-                if (velocidade.x > 0.0f)
-                {
-                    velocidade.x -= desaceleracaoHorizontal * dt;
-                    if (velocidade.x < 0.0f)
-                        velocidade.x = 0.0f;
+            if(id == 1) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) ) {
+                    velocidade.x += aceleracaoHorizontal * dt;
+                    if (velocidade.x > velocidadeMaximaHorizontal)
+                        velocidade.x = velocidadeMaximaHorizontal;
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                    velocidade.x -= aceleracaoHorizontal * dt;
+                    if (velocidade.x < -velocidadeMaximaHorizontal)
+                        velocidade.x = -velocidadeMaximaHorizontal;
+                } else {
+                    if (velocidade.x > 0.0f) {
+                        velocidade.x -= desaceleracaoHorizontal * dt;
+                        if (velocidade.x < 0.0f)
+                            velocidade.x = 0.0f;
+                    } else if (velocidade.x < 0.0f) {
+                        velocidade.x += desaceleracaoHorizontal * dt;
+                        if (velocidade.x > 0.0f)
+                            velocidade.x = 0.0f;
+                    }
                 }
-                else if (velocidade.x < 0.0f)
-                {
-                    velocidade.x += desaceleracaoHorizontal * dt;
-                    if (velocidade.x > 0.0f)
-                        velocidade.x = 0.0f;
+
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                    pular();
                 }
-            }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            {
-                pular();
-            }
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+                    atacar();
+                }
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-                atacar();
+            }else {
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+                    velocidade.x += aceleracaoHorizontal * dt;
+                    if (velocidade.x > velocidadeMaximaHorizontal)
+                        velocidade.x = velocidadeMaximaHorizontal;
+                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+                        velocidade.x -= aceleracaoHorizontal * dt;
+                        if (velocidade.x < -velocidadeMaximaHorizontal)
+                            velocidade.x = -velocidadeMaximaHorizontal;
+                } else {
+                    if (velocidade.x > 0.0f) {
+                        velocidade.x -= desaceleracaoHorizontal * dt;
+                        if (velocidade.x < 0.0f)
+                            velocidade.x = 0.0f;
+                    } else if (velocidade.x < 0.0f) {
+                        velocidade.x += desaceleracaoHorizontal * dt;
+                        if (velocidade.x > 0.0f)
+                            velocidade.x = 0.0f;
+                    }
+                }
+
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+                    pular();
+                }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))  {
+                    atacar();
+                }
             }
         }
 

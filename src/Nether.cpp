@@ -8,8 +8,8 @@ namespace Fases {
     maxPlataformas(3)
     {
         carregarMapa("include/Tilemap/Nether.json","include/Tilemap/NetherTiles.png");
-        jogador = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
-        adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
+        //jogador = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
+        //adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
     }
@@ -28,7 +28,7 @@ namespace Fases {
         backgroundSprite.setScale(3.7,2.9);
         backgroundSprite.setOrigin(sf::Vector2f(80,-35));
         pGG->desenharOutros(backgroundSprite);
-        pGG->centralizarCamera(jogador->getCorpo()->getPosition());
+        //pGG->centralizarCamera(jogador->getCorpo()->getPosition());
     }
 
     void Nether::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) {

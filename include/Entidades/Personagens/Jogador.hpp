@@ -16,9 +16,12 @@ namespace Entidades
 
                 //Atributo pontuação
                 static int pontos;
+                
+                //Atributo para identificar o jogador
+                int id;
 
             public:
-                Jogador(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel = sf::Vector2f(0.0f, 0.0f));
+                Jogador(sf::Vector2f pos, sf::Vector2f tam, int idJogador, sf::Vector2f vel = sf::Vector2f(0.0f, 0.0f));
                 ~Jogador();
                 void executar();
                 void desenhar();
