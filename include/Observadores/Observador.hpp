@@ -21,8 +21,8 @@ namespace Observadores {
             Observador();
             virtual ~Observador();
             void removerObservador();
-            virtual void notificarSolta(sf::Keyboard::Key tecla) = 0;
-            virtual void notificarPressionada(sf::Keyboard::Key tecla) = 0;
+            virtual void notificarSolta(sf::Keyboard::Key tecla) {}
+            virtual void notificarPressionada(sf::Keyboard::Key tecla) {}
             void mudarAtivar();
             bool getAtivar() const;
     };  

@@ -4,6 +4,7 @@
 #include "Menus/MenuPause.hpp"
 #include "Fases/Fase1.hpp"
 #include "Fases/Nether.hpp"
+#include "Menus/GameOver.hpp"
 #include <stack>
 
 namespace Gerenciadores {
@@ -13,6 +14,7 @@ namespace Gerenciadores {
         int estadoAtual;
         static GerenciadorEstados* instancia;
         GerenciadorEstados(); //Singletron
+        Menus::GameOver* pGameOver;
     public:
         ~GerenciadorEstados();
         static GerenciadorEstados* getInstancia();
@@ -21,6 +23,7 @@ namespace Gerenciadores {
         void addEstado(int id);
         void removerEstado();   
         void executar(); 
+        void executarGameOver(sf::Event evento);
         int getTamanho();
     };
 }

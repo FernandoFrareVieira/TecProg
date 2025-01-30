@@ -49,6 +49,10 @@ namespace Gerenciadores {
         else if (id == 3) {
             estados.push(new Fases::Nether(3));
         }
+        else if (id == 4) {
+            pGameOver = new Menus::GameOver(4);
+            estados.push(pGameOver);
+        }
     }  
 
     void GerenciadorEstados::removerEstado() {
@@ -59,6 +63,10 @@ namespace Gerenciadores {
     void GerenciadorEstados::executar() {
         if (!estados.empty())
             estados.top()->executar();
+    }
+
+    void GerenciadorEstados::executarGameOver(sf::Event evento) {
+        pGameOver->executar(evento);
     }
 
     int GerenciadorEstados::getTamanho(){

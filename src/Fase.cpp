@@ -72,6 +72,7 @@ namespace Fases
 
     void Fase::executar() {
         desenhar();
+        pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
         listaObstaculos.executar();
         listaInimigos.executar();
         listaJogadores.executar();

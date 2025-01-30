@@ -41,7 +41,6 @@ namespace Fases
         backgroundSprite.setScale(4,3.2);
         backgroundSprite.setOrigin(sf::Vector2f(50,-30));
         pGG->desenharOutros(backgroundSprite);
-        pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
     }   
 
     void Fase1::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)

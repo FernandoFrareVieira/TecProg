@@ -43,7 +43,11 @@ namespace Gerenciadores
         while(pGG->getJanela()->pollEvent(evento)) {
             if(evento.type == sf::Event::Closed) {
                 pGG->fechar();
-            }else if(evento.type == sf::Event::KeyPressed) {
+            }
+            if (gEstados->getEstadoAtual()->getID() == 4) {
+                gEstados->executarGameOver(evento);
+            }
+            else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
                 /////
                 if (gEstados->getEstadoAtual()->getID() == 1 || gEstados->getEstadoAtual()->getID() == 3) { //Fazer Observador fase

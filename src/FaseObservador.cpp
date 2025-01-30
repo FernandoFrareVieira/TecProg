@@ -21,7 +21,7 @@ namespace Observadores {
 
     void FaseObservador::notificarGameOver() {
         pGEstados->removerEstado();
-        pGEstados->addEstado(0);
+        pGEstados->addEstado(4);
     }
 
     void FaseObservador::notificarPressionada(sf::Keyboard::Key tecla){
