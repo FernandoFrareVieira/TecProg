@@ -2,10 +2,15 @@
 #include "Estados/Estado.hpp"
 #include "Menus/MenuPrincipal.hpp"
 #include "Menus/MenuPause.hpp"
-#include "Fases/Fase1.hpp"
-#include "Fases/Nether.hpp"
 #include "Menus/GameOver.hpp"
+#include "Listas/ListaEntidades.hpp"
 #include <stack>
+
+namespace Fases {
+    class Fase;
+    class Fase1;
+    class Nether;
+}
 
 namespace Gerenciadores {
     class GerenciadorEstados {
@@ -15,6 +20,7 @@ namespace Gerenciadores {
         static GerenciadorEstados* instancia;
         GerenciadorEstados(); //Singletron
         Menus::GameOver* pGameOver;
+        Listas::ListaEntidades* LJ;
     public:
         ~GerenciadorEstados();
         static GerenciadorEstados* getInstancia();
@@ -25,6 +31,7 @@ namespace Gerenciadores {
         void executar(); 
         void executarGameOver(sf::Event evento);
         int getTamanho();
+        void setListaJogadores(Listas::ListaEntidades* lista) {LJ = lista;}
     };
 }
 

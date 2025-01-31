@@ -13,8 +13,6 @@ namespace Fases
             const int maxPlataformas;
 
             sf::Texture background;
-            //Provisorio
-            Entidades::Personagens::Jogador* jogador;
         public:
             Fase1(int id);
             ~Fase1();

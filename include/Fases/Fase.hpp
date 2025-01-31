@@ -14,6 +14,7 @@
 #include "Entidades/Personagens/Esqueleto.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
 #include "Observadores/FaseObservador.hpp"
+#include "Gerenciadores/GerenciadorEstados.hpp"
 
 namespace Fases
 {
@@ -30,6 +31,7 @@ namespace Fases
             sf::RectangleShape corpo;
 
             Gerenciadores::GerenciadorColisoes pGC;
+            Gerenciadores::GerenciadorEstados* pGEstados;
 
             nlohmann::json mapa;
             sf::Texture tilesetTextura;

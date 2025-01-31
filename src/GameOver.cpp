@@ -4,7 +4,8 @@ namespace Menus {
     GameOver::GameOver(int id):
     Menus::Menu(0,id),
     pontuacao(0),
-    nomeJogador("teste")
+    nomeJogador("teste"),
+    LJ()
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         corpo.setFillColor(sf::Color::White);
@@ -39,10 +40,22 @@ namespace Menus {
     }
 
     void GameOver::addPontuacao() {
-    if (!nomeJogador.empty()) {
-        jogadores[nomeJogador] = std::to_string(pontuacao);
-        std::cout << "Nome salvo: " << nomeJogador << " - Pontuação: " << pontuacao << std::endl;
-        }   
+        for (int i = 0; i < LJ->getTamanho(); i++) {
+            Entidades::Entidade* entidade = LJ->operator[](i);
+
+            Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(entidade);
+            pontuacao += jogador->getPontuacao(); // Reseta para falso
+        }
+        jogadores[nomeJogador] = std::to_string(pontuacao + 1);
+        if (nomeJogador.empty()) {
+            jogadores.erase(nomeJogador);
+        }
+        if (jogadores.size() > MAX_JOGADORES) {
+            auto itMenor = std::min_element(jogadores.begin(), jogadores.end(),
+                [](const auto& a, const auto& b) { return a.second < b.second; });
+
+            jogadores.erase(itMenor);
+        }
     }
 
     void GameOver::executar(sf::Event evento){
@@ -60,12 +73,10 @@ namespace Menus {
                 }
             }
         }
-        if (evento.type == sf::Event::KeyPressed && evento.key.code == sf::Keyboard::Enter) {
+        if (evento.key.code == sf::Keyboard::Enter) {
             addPontuacao(); // Adiciona ao mapa
-            printf("ADICIONOU PONTUAÇÃO\n");
-            fflush(stdout);
         }
-        textoNome.setString("Nome: " + nomeJogador);
-        textoPontuacao.setString("Pontuacao: " + std::to_string(pontuacao));
+        textoNome.setString("Jogador: " + nomeJogador);
+        textoPontuacao.setString("Pontos: " + std::to_string(pontuacao));
     }
 }

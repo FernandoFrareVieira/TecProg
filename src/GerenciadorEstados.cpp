@@ -1,5 +1,7 @@
 #include "Gerenciadores/GerenciadorEstados.hpp"
 #include "Gerenciadores/GerenciadorEventos.hpp"
+#include "Fases/Fase1.hpp"
+#include "Fases/Nether.hpp"
 #include <stdio.h>
 
 namespace Gerenciadores {
@@ -7,7 +9,8 @@ namespace Gerenciadores {
     
     GerenciadorEstados::GerenciadorEstados():
     estados(),
-    estadoAtual(0)
+    estadoAtual(0),
+    LJ()
     {
     }
 
@@ -51,6 +54,7 @@ namespace Gerenciadores {
         }
         else if (id == 4) {
             pGameOver = new Menus::GameOver(4);
+            pGameOver->setListaJogadores(LJ);
             estados.push(pGameOver);
         }
     }  
