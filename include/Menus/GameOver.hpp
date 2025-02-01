@@ -23,6 +23,6 @@ namespace Menus {
         void executar(sf::Event evento);
         void addPontuacao();
         void setListaJogadores(Listas::ListaEntidades* Lista) {LJ = Lista;}
-        std::map<std::string, std::string> getLista() {return jogadores;}
+        std::map<std::string, std::string>* getLista() {return &jogadores;}
     };
 }

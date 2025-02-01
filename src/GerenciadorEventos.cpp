@@ -46,6 +46,7 @@ namespace Gerenciadores
             }
             if (gEstados->getEstadoAtual()->getID() == 4) {
                 gEstados->executarGameOver(evento);
+                LO->notificarTeclaSolta(evento.key.code);
             }
             else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
@@ -53,10 +54,9 @@ namespace Gerenciadores
                 if (gEstados->getEstadoAtual()->getID() == 1 || gEstados->getEstadoAtual()->getID() == 3) { //Fazer Observador fase
                     if (evento.key.code == sf::Keyboard::Key::Escape) {
                         gEstados->addEstado(2);
-
                     }
                 }
-                if (gEstados->getEstadoAtual()->getID() == 0 || gEstados->getEstadoAtual()->getID() == 2) {
+                else if (gEstados->getEstadoAtual()->getID() == 0 || gEstados->getEstadoAtual()->getID() == 2) {
                     LO->notificarTeclaPressionada(evento.key.code);
                 }
             }

@@ -52,6 +52,10 @@ namespace Observadores {
                 pGEstados->removerEstado();
                 pGEstados->addEstado(0);
             }
+            else if (pGEstados->getEstadoAtual()->getID() == 4 && pMenu->getIndice() == 0) {
+                pGEstados->removerEstado();
+                pGEstados->addEstado(0);
+            }
         }
     }
 }

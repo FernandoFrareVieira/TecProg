@@ -2,7 +2,7 @@
 
 namespace Menus {
     GameOver::GameOver(int id):
-    Menus::Menu(0,id),
+    Menus::Menu(1,id),
     pontuacao(0),
     nomeJogador("teste"),
     LJ()
@@ -21,7 +21,8 @@ namespace Menus {
         textoPontuacao.setCharacterSize(30);
         textoPontuacao.setFillColor(sf::Color::Black);
         textoPontuacao.setPosition(550, 450);
-        
+        opcoes[0]->setTexto("MENU PRINCIPAL");
+        opcoes[0]->mudarCor();
     }
 
     GameOver::~GameOver() {
@@ -40,6 +41,7 @@ namespace Menus {
     }
 
     void GameOver::addPontuacao() {
+        pontuacao = 0;
         for (int i = 0; i < LJ->getTamanho(); i++) {
             Entidades::Entidade* entidade = LJ->operator[](i);
 
@@ -78,5 +80,7 @@ namespace Menus {
         }
         textoNome.setString("Jogador: " + nomeJogador);
         textoPontuacao.setString("Pontos: " + std::to_string(pontuacao));
+        
     }
+
 }

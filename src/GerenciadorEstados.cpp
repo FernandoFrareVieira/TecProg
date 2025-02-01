@@ -57,6 +57,9 @@ namespace Gerenciadores {
             pGameOver->setListaJogadores(LJ);
             estados.push(pGameOver);
         }
+        else if (id == 5) {
+            estados.push(new Menus::Leaderboard(5));
+        }
     }  
 
     void GerenciadorEstados::removerEstado() {
