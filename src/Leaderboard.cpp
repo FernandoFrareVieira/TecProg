@@ -71,7 +71,7 @@ namespace Menus {
 
     arquivo.close();
     for (const auto& entry : rank) {
-        std::cout << entry.second << " - " << entry.first << std::endl;
+        //std::cout << entry.second << " - " << entry.first << std::endl;
     }
     return;
     }

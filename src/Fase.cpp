@@ -82,6 +82,14 @@ namespace Fases
         if (!pJogador1->getVivo())
             pObservadorFase->notificarGameOver();
         mudarFase();
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+            salvar("saves/save.dat");
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
+            carregar("saves/save.dat");
+        }
     }
 
 
@@ -165,5 +173,95 @@ namespace Fases
         Entidades::Personagens::Esqueleto* inimigo = new Entidades::Personagens::Esqueleto(posicoes_inimigos[pos],tamanho,sf::Vector2f(0,0),jogador);
         adicionarInimigos(inimigo);
     } 
+
+
+    void Fase::salvar(const std::string& caminhoArquivo)
+    {
+        std::ofstream arquivo(caminhoArquivo, std::ios::binary);
+
+        if(!arquivo.is_open()) {
+            std::cout << "Erro ao salvar o jogo";
+            return;
+        }
+
+        //Salvar jogadores
+
+        sf::Vector2f posJogador1 = pJogador1->getCorpo()->getPosition();
+        arquivo.write(reinterpret_cast<char*>(&posJogador1), sizeof(sf::Vector2f));
+
+        sf::Vector2f posJogador2 = pJogador2->getCorpo()->getPosition();
+        arquivo.write(reinterpret_cast<char*>(&posJogador2), sizeof(sf::Vector2f));
+
+        //Salvar inimigos
+        int numInimigos = listaInimigos.getTamanho();
+        arquivo.write(reinterpret_cast<char*>(&numInimigos), sizeof(int));
+
+        Entidades::Entidade* inimigoEntidade;
+
+        for (int i = 0; i < numInimigos; i++) {
+            inimigoEntidade = listaInimigos.operator[](i);
+
+            sf::Vector2f pos = inimigoEntidade->getCorpo()->getPosition();
+            arquivo.write(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+        }
+
+        //Salvar obstaculos
+        int numObstaculos = listaObstaculos.getTamanho();
+        arquivo.write(reinterpret_cast<char*>(&numObstaculos), sizeof(int));
+
+        Entidades::Entidade* obstaculoEntidade;
+
+        for (int i = 0; i < numObstaculos; i++) {
+            obstaculoEntidade = listaObstaculos.operator[](i);
+
+            sf::Vector2f pos = obstaculoEntidade->getCorpo()->getPosition();
+            arquivo.write(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+        }
+
+        arquivo.close();
+    }
+
+    void Fase::carregar(const std::string& caminhoArquivo)
+    {
+        std::ifstream arquivo(caminhoArquivo, std::ios::binary);
+        if (!arquivo.is_open()) {
+            std::cerr << "Erro ao carregar o jogo.\n";
+            return;
+        }
+
+        // Carregar jogadores
+        sf::Vector2f posJogador1, posJogador2;
+        arquivo.read(reinterpret_cast<char*>(&posJogador1), sizeof(sf::Vector2f));
+        arquivo.read(reinterpret_cast<char*>(&posJogador2), sizeof(sf::Vector2f));
+
+        pJogador1->getCorpo()->setPosition(posJogador1);
+        pJogador2->getCorpo()->setPosition(posJogador2);
+
+        // Carregar inimigos
+        int numInimigos;
+        arquivo.read(reinterpret_cast<char*>(&numInimigos), sizeof(int));
+
+        listaInimigos.limpar();
+        for (int i = 0; i < numInimigos; i++) {
+            sf::Vector2f pos;
+            arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(50, 50), sf::Vector2f(2.0f, 2.0f), pJogador1);
+            adicionarInimigos(esqueleto);
+        }
+
+        // Carregar obstáculos
+        int numObstaculos;
+        arquivo.read(reinterpret_cast<char*>(&numObstaculos), sizeof(int));
+
+        listaObstaculos.limpar();
+        for (int i = 0; i < numObstaculos; i++) {
+            sf::Vector2f pos;
+            arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            Entidades::Obstaculos::Plataforma* obstaculo = new Entidades::Obstaculos::Plataforma(pos, sf::Vector2f(50, 50));
+            adicionarObstaculos(obstaculo);
+        }
+
+        arquivo.close();
+    }
 
 }

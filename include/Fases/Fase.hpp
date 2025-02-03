@@ -54,5 +54,9 @@ namespace Fases
             void executar();
             void mudarFase();
 
+
+            //Salvamento e Carregamento
+            void salvar(const std::string& caminhoArquivo);
+            void carregar(const std::string& caminhoArquivo);
     };
 }

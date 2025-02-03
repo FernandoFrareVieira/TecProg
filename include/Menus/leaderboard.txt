@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 f-20
 fe-0
 fel-0
@@ -17,4 +18,7 @@ testeddda-20
 perfeito-10
 testeddddd-20
 testeds-20
+=======
+Fernando-30
+>>>>>>> a9227a80819eec35d031df6e8cecabd16c5e920d
 teste-20

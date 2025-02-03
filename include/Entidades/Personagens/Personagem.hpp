@@ -54,7 +54,9 @@ namespace Entidades
                 void atualizarPosicao();
                 void pular();
                 void setPodePular(bool pPular); 
-                bool getVivo() {return vivo;}
+                bool getVivo();
+
+                int getPontosDeVida();
         };
     }
 }

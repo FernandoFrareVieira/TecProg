@@ -25,7 +25,7 @@ namespace Entidades
                 virtual void desenhar() = 0;
                 void mover();
 
-                virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
+                void colidir(Entidade* entidade2, sf::Vector2f ds);
         };
     }
 }

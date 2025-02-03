@@ -15,7 +15,7 @@ namespace Entidades
             tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
 
-            //corpo.setFillColor(sf::Color::White);
+            corpo.setFillColor(sf::Color::White);
 
             //textura = pGG->carregarTextura("assets/inimigos/esqueleto.png");
             //corpo.setTextureRect(sf::IntRect(10,15,32,30));
@@ -38,35 +38,5 @@ namespace Entidades
             }
             
          }
-
-        void Esqueleto::colidir(Entidade* entidade2, sf::Vector2f ds)
-        {
-            switch(entidade2->getId()) {
-                case(ID::jogador):
-                {       
-                    Personagem* pPersonagem = static_cast<Personagem*>(entidade2);             
-                    atacar();
-                    if (estaAtacando) {
-                        
-                        pPersonagem->tomarDano(dano);
-
-                        estaAtacando = false;
-                    }
-
-                    //colisaoPersonagem(pPersonagem, ds);
-                }
-                break;
-                case(ID::obstaculo):
-                {
-                    
-                }
-                break;
-                default:
-                {
-                    
-                }
-                break;
-            }
-        }
     }
 }
