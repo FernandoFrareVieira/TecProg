@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include "Menus/Menu.hpp"
-#define LEADERBOARD "../TecProg/include/Menus/leaderboard.txt"
+#define LEADERBOARD "include/Menus/leaderboard.txt"
 #include <string>
 #include <sstream>
 

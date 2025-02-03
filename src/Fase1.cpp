@@ -13,11 +13,14 @@ namespace Fases
         carregarMapa("include/Tilemap/Tiles.json","include/Tilemap/SwampTiles.png");
 
         for(int i = 0; i < 1; i++) {
-            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(200.0f + (i*100.0f), 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(800.0f + (i*100.0f), 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
             adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
         }
         criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
         pGC.setInimigos(&listaInimigos);
+
+        Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(sf::Vector2f(300.0f, 1015.0f), sf::Vector2f(100.0f, 20.0f));
+        adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
 
         //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(500.0f, 400.0f), sf::Vector2f(400.0f, 100.0f), sf::Vector2f(0.0f, 0.0f));
         //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
@@ -48,39 +51,39 @@ namespace Fases
         
         switch (tipo){  
             case 1 : { //plataforma
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama1.png");
-            adicionarObstaculos(plataforma);
+                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+                plataforma->setTextura("assets/plataformas/grama1.png");
+                adicionarObstaculos(plataforma);
             }
             case 2: {
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama2.png");
-            adicionarObstaculos(plataforma);
+                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+                plataforma->setTextura("assets/plataformas/grama2.png");
+                adicionarObstaculos(plataforma);
             }
             case 3: {
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama3.png");
-            adicionarObstaculos(plataforma);
+                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+                plataforma->setTextura("assets/plataformas/grama3.png");
+                adicionarObstaculos(plataforma);
             }
             case 5: {
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama5.png");
-            adicionarObstaculos(plataforma);
+                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+                plataforma->setTextura("assets/plataformas/grama5.png");
+                adicionarObstaculos(plataforma);
             }
             case 10: {
-            Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicao, tamanho, sf::Vector2f(0,0));
-            gosma->setTextura("assets/plataformas/gosma.png");
-            adicionarObstaculos(gosma);
+                Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicao, tamanho, sf::Vector2f(0,0));
+                gosma->setTextura("assets/plataformas/gosma.png");
+                adicionarObstaculos(gosma);
             }
             case 12: {
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama12.png");
-            adicionarObstaculos(plataforma);
+                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+                plataforma->setTextura("assets/plataformas/grama12.png");
+                adicionarObstaculos(plataforma);
             }
             case 13: {
-            Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-            plataforma->setTextura("assets/plataformas/grama13.png");
-            adicionarObstaculos(plataforma);
+                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+                plataforma->setTextura("assets/plataformas/grama13.png");
+                adicionarObstaculos(plataforma);
             }
         }
         /*

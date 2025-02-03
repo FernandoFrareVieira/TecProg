@@ -22,7 +22,7 @@ namespace Entidades
             tempoDesdeUltimoAtaque = 0.0f;
         
             if(id == 1) {
-                pontosDeVida = 100;
+                pontosDeVida = 50;
 
                 tempoAtacarNovamente = 2.0f; 
                 dano = 10;
@@ -31,9 +31,12 @@ namespace Entidades
                 desaceleracaoHorizontal = 300.0f;
                 velocidadeMaximaHorizontal= 300.0f;
 
-                corpo.setFillColor(sf::Color::Red);
+                textura = pGG->carregarTextura("assets/jogador1/andando.png"); 
+                corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
+                corpo.setTextureRect(sf::IntRect(40,48,15,33));
+                corpo.setTexture(textura);
             }else {
-                pontosDeVida = 70;
+                pontosDeVida = 30;
 
                 tempoAtacarNovamente = 1.0f; 
                 dano = 20;
@@ -42,13 +45,12 @@ namespace Entidades
                 desaceleracaoHorizontal = 350.0f;
                 velocidadeMaximaHorizontal= 400.0f;
 
-                corpo.setFillColor(sf::Color::Black);
-            }
+                textura = pGG->carregarTextura("assets/jogador2/Idle.png"); 
+                corpo.setSize(sf::Vector2f(128.0f, 128.0f));
+                corpo.setTextureRect(sf::IntRect(0, 0, 128, 128));
+                corpo.setTexture(textura);
 
-            //textura = pGG->carregarTextura("assets/jogador/andando.png"); 
-            //corpo.setSize(sf::Vector2f(LARGURA/30.0f,ALTURA/7.5f));
-            //corpo.setTextureRect(sf::IntRect(40,48,15,33));
-            //corpo.setTexture(textura);
+            }
         }
 
         Jogador::~Jogador()
@@ -59,7 +61,7 @@ namespace Entidades
         {
             atualizarPosicao();
             atualizarAtaque();
-            
+
             desenhar();
             mover();
             if (this->getPosicao().y > 1090)

@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iostream>
 
-#define LEADERBOARD "../TecProg/include/Menus/leaderboard.txt"
+#define LEADERBOARD "include/Menus/leaderboard.txt"
 #define MAX_JOGADORES 4
 
 namespace Menus {

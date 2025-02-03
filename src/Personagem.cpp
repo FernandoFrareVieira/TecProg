@@ -1,5 +1,6 @@
 #include "Entidades/Personagens/Personagem.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
+#include "Entidades/Personagens/Inimigo.hpp"
 #include <iostream>
 
 namespace Entidades
@@ -84,10 +85,19 @@ namespace Entidades
 
             //Verifica se o Personagem é jogador
             if(this->getId() == ID::jogador) {
-                auto jogador = dynamic_cast<Personagens::Jogador*>(this);
+                auto pJogador = dynamic_cast<Personagens::Jogador*>(this);
                 
-                if(jogador)
-                    jogador->perderPontos(5);
+                if(pJogador) {
+                    pJogador->perderPontos(5);
+                    sf::Vector2f velocidadeAtual = pJogador->getVelocidade();
+
+                    pJogador->setVelocidade(sf::Vector2f(-velocidadeAtual.x, -velocidadeAtual.y));
+                }       
+            }else {
+                auto pInimigo = dynamic_cast<Personagens::Inimigo*>(this);
+
+                if(pInimigo) {
+                }
             }
         }
 
