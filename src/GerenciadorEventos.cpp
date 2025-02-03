@@ -56,14 +56,12 @@ namespace Gerenciadores
                         gEstados->addEstado(2);
                     }
                 }
-                else if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal || gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause) {
+                else {
                     LO->notificarTeclaPressionada(evento.key.code);
                 }
             }
             else if(evento.type == sf::Event::KeyReleased) {
-                if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal || gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause) {
-                    LO->notificarTeclaSolta(evento.key.code);
-                }
+                LO->notificarTeclaSolta(evento.key.code);
             }
         }
     }

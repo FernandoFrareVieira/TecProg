@@ -15,6 +15,7 @@ namespace Menus {
         opcoes[1]->setBotao(voltar);
         opcoes[1]->setTexto("Voltar");
         opcoes[1]->setPosicao(sf::Vector2f(1050,1000));
+
     }
 
     Leaderboard::~Leaderboard() {
@@ -76,5 +77,6 @@ namespace Menus {
     for (const auto& entry : rank) {
         //std::cout << entry.second << " - " << entry.first << std::endl;
     }
+
     }
 }

@@ -26,7 +26,10 @@ namespace Observadores {
                 pGEstados->addEstado(1);
             }
             else if (pMenu->getBotao() == Menus::BOTOES::sair && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal) {
-                pGG->fechar();
+                if (pMenu->getBotao() == Menus::BOTOES::sair)
+                    pGG->fechar();
+                    printf("ENTROU SAIU\n");
+                fflush(stdout);
             }
             else if (pMenu->getBotao() == Menus::BOTOES::continuar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
                 pGEstados->removerEstado();
@@ -52,9 +55,19 @@ namespace Observadores {
                 pGEstados->removerEstado();
                 pGEstados->addEstado(0);
             }
-            else if (pGEstados->getEstadoAtual()->getID() == Estados::ID_Estado::game_over && pMenu->getBotao() == Menus::BOTOES::menu_principal) {
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over && pMenu->getBotao() == Menus::BOTOES::menu_principal) {
                 pGEstados->removerEstado();
                 pGEstados->addEstado(0);
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::leaderboard) {
+                pGEstados->removerEstado();
+                pGEstados->addEstado(5);
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::leaderboard && pMenu->getBotao() == Menus::BOTOES::voltar) {
+                pGEstados->removerEstado();
+                pGEstados->addEstado(0);
+                printf("ENTROU LEADERBOARD\n");
+                fflush(stdout);
             }
         }
     }

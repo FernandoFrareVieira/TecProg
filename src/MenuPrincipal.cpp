@@ -3,7 +3,7 @@
 
 namespace Menus {
     MenuPrincipal::MenuPrincipal(int id):
-    Menu(5,id)
+    Menu(6,id)
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         opcoes[0]->setTexto("Iniciar");
@@ -17,7 +17,6 @@ namespace Menus {
         opcoes[3]->setTexto("Leaderboard");
         opcoes[4]->setBotao(sair);
         opcoes[4]->setTexto("Sair");
-        
         corpo.setFillColor(sf::Color::White);
     }
     MenuPrincipal::~MenuPrincipal() {
