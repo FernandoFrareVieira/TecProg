@@ -14,3 +14,7 @@ a-20
 te-30
 testeddda-20
 0-20
+perfeito-10
+testeddddd-20
+testeds-20
+teste-20

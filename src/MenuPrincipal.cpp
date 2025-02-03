@@ -13,6 +13,10 @@ namespace Menus {
         corpo.setFillColor(sf::Color::White);
     }
     MenuPrincipal::~MenuPrincipal() {
+        if (pMenuObservador) {
+            delete pMenuObservador;
+        }
+        pMenuObservador = nullptr;
     }
 
 
