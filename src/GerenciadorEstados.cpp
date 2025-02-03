@@ -58,6 +58,7 @@ namespace Gerenciadores {
             estados.push(pGameOver);
         }
         else if (id == 5) {
+            Menus::Leaderboard* pLeaderboard = new Menus::Leaderboard(5);
             estados.push(new Menus::Leaderboard(5));
         }
     }  
@@ -74,6 +75,7 @@ namespace Gerenciadores {
 
     void GerenciadorEstados::executarGameOver(sf::Event evento) {
         pGameOver->executar(evento);
+        //PontuacaoJogadores = pGameOver->getLista();
     }
 
     int GerenciadorEstados::getTamanho(){

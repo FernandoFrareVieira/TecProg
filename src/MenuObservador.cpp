@@ -54,7 +54,7 @@ namespace Observadores {
             }
             else if (pGEstados->getEstadoAtual()->getID() == 4 && pMenu->getIndice() == 0) {
                 pGEstados->removerEstado();
-                pGEstados->addEstado(0);
+                pGEstados->addEstado(5);
             }
         }
     }

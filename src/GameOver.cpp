@@ -1,6 +1,8 @@
 #include "Menus/GameOver.hpp"
 
 namespace Menus {
+    std::map<std::string, std::string> Menus::GameOver::jogadores;
+
     GameOver::GameOver(int id):
     Menus::Menu(1,id),
     pontuacao(0),
@@ -40,26 +42,6 @@ namespace Menus {
         pGG->desenharOutros(textoPontuacao);
     }
 
-    void GameOver::addPontuacao() {
-        pontuacao = 0;
-        for (int i = 0; i < LJ->getTamanho(); i++) {
-            Entidades::Entidade* entidade = LJ->operator[](i);
-
-            Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(entidade);
-            pontuacao += jogador->getPontuacao(); // Reseta para falso
-        }
-        jogadores[nomeJogador] = std::to_string(pontuacao + 1);
-        if (nomeJogador.empty()) {
-            jogadores.erase(nomeJogador);
-        }
-        if (jogadores.size() > MAX_JOGADORES) {
-            auto itMenor = std::min_element(jogadores.begin(), jogadores.end(),
-                [](const auto& a, const auto& b) { return a.second < b.second; });
-
-            jogadores.erase(itMenor);
-        }
-    }
-
     void GameOver::executar(sf::Event evento){
         if (evento.type == sf::Event::TextEntered) {
             if (evento.text.unicode < 128) {
@@ -76,11 +58,35 @@ namespace Menus {
             }
         }
         if (evento.key.code == sf::Keyboard::Enter) {
-            addPontuacao(); // Adiciona ao mapa
+            salvar(); // Adiciona ao mapa
+        }
+        for (int i = 0; i < LJ->getTamanho(); i++) {
+            Entidades::Entidade* entidade = LJ->operator[](i);
+
+            Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(entidade);
+            pontuacao += jogador->getPontuacao();
         }
         textoNome.setString("Jogador: " + nomeJogador);
         textoPontuacao.setString("Pontos: " + std::to_string(pontuacao));
-        
+        nomePonto = nomeJogador + "-" + std::to_string(pontuacao);
+        pontuacao = 0;
     }
+
+    void GameOver::salvar() {
+    std::ofstream arquivo(LEADERBOARD, std::ios::app);  // "app" faz com que o arquivo não seja sobrescrito
+    if (!arquivo) {
+        std::cerr << "Erro ao abrir o arquivo para salvar! Caminho: " << LEADERBOARD << std::endl;
+        perror("Erro do sistema");
+        return;
+    }
+    else {
+        std::cerr << "SALVO COM SUCESSO" << std::endl;
+    }
+    arquivo << nomePonto << std::endl;
+
+    arquivo.close();
+    }
+
+
 
 }
