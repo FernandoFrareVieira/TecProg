@@ -21,7 +21,7 @@ namespace Entidades
             velocidadeMaximaHorizontal(350.0f),
             podePular(false),
             gravidade(600.0f),
-            velocidadePulo(-300.0f)
+            velocidadePulo(-470.0f)
         {}
 
         Personagem::~Personagem()
