@@ -245,7 +245,7 @@ namespace Fases
         for (int i = 0; i < numInimigos; i++) {
             sf::Vector2f pos;
             arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
-            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(50, 50), sf::Vector2f(0, 0), pJogador1);
+            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(50, 50), sf::Vector2f(2.0f, 2.0f), pJogador1);
             adicionarInimigos(esqueleto);
         }
 
