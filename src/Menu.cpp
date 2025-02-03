@@ -28,7 +28,7 @@ namespace Menus {
         pGG->getJanela()->setView(pGG->getJanela()->getDefaultView());
         pMenuObservador = new Observadores::MenuObservador();
         if (pMenuObservador != nullptr) {
-            pMenuObservador->setMenu(this);     
+            pMenuObservador->setMenu(this);  
         }
     }
 

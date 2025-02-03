@@ -4,7 +4,8 @@
 namespace Menus {
     Opcao::Opcao():
     pGG(Gerenciadores::GerenciadorGrafico::getInstancia()),
-    corpo(sf::Vector2f(100,100))
+    corpo(sf::Vector2f(100,100)),
+    botao(vazio)
     {
         texto.setOrigin(500, 500);
         corpo.setOrigin(500,500);

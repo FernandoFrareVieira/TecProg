@@ -3,8 +3,21 @@
 #include "Gerenciadores/GerenciadorGrafico.hpp"
 
 namespace Menus {
+    enum BOTOES {
+        vazio,
+        iniciar,
+        sair,
+        continuar,
+        salvar,
+        menu_principal,
+        voltar,
+        carregar,
+        dois_jogadores,
+        leaderboard,
+    };
     class Opcao {
         private:
+            BOTOES botao;
             sf::Font fonte;
             sf::RectangleShape corpo;
             sf::Text texto;
@@ -16,5 +29,7 @@ namespace Menus {
             void setPosicao(sf::Vector2f posicao);
             void setTexto(const std::string text);
             void mudarCor();
+            void setBotao(BOTOES b) {botao = b;}
+            BOTOES getBotao() {return botao;}
     };
 }

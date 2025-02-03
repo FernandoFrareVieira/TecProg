@@ -3,7 +3,7 @@
 namespace Menus {
 
     Leaderboard::Leaderboard(int id):
-    Menu(9,id)  
+    Menu(3,id)  
     {
         opcoes[0]->setTexto("LEADERBOARD");
         if (!fonte.loadFromFile("assets/fontes/Ubuntu-R.ttf")) {
@@ -12,6 +12,9 @@ namespace Menus {
         textoLeaderboard.setFont(fonte);
         textoLeaderboard.setCharacterSize(30);
         textoLeaderboard.setFillColor(sf::Color::Black);
+        opcoes[1]->setBotao(voltar);
+        opcoes[1]->setTexto("Voltar");
+        opcoes[1]->setPosicao(sf::Vector2f(1050,1000));
     }
 
     Leaderboard::~Leaderboard() {
@@ -61,18 +64,17 @@ namespace Menus {
         // Lê a pontuação após o traço
         ss >> pontuacao;
 
-        // Agora insere a pontuação no map após separar a linha
+        
         rank.insert(std::make_pair(pontuacao, nome));
         if (rank.size() > 3) {
-            // O menor elemento estará no final, então removemos
+            
             rank.erase(std::prev(rank.end()));
-        }  // Usando multimap para manter a ordem crescente
+        }  
     }
 
     arquivo.close();
     for (const auto& entry : rank) {
         //std::cout << entry.second << " - " << entry.first << std::endl;
     }
-    return;
     }
 }
