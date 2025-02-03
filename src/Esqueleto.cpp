@@ -15,7 +15,7 @@ namespace Entidades
             tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
 
-            //corpo.setFillColor(sf::Color::White);
+            corpo.setFillColor(sf::Color::White);
 
             //textura = pGG->carregarTextura("assets/inimigos/esqueleto.png");
             //corpo.setTextureRect(sf::IntRect(10,15,32,30));

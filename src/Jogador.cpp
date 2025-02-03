@@ -109,7 +109,6 @@ namespace Entidades
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                     atacar();
                 }
-
             }else {
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
                     velocidade.x += aceleracaoHorizontal * dt;

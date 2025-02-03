@@ -8,7 +8,7 @@ namespace Entidades
         Obstaculo(pos, tam, vel)
         {
             
-            corpo.setFillColor(sf::Color::White);
+            //corpo.setFillColor(sf::Color::White);
             //corpo.setSize(sf::Vector2f(LARGURA, ALTURA/7.5f));
         }
 

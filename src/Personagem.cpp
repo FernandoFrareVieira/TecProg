@@ -155,5 +155,15 @@ namespace Entidades
                 velocidade.y = 0.0f;
             }
         }
+ 
+        bool Personagem::getVivo() 
+        {
+            return vivo;
+        }
+
+        int Personagem::getPontosDeVida()
+        {
+            return pontosDeVida;
+        }
     }
 }

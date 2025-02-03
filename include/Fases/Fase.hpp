@@ -52,5 +52,9 @@ namespace Fases
             void criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador);
             void executar();
             void mudarFase();
+
+            //Salvamento e Carregamento
+            void salvar(const std::string& caminhoArquivo);
+            void carregar(const std::string& caminhoArquivo);
     };
 }
