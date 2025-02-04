@@ -15,7 +15,7 @@ namespace Gerenciadores
     }
 
     GerenciadorGrafico::GerenciadorGrafico():
-        janela(new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "Teste")),
+        janela(new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "ShadowBlade")),
         camera(sf::Vector2f(LARGURA / 2, ALTURA / 2), sf::Vector2f(LARGURA, ALTURA)),
         tempo(0.0f)
     {
@@ -95,7 +95,7 @@ namespace Gerenciadores
     void GerenciadorGrafico::desenhar(sf::Text& texto){
         janela->draw(texto);
     }
-    
+
     void GerenciadorGrafico::atualizarTempo()
     {
         tempo = relogio.getElapsedTime().asSeconds();
