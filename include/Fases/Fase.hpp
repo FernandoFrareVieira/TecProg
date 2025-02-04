@@ -18,6 +18,7 @@
 
 namespace Fases
 {
+
     class Fase : public Ente, public Estados::Estado
     {
         protected:
@@ -52,6 +53,7 @@ namespace Fases
             void criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador);
             void executar();
             void mudarFase();
+
 
             //Salvamento e Carregamento
             void salvar(const std::string& caminhoArquivo);

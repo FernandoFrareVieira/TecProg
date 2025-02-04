@@ -13,10 +13,10 @@ namespace Fases
         pGC()
     {
         pGEstados = Gerenciadores::GerenciadorEstados::getInstancia();
-        pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(200.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), 1, sf::Vector2f(0.0f, 0.0f));
+        pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(400.0f, 700.0f), sf::Vector2f(40.0f, 80.0f), 1, sf::Vector2f(0.0f, 0.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador1));
 
-        pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), 2, sf::Vector2f(0.0f, 0.0f));
+        pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(300.0f, 700.0f), sf::Vector2f(50.0f, 50.0f), 2, sf::Vector2f(0.0f, 0.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador2));
         pGEstados->setListaJogadores(&listaJogadores);
         pGC.setJogadores(&listaJogadores);
@@ -170,8 +170,8 @@ namespace Fases
             pos = rand() % tam;
         } 
         */ 
-        Entidades::Personagens::Esqueleto* inimigo = new Entidades::Personagens::Esqueleto(posicoes_inimigos[pos],tamanho,sf::Vector2f(0,0),jogador);
-        adicionarInimigos(inimigo);
+        //Entidades::Personagens::Esqueleto* inimigo = new Entidades::Personagens::Esqueleto(posicoes_inimigos[pos],tamanho,sf::Vector2f(0,0),jogador);
+        //adicionarInimigos(inimigo);
     } 
 
 

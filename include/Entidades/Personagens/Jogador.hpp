@@ -10,7 +10,8 @@ namespace Entidades
         class Jogador : public Personagem
         {
             private:
-                sf::Texture* textura;
+                sf::Texture* texturaParado;
+                sf::Texture* texturaAndando;
 
                 Animacoes::Animacao animacao;
 
@@ -28,6 +29,7 @@ namespace Entidades
 
                 //Métodos de Animação
                 void atualizarAnimacao(float dt);
+                void adicionarAnimacoes();
 
                 //Métodos movimentação
                 void mover();

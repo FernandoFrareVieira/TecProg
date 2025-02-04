@@ -41,25 +41,35 @@ namespace Gerenciadores {
 
     void GerenciadorEstados::addEstado(int id) {
         if (id == 0) {
-            estados.push(new Menus::MenuPrincipal(0));
+            Menus::MenuPrincipal* MenuPrincipal = new Menus::MenuPrincipal(0);
+            MenuPrincipal->setID_Estado(Estados::ID_Estado::menu_principal);
+            estados.push(MenuPrincipal);
         }
         else if (id == 1) {
-            estados.push(new Fases::Fase1(1));
+            Fases::Fase1* Fase1 = new Fases::Fase1(1);
+            Fase1->setID_Estado(Estados::ID_Estado::pantano);
+            estados.push(Fase1);
         }
         else if (id == 2) {
-            estados.push(new Menus::MenuPause(2));
+            Menus::MenuPause* MenuPause = new Menus::MenuPause(2);
+            MenuPause->setID_Estado(Estados::ID_Estado::menu_pause);
+            estados.push(MenuPause);
         }
         else if (id == 3) {
-            estados.push(new Fases::Nether(3));
+            Fases::Nether* Nether = new Fases::Nether(3);
+            Nether->setID_Estado(Estados::ID_Estado::nether);
+            estados.push(Nether);
         }
         else if (id == 4) {
             pGameOver = new Menus::GameOver(4);
+            pGameOver->setID_Estado(Estados::ID_Estado::game_over);
             pGameOver->setListaJogadores(LJ);
             estados.push(pGameOver);
         }
         else if (id == 5) {
             Menus::Leaderboard* pLeaderboard = new Menus::Leaderboard(5);
-            estados.push(new Menus::Leaderboard(5));
+            pLeaderboard->setID_Estado(Estados::ID_Estado::leaderboard);
+            estados.push(pLeaderboard);
         }
     }  
 

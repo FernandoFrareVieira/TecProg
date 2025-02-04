@@ -1,0 +1,14 @@
+{ "columns":10,
+ "image":"SwampTiles.png",
+ "imageheight":192,
+ "imagewidth":320,
+ "margin":0,
+ "name":"Pantano",
+ "spacing":0,
+ "tilecount":60,
+ "tiledversion":"1.11.0",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}

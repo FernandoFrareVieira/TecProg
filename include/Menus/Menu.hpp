@@ -10,6 +10,7 @@ namespace Observadores {
 
 
 namespace Menus {
+
     class Menu: public Ente, public Estados::Estado  {
         protected:
             Gerenciadores::GerenciadorGrafico* pGG;
@@ -32,5 +33,6 @@ namespace Menus {
             void moverCima();
             virtual void executar();
             int getIndice() const;
+            BOTOES getBotao() const {return opcoes[indice_selecionado]->getBotao();}
     };
 }   

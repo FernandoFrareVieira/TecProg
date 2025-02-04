@@ -5,16 +5,28 @@ namespace Gerenciadores {
 }
 
 namespace Estados {
+    enum ID_Estado {
+        empty = -1,
+        menu_principal = 0,
+        pantano = 1,
+        menu_pause = 2,
+        nether = 3,
+        game_over = 4,
+        leaderboard = 5,
+    };
     class Estado {
     protected:
         Gerenciadores::GerenciadorEstados* pEG;
         int id;
+        ID_Estado estado;
     public:
         Estado(int id = -1);
         virtual ~Estado();
         void setGerenciador(Gerenciadores::GerenciadorEstados* GE) {pEG = GE;}
         virtual void executar() = 0;
         int getID();
+        void setID_Estado(ID_Estado ID) {estado = ID;}
+        const ID_Estado getID_Estado() const {return estado;}
 
     };
 }

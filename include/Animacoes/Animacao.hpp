@@ -1,23 +1,38 @@
-#pragma once
+#ifndef ANIMACAO_HPP
+#define ANIMACAO_HPP
 
 #include <SFML/Graphics.hpp>
+#include <map>
 #include <vector>
+#include <string>
 
-namespace Animacoes
-{
+namespace Animacoes {
     class Animacao {
+    private:
+        struct dadosAnimacao {
+            std::vector<sf::IntRect> quadros;
+            int indiceMax;
+        };
+
+        sf::RectangleShape* corpo;
+        sf::Texture* textura;
+        std::map<std::string, dadosAnimacao> animacoes;
+        std::string animacaoAtual;
+        float tempoTroca;
+        float tempoAtual;
+        int indiceAtual;
+
     public:
-        Animacao(sf::RectangleShape& body, float switchTime);
+        Animacao(sf::RectangleShape* corpo, float tempoTroca);
         ~Animacao();
 
-        void adicionarFrame(const sf::IntRect& frame);
-        void atualizarAnimacao(float dt);
+        void setTextura(sf::Texture* textura);
+        void adicionarAnimacao(std::string nome, std::vector<sf::IntRect> quadros);
+        void setAnimacao(std::string nome);
+        void atualizar(float dt);
 
-    private:
-        sf::RectangleShape& body;
-        std::vector<sf::IntRect> frames;
-        float switchTime;
-        float totalTime;
-        size_t currentFrame;
+        std::string getAnimacaoAtual();
     };
 }
+
+#endif

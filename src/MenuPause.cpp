@@ -6,8 +6,10 @@ namespace Menus {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         
         opcoes[0]->setTexto("Continuar");
+        opcoes[0]->setBotao(continuar);
         opcoes[0]->mudarCor();
         opcoes[1]->setTexto("Menu Principal");
+        opcoes[1]->setBotao(menu_principal);
         corpo.setFillColor(sf::Color::White);
     }
 

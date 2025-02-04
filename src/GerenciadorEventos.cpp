@@ -44,26 +44,24 @@ namespace Gerenciadores
             if(evento.type == sf::Event::Closed) {
                 pGG->fechar();
             }
-            if (gEstados->getEstadoAtual()->getID() == 4) {
+            if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over) {
                     gEstados->executarGameOver(evento);
                     LO->notificarTeclaSolta(evento.key.code);
                 }
             else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
                 /////
-                if (gEstados->getEstadoAtual()->getID() == 1 || gEstados->getEstadoAtual()->getID() == 3) { //Fazer Observador fase
+                if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantano|| gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether) { //Fazer Observador fase
                     if (evento.key.code == sf::Keyboard::Key::Escape) {
                         gEstados->addEstado(2);
                     }
                 }
-                else if (gEstados->getEstadoAtual()->getID() == 0 || gEstados->getEstadoAtual()->getID() == 2) {
+                else {
                     LO->notificarTeclaPressionada(evento.key.code);
                 }
             }
             else if(evento.type == sf::Event::KeyReleased) {
-                if (gEstados->getEstadoAtual()->getID() == 0 || gEstados->getEstadoAtual()->getID() == 2) {
-                    LO->notificarTeclaSolta(evento.key.code);
-                }
+                LO->notificarTeclaSolta(evento.key.code);
             }
         }
     }

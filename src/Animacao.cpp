@@ -1,30 +1,50 @@
 #include "Animacoes/Animacao.hpp"
 
-namespace Animacoes
-{
-    Animacao::Animacao(sf::RectangleShape& body, float switchTime): 
-        body(body), 
-        switchTime(switchTime), 
-        totalTime(0.f), 
-        currentFrame(0) 
+namespace Animacoes {
+    Animacao::Animacao(sf::RectangleShape* corpo, float tempoTroca):
+        corpo(corpo), 
+        textura(nullptr), 
+        tempoTroca(tempoTroca), 
+        tempoAtual(0), 
+        indiceAtual(0), 
+        animacaoAtual("")
     {}
 
-    Animacao::~Animacao()
-    {}
+    Animacao::~Animacao() {}
 
-    void Animacao::adicionarFrame(const sf::IntRect& frame) {
-        frames.push_back(frame);
+    void Animacao::setTextura(sf::Texture* textura) {
+        this->textura = textura;
+        if (corpo) corpo->setTexture(textura);
     }
 
-    void Animacao::atualizarAnimacao(float deltaTime) {
-        if (frames.empty()) return;
-
-        totalTime += deltaTime;
-
-        if (totalTime >= switchTime) {
-            totalTime -= switchTime;
-            currentFrame = (currentFrame + 1) % frames.size();
-            body.setTextureRect(frames[currentFrame]);
+    void Animacao::adicionarAnimacao(std::string nome, std::vector<sf::IntRect> quadros) {
+        animacoes[nome] = {quadros, static_cast<int>(quadros.size())};
+        if (animacaoAtual.empty()) {
+            setAnimacao(nome);
         }
+    }
+
+    void Animacao::setAnimacao(std::string nome) {
+        if (animacoes.find(nome) != animacoes.end()) {
+            animacaoAtual = nome;
+            indiceAtual = 0;
+            corpo->setTextureRect(animacoes[nome].quadros[indiceAtual]);
+        }
+    }
+
+    void Animacao::atualizar(float dt) {
+        if (animacaoAtual.empty() || animacoes.find(animacaoAtual) == animacoes.end()) return;
+
+        tempoAtual += dt;
+        if (tempoAtual >= tempoTroca) {
+            tempoAtual = 0;
+            indiceAtual = (indiceAtual + 1) % animacoes[animacaoAtual].indiceMax;
+            corpo->setTextureRect(animacoes[animacaoAtual].quadros[indiceAtual]);
+        }
+    }
+
+    std::string Animacao::getAnimacaoAtual()
+    {
+        return animacaoAtual;
     }
 }

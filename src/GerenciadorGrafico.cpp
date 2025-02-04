@@ -95,6 +95,7 @@ namespace Gerenciadores
     void GerenciadorGrafico::desenhar(sf::Text& texto){
         janela->draw(texto);
     }
+    
     void GerenciadorGrafico::atualizarTempo()
     {
         tempo = relogio.getElapsedTime().asSeconds();
