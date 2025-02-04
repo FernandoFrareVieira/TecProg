@@ -12,6 +12,9 @@ namespace Fases
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
 
+        Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(370.0f, 300.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
+
         Entidades::Personagens::Esqueleto* esqueleto1 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1612.0f, 270.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto1));
 
@@ -21,6 +24,10 @@ namespace Fases
         Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         arqueiro->setListaProjeteis(&listaProjeteis);
+
+        Entidades::Personagens::Arqueiro* arqueiro2 = new Entidades::Personagens::Arqueiro(sf::Vector2f(270.0f, 300.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro2));
+        arqueiro2->setListaProjeteis(&listaProjeteis);
 
         //criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
         pGC.setInimigos(&listaInimigos);
