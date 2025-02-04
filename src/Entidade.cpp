@@ -64,4 +64,9 @@ namespace Entidades
         textura = pGG->carregarTextura(caminhoTextura);
         corpo.setTexture(textura);
     }
+
+    bool Entidade::getVivo()
+    {
+        return vivo;
+    }
 }

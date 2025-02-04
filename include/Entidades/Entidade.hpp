@@ -14,6 +14,7 @@ namespace Entidades
         MenuPrincipal,
         MenuPause,
         Pantano,
+        projetil
     };
 
     class Entidade : public Ente
@@ -26,6 +27,8 @@ namespace Entidades
             sf::Vector2f tamanho;
             sf::Vector2f velocidade;
             sf::Texture* textura;
+
+            bool vivo;
             
         public:
             static int contador;
@@ -51,5 +54,7 @@ namespace Entidades
             void setTextura(std::string caminhoTextura);
 
             virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
+
+            bool getVivo();
      };  
 }

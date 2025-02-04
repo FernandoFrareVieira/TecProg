@@ -26,6 +26,8 @@ namespace Entidades
                 void mover();
 
                 void colidir(Entidade* entidade2, sf::Vector2f ds);
+
+                virtual void adicionarAnimacoes() = 0;
         };
     }
 }

@@ -57,6 +57,8 @@ namespace Entidades
                 bool getVivo();
 
                 int getPontosDeVida();
+
+                virtual void adicionarAnimacoes() = 0;
         };
     }
 }

@@ -9,6 +9,7 @@ namespace Fases
         listaObstaculos(),
         listaInimigos(),
         listaJogadores(),
+        listaProjeteis(),
         corpo(),
         pGC()
     {
@@ -19,11 +20,12 @@ namespace Fases
         pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(300.0f, 700.0f), sf::Vector2f(50.0f, 50.0f), 2, sf::Vector2f(0.0f, 0.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador2));
         pGEstados->setListaJogadores(&listaJogadores);
+        
         pGC.setJogadores(&listaJogadores);
         
         pGC.setObstaculos(&listaObstaculos);
         pGC.setInimigos(&listaInimigos);
-        pGC.setJogadores(&listaJogadores);
+        pGC.setProjeteis(&listaProjeteis);
 
         if (pObservadorFase == nullptr) {
             pObservadorFase = new Observadores::FaseObservador();
@@ -65,6 +67,13 @@ namespace Fases
         }
     }
 
+    void Fase::adicionarProjetil(Entidades::Entidade* projetil)
+    {
+        if(projetil) {
+            listaProjeteis.adicionarEntidade(projetil);
+        }
+    }
+
     void Fase::mudarFase() {
         if (pJogador1->getPosicao().x > 1920) {
             pObservadorFase->notificarMudarFase();
@@ -77,6 +86,7 @@ namespace Fases
         listaObstaculos.executar();
         listaInimigos.executar();
         listaJogadores.executar();
+        listaProjeteis.executar();
 
         pGC.gerenciar();
         if (!pJogador1->getVivo())

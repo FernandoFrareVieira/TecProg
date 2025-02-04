@@ -12,7 +12,9 @@
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Personagens/Esqueleto.hpp"
+#include "Entidades/Personagens/Arqueiro.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
+#include "Entidades/Projetil.hpp"
 #include "Observadores/FaseObservador.hpp"
 #include "Gerenciadores/GerenciadorEstados.hpp"
 
@@ -25,6 +27,7 @@ namespace Fases
             Listas::ListaEntidades listaObstaculos;
             Listas::ListaEntidades listaInimigos;
             Listas::ListaEntidades listaJogadores;
+            Listas::ListaEntidades listaProjeteis;
 
             Entidades::Personagens::Jogador* pJogador1;
             Entidades::Personagens::Jogador* pJogador2;
@@ -46,6 +49,7 @@ namespace Fases
             void adicionarInimigos(Entidades::Entidade* inimigo);
             void adicionarObstaculos(Entidades::Entidade* obstaculo);
             void adicionarJogador(Entidades::Entidade* jogador);
+            void adicionarProjetil(Entidades::Entidade* projetil);
 
             void carregarMapa(std::string mapJson, std::string caminhoImagem);
             virtual void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) = 0;

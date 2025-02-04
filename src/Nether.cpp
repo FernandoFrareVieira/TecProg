@@ -12,6 +12,15 @@ namespace Fases {
         //adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
+        pGC.setInimigos(&listaInimigos);
+        pGC.setProjeteis(&listaProjeteis);
+
+        Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(1006.0f, 860.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
+
+        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1304.0f, 860.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+        arqueiro->setListaProjeteis(&listaProjeteis);
     }
 
     Nether::~Nether() {

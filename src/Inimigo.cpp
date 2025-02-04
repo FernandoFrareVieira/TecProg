@@ -26,41 +26,41 @@ namespace Entidades
                 velocidade.y += gravidade * dt;
             }
 
-            //Perseguição
-            if (fabs(posicaoJogador.x - posicaoInimigo.x) <= DISTANCIA_PERSEGUIR_X && 
-                fabs(posicaoJogador.y - posicaoInimigo.y) <= DISTANCIA_PERSEGUIR_Y) {
+            // //Perseguição
+            // if (fabs(posicaoJogador.x - posicaoInimigo.x) <= DISTANCIA_PERSEGUIR_X && 
+            //     fabs(posicaoJogador.y - posicaoInimigo.y) <= DISTANCIA_PERSEGUIR_Y) {
 
-                float diferencaX = posicaoJogador.x - posicaoInimigo.x;
-                float diferencaY = posicaoJogador.y - posicaoInimigo.y;
+            //     float diferencaX = posicaoJogador.x - posicaoInimigo.x;
+            //     float diferencaY = posicaoJogador.y - posicaoInimigo.y;
 
-                if (fabs(diferencaX) > 0.0f) {
-                    movimento.x = (diferencaX > 0.0f ? velocidade.x : -velocidade.x);
-                    if (fabs(diferencaX) < fabs(movimento.x)) {
-                        movimento.x = diferencaX;
-                    }
-                }
+            //     if (fabs(diferencaX) > 0.0f) {
+            //         movimento.x = (diferencaX > 0.0f ? velocidade.x : -velocidade.x);
+            //         if (fabs(diferencaX) < fabs(movimento.x)) {
+            //             movimento.x = diferencaX;
+            //         }
+            //     }
 
-                //Apenas altera movimento.y se estiver no chão ou próximo ao jogador
-                if (podePular) {
-                    movimento.y = (diferencaY > 0.0f ? velocidade.y : -velocidade.y);
-                    if (fabs(diferencaY) < fabs(movimento.y)) {
-                        movimento.y = diferencaY;
-                    }
-                }
+            //     //Apenas altera movimento.y se estiver no chão ou próximo ao jogador
+            //     if (podePular) {
+            //         movimento.y = (diferencaY > 0.0f ? velocidade.y : -velocidade.y);
+            //         if (fabs(diferencaY) < fabs(movimento.y)) {
+            //             movimento.y = diferencaY;
+            //         }
+            //     }
 
-            } else {
+            // } else {
                
-                //Movimento aleatório
-                if(direcaoAleatoria == 0 && podePular) {
-                    pular();
-                }else if(direcaoAleatoria < 5) {
-                    //Move para a direita
-                    movimento.x = velocidade.x;
-                }else{
-                    //Move para a esquerda
-                    movimento.x = -velocidade.x;
-                }
-            }
+            //     //Movimento aleatório
+            //     if(direcaoAleatoria == 0 && podePular) {
+            //         pular();
+            //     }else if(direcaoAleatoria < 5) {
+            //         //Move para a direita
+            //         movimento.x = velocidade.x;
+            //     }else{
+            //         //Move para a esquerda
+            //         movimento.x = -velocidade.x;
+            //     }
+            // }
 
             //Adiciona o efeito da gravidade ao movimento
             movimento.y += velocidade.y * dt;

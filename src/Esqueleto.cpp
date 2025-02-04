@@ -5,27 +5,30 @@ namespace Entidades
     namespace Personagens
     {
         Esqueleto::Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador):
-            Inimigo(pos, tam, vel, jogador)
+            Inimigo(pos, tam, vel, jogador),
+            animacao(&corpo, 0.1f)
         {
             vivo = true;
-            pontosDeVida = 20;
+            pontosDeVida = 40;
             estaAtacando = false;
             podeAtacar = true;
             tempoAtacarNovamente = 2.0f; 
             tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
 
-            corpo.setFillColor(sf::Color::White);
+            texturaParado = pGG->carregarTextura("assets/esqueletoGuerreiro/Idle.png");
 
-            //textura = pGG->carregarTextura("assets/inimigos/esqueleto.png");
-            //corpo.setTextureRect(sf::IntRect(10,15,32,30));
-            //corpo.setSize(sf::Vector2f(LARGURA/17.0f,ALTURA/7.50f));
-            //corpo.setTexture(textura);    
+            corpo.setTexture(texturaParado);
+
+            adicionarAnimacoes();
         }
 
         Esqueleto::~Esqueleto() {}
 
         void Esqueleto::executar() {
+            float dt = pGG->getTempo();
+
+            atualizarAnimacao(dt);
             atualizarPosicao();
             atualizarAtaque();
             desenhar();
@@ -36,7 +39,25 @@ namespace Entidades
             if(vivo) {
                 pGG->desenhar(corpo);
             }
-            
          }
+
+        void Esqueleto::atualizarAnimacao(float dt)
+        {
+            animacao.atualizar(dt);
+        }
+
+        void Esqueleto::adicionarAnimacoes()
+        {
+            int numFramesParado = 7;
+            std::vector<sf::IntRect> framesParado(numFramesParado);
+            for (int i = 0; i < numFramesParado; i++)
+            {
+                framesParado[i] = sf::IntRect(40 + 128 * i, 65, 55, 60);
+            }
+
+            animacao.adicionarAnimacao("parado", framesParado);
+
+            animacao.setAnimacao("parado");
+        }
     }
 }

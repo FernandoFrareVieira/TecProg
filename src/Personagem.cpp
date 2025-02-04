@@ -83,21 +83,9 @@ namespace Entidades
                 vivo = false;
             }
 
-            //Verifica se o Personagem é jogador
             if(this->getId() == ID::jogador) {
-                auto pJogador = dynamic_cast<Personagens::Jogador*>(this);
-                
-                if(pJogador) {
-                    pJogador->perderPontos(5);
-                    sf::Vector2f velocidadeAtual = pJogador->getVelocidade();
-
-                    pJogador->setVelocidade(sf::Vector2f(-velocidadeAtual.x, -velocidadeAtual.y));
-                }       
-            }else {
-                auto pInimigo = dynamic_cast<Personagens::Inimigo*>(this);
-
-                if(pInimigo) {
-                }
+                sf::Vector2f velocidade = this->getVelocidade();
+                this->setVelocidade(sf::Vector2f(-velocidade.x, velocidade.y));
             }
         }
 
@@ -119,14 +107,8 @@ namespace Entidades
                 if(tempoDesdeUltimoAtaque >= tempoAtacarNovamente) {
                     podeAtacar = true;
                 }
-                
-                if(this->getId() == ID::jogador) {
-                    
-                }else {
-                    corpo.setFillColor(sf::Color::Blue);
-                }
 
-                if(estaAtacando && tempoDesdeUltimoAtaque >= 1.0f) {
+                if(estaAtacando && tempoDesdeUltimoAtaque >= 0.5f) {
                     estaAtacando = false;
                 }
             }

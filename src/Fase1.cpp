@@ -12,11 +12,17 @@ namespace Fases
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
 
-        for(int i = 0; i < 1; i++) {
-            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(800.0f + (i*100.0f), 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
-            adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
-        }
-        criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
+        Entidades::Personagens::Esqueleto* esqueleto1 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1612.0f, 270.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto1));
+
+        Entidades::Personagens::Esqueleto* esqueleto2 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1714.0f, 870.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto2));
+            
+        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+        arqueiro->setListaProjeteis(&listaProjeteis);
+
+        //criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
         pGC.setInimigos(&listaInimigos);
 
         Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(sf::Vector2f(300.0f, 1015.0f), sf::Vector2f(100.0f, 20.0f));
@@ -26,6 +32,13 @@ namespace Fases
         //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
         //listaObstaculos = tilemap->criarMapa(listaObstaculos);
         pGC.setObstaculos(&listaObstaculos);
+
+        Entidades::Projetil* projetil = new Entidades::Projetil(sf::Vector2f(400.0f, 500.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
+        adicionarProjetil(static_cast<Entidades::Entidade*>(projetil));
+        projetil->setListaProjeteis(&listaProjeteis);
+
+        pGC.setProjeteis(&listaProjeteis);
+
     }
 
     Fase1::~Fase1()
@@ -131,16 +144,16 @@ namespace Fases
                 plataforma->setTextura("assets/plataformas/grama45.png");
                 adicionarObstaculos(plataforma);
             }
-            case 47: {
-                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-                plataforma->setTextura("assets/plataformas/grama47.png");
-                adicionarObstaculos(plataforma);
-            }
-            case 48: {
-                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
-                plataforma->setTextura("assets/plataformas/grama48.png");
-                adicionarObstaculos(plataforma);
-            }
+            // case 47: {
+            //     Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            //     plataforma->setTextura("assets/plataformas/grama47.png");
+            //     adicionarObstaculos(plataforma);
+            // }
+            // case 48: {
+            //     Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+            //     plataforma->setTextura("assets/plataformas/grama48.png");
+            //     adicionarObstaculos(plataforma);
+            // }
         }
         /*
             case 2 : //plataforma sprite 1

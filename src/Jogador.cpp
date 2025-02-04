@@ -38,9 +38,6 @@ namespace Entidades
 
                 corpo.setTexture(texturaParado);
 
-                corpo.setOutlineThickness(1.0f);
-                corpo.setOutlineColor(sf::Color::Red);
-
                 adicionarAnimacoes();
             }
             else
@@ -94,7 +91,7 @@ namespace Entidades
                         animacao.setAnimacao("parado");
                         corpo.setSize(sf::Vector2f(40.0f, 80.0f));
                     }
-                } else {
+                } else{
                     if (animacao.getAnimacaoAtual() != "andando") { 
                         animacao.setTextura(texturaAndando);
                         animacao.setAnimacao("andando");
@@ -131,11 +128,12 @@ namespace Entidades
                     framesAndando[i] = sf::IntRect(35 + 96 * i, 45, 35, 35);
                 }
 
-                int numFramesAtacando = 7;
+                //Pula os dois primeiros frames
+                int numFramesAtacando = 4;
                 std::vector<sf::IntRect> framesAtacando(numFramesAtacando);
                 for (int i = 0; i < numFramesAtacando; i++)
                 {
-                    framesAtacando[i] = sf::IntRect(32 + 96 * i, 45, 55, 35);
+                    framesAtacando[i] = sf::IntRect(224 + 96 * i, 45, 55, 35);
                 }
 
                 animacao.adicionarAnimacao("parado", framesParado);
@@ -244,7 +242,6 @@ namespace Entidades
                     pPersonagem->tomarDano(dano);
 
                     this->ganharPontos(10);
-                    estaAtacando = false;
                 }
 
                 // colisaoPersonagem(pPersonagem, ds);
