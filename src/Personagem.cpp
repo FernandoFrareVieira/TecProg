@@ -121,9 +121,13 @@ namespace Entidades
                 }
                 
                 if(this->getId() == ID::jogador) {
-                    corpo.setFillColor(sf::Color::Green);
+                    
                 }else {
                     corpo.setFillColor(sf::Color::Blue);
+                }
+
+                if(estaAtacando && tempoDesdeUltimoAtaque >= 1.0f) {
+                    estaAtacando = false;
                 }
             }
         }

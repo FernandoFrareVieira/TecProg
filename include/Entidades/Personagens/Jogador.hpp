@@ -12,6 +12,7 @@ namespace Entidades
             private:
                 sf::Texture* texturaParado;
                 sf::Texture* texturaAndando;
+                sf::Texture* texturaAtacando;
 
                 Animacoes::Animacao animacao;
 
