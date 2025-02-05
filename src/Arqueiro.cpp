@@ -17,14 +17,16 @@ namespace Entidades
             tempoDesdeUltimoAtaque = 0.0f;
             dano = 10;
 
-            //texturaParado = pGG->carregarTextura("assets/Arqueiro/Idle.png");
+            texturaParado = pGG->carregarTextura("assets/arqueiro/Idle.png");
 
-            //corpo.setTexture(texturaParado);
+            corpo.setTexture(texturaParado);
 
             adicionarAnimacoes();
         }
 
-        Arqueiro::~Arqueiro() {}
+        Arqueiro::~Arqueiro() {
+            
+        }
 
         void Arqueiro::executar() {
             float dt = pGG->getTempo();

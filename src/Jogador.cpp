@@ -52,9 +52,12 @@ namespace Entidades
                 velocidadeMaximaHorizontal = 400.0f;
 
                 texturaParado = pGG->carregarTextura("assets/jogador2/Idle.png");
-                corpo.setSize(sf::Vector2f(128.0f, 128.0f));
-                corpo.setTextureRect(sf::IntRect(0, 0, 128, 128));
+                texturaAndando = pGG->carregarTextura("assets/jogador2/run.png");
+                texturaAtacando = pGG->carregarTextura("assets/jogador2/Attack_1.png");
+
                 corpo.setTexture(texturaParado);
+
+                adicionarAnimacoes();
             }
         }
 
@@ -89,20 +92,44 @@ namespace Entidades
                     if (animacao.getAnimacaoAtual() != "parado") { 
                         animacao.setTextura(texturaParado);
                         animacao.setAnimacao("parado");
-                        corpo.setSize(sf::Vector2f(40.0f, 80.0f));
+                        corpo.setSize(sf::Vector2f(60.0f, 110.0f));
                     }
                 } else{
                     if (animacao.getAnimacaoAtual() != "andando") { 
                         animacao.setTextura(texturaAndando);
                         animacao.setAnimacao("andando");
-                        corpo.setSize(sf::Vector2f(50.0f, 80.0f));
+                        corpo.setSize(sf::Vector2f(70.0f, 110.0f));
                     }
                 }
             }else {
                 if(animacao.getAnimacaoAtual() != "atacando" && podePular) {
                     animacao.setTextura(texturaAtacando);
                     animacao.setAnimacao("atacando");
-                    corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+                    corpo.setSize(sf::Vector2f(120.0f, 110.0f));
+                }
+            }
+
+            animacao.atualizar(dt);
+        }else {
+            if(!estaAtacando) {
+                if(velocidade.x == 0) {
+                    if(animacao.getAnimacaoAtual() != "parado") {
+                        animacao.setTextura(texturaParado);
+                        animacao.setAnimacao("parado");
+                        corpo.setSize(sf::Vector2f(40.0f, 100.0f));
+                    }
+                }else {
+                    if(animacao.getAnimacaoAtual() != "andando") {
+                        animacao.setTextura(texturaAndando);
+                        animacao.setAnimacao("andando");
+                        corpo.setSize(sf::Vector2f(70.0f, 100.0f));
+                    }
+                }
+            }else {
+                if(animacao.getAnimacaoAtual() != "atacando" && podePular) {
+                    animacao.setTextura(texturaAtacando);
+                    animacao.setAnimacao("atacando");
+                    corpo.setSize(sf::Vector2f(100.0f, 100.0f));
                 }
             }
 
@@ -139,6 +166,38 @@ namespace Entidades
                 animacao.adicionarAnimacao("parado", framesParado);
                 animacao.adicionarAnimacao("andando", framesAndando);
                 animacao.adicionarAnimacao("atacando", framesAtacando);
+
+                animacao.setAnimacao("parado");
+            }else {
+                int numFramesParado = 9;
+                std::vector<sf::IntRect> framesParado(numFramesParado);
+                for (int i = 0; i < numFramesParado; i++)
+                {
+                    framesParado[i] = sf::IntRect(45 + 128 * i, 58, 30, 70);
+                }
+
+                int numFramesAndando = 8;
+                std::vector<sf::IntRect> framesAndando(numFramesAndando);
+                for (int i = 0; i < numFramesAndando; i++)
+                {
+                    framesAndando[i] = sf::IntRect(sf::IntRect(40 + 128 * i, 58, 55, 70));
+                }
+
+                animacao.adicionarAnimacao("parado", framesParado);
+                animacao.adicionarAnimacao("andando", framesAndando);
+
+                //Corta os dois ultimos frames
+                int numFramesAtacando = 4;
+                std::vector<sf::IntRect> framesAtacando(numFramesAtacando);
+                for (int i = 0; i < numFramesAtacando; i++)
+                {
+                    framesAtacando[i] = sf::IntRect(30 + 128 * i, 58, 100, 70);
+                }
+
+                animacao.adicionarAnimacao("parado", framesParado);
+                animacao.adicionarAnimacao("andando", framesAndando);
+                animacao.adicionarAnimacao("atacando", framesAtacando);
+
 
                 animacao.setAnimacao("parado");
             }

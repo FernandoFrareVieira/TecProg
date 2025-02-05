@@ -18,7 +18,7 @@ namespace Entidades
 
                 Entidades::Projetil* projetil;
                 Listas::ListaEntidades* listaProjeteis;
-
+                
                 sf::Clock relogio;
 
             public:
