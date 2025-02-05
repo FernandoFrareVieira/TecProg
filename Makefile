@@ -7,19 +7,30 @@ CPP_FILES := $(wildcard src/*.cpp)
 # Lista de arquivos .o gerados a partir dos arquivos .cpp
 OBJ_FILES := $(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(CPP_FILES))
 
-# Regra para criar o diretório de objetos
-$(OBJ_DIR)/%.o: src/%.cpp
-	g++ -c -Iinclude -ISFML/include $< -o $@
+# Compilador e flags
+CXX = g++
+CXXFLAGS = -c -Iinclude -ISFML/include
+
+# Linker flags
+LDFLAGS = -LSFML/lib -lsfml-graphics -lsfml-window -lsfml-system -lopengl32 -lsfml-audio
+
+# Regra para criar o diretório de objetos, se não existir
+$(OBJ_DIR):
+	mkdir $(OBJ_DIR)
+
+# Regra para compilar apenas os arquivos modificados
+$(OBJ_DIR)/%.o: src/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) $< -o $@
 
 # Regra padrão para construir o executável
-all: clean compile link
+all: compile link
 
 compile: $(OBJ_FILES)
 
 link:
-	g++ -o main $(OBJ_FILES) -LSFML/lib -lsfml-graphics -lsfml-window -lsfml-system -lopengl32 -lsfml-audio
+	$(CXX) -o main $(OBJ_FILES) $(LDFLAGS)
 
-# Limpar os arquivos .o e o executável
+# Limpar apenas os arquivos .o e o executável
 clean:
-	if exist $(OBJ_DIR) (del /Q $(OBJ_DIR)\*.o)
-	if exist main (del main)
+	del /Q $(OBJ_DIR)\*.o
+	del main
