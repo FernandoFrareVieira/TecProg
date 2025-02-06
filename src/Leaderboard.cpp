@@ -56,23 +56,32 @@ namespace Menus {
 
     std::string linha;
     while (std::getline(arquivo, linha)) {
-        std::istringstream ss(linha);  // Usando istringstream para dividir a linha
+        std::istringstream ss(linha);
         std::string nome;
         int pontuacao;
 
-        // Lê a string até o traço
         std::getline(ss, nome, '-');
-        // Lê a pontuação após o traço
         ss >> pontuacao;
 
-        
-        rank.insert(std::make_pair(pontuacao, nome));
-        if (rank.size() > 3) {
-            
-            rank.erase(std::prev(rank.end()));
-        }  
-    }
+        // Verifica se o nome já existe no ranking
+        bool nomeExiste = false;
+        for (const auto& par : rank) {
+            if (par.second == nome) {
+                nomeExiste = true;
+                break;
+            }
+        }
 
+        // Se o nome não existe, adiciona ao ranking
+        if (!nomeExiste) {
+            rank.insert(std::make_pair(pontuacao, nome));
+
+            // Mantém apenas os 3 melhores
+            if (rank.size() > 3) {
+                rank.erase(std::prev(rank.end()));
+            }
+        }
+    }
     arquivo.close();
     for (const auto& entry : rank) {
         //std::cout << entry.second << " - " << entry.first << std::endl;
