@@ -98,6 +98,7 @@ teste-0
 
 testea-0
 tested-0
+<<<<<<< HEAD
 
 tested-0
 
@@ -121,3 +122,14 @@ teste-40
 
 teste-620
 tested-640
+=======
+tested-0
+tested-0
+teste-0
+testew-0
+teste-0
+testeww-0
+teste-320
+
+teste-0
+>>>>>>> 5ebbea7853acab2a2c1c12d8cf37642475f67f69

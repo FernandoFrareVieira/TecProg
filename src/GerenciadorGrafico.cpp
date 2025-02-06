@@ -1,6 +1,7 @@
 #include "Gerenciadores/GerenciadorGrafico.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
 #include <iostream>
+#include <stdexcept>
 
 namespace Gerenciadores
 {
@@ -33,12 +34,12 @@ namespace Gerenciadores
     sf::Texture* GerenciadorGrafico::carregarTextura(std::string caminhoTextura)
     {
         sf::Texture* textura = new sf::Texture();
-        if(!textura->loadFromFile(caminhoTextura)) {
-            std::cout << "Textura não carregada";
-            delete textura;
-            return nullptr;
+        try {
+            textura->loadFromFile(caminhoTextura);
         }
-
+        catch(const std::invalid_argument& caminhoTextura) {
+            std::cout <<"ARGUMENTO INVÁLIDO"<<std::endl;
+        }
         return textura;
     }
 
@@ -76,7 +77,7 @@ namespace Gerenciadores
     void GerenciadorGrafico::centralizarCamera(sf::Vector2f pos)
     {
         camera.setSize(1200,1000);
-        sf::FloatRect limiteMundo(-90,100,2000,1000);
+        sf::FloatRect limiteMundo(-90,100,3180,1000);
 
         float suavidade = 0.05;
         sf::Vector2f centroAtual = camera.getCenter();

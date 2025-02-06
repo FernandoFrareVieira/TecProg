@@ -52,7 +52,7 @@ namespace Entidades
                 velocidadeMaximaHorizontal = 400.0f;
 
                 texturaParado = pGG->carregarTextura("assets/jogador2/Idle.png");
-                texturaAndando = pGG->carregarTextura("assets/jogador2/run.png");
+                texturaAndando = pGG->carregarTextura("assets/jogador2/Run.png");
                 texturaAtacando = pGG->carregarTextura("assets/jogador2/Attack_1.png");
 
                 corpo.setTexture(texturaParado);
