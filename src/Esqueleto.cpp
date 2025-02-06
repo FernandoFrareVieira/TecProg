@@ -10,11 +10,7 @@ namespace Entidades
         {
             vivo = true;
             pontosDeVida = 40;
-            estaAtacando = false;
-            podeAtacar = true;
-            tempoAtacarNovamente = 2.0f; 
-            tempoDesdeUltimoAtaque = 0.0f;
-            dano = 10;
+            dano = 20;
 
             texturaParado = pGG->carregarTextura("assets/esqueletoGuerreiro/Idle.png");
 
@@ -29,8 +25,8 @@ namespace Entidades
             float dt = pGG->getTempo();
 
             atualizarAnimacao(dt);
-            atualizarPosicao();
             atualizarAtaque();
+            atualizarPosicao();
             desenhar();
             mover();
         }

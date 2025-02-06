@@ -22,6 +22,6 @@ namespace Entidades
                 //Métodos animações
                 void atualizarAnimacao(float dt);
                 void adicionarAnimacoes();
-        };
+         };
     }
 }

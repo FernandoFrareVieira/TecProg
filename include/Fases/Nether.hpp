@@ -2,6 +2,7 @@
 #include "Fase.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
+#include "Entidades/Obstaculos/Espinho.hpp"
 
 namespace Fases {
     class Nether: public Fase {

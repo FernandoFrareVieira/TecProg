@@ -44,7 +44,6 @@ namespace Entidades
                 virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
                 void colisaoPersonagem(Personagem* pPersonagem, sf::Vector2f ds);
 
-                //Métodos combates
                 void tomarDano(int dano);
                 void atacar();
                 void iniciarAtaque();

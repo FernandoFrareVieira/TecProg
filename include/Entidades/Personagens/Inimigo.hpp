@@ -15,9 +15,11 @@ namespace Entidades
             protected:
                 Jogador *pjogador;
                 int dano;
+
             private:
                 int direcaoAleatoria;
                 sf::Clock relogio;
+
             public:
                 Inimigo(sf::Vector2f pos, sf::Vector2f tam , sf::Vector2f vel, Jogador* jogador);
                 ~Inimigo();
