@@ -19,9 +19,9 @@ namespace Fases
         Entidades::Personagens::Esqueleto* esqueleto2 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1714.0f, 870.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto2));
             
-        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
-        adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
-        arqueiro->setListaProjeteis(&listaProjeteis);
+        //Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        //adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+        //arqueiro->setListaProjeteis(&listaProjeteis);
 
         //criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
         pGC.setInimigos(&listaInimigos);
@@ -34,11 +34,11 @@ namespace Fases
         //listaObstaculos = tilemap->criarMapa(listaObstaculos);
         pGC.setObstaculos(&listaObstaculos);
 
-        Entidades::Projetil* projetil = new Entidades::Projetil(sf::Vector2f(400.0f, 500.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
-        adicionarProjetil(static_cast<Entidades::Entidade*>(projetil));
-        projetil->setListaProjeteis(&listaProjeteis);
+        //Entidades::Projetil* projetil = new Entidades::Projetil(sf::Vector2f(400.0f, 500.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
+        //adicionarProjetil(static_cast<Entidades::Entidade*>(projetil));
+        //projetil->setListaProjeteis(&listaProjeteis);
 
-        pGC.setProjeteis(&listaProjeteis);
+        //pGC.setProjeteis(&listaProjeteis);
 
     }
 
@@ -55,8 +55,8 @@ namespace Fases
             return;
         }
         sf::Sprite backgroundSprite(background);
-        backgroundSprite.setScale(4,3.2);
-        backgroundSprite.setOrigin(sf::Vector2f(50,-30));
+        backgroundSprite.setScale(7,3.4);
+        backgroundSprite.setOrigin(sf::Vector2f(50,-20));
         pGG->desenharOutros(backgroundSprite);
     }   
 
@@ -123,6 +123,11 @@ namespace Fases
             case 21: {
                 Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
                 plataforma->setTextura("assets/plataformas/grama21.png");
+                adicionarObstaculos(plataforma);
+            }
+            case 31: {
+                Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(posicao, tamanho, sf::Vector2f(0,0));
+                plataforma->setTextura("assets/plataformas/grama31.png");
                 adicionarObstaculos(plataforma);
             }
         }

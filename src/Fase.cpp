@@ -75,7 +75,7 @@ namespace Fases
     }
 
     void Fase::mudarFase() {
-        if (pJogador1->getPosicao().x > 1920) {
+        if (pJogador1->getPosicao().x > 3091) {
             pObservadorFase->notificarMudarFase();
         }
     }
