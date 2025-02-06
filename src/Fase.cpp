@@ -4,14 +4,15 @@ namespace Fases
 {
     Observadores::FaseObservador* Fases::Fase::pObservadorFase = nullptr;
 
-    Fase::Fase(int id):
+    Fase::Fase(int id, bool dois_jogadores):
         Estado(id),
         listaObstaculos(),
         listaInimigos(),
         listaJogadores(),
         listaProjeteis(),
         corpo(),
-        pGC()
+        pGC(),
+        multiplayer(dois_jogadores)
     {
         pGEstados = Gerenciadores::GerenciadorEstados::getInstancia();
         pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(400.0f, 700.0f), sf::Vector2f(60.0f, 110.0f), 1, sf::Vector2f(0.0f, 0.0f));
@@ -20,7 +21,9 @@ namespace Fases
         pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(300.0f, 700.0f), sf::Vector2f(40.0f, 100.0f), 2, sf::Vector2f(0.0f, 0.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador2));
         pGEstados->setListaJogadores(&listaJogadores);
-        
+        if (!multiplayer) {
+            pJogador2->getCorpo()->setPosition(sf::Vector2f(-1000,-1000));
+        }
         pGC.setJogadores(&listaJogadores);
         
         pGC.setObstaculos(&listaObstaculos);

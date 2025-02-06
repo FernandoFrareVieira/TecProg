@@ -12,7 +12,7 @@ namespace Menus {
         menu_principal,
         voltar,
         carregar,
-        dois_jogadores,
+        multiplayer,
         leaderboard,
     };
     class Opcao {

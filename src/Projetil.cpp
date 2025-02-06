@@ -23,11 +23,11 @@ namespace Entidades
     {
         float tempoQuePassou = relogio.getElapsedTime().asSeconds();
 
-        if(tempoQuePassou >= 4.0f) {
+        /*if(tempoQuePassou >= 4.0f) {
             vivo = false;
             listaProjeteis->removerEntidade(static_cast<Entidades::Entidade*>(this));
             relogio.restart();
-        }
+        }*/
 
         if(vivo) {
             desenhar();

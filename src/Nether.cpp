@@ -2,8 +2,8 @@
 
 namespace Fases {
 
-    Nether::Nether(int id):
-    Fase(id),
+    Nether::Nether(int id, bool dois_jogadores):
+    Fase(id,dois_jogadores),
     maxEsqueletos(3),
     maxPlataformas(3)
     {
@@ -18,18 +18,9 @@ namespace Fases {
         Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(sf::Vector2f(1006.0f, 860.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
 
-<<<<<<< HEAD
-        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1304.0f, 860.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
-        adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
-        arqueiro->setListaProjeteis(&listaProjeteis);
-
-        Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(sf::Vector2f(828.0f, 900.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(0.0f, 0.0f));
-        adicionarObstaculos(static_cast<Entidades::Entidade*>(espinho));
-=======
         //Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1304.0f, 860.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         //adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         //arqueiro->setListaProjeteis(&listaProjeteis);
->>>>>>> 5ebbea7853acab2a2c1c12d8cf37642475f67f69
     }
 
     Nether::~Nether() {

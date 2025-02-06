@@ -66,7 +66,7 @@ namespace Entidades
 
         void Arqueiro::atacar()
         {
-            float tempoQuePassou = relogio.getElapsedTime().asSeconds();
+            /*float tempoQuePassou = relogio.getElapsedTime().asSeconds();
           
             if(tempoQuePassou >= 2.5f) {
                 projetil = new Entidades::Projetil({corpo.getPosition().x + 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
@@ -74,7 +74,7 @@ namespace Entidades
                 projetil->setListaProjeteis(listaProjeteis);
 
                 relogio.restart();
-            }
+            }*/
         }
 
         void Arqueiro::setListaProjeteis(Listas::ListaEntidades* LP)

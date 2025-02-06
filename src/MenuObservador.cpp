@@ -22,6 +22,7 @@ namespace Observadores {
             return;
         if (tecla == sf::Keyboard::Key::Enter) {
             if (pMenu->getBotao() == Menus::BOTOES::iniciar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal){
+                pGEstados->setMultiplayer(false);
                 pGEstados->removerEstado();
                 pGEstados->addEstado(1);
             }
@@ -51,6 +52,7 @@ namespace Observadores {
         }
         else if (tecla == sf::Keyboard::Key::Enter) {
             if (pMenu->getBotao() == Menus::BOTOES::menu_principal && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
+                printf("ENTROU\n");
                 pGEstados->removerEstado();
                 pGEstados->removerEstado();
                 pGEstados->addEstado(0);
@@ -58,6 +60,11 @@ namespace Observadores {
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over && pMenu->getBotao() == Menus::BOTOES::menu_principal) {
                 pGEstados->removerEstado();
                 pGEstados->addEstado(0);
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::multiplayer) {
+                pGEstados->setMultiplayer(true);
+                pGEstados->removerEstado();
+                pGEstados->addEstado(1);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::leaderboard) {
                 pGEstados->removerEstado();

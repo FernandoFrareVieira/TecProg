@@ -14,7 +14,7 @@ namespace Fases {
         //Provisorio
         //Entidades::Personagens::Jogador* jogador;
     public:
-        Nether(int id);
+        Nether(int id, bool dois_jogadores);
         ~Nether();
         void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
         void desenhar();

@@ -42,8 +42,9 @@ namespace Fases
 
             std::vector<sf::Vector2f> posicoes;
             static Observadores::FaseObservador* pObservadorFase;
+            bool multiplayer;
         public:
-            Fase(int id);
+            Fase(int id, bool dois_jogadores);
             ~Fase();
             void teste(Listas::ListaEntidades &LO) {listaObstaculos = LO;}
             void adicionarInimigos(Entidades::Entidade* inimigo);
