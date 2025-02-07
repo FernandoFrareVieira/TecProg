@@ -1,4 +1,5 @@
 #include "Listas/ListaEntidades.hpp"
+#include <iostream>
 
 namespace Listas
 {

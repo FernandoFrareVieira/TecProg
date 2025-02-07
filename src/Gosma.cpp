@@ -6,7 +6,7 @@ namespace Entidades
     namespace Obstaculos
     {
         Gosma::Gosma(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Obstaculo(pos, tam, vel)
+            Obstaculo(pos, tam, vel, ID::gosma)
         {
             setTextura("assets/plataformas/gosma.png");
         }
@@ -39,14 +39,6 @@ namespace Entidades
                     obstacular(pJogador);
                 }
                 break;
-
-                case(ID::inimigo):
-                {
-
-                }
-
-                break;
-
                 default:
                 {
 

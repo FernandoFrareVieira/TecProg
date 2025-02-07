@@ -8,8 +8,11 @@ namespace Entidades
     {
         vazio = 0,
         jogador, 
-        inimigo,
-        obstaculo,
+        arqueiro,
+        esquleto,
+        gosma,
+        espinho,
+        plataforma,
         Nether,
         MenuPrincipal,
         MenuPause,
@@ -39,7 +42,7 @@ namespace Entidades
             virtual void executar() = 0;
             virtual void desenhar() = 0;
             sf::RectangleShape* getCorpo();
-            ID  getId();
+            ID getId();
 
             void setPosicao(sf::Vector2f pos);
             sf::Vector2f getPosicao();

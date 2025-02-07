@@ -16,17 +16,21 @@ namespace Entidades
 
     Projetil::~Projetil()
     {
-
+        if(textura) {
+            delete textura;
+            textura = nullptr;
+        }
     }
 
     void Projetil::executar()
     {
         float tempoQuePassou = relogio.getElapsedTime().asSeconds();
 
-        /*if(tempoQuePassou >= 4.0f) {
+        if(tempoQuePassou >= 4.0f) {
+            dano = 0;
             vivo = false;
             relogio.restart();
-        }*/
+        }
 
         if(vivo) {
             desenhar();

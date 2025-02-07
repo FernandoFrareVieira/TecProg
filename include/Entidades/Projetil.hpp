@@ -11,7 +11,6 @@ namespace Entidades
         private:
             int tempoDeVida;
             int dano;
-            bool vivo;
 
             sf::Texture* textura;
 

@@ -25,7 +25,7 @@ namespace Entidades
             {
                 pontosDeVida = 50;
 
-                tempoAtacarNovamente = 2.0f;
+                tempoAtacarNovamente = 1.5f;
                 dano = 10;
 
                 aceleracaoHorizontal = 400.0f;
@@ -44,7 +44,7 @@ namespace Entidades
             {
                 pontosDeVida = 30;
 
-                tempoAtacarNovamente = 1.0f;
+                tempoAtacarNovamente = 1.5f;
                 dano = 20;
 
                 aceleracaoHorizontal = 450.0f;
@@ -293,7 +293,7 @@ namespace Entidades
         {
             switch (entidade2->getId())
             {
-            case (ID::inimigo):
+            case (ID::esquleto):
             {
                 Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
                 if (estaAtacando)
@@ -307,7 +307,21 @@ namespace Entidades
             }
             break;
 
-            case (ID::obstaculo):
+            case (ID::arqueiro):
+            {
+                Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
+                if (estaAtacando)
+                {
+                    pPersonagem->tomarDano(dano);
+
+                    this->ganharPontos(10);
+                }
+
+                // colisaoPersonagem(pPersonagem, ds);
+            }
+            break;
+
+            case (ID::plataforma):
             {
             }
             break;

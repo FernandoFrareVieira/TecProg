@@ -5,7 +5,7 @@ namespace Entidades
     namespace Obstaculos
     {
         Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-        Obstaculo(pos, tam, vel)
+        Obstaculo(pos, tam, vel, ID::plataforma)
         {
             vivo = true;   
             //corpo.setFillColor(sf::Color::White);
@@ -36,11 +36,15 @@ namespace Entidades
                 case(ID::jogador):
                 {
                     colisaoObstaculo(entidade2, ds);
-                }
-                case(ID::inimigo):
+                }break;
+                case(ID::esquleto):
                 {
                     colisaoObstaculo(entidade2, ds);
-                }
+                }break;
+                case(ID::arqueiro):
+                {
+                    colisaoObstaculo(entidade2, ds);
+                }break;
             }   
         }
     }

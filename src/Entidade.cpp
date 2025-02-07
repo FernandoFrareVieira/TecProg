@@ -9,13 +9,12 @@ namespace Entidades
         id(identificador),
         tamanho(tam),
         posicao(pos),
-        velocidade(vel)
+        velocidade(vel),
+        vivo(true)
     {
         corpo.setPosition(pos);
         corpo.setSize(tam);
     
-        vivo = true;
-
         contador++;
     }
 

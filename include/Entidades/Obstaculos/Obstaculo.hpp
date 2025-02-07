@@ -12,7 +12,7 @@ namespace Entidades
             protected:   
                 bool nocivo;
             public:
-                Obstaculo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel);
+                Obstaculo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador);
                 virtual ~Obstaculo();
                 virtual void executar() = 0;
                 virtual void desenhar() = 0;
