@@ -24,12 +24,7 @@ namespace Fases
         if (!multiplayer) {
             pJogador2->getCorpo()->setPosition(sf::Vector2f(-1000,-1000));
         }
-        pGC.setJogadores(&listaJogadores);
         
-        pGC.setObstaculos(&listaObstaculos);
-        pGC.setInimigos(&listaInimigos);
-        pGC.setProjeteis(&listaProjeteis);
-
         if (pObservadorFase == nullptr) {
             pObservadorFase = new Observadores::FaseObservador();
         }
@@ -96,6 +91,7 @@ namespace Fases
         listaProjeteis.executar();
 
         pGC.gerenciar();
+        
         if (multiplayer) {
             if (!pJogador1->getVivo() && !pJogador2->getVivo())
                 pObservadorFase->notificarGameOver();
@@ -217,6 +213,7 @@ namespace Fases
 
         //Salvar inimigos
         int numInimigos = listaInimigos.getTamanho();
+
         arquivo.write(reinterpret_cast<char*>(&numInimigos), sizeof(int));
 
         Entidades::Entidade* inimigoEntidade;
@@ -225,20 +222,36 @@ namespace Fases
             inimigoEntidade = listaInimigos.operator[](i);
 
             sf::Vector2f pos = inimigoEntidade->getCorpo()->getPosition();
+            Entidades::ID id = inimigoEntidade->getId();
+
             arquivo.write(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            arquivo.write(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
         }
 
         //Salvar obstaculos
-        int numObstaculos = listaObstaculos.getTamanho();
-        arquivo.write(reinterpret_cast<char*>(&numObstaculos), sizeof(int));
+        int numInicialObstaculos = listaObstaculos.getTamanho();
+        int numObstaculos = 0;
 
         Entidades::Entidade* obstaculoEntidade;
+
+        for(int i = 0; i < numInicialObstaculos; i++) {
+            obstaculoEntidade = listaObstaculos.operator[](i);
+            if(obstaculoEntidade->getId() != Entidades::ID::plataforma) {
+                numObstaculos++;
+            }
+        }
+
+        arquivo.write(reinterpret_cast<char*>(&numObstaculos), sizeof(int));
+
 
         for (int i = 0; i < numObstaculos; i++) {
             obstaculoEntidade = listaObstaculos.operator[](i);
 
             sf::Vector2f pos = obstaculoEntidade->getCorpo()->getPosition();
+            Entidades::ID id = obstaculoEntidade->getId();
+
             arquivo.write(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            arquivo.write(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
         }
 
         arquivo.close();
@@ -267,9 +280,19 @@ namespace Fases
         listaInimigos.limpar();
         for (int i = 0; i < numInimigos; i++) {
             sf::Vector2f pos;
+            Entidades::ID id;
+
             arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
-            Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(50, 50), sf::Vector2f(2.0f, 2.0f), pJogador1);
-            adicionarInimigos(esqueleto);
+            arquivo.read(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
+
+            if(id == Entidades::ID::esquleto) {
+                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                adicionarInimigos(esqueleto);
+            }else if(id == Entidades::ID::arqueiro) {
+                Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(pos, sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                adicionarInimigos(arqueiro);
+            }
+
         }
 
         // Carregar obstáculos
@@ -277,11 +300,21 @@ namespace Fases
         arquivo.read(reinterpret_cast<char*>(&numObstaculos), sizeof(int));
 
         listaObstaculos.limpar();
+
         for (int i = 0; i < numObstaculos; i++) {
             sf::Vector2f pos;
+            Entidades::ID id;
+
             arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
-            Entidades::Obstaculos::Plataforma* obstaculo = new Entidades::Obstaculos::Plataforma(pos, sf::Vector2f(50, 50));
-            adicionarObstaculos(obstaculo);
+            arquivo.read(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
+
+            if(id == Entidades::ID::gosma) {
+                Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(pos, sf::Vector2f(100.0f, 20.0f));
+                adicionarObstaculos(gosma);
+            }else if(id == Entidades::ID::espinho) {
+                Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pos, sf::Vector2f(64.0f, 64.0f));
+                adicionarObstaculos(espinho);
+            }
         }
 
         arquivo.close();

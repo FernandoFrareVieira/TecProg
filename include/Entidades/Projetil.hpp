@@ -11,14 +11,10 @@ namespace Entidades
         private:
             int tempoDeVida;
             int dano;
-            bool vivo;
 
             sf::Texture* textura;
 
             sf::Clock relogio;
-
-            Listas::ListaEntidades* listaProjeteis;
-
         public:
             Projetil(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel);
             ~Projetil();
@@ -28,6 +24,5 @@ namespace Entidades
             void mover();
 
             void colidir(Entidades::Entidade* entidade2, sf::Vector2f ds);
-            void setListaProjeteis(Listas::ListaEntidades* LP);
     };
 }

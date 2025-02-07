@@ -121,25 +121,27 @@ namespace Listas
         }
 
         void remover(TL* elemento) {
-            if (!elemento || !pPrimeiro)
-                return;
+            if (!elemento || !pPrimeiro) return;
 
             Elemento<TL>* anterior = nullptr;
             Elemento<TL>* atual = pPrimeiro;
 
-            while (atual) {
+            while (atual != nullptr) {
                 if (atual->getInfo() == elemento) {
-                    if (anterior) {
-                        anterior->setProximo(atual->getProximo());
-                    } else {
+                    if (atual == pPrimeiro) {  // Corrigindo a comparação
                         pPrimeiro = atual->getProximo();
+                    } else {
+                        anterior->setProximo(atual->getProximo());  // Mantendo o encadeamento correto
                     }
-                    delete atual;
+
+                    delete atual;  // Liberando memória corretamente
                     tamanho--;
-                    return;
+
+                    return; // Se só quiser remover a primeira ocorrência, encerre aqui
                 }
-                anterior = atual;
-                atual = atual->getProximo();
+
+                anterior = atual; // Atualiza o anterior
+                atual = atual->getProximo(); // Move para o próximo
             }
         }
 

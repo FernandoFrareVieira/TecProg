@@ -21,7 +21,7 @@ namespace Entidades
                 sf::Clock relogio;
 
             public:
-                Inimigo(sf::Vector2f pos, sf::Vector2f tam , sf::Vector2f vel, Jogador* jogador);
+                Inimigo(sf::Vector2f pos, sf::Vector2f tam , sf::Vector2f vel, Jogador* jogador, ID identificador);
                 ~Inimigo();
                 virtual void executar() = 0;
                 virtual void desenhar() = 0;

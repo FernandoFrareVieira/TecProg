@@ -5,12 +5,12 @@ namespace Entidades
     namespace Personagens
     {
         Esqueleto::Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador):
-            Inimigo(pos, tam, vel, jogador),
+            Inimigo(pos, tam, vel, jogador, ID::esquleto),
             animacao(&corpo, 0.1f)
         {
             vivo = true;
             pontosDeVida = 40;
-            dano = 20;
+            dano = 10;
 
             texturaParado = pGG->carregarTextura("assets/esqueletoGuerreiro/Idle.png");
 
@@ -28,7 +28,7 @@ namespace Entidades
             atualizarAtaque();
             atualizarPosicao();
             desenhar();
-            mover();
+            mover();            
         }
 
         void Esqueleto::desenhar() {

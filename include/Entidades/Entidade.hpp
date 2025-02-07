@@ -8,8 +8,11 @@ namespace Entidades
     {
         vazio = 0,
         jogador, 
-        inimigo,
-        obstaculo,
+        arqueiro,
+        esquleto,
+        gosma,
+        espinho,
+        plataforma,
         Nether,
         MenuPrincipal,
         MenuPause,
@@ -29,7 +32,12 @@ namespace Entidades
             sf::Texture* textura;
 
             bool vivo;
-            
+
+            //Atributo gravidade
+            bool podePular;
+            float gravidade; 
+            float forçaEmpuxo;
+
         public:
             static int contador;
 
@@ -40,7 +48,7 @@ namespace Entidades
             virtual void executar() = 0;
             virtual void desenhar() = 0;
             sf::RectangleShape* getCorpo();
-            ID  getId();
+            ID getId();
 
             void setPosicao(sf::Vector2f pos);
             sf::Vector2f getPosicao();
@@ -56,5 +64,8 @@ namespace Entidades
             virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
 
             bool getVivo();
+
+            void atualizarPosicao();
+            void setPodePular(bool pPular); 
      };  
 }

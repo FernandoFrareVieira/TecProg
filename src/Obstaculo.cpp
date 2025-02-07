@@ -4,9 +4,11 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Obstaculo::Obstaculo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Entidade(pos, tam, vel, ID::obstaculo)
-        {}
+        Obstaculo::Obstaculo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador):
+            Entidade(pos, tam, vel, identificador)
+        {
+            forçaEmpuxo =  600.0f;
+        }
 
         Obstaculo::~Obstaculo()
         {}
@@ -49,7 +51,7 @@ namespace Entidades
                         posicao.y - tamanhoEntidade.y
                     );
 
-                    if (entidade2->getId() == ID::jogador || entidade2->getId() == ID::inimigo) {
+                    if (entidade2->getId() == ID::jogador || entidade2->getId() == ID::esquleto || entidade2->getId() == ID::arqueiro) {
                         Personagens::Personagem* pPersonagem = static_cast<Personagens::Personagem*>(entidade2);
                         pPersonagem->setPodePular(true);
                     }

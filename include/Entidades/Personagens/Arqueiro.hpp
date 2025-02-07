@@ -16,7 +16,6 @@ namespace Entidades
                 
                 Animacoes::Animacao animacao;
 
-                Entidades::Projetil* projetil;
                 Listas::ListaEntidades* listaProjeteis;
                 
                 sf::Clock relogio;

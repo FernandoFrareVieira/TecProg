@@ -6,7 +6,7 @@ namespace Entidades
     namespace Obstaculos
     {
         Espinho::Espinho(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Obstaculo(pos, tam, vel),
+            Obstaculo(pos, tam, vel, ID::espinho),
             dano(5)
         {
             setTextura("assets/espinho/espinho.png");
@@ -41,14 +41,6 @@ namespace Entidades
                     obstacular(pJogador);
                 }
                 break;
-
-                case(ID::inimigo):
-                {
-
-                }
-
-                break;
-
                 default:
                 {
 

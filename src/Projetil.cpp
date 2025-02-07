@@ -16,20 +16,24 @@ namespace Entidades
 
     Projetil::~Projetil()
     {
-
+        if(textura) {
+            delete textura;
+            textura = nullptr;
+        }
     }
 
     void Projetil::executar()
     {
         float tempoQuePassou = relogio.getElapsedTime().asSeconds();
 
-        /*if(tempoQuePassou >= 4.0f) {
+        if(tempoQuePassou >= 4.0f) {
+            dano = 0;
             vivo = false;
-            listaProjeteis->removerEntidade(static_cast<Entidades::Entidade*>(this));
             relogio.restart();
-        }*/
+        }
 
         if(vivo) {
+            atualizarPosicao();
             desenhar();
             mover();
         }
@@ -52,11 +56,8 @@ namespace Entidades
         if(entidade2->getId() == ID::jogador) {
             Personagens::Personagem* pPersonagem = static_cast<Personagens::Personagem*>(entidade2);  
             pPersonagem->tomarDano(dano);
-        }
-    }
 
-    void Projetil::setListaProjeteis(Listas::ListaEntidades* LP)
-    {
-        listaProjeteis = LP;
+            vivo = false;
+        }
     }
 }

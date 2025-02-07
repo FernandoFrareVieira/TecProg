@@ -1,4 +1,5 @@
 #include "Listas/ListaEntidades.hpp"
+#include <iostream>
 
 namespace Listas
 {
@@ -22,8 +23,14 @@ namespace Listas
 
     void ListaEntidades::executar(){
         Listas::Lista<Entidades::Entidade>::Iterator<Entidades::Entidade> it = LE.getPrimeiro();
+
         while (it != nullptr) {
-            (*it)->executar();
+            if(!((*it)->getVivo())) {
+                LE.remover(*it);
+            }else {
+                (*it)->executar();
+            }
+
             it++;
         }
 

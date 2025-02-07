@@ -2,6 +2,7 @@
 
 #include "Inimigo.hpp"
 #include "Animacoes/Animacao.hpp"
+#include <iostream>
 
 namespace Entidades
 {
@@ -12,7 +13,7 @@ namespace Entidades
             private:
                 sf::Texture* texturaParado;
                 
-                Animacoes::Animacao animacao;
+                Animacoes::Animacao animacao;                
             public:
                 Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador);
                 ~Esqueleto();

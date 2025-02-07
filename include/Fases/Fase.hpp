@@ -14,6 +14,7 @@
 #include "Entidades/Personagens/Esqueleto.hpp"
 #include "Entidades/Personagens/Arqueiro.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
+#include "Entidades/Obstaculos/Espinho.hpp"
 #include "Entidades/Projetil.hpp"
 #include "Observadores/FaseObservador.hpp"
 #include "Gerenciadores/GerenciadorEstados.hpp"

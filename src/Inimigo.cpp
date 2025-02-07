@@ -5,8 +5,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador *jogador): 
-            Personagem(pos, tam, vel, ID::inimigo)
+        Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador *jogador, ID identificador): 
+            Personagem(pos, tam, vel, identificador)
         {
             pjogador = jogador;
             srand(time(NULL));
@@ -91,7 +91,7 @@ namespace Entidades
                     //colisaoPersonagem(pPersonagem, ds);
                 }
                 break;
-                case(ID::obstaculo):
+                case(ID::plataforma):
                 {
                     
                 }
