@@ -22,6 +22,9 @@ namespace Entidades
                 //Atributo para identificar o jogador
                 int id;
 
+                //Atributo para inverter corpo
+                bool olhandoParaDireita;
+
             public:
                 Jogador(sf::Vector2f pos, sf::Vector2f tam, int idJogador, sf::Vector2f vel = sf::Vector2f(0.0f, 0.0f));
                 ~Jogador();

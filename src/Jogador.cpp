@@ -11,7 +11,8 @@ namespace Entidades
 
         Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, int idJogador, sf::Vector2f vel) : 
         Personagem(pos, tam, vel, ID::jogador),
-        animacao(&corpo, 0.1f)
+        animacao(&corpo, 0.1f),
+        olhandoParaDireita(true)
         {
             id = idJogador;
 
@@ -39,6 +40,8 @@ namespace Entidades
                 texturaAtacando = pGG->carregarTextura("assets/jogador1/atacando.png");
 
                 corpo.setTexture(texturaParado);
+
+                olhandoParaDireita = true;
 
                 adicionarAnimacoes();
             }
@@ -94,12 +97,14 @@ namespace Entidades
                     if (animacao.getAnimacaoAtual() != "parado") { 
                         animacao.setTextura(texturaParado);
                         animacao.setAnimacao("parado");
+
                         corpo.setSize(sf::Vector2f(60.0f, 110.0f));
                     }
                 } else{
                     if (animacao.getAnimacaoAtual() != "andando") { 
                         animacao.setTextura(texturaAndando);
                         animacao.setAnimacao("andando");
+
                         corpo.setSize(sf::Vector2f(70.0f, 110.0f));
                     }
                 }
@@ -107,6 +112,7 @@ namespace Entidades
                 if(animacao.getAnimacaoAtual() != "atacando" && podePular) {
                     animacao.setTextura(texturaAtacando);
                     animacao.setAnimacao("atacando");
+
                     corpo.setSize(sf::Vector2f(120.0f, 110.0f));
                 }
             }
@@ -118,12 +124,14 @@ namespace Entidades
                     if(animacao.getAnimacaoAtual() != "parado") {
                         animacao.setTextura(texturaParado);
                         animacao.setAnimacao("parado");
+
                         corpo.setSize(sf::Vector2f(40.0f, 100.0f));
                     }
                 }else {
                     if(animacao.getAnimacaoAtual() != "andando") {
                         animacao.setTextura(texturaAndando);
                         animacao.setAnimacao("andando");
+
                         corpo.setSize(sf::Vector2f(70.0f, 100.0f));
                     }
                 }
@@ -131,7 +139,8 @@ namespace Entidades
                 if(animacao.getAnimacaoAtual() != "atacando" && podePular) {
                     animacao.setTextura(texturaAtacando);
                     animacao.setAnimacao("atacando");
-                    corpo.setSize(sf::Vector2f(100.0f, 100.0f));
+                    
+                    corpo.setSize(sf::Vector2f(100.0f, 100.0f));                    
                 }
             }
 

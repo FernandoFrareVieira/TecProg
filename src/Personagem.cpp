@@ -131,6 +131,6 @@ namespace Entidades
                 corpo.move(0.0f, velocidade.y * dt);
                 podePular = false;    
             }
-        }       
+        }    
     }
 }
