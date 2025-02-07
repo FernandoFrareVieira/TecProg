@@ -71,7 +71,6 @@ namespace Entidades
             if(tempoQuePassou >= 2.5f) {
                 projetil = new Entidades::Projetil({corpo.getPosition().x + 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
                 listaProjeteis->adicionarEntidade(static_cast<Entidades::Entidade*>(projetil));
-                projetil->setListaProjeteis(listaProjeteis);
 
                 relogio.restart();
             }

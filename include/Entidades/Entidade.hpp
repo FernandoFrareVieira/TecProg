@@ -29,7 +29,6 @@ namespace Entidades
             sf::Texture* textura;
 
             bool vivo;
-            
         public:
             static int contador;
 

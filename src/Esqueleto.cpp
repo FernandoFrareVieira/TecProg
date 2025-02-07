@@ -10,7 +10,7 @@ namespace Entidades
         {
             vivo = true;
             pontosDeVida = 40;
-            dano = 20;
+            dano = 10;
 
             texturaParado = pGG->carregarTextura("assets/esqueletoGuerreiro/Idle.png");
 
@@ -28,7 +28,7 @@ namespace Entidades
             atualizarAtaque();
             atualizarPosicao();
             desenhar();
-            mover();
+            mover();            
         }
 
         void Esqueleto::desenhar() {

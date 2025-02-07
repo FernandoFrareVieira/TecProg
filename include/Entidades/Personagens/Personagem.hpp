@@ -13,7 +13,6 @@ namespace Entidades
             protected:
 
                 //Atributos vida
-                bool vivo;
                 int pontosDeVida;
 
                 //Atributos ataque
@@ -53,7 +52,6 @@ namespace Entidades
                 void atualizarPosicao();
                 void pular();
                 void setPodePular(bool pPular); 
-                bool getVivo();
 
                 int getPontosDeVida();
 

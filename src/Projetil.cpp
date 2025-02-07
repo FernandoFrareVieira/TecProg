@@ -25,7 +25,6 @@ namespace Entidades
 
         if(tempoQuePassou >= 4.0f) {
             vivo = false;
-            listaProjeteis->removerEntidade(static_cast<Entidades::Entidade*>(this));
             relogio.restart();
         }
 
@@ -52,11 +51,8 @@ namespace Entidades
         if(entidade2->getId() == ID::jogador) {
             Personagens::Personagem* pPersonagem = static_cast<Personagens::Personagem*>(entidade2);  
             pPersonagem->tomarDano(dano);
-        }
-    }
 
-    void Projetil::setListaProjeteis(Listas::ListaEntidades* LP)
-    {
-        listaProjeteis = LP;
+            vivo = false;
+        }
     }
 }

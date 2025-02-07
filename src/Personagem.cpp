@@ -9,7 +9,6 @@ namespace Entidades
     {
         Personagem::Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador):
             Entidade(pos, tam, vel, identificador),
-            vivo(true),
             pontosDeVida(100),
             estaAtacando(false),
             podeAtacar(true),
@@ -150,11 +149,6 @@ namespace Entidades
             if(podePular) {
                 velocidade.y = 0.0f;
             }
-        }
- 
-        bool Personagem::getVivo() 
-        {
-            return vivo;
         }
 
         int Personagem::getPontosDeVida()

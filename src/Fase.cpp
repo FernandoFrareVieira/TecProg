@@ -268,6 +268,7 @@ namespace Fases
             sf::Vector2f pos;
             arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
             Entidades::Obstaculos::Plataforma* obstaculo = new Entidades::Obstaculos::Plataforma(pos, sf::Vector2f(50, 50));
+            
             adicionarObstaculos(obstaculo);
         }
 

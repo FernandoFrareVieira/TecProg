@@ -13,7 +13,9 @@ namespace Entidades
     {
         corpo.setPosition(pos);
         corpo.setSize(tam);
- 
+    
+        vivo = true;
+
         contador++;
     }
 
