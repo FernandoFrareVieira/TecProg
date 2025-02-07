@@ -328,13 +328,13 @@ namespace Entidades
 
         void Jogador::perderPontos(int pts)
         {
-            pontos = pontos - pts;
+            /*pontos = pontos - pts;
             if (pontos < 0)
             {
                 pontos = 0;
             }
 
-            std::cout << pontos << std::endl;
+            std::cout << pontos << std::endl;*/
         }
 
         int Jogador::getPontuacao()

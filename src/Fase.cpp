@@ -78,22 +78,32 @@ namespace Fases
     }
 
     void Fase::mudarFase() {
-        if (pJogador1->getPosicao().x > 3091) {
+        if (pJogador1->getPosicao().x > 3091 && pJogador1->getPontuacao() + pJogador2->getPontuacao() > 12600) {
             pObservadorFase->notificarMudarFase();
         }
     }
 
     void Fase::executar() {
         desenhar();
-        pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
+        if (pJogador1->getVivo())
+            pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
+        else {
+            pGG->centralizarCamera(pJogador2->getCorpo()->getPosition());
+        }
         listaObstaculos.executar();
         listaInimigos.executar();
         listaJogadores.executar();
         listaProjeteis.executar();
 
         pGC.gerenciar();
-        if (!pJogador1->getVivo())
-            pObservadorFase->notificarGameOver();
+        if (multiplayer) {
+            if (!pJogador1->getVivo() && !pJogador2->getVivo())
+                pObservadorFase->notificarGameOver();
+        }
+        else {
+            if (!pJogador1->getVivo())
+                pObservadorFase->notificarGameOver();
+        }
         mudarFase();
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {

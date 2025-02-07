@@ -85,7 +85,7 @@ namespace Gerenciadores {
     }
 
     void GerenciadorEstados::executarGameOver(sf::Event evento) {
-        pGameOver->executar(evento);
+       pGameOver->executar(evento);
         //PontuacaoJogadores = pGameOver->getLista();
     }
 
