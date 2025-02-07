@@ -58,6 +58,7 @@ namespace Entidades
             pPersonagem->tomarDano(dano);
 
             vivo = false;
+            dano = 0;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Listas
 
         while (it != nullptr) {
             if(!((*it)->getVivo())) {
-                LE.remover(*it);
+                //LE.remover(*it);
             }else {
                 (*it)->executar();
             }
