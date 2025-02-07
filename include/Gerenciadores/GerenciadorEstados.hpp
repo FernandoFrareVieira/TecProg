@@ -22,6 +22,7 @@ namespace Gerenciadores {
         GerenciadorEstados(); //Singletron
         Menus::GameOver* pGameOver;
         Listas::ListaEntidades* LJ;
+        bool dois_jogadores;
     public:
         ~GerenciadorEstados();
         static GerenciadorEstados* getInstancia();
@@ -33,6 +34,8 @@ namespace Gerenciadores {
         void executarGameOver(sf::Event evento);
         int getTamanho();
         void setListaJogadores(Listas::ListaEntidades* lista) {LJ = lista;}
+        void setMultiplayer(bool b) {dois_jogadores = b;}
+        const bool getMultiplayer() const {return dois_jogadores;}
     };
 }
 

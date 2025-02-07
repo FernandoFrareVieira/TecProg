@@ -10,7 +10,8 @@ namespace Gerenciadores {
     GerenciadorEstados::GerenciadorEstados():
     estados(),
     estadoAtual(0),
-    LJ()
+    LJ(),
+    dois_jogadores(false)
     {
     }
 
@@ -46,7 +47,7 @@ namespace Gerenciadores {
             estados.push(MenuPrincipal);
         }
         else if (id == 1) {
-            Fases::Fase1* Fase1 = new Fases::Fase1(1);
+            Fases::Fase1* Fase1 = new Fases::Fase1(1,dois_jogadores);
             Fase1->setID_Estado(Estados::ID_Estado::pantano);
             estados.push(Fase1);
         }
@@ -56,7 +57,7 @@ namespace Gerenciadores {
             estados.push(MenuPause);
         }
         else if (id == 3) {
-            Fases::Nether* Nether = new Fases::Nether(3);
+            Fases::Nether* Nether = new Fases::Nether(3,dois_jogadores);
             Nether->setID_Estado(Estados::ID_Estado::nether);
             estados.push(Nether);
         }
@@ -84,7 +85,7 @@ namespace Gerenciadores {
     }
 
     void GerenciadorEstados::executarGameOver(sf::Event evento) {
-        pGameOver->executar(evento);
+       pGameOver->executar(evento);
         //PontuacaoJogadores = pGameOver->getLista();
     }
 

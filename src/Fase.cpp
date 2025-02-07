@@ -4,14 +4,15 @@ namespace Fases
 {
     Observadores::FaseObservador* Fases::Fase::pObservadorFase = nullptr;
 
-    Fase::Fase(int id):
+    Fase::Fase(int id, bool dois_jogadores):
         Estado(id),
         listaObstaculos(),
         listaInimigos(),
         listaJogadores(),
         listaProjeteis(),
         corpo(),
-        pGC()
+        pGC(),
+        multiplayer(dois_jogadores)
     {
         pGEstados = Gerenciadores::GerenciadorEstados::getInstancia();
         pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(400.0f, 700.0f), sf::Vector2f(60.0f, 110.0f), 1, sf::Vector2f(0.0f, 0.0f));
@@ -20,13 +21,10 @@ namespace Fases
         pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(300.0f, 700.0f), sf::Vector2f(40.0f, 100.0f), 2, sf::Vector2f(0.0f, 0.0f));
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador2));
         pGEstados->setListaJogadores(&listaJogadores);
+        if (!multiplayer) {
+            pJogador2->getCorpo()->setPosition(sf::Vector2f(-1000,-1000));
+        }
         
-        pGC.setJogadores(&listaJogadores);
-        
-        pGC.setObstaculos(&listaObstaculos);
-        pGC.setInimigos(&listaInimigos);
-        pGC.setProjeteis(&listaProjeteis);
-
         if (pObservadorFase == nullptr) {
             pObservadorFase = new Observadores::FaseObservador();
         }
@@ -75,22 +73,32 @@ namespace Fases
     }
 
     void Fase::mudarFase() {
-        if (pJogador1->getPosicao().x > 3091) {
+        if (pJogador1->getPosicao().x > 3091 && pJogador1->getPontuacao() + pJogador2->getPontuacao() > 12600) {
             pObservadorFase->notificarMudarFase();
         }
     }
 
     void Fase::executar() {
         desenhar();
-        pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
+        if (pJogador1->getVivo())
+            pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
+        else {
+            pGG->centralizarCamera(pJogador2->getCorpo()->getPosition());
+        }
         listaObstaculos.executar();
         listaInimigos.executar();
         listaJogadores.executar();
         listaProjeteis.executar();
 
         pGC.gerenciar();
-        if (!pJogador1->getVivo())
-            pObservadorFase->notificarGameOver();
+        if (multiplayer) {
+            if (!pJogador1->getVivo() && !pJogador2->getVivo())
+                pObservadorFase->notificarGameOver();
+        }
+        else {
+            if (!pJogador1->getVivo())
+                pObservadorFase->notificarGameOver();
+        }
         mudarFase();
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {

@@ -9,13 +9,13 @@ namespace Menus {
         opcoes[0]->setTexto("Iniciar");
         opcoes[0]->setBotao(Menus::BOTOES::iniciar);
         opcoes[0]->mudarCor();
-        opcoes[1]->setBotao(dois_jogadores);
-        opcoes[1]->setTexto("Iniciar 2 Jogadores");
-        opcoes[2]->setBotao(carregar);
+        opcoes[1]->setTexto("Multiplayer");
+        opcoes[1]->setBotao(Menus::BOTOES::multiplayer);
+        opcoes[2]->setBotao(Menus::BOTOES::carregar);
         opcoes[2]->setTexto("Carregar");
-        opcoes[3]->setBotao(leaderboard);
+        opcoes[3]->setBotao(Menus::BOTOES::leaderboard);
         opcoes[3]->setTexto("Leaderboard");
-        opcoes[4]->setBotao(sair);
+        opcoes[4]->setBotao(Menus::BOTOES::sair);
         opcoes[4]->setTexto("Sair");
         corpo.setFillColor(sf::Color::White);
     }

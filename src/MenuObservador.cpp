@@ -20,19 +20,50 @@ namespace Observadores {
     void MenuObservador::notificarPressionada(sf::Keyboard::Key tecla) {
         if (!pMenu)
             return;
+        if (tecla == sf::Keyboard::Down)
+            printf("DOWN\n");
         if (tecla == sf::Keyboard::Key::Enter) {
+            printf("ENTER\n");
             if (pMenu->getBotao() == Menus::BOTOES::iniciar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal){
+                pGEstados->setMultiplayer(false);
+                removerObservador();
                 pGEstados->removerEstado();
                 pGEstados->addEstado(1);
             }
-            else if (pMenu->getBotao() == Menus::BOTOES::sair && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal) {
-                if (pMenu->getBotao() == Menus::BOTOES::sair)
-                    pGG->fechar();
-                    printf("ENTROU SAIU\n");
-                fflush(stdout);
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::multiplayer) {
+                pGEstados->setMultiplayer(true);
+                removerObservador();
+                pGEstados->removerEstado();
+                pGEstados->addEstado(1);
             }
             else if (pMenu->getBotao() == Menus::BOTOES::continuar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
+                removerObservador();
                 pGEstados->removerEstado();
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::leaderboard && pMenu->getBotao() == Menus::BOTOES::voltar) {
+                pGEstados->removerEstado();
+                removerObservador();
+                pGEstados->addEstado(0);
+                fflush(stdout);
+            }
+            else if (pMenu->getBotao() == Menus::BOTOES::sair && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal) {
+                pGG->fechar();
+            }
+            else if (pMenu->getBotao() == Menus::BOTOES::menu_principal && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
+                removerObservador();
+                pGEstados->removerEstado();
+                pGEstados->removerEstado();
+                pGEstados->addEstado(0);
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::leaderboard) {
+                removerObservador();
+                pGEstados->removerEstado();
+                pGEstados->addEstado(5);
+            }
+            if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over && pMenu->getBotao() == Menus::BOTOES::menu_principal) {
+                removerObservador();
+                pGEstados->removerEstado();
+                pGEstados->addEstado(0);
             }
         }
         
@@ -48,27 +79,6 @@ namespace Observadores {
         else if (tecla == sf::Keyboard::Key::Up) {
                 pMenu->moverBaixo();
                 pMenu->desenhar();
-        }
-        else if (tecla == sf::Keyboard::Key::Enter) {
-            if (pMenu->getBotao() == Menus::BOTOES::menu_principal && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
-                pGEstados->removerEstado();
-                pGEstados->removerEstado();
-                pGEstados->addEstado(0);
-            }
-            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over && pMenu->getBotao() == Menus::BOTOES::menu_principal) {
-                pGEstados->removerEstado();
-                pGEstados->addEstado(0);
-            }
-            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::leaderboard) {
-                pGEstados->removerEstado();
-                pGEstados->addEstado(5);
-            }
-            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::leaderboard && pMenu->getBotao() == Menus::BOTOES::voltar) {
-                pGEstados->removerEstado();
-                pGEstados->addEstado(0);
-                printf("ENTROU LEADERBOARD\n");
-                fflush(stdout);
-            }
         }
     }
 }

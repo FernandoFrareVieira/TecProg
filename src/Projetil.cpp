@@ -23,10 +23,10 @@ namespace Entidades
     {
         float tempoQuePassou = relogio.getElapsedTime().asSeconds();
 
-        if(tempoQuePassou >= 4.0f) {
+        /*if(tempoQuePassou >= 4.0f) {
             vivo = false;
             relogio.restart();
-        }
+        }*/
 
         if(vivo) {
             desenhar();

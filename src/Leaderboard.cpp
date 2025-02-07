@@ -3,18 +3,18 @@
 namespace Menus {
 
     Leaderboard::Leaderboard(int id):
-    Menu(3,id)  
+    Menu(1,id)  
     {
-        opcoes[0]->setTexto("LEADERBOARD");
         if (!fonte.loadFromFile("assets/fontes/Ubuntu-R.ttf")) {
             std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
         }
         textoLeaderboard.setFont(fonte);
         textoLeaderboard.setCharacterSize(30);
         textoLeaderboard.setFillColor(sf::Color::Black);
-        opcoes[1]->setBotao(voltar);
-        opcoes[1]->setTexto("Voltar");
-        opcoes[1]->setPosicao(sf::Vector2f(1050,1000));
+        opcoes[0]->setBotao(voltar);
+        opcoes[0]->setTexto("Voltar");
+        opcoes[0]->setPosicao(sf::Vector2f(1050,1000));
+        opcoes[0]->mudarCor();
 
     }
 

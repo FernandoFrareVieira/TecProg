@@ -14,7 +14,7 @@ namespace Menus {
         corpo.setPosition(sf::Vector2f(1200,300));
         for (int i = 0; i < num_opcoes; i++) {
             Opcao* op = new Opcao();
-            op->setPosicao(sf::Vector2f(1050,700 + 100*i));
+            op->setPosicao(sf::Vector2f(1050,700 + 70*i));
             addOpcao(op);
 
         }

@@ -2,8 +2,8 @@
 
 namespace Fases {
 
-    Nether::Nether(int id):
-    Fase(id),
+    Nether::Nether(int id, bool dois_jogadores):
+    Fase(id,dois_jogadores),
     maxEsqueletos(3),
     maxPlataformas(3)
     {

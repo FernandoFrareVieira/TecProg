@@ -23,7 +23,7 @@ namespace Fases
 
             sf::Texture background;
         public:
-            Fase1(int id);
+            Fase1(int id, bool dois_jogadores);
             ~Fase1();
             void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
             void desenhar();
