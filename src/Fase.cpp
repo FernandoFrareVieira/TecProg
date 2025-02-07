@@ -229,10 +229,20 @@ namespace Fases
         }
 
         //Salvar obstaculos
-        int numObstaculos = listaObstaculos.getTamanho();
-        arquivo.write(reinterpret_cast<char*>(&numObstaculos), sizeof(int));
+        int numInicialObstaculos = listaObstaculos.getTamanho();
+        int numObstaculos = 0;
 
         Entidades::Entidade* obstaculoEntidade;
+
+        for(int i = 0; i < numInicialObstaculos; i++) {
+            obstaculoEntidade = listaObstaculos.operator[](i);
+            if(obstaculoEntidade->getId() != Entidades::ID::plataforma) {
+                numObstaculos++;
+            }
+        }
+
+        arquivo.write(reinterpret_cast<char*>(&numObstaculos), sizeof(int));
+
 
         for (int i = 0; i < numObstaculos; i++) {
             obstaculoEntidade = listaObstaculos.operator[](i);

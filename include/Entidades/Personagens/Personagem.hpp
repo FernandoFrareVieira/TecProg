@@ -28,8 +28,6 @@ namespace Entidades
                 float velocidadeMaximaHorizontal;
 
                 //Atributo gravidade
-                bool podePular;
-                float gravidade; 
                 float velocidadePulo;
 
             public:
@@ -43,15 +41,14 @@ namespace Entidades
                 virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
                 void colisaoPersonagem(Personagem* pPersonagem, sf::Vector2f ds);
 
+                //Métodos ataque
                 void tomarDano(int dano);
                 void atacar();
                 void iniciarAtaque();
                 void atualizarAtaque();
 
                 //Métodos gravidade
-                void atualizarPosicao();
                 void pular();
-                void setPodePular(bool pPular); 
 
                 int getPontosDeVida();
 

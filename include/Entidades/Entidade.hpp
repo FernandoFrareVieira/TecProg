@@ -32,6 +32,12 @@ namespace Entidades
             sf::Texture* textura;
 
             bool vivo;
+
+            //Atributo gravidade
+            bool podePular;
+            float gravidade; 
+            float forçaEmpuxo;
+
         public:
             static int contador;
 
@@ -58,5 +64,8 @@ namespace Entidades
             virtual void colidir(Entidade* entidade2, sf::Vector2f ds) = 0;
 
             bool getVivo();
+
+            void atualizarPosicao();
+            void setPodePular(bool pPular); 
      };  
 }

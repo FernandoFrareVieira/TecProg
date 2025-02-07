@@ -18,8 +18,6 @@ namespace Entidades
             aceleracaoHorizontal(400.0f),
             desaceleracaoHorizontal(300.0f),
             velocidadeMaximaHorizontal(350.0f),
-            podePular(false),
-            gravidade(600.0f),
             velocidadePulo(-470.0f)
         {}
 
@@ -118,16 +116,9 @@ namespace Entidades
             estaAtacando = true;
         }
 
-        void Personagem::atualizarPosicao()
+        int Personagem::getPontosDeVida()
         {
-            float dt = pGG->getTempo(); 
-
-            if (!podePular)
-            {
-                velocidade.y += gravidade * dt;
-            }
-
-            corpo.move(velocidade.x * dt, velocidade.y * dt);
+            return pontosDeVida;
         }
 
         void Personagem::pular()
@@ -140,20 +131,6 @@ namespace Entidades
                 corpo.move(0.0f, velocidade.y * dt);
                 podePular = false;    
             }
-        }
-
-        void Personagem::setPodePular(bool pPular)
-        {
-            podePular = pPular;
-
-            if(podePular) {
-                velocidade.y = 0.0f;
-            }
-        }
-
-        int Personagem::getPontosDeVida()
-        {
-            return pontosDeVida;
-        }
+        }       
     }
 }

@@ -15,6 +15,8 @@ namespace Entidades
         {
             id = idJogador;
 
+            podePular = false;
+
             vivo = true;
             estaAtacando = false;
             podeAtacar = true;

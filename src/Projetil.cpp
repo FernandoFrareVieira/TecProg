@@ -33,6 +33,7 @@ namespace Entidades
         }
 
         if(vivo) {
+            atualizarPosicao();
             desenhar();
             mover();
         }

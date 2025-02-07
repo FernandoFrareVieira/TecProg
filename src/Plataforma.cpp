@@ -16,6 +16,7 @@ namespace Entidades
 
         void Plataforma::executar()
         {
+            atualizarPosicao();
             desenhar();
         }
 
