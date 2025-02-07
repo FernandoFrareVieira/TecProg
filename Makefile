@@ -1,5 +1,9 @@
-# Diretório de destino para os arquivos .o
+#Diretório de destino para os arquivos .o
 OBJ_DIR = obj
+
+# Diretórios de SFML
+SFML_INCLUDE_DIR = /usr/include/SFML
+SFML_LIB_DIR = /usr/lib/x86_64-linux-gnu
 
 # Lista de todos os arquivos .cpp no diretório src
 CPP_FILES := $(wildcard src/*.cpp)
@@ -7,19 +11,33 @@ CPP_FILES := $(wildcard src/*.cpp)
 # Lista de arquivos .o gerados a partir dos arquivos .cpp
 OBJ_FILES := $(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(CPP_FILES))
 
-# Regra para criar o diretório de objetos
-$(OBJ_DIR)/%.o: src/%.cpp
-	g++ -c -Iinclude -ISFML/include $< -o $@
+# Nome do executável
+TARGET = main
 
-# Regra padrão para construir o executável
-all: clean compile link
+# Flags de compilação
+CXX = g++
+CXXFLAGS = -I$(SFML_INCLUDE_DIR) -Iinclude
+LDFLAGS = -L$(SFML_LIB_DIR) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lstdc++
 
-compile: $(OBJ_FILES)
+# Regra padrão: compilar e linkar
+all: $(TARGET)
 
-link:
-	g++ -o main $(OBJ_FILES) -LSFML/lib -lsfml-graphics -lsfml-window -lsfml-system -lopengl32 -lsfml-audio
+# Regras para criar o executável
+$(TARGET): $(OBJ_FILES)
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
-# Limpar os arquivos .o e o executável
+# Regra para criar o diretório de objetos e compilar os arquivos .cpp
+$(OBJ_DIR)/%.o: src/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Criar o diretório de objetos, se não existir
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+# Limpar os arquivos gerados
 clean:
-	if exist $(OBJ_DIR) (del /Q $(OBJ_DIR)\*.o)
-	if exist main (del main)
+	rm -rf $(OBJ_DIR)
+	rm -f $(TARGET)
+
+# Phony targets
+.PHONY: all clean

@@ -22,7 +22,7 @@ namespace Fases
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador2));
         pGEstados->setListaJogadores(&listaJogadores);
         if (!multiplayer) {
-            pJogador2->getCorpo()->setPosition(sf::Vector2f(-1000,-1000));
+            pJogador2->getCorpo()->setPosition(sf::Vector2f(-200,0));
         }
         
         if (pObservadorFase == nullptr) {
@@ -73,7 +73,7 @@ namespace Fases
     }
 
     void Fase::mudarFase() {
-        if (pJogador1->getPosicao().x > 3091 && pJogador1->getPontuacao() + pJogador2->getPontuacao() > 12600) {
+        if (pJogador1->getPosicao().x > 3091) {
             pObservadorFase->notificarMudarFase();
         }
     }

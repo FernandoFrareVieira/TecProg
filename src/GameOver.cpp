@@ -6,7 +6,7 @@ namespace Menus {
     GameOver::GameOver(int id):
     Menus::Menu(1,id),
     pontuacao(0),
-    nomeJogador("teste"),
+    nomeJogador(""),
     LJ()
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));

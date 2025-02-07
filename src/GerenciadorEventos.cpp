@@ -45,8 +45,9 @@ namespace Gerenciadores
                 pGG->fechar();
             }
             if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over) {
+                    printf("ENTROU\n");
                     gEstados->executarGameOver(evento);
-                    LO->notificarTeclaSolta(evento.key.code);
+                    LO->notificarTeclaPressionada(evento.key.code);
                 }
             else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
