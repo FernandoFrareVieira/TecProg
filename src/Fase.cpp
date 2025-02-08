@@ -72,7 +72,7 @@ namespace Fases
     }
 
     void Fase::executar() {
-        //printf("%2.f, %2.f\n", pJogador1->getCorpo()->getPosition().x, pJogador1->getCorpo()->getPosition().y);
+        printf("%2.f, %2.f\n", pJogador1->getCorpo()->getPosition().x, pJogador1->getCorpo()->getPosition().y);
         if (pObservadorFase) {
             //printf("NÃO É NULO\n");
         }
@@ -399,6 +399,7 @@ namespace Fases
             else if (id == Entidades::ID::arqueiro) {
                 Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+                arqueiro->setListaProjeteis(&listaProjeteis);
             }
             else if (id == Entidades::ID::esqueleto) {
                 Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
