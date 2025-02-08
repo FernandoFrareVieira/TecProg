@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 namespace Listas
 {
@@ -133,29 +134,42 @@ namespace Listas
 
         void remover(TL* elemento) 
         {
-            if (!elemento || !pPrimeiro || tamanho == 0)
+            if (!elemento || !pPrimeiro || tamanho == 0) {
                 return;
+            }
 
             Iterator<TL> it = getPrimeiro();
             Elemento<TL>* anterior = nullptr;
 
-            while (it.getAtual() && it.getAtual()->getInfo() != elemento) {
+            while (it.getAtual() && it.getAtual()->getInfo() && it.getAtual()->getInfo() != elemento) {
                 anterior = it.getAtual();
                 ++it;
             }
 
-            if (it.getAtual()) { 
-                Elemento<TL>* aRemover = it.getAtual();
-                if (anterior) {
-                    anterior->setProximo(aRemover->getProximo());
-                } else {
-                    pPrimeiro = aRemover->getProximo(); 
-                }
-
-                delete aRemover;
-                tamanho--;
+            if (!it.getAtual()) {
+                return;
             }
+
+            // Elemento a ser removido
+            Elemento<TL>* aRemover = it.getAtual();
+
+            if (anterior) {
+                anterior->setProximo(aRemover->getProximo());
+            } else {
+                pPrimeiro = aRemover->getProximo();
+            }
+
+            //delete aRemover;
+            //aRemover = nullptr;
+            tamanho--;
+
+            if (tamanho == 0) {
+                pPrimeiro = nullptr;
+            }
+
         }
+
+
 
         void limpar()
         {
