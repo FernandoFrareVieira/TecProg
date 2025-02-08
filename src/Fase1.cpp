@@ -4,11 +4,18 @@ namespace Fases
 {
     Fase1::Fase1(int id, bool dois_jogadores):
         Fase(id,dois_jogadores),
-        maxEsqueletos(6),
-        maxArqueiros(6),
-        maxGosmas(6)
+        maxEsqueletos(5),
+        maxArqueiros(5),
+        maxGosmas(5),
+        posicoesEsqueleto(),
+        posicoesArqueiros(),
+        posicoesGosmas()
     {
         //Iniciar corpo
+
+        posicoesArqueiros.clear();
+        posicoesEsqueleto.clear();
+        posicoesGosmas.clear();
 
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
@@ -23,18 +30,25 @@ namespace Fases
         Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         arqueiro->setListaProjeteis(&listaProjeteis);
+
         setPosicoes();
-        //criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
-        int random = (rand() + 3 ) %( posicoes.size());
+        
+        int random = 3 + rand() % (posicoes.size() - 2);
+        std::vector<int> indicesUsados;
+
         for (int i = 0; i < random; i++) {
-            std::cout<<posicoes[i].y<<std::endl;
-            Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicoes[i], sf::Vector2f(100.0f, 20.0f));
+            int index;
+            do {
+                index = rand() % posicoes.size(); // Sorteia um índice aleatório do vetor
+            } while (std::find(indicesUsados.begin(), indicesUsados.end(), index) != indicesUsados.end()); // Evita repetição
+
+            indicesUsados.push_back(index); // Armazena o índice já utilizado
+
+            std::cout << posicoes[index].y << std::endl;
+
+            Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicoes[index], sf::Vector2f(100.0f, 20.0f));
             adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
         }
-
-        //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(500.0f, 400.0f), sf::Vector2f(400.0f, 100.0f), sf::Vector2f(0.0f, 0.0f));
-        //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
-        //listaObstaculos = tilemap->criarMapa(listaObstaculos);
 
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);        
@@ -50,7 +64,7 @@ namespace Fases
 
     void Fase1::desenhar()
     {
-        if(!background.loadFromFile("assets/cenarios/Background.png")){ //Está dando seg fault"
+        if(!background.loadFromFile("assets/cenarios/Background.png")){ 
             std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
             return;
         }
@@ -123,7 +137,8 @@ namespace Fases
         }
     }
 
-    void Fase1::setPosicoes() {
+    void Fase1::setPosicoes() 
+    {
         posicoes.push_back(sf::Vector2f(1663,563));
         posicoes.push_back(sf::Vector2f(1630,1043));
         posicoes.push_back(sf::Vector2f(2068,1043));

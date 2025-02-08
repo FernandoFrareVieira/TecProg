@@ -3,13 +3,20 @@
 namespace Fases {
 
     Nether::Nether(int id, bool dois_jogadores):
-    Fase(id,dois_jogadores),
-    maxEsqueletos(3),
-    maxPlataformas(3)
+        Fase(id,dois_jogadores),
+        maxArqueiros(5),
+        maxSamurais(4),
+        maxEspinhos(5),
+        posicoesArqueiros(),
+        posicoesSamurais(),
+        posicoesEspinhos()
     {
+        posicoesArqueiros.clear();
+        posicoesSamurais.clear();
+        posicoesEspinhos.clear();
+
         carregarMapa("include/Tilemap/Nether.json","include/Tilemap/NetherTiles.png");
-        //jogador = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
-        //adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
+
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
         pGC.setInimigos(&listaInimigos);
@@ -21,6 +28,9 @@ namespace Fases {
         Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1304.0f, 860.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         arqueiro->setListaProjeteis(&listaProjeteis);
+
+        Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 3000.f), sf::Vector2f(90.0f, 128.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
     }
 
     Nether::~Nether() {
@@ -103,8 +113,9 @@ namespace Fases {
             adicionarObstaculos(plataforma);
             }
         }
-
     }
-
-    
+    void Nether::setPosicoes()
+    {
+            
+    }
 }

@@ -9,7 +9,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        class Arqueiro : public Inimigo
+        class Samurai : public Inimigo
         {
             private:
                 sf::Texture* texturaParado;
@@ -21,8 +21,8 @@ namespace Entidades
                 sf::Clock relogio;
 
             public:
-                Arqueiro(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador);
-                ~Arqueiro();
+                Samurai(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador);
+                ~Samurai();
                 void executar();
                 void desenhar();
 

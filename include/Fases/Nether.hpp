@@ -3,16 +3,24 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Obstaculos/Espinho.hpp"
+#include "Entidades/Personagens/samurai.hpp"
+#include <list>
 
 namespace Fases {
     class Nether: public Fase {
     private:
-        const int maxEsqueletos;
-        const int maxPlataformas;
+        //Maximo de instancias
+        const int maxArqueiros;
+        const int maxSamurais;
+        const int maxEspinhos;
+
+        //Vetores posições disponiveis instancias aleatorias
+        std::vector<sf::Vector2f> posicoesArqueiros;
+        std::vector<sf::Vector2f> posicoesSamurais;
+        std::list<sf::Vector2f> posicoesEspinhos;
 
         sf::Texture background;
-        //Provisorio
-        //Entidades::Personagens::Jogador* jogador;
+
     public:
         Nether(int id, bool dois_jogadores);
         ~Nether();
