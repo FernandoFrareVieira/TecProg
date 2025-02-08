@@ -72,10 +72,10 @@ namespace Fases
 
     void Fase::executar() {
         if (pObservadorFase) {
-            printf("NÃO É NULO\n");
+            //printf("NÃO É NULO\n");
         }
         else {
-            printf("EH NULO\n");
+            //printf("EH NULO\n");
         }
         desenhar();
         if (pJogador1->getVivo())

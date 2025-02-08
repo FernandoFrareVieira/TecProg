@@ -16,6 +16,7 @@ namespace Listas
             limpar();
             pPrimeiro = nullptr;
         }
+
         template<class TE>
         class Elemento
         {
@@ -55,36 +56,39 @@ namespace Listas
                 return pInfo;
             }
         };
+
         template <class TE>
         class Iterator {
         private:
             Elemento<TE>* pAtual;
         public:
             Iterator(Elemento<TE>* inicial = nullptr):
-            pAtual(inicial) {
+                pAtual(inicial)
+            {}
 
-            }
+            ~Iterator() {}
 
-            ~Iterator() {
-
-            }
-            
-            Iterator& operator++(){
-                pAtual = pAtual->getProximo();  
+            Iterator& operator++() {
+                if (pAtual) {
+                    pAtual = pAtual->getProximo();
+                }
                 return *this;
             }
 
-            Iterator& operator++(int) {
-                pAtual = pAtual->getProximo();
-                return *this;
+            Iterator operator++(int) {
+                Iterator temp = *this;
+                if (pAtual) {
+                    pAtual = pAtual->getProximo();
+                }
+                return temp;
             }
 
-            bool operator==(const Elemento<TE>* pElem) const{
-                return  (pAtual==pElem);
+            bool operator==(const Elemento<TE>* pElem) const {
+                return (pAtual == pElem);
             }
 
-            bool operator!=(const Elemento<TE>* pElem) const{
-                return (pAtual!=pElem);
+            bool operator!=(const Elemento<TE>* pElem) const {
+                return (pAtual != pElem);
             }
 
             void operator=(const Elemento<TE>* pElem) {
@@ -92,17 +96,21 @@ namespace Listas
             }
 
             TE* operator*() {
-                return pAtual->getInfo();
+                if (pAtual) {
+                    return pAtual->getInfo();
+                }
+                return nullptr;
             }
 
-            Elemento<TE>* getAtual() const  {
+            Elemento<TE>* getAtual() const {
                 return pAtual;
             }
         };
+
     private:
         Elemento<TL>* pPrimeiro;    
         int tamanho;
-        
+
     public:
         Iterator<TL> getPrimeiro() 
         {
@@ -113,6 +121,7 @@ namespace Listas
         {
             if (!elemento)
                 return;
+
             Elemento<TL>* pE = new Elemento<TL>;
             if (pE) {
                 pE->setProximo(pPrimeiro);
@@ -124,23 +133,23 @@ namespace Listas
 
         void remover(TL* elemento) 
         {
-            if (!elemento || !pPrimeiro)
+            if (!elemento || !pPrimeiro || tamanho == 0)
                 return;
 
             Iterator<TL> it = getPrimeiro();
             Elemento<TL>* anterior = nullptr;
 
-            while (it.getAtual() && *(it) != elemento) {
+            while (it.getAtual() && it.getAtual()->getInfo() != elemento) {
                 anterior = it.getAtual();
                 ++it;
             }
 
-            if (it.getAtual()) { // Se encontrou o elemento
+            if (it.getAtual()) { 
                 Elemento<TL>* aRemover = it.getAtual();
                 if (anterior) {
                     anterior->setProximo(aRemover->getProximo());
                 } else {
-                    pPrimeiro = aRemover->getProximo(); // Se for o primeiro elemento
+                    pPrimeiro = aRemover->getProximo(); 
                 }
 
                 delete aRemover;
@@ -150,15 +159,15 @@ namespace Listas
 
         void limpar()
         {
-            Elemento<TL>* temp =  nullptr;
+            Elemento<TL>* temp = nullptr;
 
-            for(int i = 0; i < getTamanho(); i++) {
+            while (pPrimeiro) {
                 temp = pPrimeiro;
                 pPrimeiro = pPrimeiro->getProximo();
-                if(temp) {
+                if (temp) {
                     delete temp;
                 }
-            }   
+            }
 
             pPrimeiro = nullptr;
             tamanho = 0;
@@ -172,8 +181,7 @@ namespace Listas
         TL* operator[](int pos)
         {
             if (pos < 0 || pos >= tamanho) {
-                // A posição está fora dos limites
-                return nullptr; // Ou lançar uma exceção, como throw std::out_of_range("Posição inválida");
+                return nullptr; 
             }
 
             Elemento<TL>* atual = pPrimeiro;
