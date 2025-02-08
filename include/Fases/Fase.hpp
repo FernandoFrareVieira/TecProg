@@ -13,6 +13,7 @@
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Personagens/Esqueleto.hpp"
 #include "Entidades/Personagens/Arqueiro.hpp"
+#include "Entidades/Personagens/samurai.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
 #include "Entidades/Obstaculos/Espinho.hpp"
 #include "Entidades/Projetil.hpp"

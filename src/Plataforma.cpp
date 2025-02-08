@@ -46,6 +46,10 @@ namespace Entidades
                 {
                     colisaoObstaculo(entidade2, ds);
                 }break;
+                case(ID::samurai):
+                {
+                    colisaoObstaculo(entidade2, ds);
+                }
             }   
         }
     }
