@@ -16,8 +16,7 @@ namespace Fases {
         posicoesEspinhos.clear();
 
         carregarMapa("include/Tilemap/Nether.json","include/Tilemap/NetherTiles.png");
-        //jogador = new Entidades::Personagens::Jogador(sf::Vector2f(100.0f, 920.0f), sf::Vector2f(50.0f, 50.0f), sf::Vector2f(0.0f, 0.0f));
-        //adicionarJogador(static_cast<Entidades::Entidade*>(jogador));
+
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
         pGC.setInimigos(&listaInimigos);

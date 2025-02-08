@@ -60,7 +60,7 @@ namespace Fases
             void executar();
             void mudarFase();
 
-
+            virtual void setPosicoes() = 0;
             //Salvamento e Carregamento
             void salvar(const std::string& caminhoArquivo);
             void carregar(const std::string& caminhoArquivo);

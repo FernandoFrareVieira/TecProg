@@ -24,6 +24,7 @@ namespace Fases
             pJogador2->getCorpo()->setPosition(sf::Vector2f(-200,0));
         }
         pObservadorFase = Observadores::FaseObservador::getInstancia();
+        pObservadorFase->setFase(this);
     }
 
     Fase::~Fase()
@@ -71,6 +72,7 @@ namespace Fases
     }
 
     void Fase::executar() {
+        printf("%2.f, %2.f\n", pJogador1->getCorpo()->getPosition().x, pJogador1->getCorpo()->getPosition().y);
         if (pObservadorFase) {
             //printf("NÃO É NULO\n");
         }
@@ -100,7 +102,7 @@ namespace Fases
         }
         mudarFase();
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
             salvar("saves/save.dat");
         }
 
@@ -194,6 +196,8 @@ namespace Fases
 
     void Fase::salvar(const std::string& caminhoArquivo)
     {
+        printf("SALVOU");
+        fflush(stdout);
         std::ofstream arquivo(caminhoArquivo, std::ios::binary);
         if(!arquivo.is_open()) {
             std::cout << "Erro ao salvar o jogo";
