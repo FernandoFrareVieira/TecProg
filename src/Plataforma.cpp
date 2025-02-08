@@ -50,6 +50,7 @@ namespace Entidades
                 {
                     colisaoObstaculo(entidade2, ds);
                 }
+                break;
             }   
         }
     }

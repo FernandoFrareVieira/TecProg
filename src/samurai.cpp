@@ -18,6 +18,7 @@ namespace Entidades
             dano = 20;
 
             texturaParado = pGG->carregarTextura("assets/samurai/Idle.png");
+            texturaAndando = pGG->carregarTextura("assets/samurai/Walk.png");
 
             corpo.setTexture(texturaParado);
 
@@ -50,6 +51,31 @@ namespace Entidades
 
         void Samurai::atualizarAnimacao(float dt)
         {
+            if(!estaAtacando) {
+                if(velocidade.x == 0) {
+                    if (animacao.getAnimacaoAtual() != "parado") { 
+                        animacao.setTextura(texturaParado);
+                        animacao.setAnimacao("parado");
+
+                        corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+                    }
+                }else {
+                    if(animacao.getAnimacaoAtual() != "andando") {
+                        animacao.setTextura(texturaAndando);
+                        animacao.setAnimacao("andando");
+
+                        corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+                    }
+                }
+            }else {
+                if(animacao.getAnimacaoAtual() != "atacando" && podePular) {
+                    animacao.setTextura(texturaAtacando);
+                    animacao.setAnimacao("atacando");
+
+                    corpo.setSize(sf::Vector2f(110.0f, 100.0f));
+                }
+            }
+
             animacao.atualizar(dt);
         }
 
@@ -62,7 +88,15 @@ namespace Entidades
                 framesParado[i] = sf::IntRect(40 + 128 * i, 20, 40, 108);
             }
 
+            int numFramesAndando = 8;
+            std::vector<sf::IntRect> framesAndando(numFramesAndando);
+
+            for (int i = 0; i < numFramesAndando; i++) {
+                framesAndando[i] = sf::IntRect(20 + 128*i, 65, 80, 60);
+            }
+
             animacao.adicionarAnimacao("parado", framesParado);
+            animacao.adicionarAnimacao("andando", framesAndando);
 
             animacao.setAnimacao("parado");
         }

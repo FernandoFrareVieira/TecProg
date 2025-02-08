@@ -31,6 +31,14 @@ namespace Fases {
         pGC.setObstaculos(&listaObstaculos);
         pGC.setInimigos(&listaInimigos);
         pGC.setProjeteis(&listaProjeteis);
+<<<<<<< HEAD
+
+
+        Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 250.0f), sf::Vector2f(50.0f, 128.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
+        adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
+        samurai->setListaProjeteis(&listaProjeteis);
+=======
+>>>>>>> 09814f8e83c643f6618642843ef6936a22fe9727
     }
 
     Nether::~Nether() {
