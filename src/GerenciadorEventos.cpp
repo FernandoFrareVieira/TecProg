@@ -52,13 +52,10 @@ namespace Gerenciadores
             else if(evento.type == sf::Event::KeyPressed) {
                 //pJogador->mover(evento.key.code);
                 /////
-                if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantano|| gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether) { //Fazer Observador fase
-                    if (evento.key.code == sf::Keyboard::Key::Escape) {
+                LO->notificarTeclaPressionada(evento.key.code);
+                if (evento.key.code == sf::Keyboard::Key::Escape) {
+                    if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantanal|| gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether)
                         gEstados->addEstado(2);
-                    }
-                }
-                else {
-                    LO->notificarTeclaPressionada(evento.key.code);
                 }
             }
             else if(evento.type == sf::Event::KeyReleased) {

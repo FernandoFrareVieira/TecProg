@@ -3,11 +3,13 @@
 #include "Observador.hpp"  
 #include "Menus/MenuPrincipal.hpp"
 #include <SFML/Window/Keyboard.hpp>
+#include "Observadores/FaseObservador.hpp"
 
 namespace Observadores {
     class MenuObservador : public Observador {
     private:
         Menus::Menu* pMenu;
+        Observadores::FaseObservador* pFaseObservador;
     public:
         MenuObservador();
         ~MenuObservador();

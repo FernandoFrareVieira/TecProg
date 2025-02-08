@@ -5,6 +5,7 @@
 #include "Menus/GameOver.hpp"
 #include "Listas/ListaEntidades.hpp"
 #include "Menus/Leaderboard.hpp"
+#include "Menus/MenuFases.hpp"
 #include <stack>
 
 namespace Fases {

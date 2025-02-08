@@ -5,7 +5,7 @@
 namespace Menus {
     enum BOTOES {
         vazio,
-        iniciar,
+        singleplayer,
         sair,
         continuar,
         salvar,
@@ -14,6 +14,8 @@ namespace Menus {
         carregar,
         multiplayer,
         leaderboard,
+        pantanal,
+        nether,
     };
     class Opcao {
         private:

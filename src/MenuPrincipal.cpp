@@ -6,8 +6,8 @@ namespace Menus {
     Menu(6,id)
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
-        opcoes[0]->setTexto("Iniciar");
-        opcoes[0]->setBotao(Menus::BOTOES::iniciar);
+        opcoes[0]->setTexto("Singleplayer");
+        opcoes[0]->setBotao(Menus::BOTOES::singleplayer);
         opcoes[0]->mudarCor();
         opcoes[1]->setTexto("Multiplayer");
         opcoes[1]->setBotao(Menus::BOTOES::multiplayer);

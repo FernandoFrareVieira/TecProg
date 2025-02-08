@@ -16,7 +16,7 @@ namespace Entidades
         Nether,
         MenuPrincipal,
         MenuPause,
-        Pantano,
+        pantanal,
         projetil
     };
 

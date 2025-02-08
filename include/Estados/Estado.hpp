@@ -8,11 +8,12 @@ namespace Estados {
     enum ID_Estado {
         empty = -1,
         menu_principal = 0,
-        pantano = 1,
+        pantanal = 1,
         menu_pause = 2,
         nether = 3,
         game_over = 4,
         leaderboard = 5,
+        menu_fases = 6,
     };
     class Estado {
     protected:

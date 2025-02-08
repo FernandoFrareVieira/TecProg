@@ -2,14 +2,16 @@
 
 namespace Menus {
     MenuPause::MenuPause(int id):
-    Menu(2,id) {
+    Menu(3,id) {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         
         opcoes[0]->setTexto("Continuar");
         opcoes[0]->setBotao(continuar);
         opcoes[0]->mudarCor();
-        opcoes[1]->setTexto("Menu Principal");
-        opcoes[1]->setBotao(menu_principal);
+        opcoes[1]->setTexto("Salvar");
+        opcoes[1]->setBotao(salvar);
+        opcoes[2]->setTexto("Menu Principal");
+        opcoes[2]->setBotao(menu_principal);
         corpo.setFillColor(sf::Color::White);
     }
 
