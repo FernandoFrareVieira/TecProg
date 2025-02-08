@@ -366,4 +366,42 @@ namespace Fases
 
         arquivo.close();
     }
+
+    void Fase::instanciaAleatorias(std::vector<sf::Vector2f> posicoes, Entidades::ID id) {
+        int random = static_cast<int>(std::min<size_t>(3 + rand() % (posicoes.size() - 2), posicoes.size()));
+
+        std::vector<int> indicesUsados;
+
+        for (int i = 0; i < random; i++) {
+            if (indicesUsados.size() == posicoes.size()) {
+                break; // Evita loop infinito se todos os índices já foram usados
+            }
+
+            int index;
+            do {
+                index = rand() % posicoes.size(); // Sorteia um índice aleatório do vetor
+            } while (std::find(indicesUsados.begin(), indicesUsados.end(), index) != indicesUsados.end());
+
+            indicesUsados.push_back(index); // Armazena o índice já utilizado
+
+            std::cout << posicoes[index].y << std::endl;
+
+            if (id == Entidades::ID::gosma) {
+                auto* gosma = new Entidades::Obstaculos::Gosma(posicoes[index], sf::Vector2f(100.0f, 20.0f));
+                adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
+            }
+            else if (id == Entidades::ID::arqueiro) {
+                Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+            }
+            else if (id == Entidades::ID::esqueleto) {
+                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
+            }
+            else if (id == Entidades::ID::samurai) {
+                Entidades::Personagens::Esqueleto* samurai = new Entidades::Personagens::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
+            }
+        }
+    }
 }
