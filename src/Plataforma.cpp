@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
+        Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, int tipoPlataforma):
         Obstaculo(pos, tam, vel, ID::plataforma)
         {
             vivo = true;   
@@ -38,7 +38,7 @@ namespace Entidades
                 {
                     colisaoObstaculo(entidade2, ds);
                 }break;
-                case(ID::esquleto):
+                case(ID::esqueleto):
                 {
                     colisaoObstaculo(entidade2, ds);
                 }break;
@@ -49,4 +49,6 @@ namespace Entidades
             }   
         }
     }
+
+    
 }

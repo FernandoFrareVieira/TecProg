@@ -51,7 +51,7 @@ namespace Entidades
                         posicao.y - tamanhoEntidade.y
                     );
 
-                    if (entidade2->getId() == ID::jogador || entidade2->getId() == ID::esquleto || entidade2->getId() == ID::arqueiro) {
+                    if (entidade2->getId() == ID::jogador || entidade2->getId() == ID::esqueleto || entidade2->getId() == ID::arqueiro) {
                         Personagens::Personagem* pPersonagem = static_cast<Personagens::Personagem*>(entidade2);
                         pPersonagem->setPodePular(true);
                     }

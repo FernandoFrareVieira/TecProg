@@ -50,7 +50,9 @@ namespace Entidades
                 //Métodos gravidade
                 void pular();
 
+                //Métodos pontos d evida
                 int getPontosDeVida();
+                void setPontosDeVida(int vida);
 
                 //Método animacao
                 virtual void adicionarAnimacoes() = 0;

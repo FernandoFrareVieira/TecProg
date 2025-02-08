@@ -74,11 +74,11 @@ namespace Entidades
         {
             pontosDeVida = pontosDeVida - dano;
 
-            std::cout << pontosDeVida << std::endl;
-
             if(pontosDeVida <= 0) {
                 vivo = false;
             }
+
+            std::cout << "Pontos de vida: " << pontosDeVida << std::endl;
 
             if(this->getId() == ID::jogador) {
                 sf::Vector2f velocidade = this->getVelocidade();
@@ -119,6 +119,11 @@ namespace Entidades
         int Personagem::getPontosDeVida()
         {
             return pontosDeVida;
+        }
+
+        void Personagem::setPontosDeVida(int vida)
+        {
+            pontosDeVida = vida;
         }
 
         void Personagem::pular()

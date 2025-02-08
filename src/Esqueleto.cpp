@@ -5,7 +5,7 @@ namespace Entidades
     namespace Personagens
     {
         Esqueleto::Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador):
-            Inimigo(pos, tam, vel, jogador, ID::esquleto),
+            Inimigo(pos, tam, vel, jogador, ID::esqueleto),
             animacao(&corpo, 0.1f)
         {
             vivo = true;

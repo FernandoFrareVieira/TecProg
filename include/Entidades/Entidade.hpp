@@ -9,7 +9,7 @@ namespace Entidades
         vazio = 0,
         jogador, 
         arqueiro,
-        esquleto,
+        esqueleto,
         gosma,
         espinho,
         plataforma,

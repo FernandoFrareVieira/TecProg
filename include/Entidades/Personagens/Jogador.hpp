@@ -46,7 +46,6 @@ namespace Entidades
 
                 //Métodos pontuação
                 void ganharPontos(int pts);
-                void perderPontos(int pts);
                 int getPontuacao();
         };
     }

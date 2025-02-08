@@ -304,7 +304,7 @@ namespace Entidades
         {
             switch (entidade2->getId())
             {
-            case (ID::esquleto):
+            case (ID::esqueleto):
             {
                 Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
                 if (estaAtacando)
@@ -347,21 +347,8 @@ namespace Entidades
         void Jogador::ganharPontos(int pts)
         {
             pontos = pontos + pts;
-
-            std::cout << pontos << std::endl;
         }
-
-        void Jogador::perderPontos(int pts)
-        {
-            /*pontos = pontos - pts;
-            if (pontos < 0)
-            {
-                pontos = 0;
-            }
-
-            std::cout << pontos << std::endl;*/
-        }
-
+        
         int Jogador::getPontuacao()
         {
             return pontos;
