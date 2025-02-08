@@ -102,8 +102,10 @@ namespace Listas
     private:
         Elemento<TL>* pPrimeiro;    
         int tamanho;
+        
     public:
-        Iterator<TL> getPrimeiro() {
+        Iterator<TL> getPrimeiro() 
+        {
             return Iterator<TL>(pPrimeiro);
         }
         
@@ -120,28 +122,29 @@ namespace Listas
             }
         }
 
-        void remover(TL* elemento) {
-            if (!elemento || !pPrimeiro) return;
+        void remover(TL* elemento) 
+        {
+            if (!elemento || !pPrimeiro)
+                return;
 
+            Iterator<TL> it = getPrimeiro();
             Elemento<TL>* anterior = nullptr;
-            Elemento<TL>* atual = pPrimeiro;
 
-            while (atual != nullptr) {
-                if (atual->getInfo() == elemento) {
-                    if (atual == pPrimeiro) {  // Corrigindo a comparação
-                        pPrimeiro = atual->getProximo();
-                    } else {
-                        anterior->setProximo(atual->getProximo());  // Mantendo o encadeamento correto
-                    }
+            while (it.getAtual() && *(it) != elemento) {
+                anterior = it.getAtual();
+                ++it;
+            }
 
-                    delete atual;  // Liberando memória corretamente
-                    tamanho--;
-
-                    return; // Se só quiser remover a primeira ocorrência, encerre aqui
+            if (it.getAtual()) { // Se encontrou o elemento
+                Elemento<TL>* aRemover = it.getAtual();
+                if (anterior) {
+                    anterior->setProximo(aRemover->getProximo());
+                } else {
+                    pPrimeiro = aRemover->getProximo(); // Se for o primeiro elemento
                 }
 
-                anterior = atual; // Atualiza o anterior
-                atual = atual->getProximo(); // Move para o próximo
+                delete aRemover;
+                tamanho--;
             }
         }
 

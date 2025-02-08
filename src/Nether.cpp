@@ -21,9 +21,6 @@ namespace Fases {
         Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1304.0f, 860.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         arqueiro->setListaProjeteis(&listaProjeteis);
-
-        Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(sf::Vector2f(828.0f, 880.0f), sf::Vector2f(64.0f, 64.0f), sf::Vector2f(0.0f, 0.0f));
-        adicionarObstaculos(static_cast<Entidades::Entidade*>(espinho));
     }
 
     Nether::~Nether() {
