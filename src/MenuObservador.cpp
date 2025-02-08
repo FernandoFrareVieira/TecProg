@@ -4,6 +4,7 @@ namespace Observadores {
     MenuObservador::MenuObservador():
     Observador()
     {
+        pFaseObservador = Observadores::FaseObservador::getInstancia();
     }
 
     MenuObservador::~MenuObservador() {
@@ -20,24 +21,46 @@ namespace Observadores {
     void MenuObservador::notificarPressionada(sf::Keyboard::Key tecla) {
         if (!pMenu)
             return;
-        if (tecla == sf::Keyboard::Down)
-            printf("DOWN\n");
+        if (tecla == sf::Keyboard::Escape) {
+            removerObservador();
+        }
         if (tecla == sf::Keyboard::Key::Enter) {
-            printf("ENTER\n");
-            if (pMenu->getBotao() == Menus::BOTOES::iniciar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal){
+            if (pMenu->getBotao() == Menus::BOTOES::singleplayer && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal){
                 pGEstados->setMultiplayer(false);
-                removerObservador();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(1);
+                pGEstados->addEstado(6);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::multiplayer) {
                 pGEstados->setMultiplayer(true);
                 removerObservador();
                 pGEstados->removerEstado();
+                pGEstados->addEstado(6);
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_fases && pMenu->getBotao() == Menus::BOTOES::voltar) {
+                removerObservador();
+                pGEstados->removerEstado();
+                pGEstados->addEstado(0);
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_fases && pMenu->getBotao() == Menus::BOTOES::pantanal) {
+                removerObservador();
+                pGEstados->removerEstado();
                 pGEstados->addEstado(1);
             }
-            else if (pMenu->getBotao() == Menus::BOTOES::continuar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_fases && pMenu->getBotao() == Menus::BOTOES::nether) {
                 removerObservador();
+                pGEstados->removerEstado();
+                pGEstados->addEstado(3);
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::carregar) {
+                pFaseObservador->notificarSalvamento();
+                pGEstados->addEstado(1);
+                pFaseObservador->notificarCarregamento();
+            }
+            else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause && pMenu->getBotao() == Menus::BOTOES::salvar) {
+                pFaseObservador->notificarSalvamento();
+                pGEstados->removerEstado();
+            }
+            else if (pMenu->getBotao() == Menus::BOTOES::continuar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
                 pGEstados->removerEstado();
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::leaderboard && pMenu->getBotao() == Menus::BOTOES::voltar) {

@@ -30,4 +30,8 @@ namespace Observadores {
     void Observador::removerObservador() {
         pGEventos->removerObservador(this);
     }
+    
+    void Observador::adicionarObservador() {
+        pGEventos->addObservador(this);
+    }
 }   

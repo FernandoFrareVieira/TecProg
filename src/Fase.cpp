@@ -1,9 +1,8 @@
 #include "Fases/Fase.hpp"
+#include "Fases/Fase.hpp"
 
 namespace Fases
 {
-    Observadores::FaseObservador* Fases::Fase::pObservadorFase = nullptr;
-
     Fase::Fase(int id, bool dois_jogadores):
         Estado(id),
         listaObstaculos(),
@@ -24,18 +23,11 @@ namespace Fases
         if (!multiplayer) {
             pJogador2->getCorpo()->setPosition(sf::Vector2f(-200,0));
         }
-        
-        if (pObservadorFase == nullptr) {
-            pObservadorFase = new Observadores::FaseObservador();
-        }
+        pObservadorFase = Observadores::FaseObservador::getInstancia();
     }
 
     Fase::~Fase()
     {
-        if(pObservadorFase != nullptr){
-            delete(pObservadorFase);
-            pObservadorFase = nullptr;
-        }
 
         if (pJogador1) {
             delete(pJogador1);
@@ -79,6 +71,12 @@ namespace Fases
     }
 
     void Fase::executar() {
+        if (pObservadorFase) {
+            printf("NÃO É NULO\n");
+        }
+        else {
+            printf("EH NULO\n");
+        }
         desenhar();
         if (pJogador1->getVivo())
             pGG->centralizarCamera(pJogador1->getCorpo()->getPosition());
@@ -103,7 +101,7 @@ namespace Fases
         mudarFase();
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-            salvar("saves/save.dat");
+            //salvar("saves/save.dat");
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {

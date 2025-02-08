@@ -25,5 +25,6 @@ namespace Observadores {
             virtual void notificarPressionada(sf::Keyboard::Key tecla) {}
             void mudarAtivar();
             bool getAtivar() const;
+            void adicionarObservador();
     };  
 }

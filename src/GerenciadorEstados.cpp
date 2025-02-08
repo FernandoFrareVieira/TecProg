@@ -48,7 +48,7 @@ namespace Gerenciadores {
         }
         else if (id == 1) {
             Fases::Fase1* Fase1 = new Fases::Fase1(1,dois_jogadores);
-            Fase1->setID_Estado(Estados::ID_Estado::pantano);
+            Fase1->setID_Estado(Estados::ID_Estado::pantanal);
             estados.push(Fase1);
         }
         else if (id == 2) {
@@ -71,6 +71,11 @@ namespace Gerenciadores {
             Menus::Leaderboard* pLeaderboard = new Menus::Leaderboard(5);
             pLeaderboard->setID_Estado(Estados::ID_Estado::leaderboard);
             estados.push(pLeaderboard);
+        }
+        else if (id == 6) {
+            Menus::MenuFases* pMenuFases = new Menus::MenuFases(6);
+            pMenuFases->setID_Estado(Estados::ID_Estado::menu_fases);
+            estados.push(pMenuFases);
         }
     }  
 

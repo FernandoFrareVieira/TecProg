@@ -42,7 +42,7 @@ namespace Fases
             sf::Texture tilesetTextura;
 
             std::vector<sf::Vector2f> posicoes;
-            static Observadores::FaseObservador* pObservadorFase;
+            Observadores::FaseObservador* pObservadorFase;
             bool multiplayer;
         public:
             Fase(int id, bool dois_jogadores);
