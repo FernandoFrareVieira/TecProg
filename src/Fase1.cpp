@@ -1,4 +1,5 @@
 #include "Fases/Fase1.hpp"
+#include <iostream>
 
 namespace Fases
 {
@@ -32,23 +33,8 @@ namespace Fases
         arqueiro->setListaProjeteis(&listaProjeteis);
 
         setPosicoes();
-        
-        int random = 3 + rand() % (posicoes.size() - 2);
-        std::vector<int> indicesUsados;
-
-        for (int i = 0; i < random; i++) {
-            int index;
-            do {
-                index = rand() % posicoes.size(); // Sorteia um índice aleatório do vetor
-            } while (std::find(indicesUsados.begin(), indicesUsados.end(), index) != indicesUsados.end()); // Evita repetição
-
-            indicesUsados.push_back(index); // Armazena o índice já utilizado
-
-            std::cout << posicoes[index].y << std::endl;
-
-            Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicoes[index], sf::Vector2f(100.0f, 20.0f));
-            adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
-        }
+        instanciaAleatorias(posicoesGosmas, Entidades::ID::gosma);
+        instanciaAleatorias(posicoesGosmas, Entidades::ID::arqueiro);
 
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);        
@@ -139,12 +125,14 @@ namespace Fases
 
     void Fase1::setPosicoes() 
     {
-        posicoes.push_back(sf::Vector2f(1663,563));
-        posicoes.push_back(sf::Vector2f(1630,1043));
-        posicoes.push_back(sf::Vector2f(2068,1043));
-        posicoes.push_back(sf::Vector2f(2439,915));
-        posicoes.push_back(sf::Vector2f(2442,339));
-        posicoes.push_back(sf::Vector2f(450,1011));
+        posicoesGosmas.push_back(sf::Vector2f(1663,563));
+        posicoesGosmas.push_back(sf::Vector2f(1630,1043));
+        posicoesGosmas.push_back(sf::Vector2f(2068,1043));
+        posicoesGosmas.push_back(sf::Vector2f(2439,915));
+        posicoesGosmas.push_back(sf::Vector2f(2442,339));
+        posicoesGosmas.push_back(sf::Vector2f(450,1011));
+
+        posicoesArqueiros.push_back(sf::Vector2f(1979,290));
     }
  
 }

@@ -65,5 +65,6 @@ namespace Fases
             //Salvamento e Carregamento
             void salvar(const std::string& caminhoArquivo);
             void carregar(const std::string& caminhoArquivo);
+            void instanciaAleatorias(std::vector<sf::Vector2f> posicoes, Entidades::ID id);
     };
 }

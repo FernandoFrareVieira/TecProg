@@ -19,7 +19,7 @@ namespace Fases
             //Vetores posições disponiveis instancias aleatorias
             std::vector<sf::Vector2f> posicoesEsqueleto;
             std::vector<sf::Vector2f> posicoesArqueiros;
-            std::list<sf::Vector2f> posicoesGosmas;
+            std::vector<sf::Vector2f> posicoesGosmas;
 
             sf::Texture background;
         public:
