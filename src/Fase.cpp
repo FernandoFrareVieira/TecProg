@@ -406,8 +406,15 @@ namespace Fases
                 adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
             }
             else if (id == Entidades::ID::samurai) {
-                Entidades::Personagens::Esqueleto* samurai = new Entidades::Personagens::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
+                samurai->setListaProjeteis(&listaProjeteis);
+            }
+            else if (id == Entidades::ID::espinho) {
+                auto* espinho = new Entidades::Obstaculos::Espinho(posicoes[index], sf::Vector2f(100.0f, 20.0f));
+                adicionarObstaculos(static_cast<Entidades::Entidade*>(espinho));
+                printf("ADICIONADO\n");
+                fflush(stdout);
             }
         }
     }

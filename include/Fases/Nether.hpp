@@ -17,7 +17,7 @@ namespace Fases {
         //Vetores posições disponiveis instancias aleatorias
         std::vector<sf::Vector2f> posicoesArqueiros;
         std::vector<sf::Vector2f> posicoesSamurais;
-        std::list<sf::Vector2f> posicoesEspinhos;
+        std::vector<sf::Vector2f> posicoesEspinhos;
 
         sf::Texture background;
 
