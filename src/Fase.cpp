@@ -241,19 +241,25 @@ namespace Fases
             arquivo.write(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
         }
 
-        // //Salvar projeteis
-        // int numProjeteis = listaProjeteis.getTamanho();
-        // arquivo.write(reinterpret_cast<char*>(&numProjeteis), sizeof(int));
+        //Salvar projeteis
+        int numProjeteis = listaProjeteis.getTamanho();
+        arquivo.write(reinterpret_cast<char*>(&numProjeteis), sizeof(int));
 
-        // Entidades::Entidade* projetilEntidade;
-        // for(int i = 0; i < numProjeteis; i++) {
-        //     projetilEntidade = listaProjeteis.operator[](i);
+        Entidades::Entidade* projetilEntidade;
+        for(int i = 0; i < numProjeteis; i++) {
+            projetilEntidade = listaProjeteis.operator[](i);
 
-        //     sf::Vector2f pos = projetilEntidade->getCorpo()->getPosition();
-        //     arquivo.write(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
-        // }
+            sf::Vector2f pos = projetilEntidade->getCorpo()->getPosition();
+            sf::Vector2f vel = projetilEntidade->getVelocidade();
 
-        // arquivo.close();
+            arquivo.write(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            arquivo.write(reinterpret_cast<char*>(&vel), sizeof(sf::Vector2f));
+        }
+        
+        //salvar id da fase
+        arquivo.write(reinterpret_cast<char*>(&id), sizeof(int));
+
+        arquivo.close();
     }
 
     void Fase::carregar(const std::string& caminhoArquivo)
@@ -298,6 +304,7 @@ namespace Fases
                 adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
             }else {
                 Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(pos, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0, 0), pJogador1);
+                arqueiro->setListaProjeteis(&listaProjeteis);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
             }
         }
@@ -325,21 +332,33 @@ namespace Fases
 
         //Carregar projeteis
 
-        // int numProjeteis;
-        // arquivo.read(reinterpret_cast<char*>(&numProjeteis), sizeof(int));
+        int numProjeteis;
+        arquivo.read(reinterpret_cast<char*>(&numProjeteis), sizeof(int));
 
-        // listaProjeteis.limpar();
+        listaProjeteis.limpar();
         
-        // for(int i = 0; i < numProjeteis; i++) {
-        //     sf::Vector2f pos;
-        //     arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+        for(int i = 0; i < numProjeteis; i++) {
+            sf::Vector2f pos;
+            sf::Vector2f vel;
 
-        //     Entidades::Projetil* projetil = new Entidades::Projetil(pos ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
-        //     adicionarProjetil(static_cast<Entidades::Entidade*>(projetil));
-        // }
+            arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            arquivo.read(reinterpret_cast<char*>(&vel), sizeof(sf::Vector2f));
 
+            Entidades::Projetil* projetil = new Entidades::Projetil(pos ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
+            projetil->setVelocidade(vel);
 
-        carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
+            adicionarProjetil(static_cast<Entidades::Entidade*>(projetil));
+        }
+
+        int id;
+        arquivo.read(reinterpret_cast<char*>(&id), sizeof(int));
+
+        if(id == 1) {
+            carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
+        }else {
+            carregarMapa("include/Tilemap/Nether.json","include/Tilemap/NetherTiles.png");
+        }
+            
 
         arquivo.close();
     }

@@ -7,7 +7,7 @@ namespace Entidades
         Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador):
             Inimigo(pos, tam, vel, jogador, ID::arqueiro),
             animacao(&corpo, 0.1f),
-            listaProjeteis()        
+            listaProjeteis(nullptr)        
         {
             vivo = true;
             pontosDeVida = 40;
@@ -69,7 +69,11 @@ namespace Entidades
           
             if(tempoQuePassou >= 2.5f) {
                 Entidades::Projetil* projetil = new Entidades::Projetil({corpo.getPosition().x - 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
-                listaProjeteis->adicionarEntidade(static_cast<Entidades::Entidade*>(projetil));
+
+                if(listaProjeteis)
+                    listaProjeteis->adicionarEntidade(static_cast<Entidades::Entidade*>(projetil));
+                else
+                    delete projetil;
 
                 relogio.restart();
             }
