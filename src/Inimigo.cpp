@@ -82,14 +82,19 @@ namespace Entidades
                     Personagem* pPersonagem = static_cast<Personagem*>(entidade2);             
                     atacar();
                     if (estaAtacando) {
-                        
-                        if(this->getId() != ID::arqueiro) {
+
+                        if(this->getId() != ID::arqueiro)
                             pPersonagem->tomarDano(dano);
-                            estaAtacando = false;
+                        dano = 0;
+                    }else {
+                        if(this->getId() == ID::esqueleto) {
+                            dano = 10;
+                        }else if(this->getId() == ID::samurai) {
+                            dano = 20;
                         }
                     }
 
-                    //colisaoPersonagem(pPersonagem, ds);
+                    colisaoPersonagem(pPersonagem, ds);
                 }
                 break;
                 case(ID::plataforma):

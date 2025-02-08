@@ -30,6 +30,14 @@ namespace Entidades
                 //Atributo gravidade
                 float velocidadePulo;
 
+                //Atributos texturas
+                sf::Texture* texturaParado;
+                sf::Texture* texturaAndando;
+                sf::Texture* texturaAtacando;
+
+
+                //Animacao ataque
+                float tempoAnimacaoAtaque;
             public:
                 Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
                 ~Personagem();

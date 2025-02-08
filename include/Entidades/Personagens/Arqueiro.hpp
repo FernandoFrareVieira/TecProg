@@ -19,6 +19,7 @@ namespace Entidades
                 Listas::ListaEntidades* listaProjeteis;
                 
                 sf::Clock relogio;
+                sf::Clock relogioAnimacao;
 
             public:
                 Arqueiro(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador);

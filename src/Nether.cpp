@@ -23,7 +23,7 @@ namespace Fases {
         pGC.setProjeteis(&listaProjeteis);
 
 
-        Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 250.0f), sf::Vector2f(50.0f, 128.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 250.0f), sf::Vector2f(50.0f, 128.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
         samurai->setListaProjeteis(&listaProjeteis);
     }

@@ -23,6 +23,7 @@ namespace Entidades
             podeAtacar = true;
 
             tempoDesdeUltimoAtaque = 0.0f;
+            olhandoParaDireita = true;
 
             if (id == 1)
             {
@@ -41,7 +42,7 @@ namespace Entidades
 
                 corpo.setTexture(texturaParado);
 
-                olhandoParaDireita = true;
+                tempoAnimacaoAtaque = 0.5f;
 
                 adicionarAnimacoes();
             }
@@ -59,6 +60,8 @@ namespace Entidades
                 texturaParado = pGG->carregarTextura("assets/jogador2/Idle.png");
                 texturaAndando = pGG->carregarTextura("assets/jogador2/Run.png");
                 texturaAtacando = pGG->carregarTextura("assets/jogador2/Attack_1.png");
+
+                tempoAnimacaoAtaque = 0.4f;
 
                 corpo.setTexture(texturaParado);
 
@@ -194,9 +197,6 @@ namespace Entidades
                     framesAndando[i] = sf::IntRect(sf::IntRect(40 + 128 * i, 58, 55, 70));
                 }
 
-                animacao.adicionarAnimacao("parado", framesParado);
-                animacao.adicionarAnimacao("andando", framesAndando);
-
                 //Corta os dois ultimos frames
                 int numFramesAtacando = 4;
                 std::vector<sf::IntRect> framesAtacando(numFramesAtacando);
@@ -317,7 +317,7 @@ namespace Entidades
                     dano = 20;
                 }
 
-                // colisaoPersonagem(pPersonagem, ds);
+                colisaoPersonagem(pPersonagem, ds);
             }
             break;
 
@@ -351,6 +351,8 @@ namespace Entidades
                 }else {
                     dano = 20;
                 }
+
+                colisaoPersonagem(pPersonagem, ds);
             }
             break;
 

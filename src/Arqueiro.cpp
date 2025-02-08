@@ -10,7 +10,7 @@ namespace Entidades
             listaProjeteis(nullptr)        
         {
             vivo = true;
-            pontosDeVida = 40;
+            pontosDeVida = 20;
             estaAtacando = false;
             podeAtacar = true;
             tempoAtacarNovamente = 2.0f; 
@@ -18,6 +18,7 @@ namespace Entidades
             dano = 0;
 
             texturaParado = pGG->carregarTextura("assets/arqueiro/Idle.png");
+            texturaAtacando = pGG->carregarTextura("assets/arqueiro/Shot_1.png");
 
             corpo.setTexture(texturaParado);
 
@@ -44,9 +45,31 @@ namespace Entidades
             }
          }
 
-        void Arqueiro::atualizarAnimacao(float dt)
-        {
-            animacao.atualizar(dt);
+         void Arqueiro::atualizarAnimacao(float dt) {
+            // Obtém o tempo decorrido desde que o relógio foi iniciado ou reiniciado
+            float tempoDecorrido = relogioAnimacao.getElapsedTime().asSeconds();
+        
+            if (tempoDecorrido < 1.0f) {
+                // Animação "parado"
+                if (animacao.getAnimacaoAtual() != "parado") {
+                    animacao.setTextura(texturaParado);
+                    animacao.setAnimacao("parado");
+                    corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+                }
+            } else if (tempoDecorrido < 1.0f + 1.5f) {
+                // Animação "atacando"
+                if (animacao.getAnimacaoAtual() != "atacando") {
+                    animacao.setTextura(texturaAtacando);
+                    animacao.setAnimacao("atacando");
+                    corpo.setSize(sf::Vector2f(90.0f, 80.0f));
+                }
+            } else {
+                // Reinicia o relógio para começar um novo ciclo
+                relogioAnimacao.restart();
+            }
+        
+            // Atualiza a animação (se necessário, passe um delta time aqui)
+            animacao.atualizar(dt); // Ou use um delta time, se a animação precisar
         }
 
         void Arqueiro::adicionarAnimacoes()
@@ -58,7 +81,15 @@ namespace Entidades
                 framesParado[i] = sf::IntRect(40 + 128 * i, 65, 45, 60);
             }
 
+            int numFramesAtacando = 15;
+            std::vector<sf::IntRect> framesAtacando(numFramesAtacando);
+
+            for (int i = 0; i < numFramesAtacando; i++){
+                framesAtacando[i] = sf::IntRect(30 + 128 * i, 60, 60, 70);
+            }
+
             animacao.adicionarAnimacao("parado", framesParado);
+            animacao.adicionarAnimacao("atacando", framesAtacando);
 
             animacao.setAnimacao("parado");
         }

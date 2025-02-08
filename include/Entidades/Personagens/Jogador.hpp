@@ -10,10 +10,6 @@ namespace Entidades
         class Jogador : public Personagem
         {
             private:
-                sf::Texture* texturaParado;
-                sf::Texture* texturaAndando;
-                sf::Texture* texturaAtacando;
-
                 Animacoes::Animacao animacao;
 
                 //Atributo pontuação

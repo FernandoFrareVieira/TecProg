@@ -21,13 +21,13 @@ namespace Fases
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
 
 
-        Entidades::Personagens::Esqueleto* esqueleto1 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1612.0f, 270.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        Entidades::Personagens::Esqueleto* esqueleto1 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1612.0f, 270.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto1));
 
-        Entidades::Personagens::Esqueleto* esqueleto2 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1714.0f, 870.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        Entidades::Personagens::Esqueleto* esqueleto2 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1714.0f, 870.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto2));
             
-        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         arqueiro->setListaProjeteis(&listaProjeteis);
 

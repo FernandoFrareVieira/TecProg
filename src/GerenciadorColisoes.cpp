@@ -86,48 +86,18 @@ namespace Gerenciadores {
         }
 
         //Colisão inimigos com obstaculos
-        // for(int i = 0; i < listaInimigos->getTamanho(); i++) {
-        //     Entidades::Entidade* entidade1 = listaInimigos->operator[](i);
-        //     for(int j = 0; j < listaObstaculos->getTamanho(); j++) {
-        //         Entidades::Entidade* entidade2 = listaObstaculos->operator[](j);
-        //         ds = calculaColisao(entidade1, entidade2);
+        for(int i = 0; i < listaInimigos->getTamanho(); i++) {
+            Entidades::Entidade* entidade1 = listaInimigos->operator[](i);
+            for(int j = 0; j < listaObstaculos->getTamanho(); j++) {
+                Entidades::Entidade* entidade2 = listaObstaculos->operator[](j);
+                ds = calculaColisao(entidade1, entidade2);
 
-        //         if(ds.x > 0.0f && ds.y > 0.0f) {
-        //             entidade1->colidir(entidade2, ds);
-        //             entidade2->colidir(entidade1, ds);
-        //         }
-        //     }
-        // }
-
-        //Colisão obstaculo com obstaculo
-
-        // for (int i = 0; i < listaObstaculos->getTamanho() - 1; i++) {
-        //     Entidades::Entidade* entidade1 = listaObstaculos->operator[](i);
-        
-        //     for (int j = i + 1; j < listaObstaculos->getTamanho(); j++) {
-        //         Entidades::Entidade* entidade2 = listaObstaculos->operator[](j);
-        
-        //         // Obtém os IDs das entidades
-        //         Entidades::ID id1 = entidade1->getId();
-        //         Entidades::ID id2 = entidade2->getId();
-        
-        //         // Verifica se é uma colisão válida: Plataforma vs Gosma ou Plataforma vs Espinho
-        //         bool colisaoValida = 
-        //             (id1 == Entidades::ID::plataforma && (id2 == Entidades::ID::gosma || id2 == Entidades::ID::espinho)) ||
-        //             (id2 == Entidades::ID::plataforma && (id1 == Entidades::ID::gosma || id1 == Entidades::ID::espinho));
-        
-        //         if (colisaoValida) {
-        //             sf::Vector2f ds = calculaColisao(entidade1, entidade2);
-        
-        //             if (ds.x > 0.0f && ds.y > 0.0f) {
-        //                 entidade1->colidir(entidade2, ds);
-        //                 entidade2->colidir(entidade1, ds);
-        //             }
-        //         }
-        //     }
-        // }
-
-        //TODO - Colisão inimigo com inimigo ?
+                if(ds.x > 0.0f && ds.y > 0.0f) {
+                    entidade1->colidir(entidade2, ds);
+                    entidade2->colidir(entidade1, ds);
+                }
+            }
+        }
     }
     
     sf::Vector2f GerenciadorColisoes::calculaColisao(Entidades::Entidade* entidade1, Entidades::Entidade* entidade2) {
