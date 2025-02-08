@@ -26,6 +26,7 @@ namespace Observadores {
         }
         if (tecla == sf::Keyboard::Key::Enter) {
             if (pMenu->getBotao() == Menus::BOTOES::singleplayer && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal){
+                removerObservador();
                 pGEstados->setMultiplayer(false);
                 pGEstados->removerEstado();
                 pGEstados->addEstado(6);
@@ -52,13 +53,11 @@ namespace Observadores {
                 pGEstados->addEstado(3);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::carregar) {
-                pFaseObservador->notificarSalvamento();
                 pGEstados->addEstado(1);
                 pFaseObservador->notificarCarregamento();
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause && pMenu->getBotao() == Menus::BOTOES::salvar) {
                 pFaseObservador->notificarSalvamento();
-                pGEstados->removerEstado();
             }
             else if (pMenu->getBotao() == Menus::BOTOES::continuar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){
                 pGEstados->removerEstado();

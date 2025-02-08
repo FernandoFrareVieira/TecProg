@@ -101,7 +101,7 @@ namespace Fases
         mudarFase();
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-            //salvar("saves/save.dat");
+            salvar("saves/save.dat");
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
