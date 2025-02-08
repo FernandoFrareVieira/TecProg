@@ -30,7 +30,7 @@ namespace Fases {
         setPosicoes();
         instanciaAleatorias(posicoesEspinhos,Entidades::ID::espinho);
         instanciaAleatorias(posicoesArqueiros,Entidades::ID::arqueiro);
-        //instanciaAleatorias(posicoesSamurais,Entidades::ID::samurai);
+        instanciaAleatorias(posicoesSamurais,Entidades::ID::samurai);
 
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
@@ -139,8 +139,8 @@ namespace Fases {
 
             posicoesSamurais.push_back(sf::Vector2f(1688,705));
             posicoesSamurais.push_back(sf::Vector2f(2959,900));
-            posicoesEspinhos.push_back(sf::Vector2f(1775,310));
-            posicoesEspinhos.push_back(sf::Vector2f(1860,705));
+            posicoesSamurais.push_back(sf::Vector2f(1775,310));
+            posicoesSamurais.push_back(sf::Vector2f(1860,705));
 
     }
 }

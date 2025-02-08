@@ -413,8 +413,6 @@ namespace Fases
             else if (id == Entidades::ID::espinho) {
                 auto* espinho = new Entidades::Obstaculos::Espinho(posicoes[index], sf::Vector2f(100.0f, 20.0f));
                 adicionarObstaculos(static_cast<Entidades::Entidade*>(espinho));
-                printf("ADICIONADO\n");
-                fflush(stdout);
             }
         }
     }

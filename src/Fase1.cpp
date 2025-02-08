@@ -22,9 +22,9 @@ namespace Fases
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
 
 
-        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        /*Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
-        arqueiro->setListaProjeteis(&listaProjeteis);
+        arqueiro->setListaProjeteis(&listaProjeteis);*/
 
         setPosicoes();
         instanciaAleatorias(posicoesGosmas, Entidades::ID::gosma);
