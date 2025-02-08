@@ -30,7 +30,6 @@ namespace Listas
             }else {
                 (*it)->executar();
             }
-
             it++;
         }
 
