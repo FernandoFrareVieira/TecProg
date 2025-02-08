@@ -3,7 +3,11 @@
 #include <iostream>
 
 namespace Gerenciadores {
-    GerenciadorColisoes::GerenciadorColisoes()
+    GerenciadorColisoes::GerenciadorColisoes():
+        listaInimigos(nullptr),
+        listaJogadores(nullptr),
+        listaObstaculos(nullptr),
+        listaProjeteis(nullptr)
     {
     
     }
