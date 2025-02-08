@@ -4,11 +4,18 @@ namespace Fases
 {
     Fase1::Fase1(int id, bool dois_jogadores):
         Fase(id,dois_jogadores),
-        maxEsqueletos(6),
-        maxArqueiros(6),
-        maxGosmas(6)
+        maxEsqueletos(5),
+        maxArqueiros(5),
+        maxGosmas(5),
+        posicoesEsqueleto(),
+        posicoesArqueiros(),
+        posicoesGosmas()
     {
         //Iniciar corpo
+
+        posicoesArqueiros.clear();
+        posicoesEsqueleto.clear();
+        posicoesGosmas.clear();
 
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
