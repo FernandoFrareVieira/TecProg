@@ -72,7 +72,7 @@ namespace Fases
     }
 
     void Fase::executar() {
-        printf("%2.f, %2.f\n", pJogador1->getCorpo()->getPosition().x, pJogador1->getCorpo()->getPosition().y);
+        //printf("%2.f, %2.f\n", pJogador1->getCorpo()->getPosition().x, pJogador1->getCorpo()->getPosition().y);
         if (pObservadorFase) {
             //printf("NÃO É NULO\n");
         }
@@ -306,10 +306,16 @@ namespace Fases
             if(id == Entidades::ID::esqueleto) {
                 Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0, 0), pJogador1);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
-            }else {
+                
+            }else if(id == Entidades::ID::arqueiro){
                 Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(pos, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0, 0), pJogador1);
                 arqueiro->setListaProjeteis(&listaProjeteis);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+
+            }else if(id == Entidades::ID::samurai) {
+                Entidades::Personagens::Samurai* Samurai = new Entidades::Personagens::Samurai(pos, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0, 0), pJogador1);
+                Samurai->setListaProjeteis(&listaProjeteis);
+                adicionarInimigos(static_cast<Entidades::Entidade*>(Samurai));
             }
         }
 

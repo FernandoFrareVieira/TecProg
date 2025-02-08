@@ -15,7 +15,7 @@ namespace Entidades
             podeAtacar = true;
             tempoAtacarNovamente = 2.0f; 
             tempoDesdeUltimoAtaque = 0.0f;
-            dano = 10;
+            dano = 0;
 
             texturaParado = pGG->carregarTextura("assets/arqueiro/Idle.png");
 

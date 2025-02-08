@@ -16,6 +16,7 @@ namespace Entidades
 
         void Gosma::executar()
         {
+            //atualizarPosicao();
             desenhar();
         }
 

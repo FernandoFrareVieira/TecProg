@@ -10,7 +10,7 @@ namespace Entidades
             listaProjeteis(nullptr)        
         {
             vivo = true;
-            pontosDeVida = 100;
+            pontosDeVida = 40;
             estaAtacando = false;
             podeAtacar = true;
             tempoAtacarNovamente = 2.0f; 
@@ -20,6 +20,9 @@ namespace Entidades
             texturaParado = pGG->carregarTextura("assets/samurai/Idle.png");
 
             corpo.setTexture(texturaParado);
+
+            corpo.setOutlineThickness(1.0f);
+            corpo.setOutlineColor(sf::Color::Red);
 
             adicionarAnimacoes();
         }

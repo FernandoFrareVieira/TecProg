@@ -312,6 +312,9 @@ namespace Entidades
                     pPersonagem->tomarDano(dano);
 
                     this->ganharPontos(10);
+                    dano = 0;
+                }else {
+                    dano = 20;
                 }
 
                 // colisaoPersonagem(pPersonagem, ds);
@@ -326,9 +329,28 @@ namespace Entidades
                     pPersonagem->tomarDano(dano);
 
                     this->ganharPontos(10);
+                    dano = 0;
+                }else {
+                    dano = 20;
                 }
 
                 // colisaoPersonagem(pPersonagem, ds);
+            }
+            break;
+
+            case(ID::samurai):
+            {
+                Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
+                if (estaAtacando)
+                {
+                    pPersonagem->tomarDano(dano);
+
+                    this->ganharPontos(10);
+
+                    dano = 0;
+                }else {
+                    dano = 20;
+                }
             }
             break;
 

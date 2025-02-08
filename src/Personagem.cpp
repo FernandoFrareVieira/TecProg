@@ -82,7 +82,7 @@ namespace Entidades
 
             if(this->getId() == ID::jogador) {
                 sf::Vector2f velocidade = this->getVelocidade();
-                this->setVelocidade(sf::Vector2f(-150.0f, velocidade.y));
+                this->setVelocidade(sf::Vector2f(-abs(velocidade.x - 100.0f), velocidade.y));
             }
         }
 
