@@ -31,7 +31,7 @@ namespace Entidades
                 void adicionarAnimacoes();
 
                 //Método atacar
-                void atacar();
+                void atacarProjetil();
 
                 void setListaProjeteis(Listas::ListaEntidades* LP);
         };

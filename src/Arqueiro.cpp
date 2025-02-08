@@ -33,7 +33,7 @@ namespace Entidades
 
             atualizarAnimacao(dt);
             atualizarPosicao();
-            atacar();
+            atacarProjetil();
             desenhar();
             mover();
         }
@@ -63,7 +63,7 @@ namespace Entidades
             animacao.setAnimacao("parado");
         }
 
-        void Arqueiro::atacar()
+        void Arqueiro::atacarProjetil()
         {
             float tempoQuePassou = relogio.getElapsedTime().asSeconds();
           

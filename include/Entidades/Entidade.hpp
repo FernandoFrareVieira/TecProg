@@ -10,6 +10,7 @@ namespace Entidades
         jogador, 
         arqueiro,
         esqueleto,
+        samurai,
         gosma,
         espinho,
         plataforma,

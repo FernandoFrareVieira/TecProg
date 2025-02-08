@@ -83,9 +83,10 @@ namespace Entidades
                     atacar();
                     if (estaAtacando) {
                         
-                        pPersonagem->tomarDano(dano);
-
-                        estaAtacando = false;
+                        if(this->getId() != ID::arqueiro) {
+                            pPersonagem->tomarDano(dano);
+                            estaAtacando = false;
+                        }
                     }
 
                     //colisaoPersonagem(pPersonagem, ds);

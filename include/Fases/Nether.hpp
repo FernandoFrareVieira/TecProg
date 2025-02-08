@@ -3,6 +3,7 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Obstaculos/Espinho.hpp"
+#include "Entidades/Personagens/samurai.hpp"
 #include <list>
 
 namespace Fases {
