@@ -18,7 +18,7 @@ namespace Observadores {
 
     FaseObservador::~FaseObservador() {
         if (fase) {
-            fase = nullptr;
+            //fase = nullptr;
         }
     }
 

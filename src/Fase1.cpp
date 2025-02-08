@@ -23,11 +23,14 @@ namespace Fases
         Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         arqueiro->setListaProjeteis(&listaProjeteis);
-
+        setPosicoes();
         //criarInimigos("include/Tilemap/Tiles.json",posicoes,pJogador1);
-
-        Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(sf::Vector2f(300.0f, 1015.0f), sf::Vector2f(100.0f, 20.0f));
-        adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
+        int random = (rand() + 3 ) %( posicoes.size());
+        for (int i = 0; i < random; i++) {
+            std::cout<<posicoes[i].y<<std::endl;
+            Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(posicoes[i], sf::Vector2f(100.0f, 20.0f));
+            adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
+        }
 
         //Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(sf::Vector2f(500.0f, 400.0f), sf::Vector2f(400.0f, 100.0f), sf::Vector2f(0.0f, 0.0f));
         //adicionarObstaculos(static_cast<Entidades::Entidade*>(plataforma));
@@ -118,17 +121,15 @@ namespace Fases
                 adicionarObstaculos(plataforma);
             }break;
         }
-        /*
-            case 2 : //plataforma sprite 1
-                return new Plataforma(posicao, tamanho, tipo);
-                break;
-            case 3 : //plataforma sprite 2
-                return new Plataforma(posicao, tamanho, tipo);
-                break;
-            ...
-        }
-        - ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
-        */
     }
 
+    void Fase1::setPosicoes() {
+        posicoes.push_back(sf::Vector2f(1663,563));
+        posicoes.push_back(sf::Vector2f(1630,1043));
+        posicoes.push_back(sf::Vector2f(2068,1043));
+        posicoes.push_back(sf::Vector2f(2439,915));
+        posicoes.push_back(sf::Vector2f(2442,339));
+        posicoes.push_back(sf::Vector2f(450,1011));
+    }
+ 
 }
