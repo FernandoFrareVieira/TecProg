@@ -28,7 +28,7 @@ namespace Gerenciadores
         }
     }
 
-    void GerenciadorEventos::addObservador(Observadores::Observador* observador) {
+    void GerenciadorEventos::adicionarObservador(Observadores::Observador* observador) {
         LO->add(observador);
     }
 
@@ -38,15 +38,15 @@ namespace Gerenciadores
 
     void GerenciadorEventos::executar()
     {
-        gEstados = Gerenciadores::GerenciadorEstados::getInstancia();
+        pGE = Gerenciadores::GerenciadorEstados::getInstancia();
         sf::Event evento;
         while(pGG->getJanela()->pollEvent(evento)) {
             if(evento.type == sf::Event::Closed) {
                 pGG->fechar();
             }
-            if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over) {
+            if (pGE->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over) {
                     printf("ENTROU\n");
-                    gEstados->executarGameOver(evento);
+                    pGE->executarGameOver(evento);
                     LO->notificarTeclaPressionada(evento.key.code);
                 }
             else if(evento.type == sf::Event::KeyPressed) {
@@ -54,8 +54,8 @@ namespace Gerenciadores
                 /////
                 LO->notificarTeclaPressionada(evento.key.code);
                 if (evento.key.code == sf::Keyboard::Key::Escape) {
-                    if (gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantanal|| gEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether)
-                        gEstados->addEstado(2);
+                    if (pGE->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantanal|| pGE->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether)
+                        pGE->adicionarEstado(2);
                 }
             }
             else if(evento.type == sf::Event::KeyReleased) {

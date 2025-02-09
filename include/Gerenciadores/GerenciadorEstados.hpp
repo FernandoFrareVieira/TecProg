@@ -16,27 +16,30 @@ namespace Fases {
 
 namespace Gerenciadores {
     class GerenciadorEstados {
-    protected:
-        std::stack<Estados::Estado*> estados;
-        int estadoAtual;
-        static GerenciadorEstados* instancia;
-        GerenciadorEstados(); //Singletron
-        Menus::GameOver* pGameOver;
-        Listas::ListaEntidades* LJ;
-        bool dois_jogadores;
-    public:
-        ~GerenciadorEstados();
-        static GerenciadorEstados* getInstancia();
-        void setEstadoAtual(int id);
-        Estados::Estado* getEstadoAtual() const;
-        void addEstado(int id);
-        void removerEstado();   
-        void executar(); 
-        void executarGameOver(sf::Event evento);
-        int getTamanho();
-        void setListaJogadores(Listas::ListaEntidades* lista) {LJ = lista;}
-        void setMultiplayer(bool b) {dois_jogadores = b;}
-        const bool getMultiplayer() const {return dois_jogadores;}
+        protected:
+            std::stack<Estados::Estado*> estados;
+            int estadoAtual;
+            static GerenciadorEstados* instancia;
+            Menus::GameOver* pGameOver;
+            Listas::ListaEntidades* LJ;
+            bool dois_jogadores;
+
+        protected:
+            GerenciadorEstados(); //Singleton
+            
+        public:
+            ~GerenciadorEstados();
+            static GerenciadorEstados* getInstancia();
+            void setEstadoAtual(int id);
+            Estados::Estado* getEstadoAtual() const;
+            void adicionarEstado(int id);
+            void removerEstado();   
+            void executar(); 
+            void executarGameOver(sf::Event evento);
+            int getTamanho();
+            void setListaJogadores(Listas::ListaEntidades* listaJogadores) {LJ = listaJogadores;}
+            void setMultiplayer(bool doisJ) {dois_jogadores = doisJ;}
+            const bool getMultiplayer() const {return dois_jogadores;}
     };
 }
 

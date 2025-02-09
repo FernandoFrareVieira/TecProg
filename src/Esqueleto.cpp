@@ -9,7 +9,7 @@ namespace Entidades
             animacao(&corpo, 0.1f)
         {
             vivo = true;
-            pontosDeVida = 40;
+            pontosDeVida = 20;
             dano = 10;
 
             tempoAtacarNovamente = 1.5f;

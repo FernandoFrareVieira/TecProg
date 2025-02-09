@@ -40,7 +40,7 @@ namespace Gerenciadores {
 
     }
 
-    void GerenciadorEstados::addEstado(int id) {
+    void GerenciadorEstados::adicionarEstado(int id) {
         if (id == 0) {
             Menus::MenuPrincipal* MenuPrincipal = new Menus::MenuPrincipal(0);
             MenuPrincipal->setID_Estado(Estados::ID_Estado::menu_principal);

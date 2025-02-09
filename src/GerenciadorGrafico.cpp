@@ -41,7 +41,7 @@ namespace Gerenciadores
         return textura;
     }
 
-    bool GerenciadorGrafico::getJanelaAberta() const 
+    const bool GerenciadorGrafico::getJanelaAberta() const 
     {
         return janela->isOpen();
     }

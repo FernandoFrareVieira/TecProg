@@ -29,32 +29,32 @@ namespace Observadores {
                 removerObservador();
                 pGEstados->setMultiplayer(false);
                 pGEstados->removerEstado();
-                pGEstados->addEstado(6);
+                pGEstados->adicionarEstado(6);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::multiplayer) {
                 pGEstados->setMultiplayer(true);
                 removerObservador();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(6);
+                pGEstados->adicionarEstado(6);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_fases && pMenu->getBotao() == Menus::BOTOES::voltar) {
                 removerObservador();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(0);
+                pGEstados->adicionarEstado(0);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_fases && pMenu->getBotao() == Menus::BOTOES::pantanal) {
                 removerObservador();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(1);
+                pGEstados->adicionarEstado(1);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_fases && pMenu->getBotao() == Menus::BOTOES::nether) {
                 removerObservador();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(3);
+                pGEstados->adicionarEstado(3);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::carregar) {
                 pGEstados->removerEstado();
-                pGEstados->addEstado(1);
+                pGEstados->adicionarEstado(1);
                 pFaseObservador->notificarCarregamento();
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause && pMenu->getBotao() == Menus::BOTOES::salvar) {
@@ -66,7 +66,7 @@ namespace Observadores {
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::leaderboard && pMenu->getBotao() == Menus::BOTOES::voltar) {
                 pGEstados->removerEstado();
                 removerObservador();
-                pGEstados->addEstado(0);
+                pGEstados->adicionarEstado(0);
                 fflush(stdout);
             }
             else if (pMenu->getBotao() == Menus::BOTOES::sair && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal) {
@@ -76,17 +76,17 @@ namespace Observadores {
                 removerObservador();
                 pGEstados->removerEstado();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(0);
+                pGEstados->adicionarEstado(0);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::leaderboard) {
                 removerObservador();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(5);
+                pGEstados->adicionarEstado(5);
             }
             if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over && pMenu->getBotao() == Menus::BOTOES::menu_principal) {
                 removerObservador();
                 pGEstados->removerEstado();
-                pGEstados->addEstado(0);
+                pGEstados->adicionarEstado(0);
             }
         }
         

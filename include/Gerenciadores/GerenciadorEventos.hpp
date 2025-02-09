@@ -11,7 +11,7 @@ namespace Gerenciadores
     {
         private:
             GerenciadorGrafico* pGG;
-            Gerenciadores::GerenciadorEstados* gEstados;
+            Gerenciadores::GerenciadorEstados* pGE;
             static Listas::ListaObservadores* LO;
 
             static GerenciadorEventos* instancia;
@@ -20,7 +20,7 @@ namespace Gerenciadores
         public:
             static GerenciadorEventos* getInstancia();
             ~GerenciadorEventos();
-            void addObservador(Observadores::Observador* observador);
+            void adicionarObservador(Observadores::Observador* observador);
             void removerObservador(Observadores::Observador* observador);
             void executar();
     };

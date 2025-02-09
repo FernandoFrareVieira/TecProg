@@ -41,7 +41,7 @@ namespace Entidades
 
             // Impulso para afastar o jogador do espinho
             pJogador->setPodePular(true);
-            pJogador->setVelocidade(sf::Vector2f(-200.0f, -300.0f));
+            pJogador->setVelocidade(sf::Vector2f(-200.0f, -400.0f));
         }
 
         void Espinho::colidir(Entidade* entidade2, sf::Vector2f ds)
