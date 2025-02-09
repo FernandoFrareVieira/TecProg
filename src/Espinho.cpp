@@ -7,7 +7,7 @@ namespace Entidades
     {
         Espinho::Espinho(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
             Obstaculo(pos, tam, vel, ID::espinho),
-            dano(5)
+            dano(2)
         {
             setTextura("assets/espinho/espinho.png");
 
@@ -29,7 +29,7 @@ namespace Entidades
 
         void Espinho::obstacular(Personagens::Jogador* pJogador)
         {
-            pJogador->tomarDano(5);
+            pJogador->tomarDano(1);
         }
 
         void Espinho::colidir(Entidade* entidade2, sf::Vector2f ds)
