@@ -22,19 +22,14 @@ namespace Fases
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
 
 
-        Entidades::Personagens::Esqueleto* esqueleto1 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1612.0f, 270.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
-        adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto1));
-
-        Entidades::Personagens::Esqueleto* esqueleto2 = new Entidades::Personagens::Esqueleto(sf::Vector2f(1714.0f, 870.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
-        adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto2));
-            
-        Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
+        /*Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(sf::Vector2f(1136.0f, 400.0f), sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
-        arqueiro->setListaProjeteis(&listaProjeteis);
+        arqueiro->setListaProjeteis(&listaProjeteis);*/
 
         setPosicoes();
         instanciaAleatorias(posicoesGosmas, Entidades::ID::gosma);
-        instanciaAleatorias(posicoesGosmas, Entidades::ID::arqueiro);
+        instanciaAleatorias(posicoesArqueiros, Entidades::ID::arqueiro);
+        instanciaAleatorias(posicoesEsqueleto, Entidades::ID::esqueleto);
 
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);        
@@ -132,7 +127,18 @@ namespace Fases
         posicoesGosmas.push_back(sf::Vector2f(2442,339));
         posicoesGosmas.push_back(sf::Vector2f(450,1011));
 
-        posicoesArqueiros.push_back(sf::Vector2f(1979,290));
-    }
+        posicoesArqueiros.push_back(sf::Vector2f(1979,330));
+        posicoesArqueiros.push_back(sf::Vector2f(2382,835));
+        posicoesArqueiros.push_back(sf::Vector2f(2997,689));
+        posicoesArqueiros.push_back(sf::Vector2f(1136, 400));
+        
+        posicoesEsqueleto.push_back(sf::Vector2f(1918,1000));
+        posicoesEsqueleto.push_back(sf::Vector2f(2539,220));
+        posicoesEsqueleto.push_back(sf::Vector2f(1540,420));
+        posicoesEsqueleto.push_back(sf::Vector2f(2514,800));
+        posicoesEsqueleto.push_back(sf::Vector2f(1640,850));
+        
+    }   
+
  
 }

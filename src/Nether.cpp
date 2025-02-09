@@ -25,15 +25,31 @@ namespace Fases {
         //adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         //arqueiro->setListaProjeteis(&listaProjeteis);
 
+<<<<<<< HEAD
+=======
+        //Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 3000.f), sf::Vector2f(90.0f, 128.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+        //adicionarInimigos(static_cast<Entidades::Entidade*>(samurai)); //os inimigos estao dando seg fault
+        setPosicoes();
+        instanciaAleatorias(posicoesEspinhos,Entidades::ID::espinho);
+        instanciaAleatorias(posicoesArqueiros,Entidades::ID::arqueiro);
+        instanciaAleatorias(posicoesSamurais,Entidades::ID::samurai);
+
+>>>>>>> 7495eee29a2c412f8b8fde003086122c8e15f5d5
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
         pGC.setInimigos(&listaInimigos);
         pGC.setProjeteis(&listaProjeteis);
+<<<<<<< HEAD
 
 
         Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 250.0f), sf::Vector2f(50.0f, 128.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
         adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
         samurai->setListaProjeteis(&listaProjeteis);
+=======
+        //Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 250.0f), sf::Vector2f(50.0f, 128.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
+        //adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
+        //samurai->setListaProjeteis(&listaProjeteis);
+>>>>>>> 7495eee29a2c412f8b8fde003086122c8e15f5d5
     }
 
     Nether::~Nether() {
@@ -119,6 +135,23 @@ namespace Fases {
     }
     void Nether::setPosicoes()
     {
-            
+            posicoesEspinhos.push_back(sf::Vector2f(490,1035));
+            posicoesEspinhos.push_back(sf::Vector2f(1115,459));
+            posicoesEspinhos.push_back(sf::Vector2f(1775,331));
+            posicoesEspinhos.push_back(sf::Vector2f(1688,810));
+            posicoesEspinhos.push_back(sf::Vector2f(2537,1033));
+            //posicoesEspinhos.push_back(sf::Vector2f(1115,459));
+            //posicoesEspinhos.push_back(sf::Vector2f(1115,467));
+
+            posicoesArqueiros.push_back(sf::Vector2f(1100,430));
+            posicoesArqueiros.push_back(sf::Vector2f(2480,900));
+            posicoesArqueiros.push_back(sf::Vector2f(1660,780));
+            posicoesArqueiros.push_back(sf::Vector2f(1642,220));
+
+            posicoesSamurais.push_back(sf::Vector2f(1688,705));
+            posicoesSamurais.push_back(sf::Vector2f(2959,900));
+            posicoesSamurais.push_back(sf::Vector2f(1775,310));
+            posicoesSamurais.push_back(sf::Vector2f(1860,705));
+
     }
 }

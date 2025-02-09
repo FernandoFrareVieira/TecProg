@@ -13,7 +13,7 @@
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Personagens/Esqueleto.hpp"
 #include "Entidades/Personagens/Arqueiro.hpp"
-#include "Entidades/Personagens/samurai.hpp"
+#include "Entidades/Personagens/Samurai.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
 #include "Entidades/Obstaculos/Espinho.hpp"
 #include "Entidades/Projetil.hpp"
@@ -62,9 +62,9 @@ namespace Fases
             void mudarFase();
 
             virtual void setPosicoes() = 0;
+            void instanciaAleatorias(std::vector<sf::Vector2f> posicoes, Entidades::ID id);
             //Salvamento e Carregamento
             void salvar(const std::string& caminhoArquivo);
             void carregar(const std::string& caminhoArquivo);
-            void instanciaAleatorias(std::vector<sf::Vector2f> posicoes, Entidades::ID id);
     };
 }
