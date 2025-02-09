@@ -3,6 +3,7 @@
 namespace Menus {
     class MenuFases : public Menu {
     private:
+    
     public:
         MenuFases(int id);
         ~MenuFases();

@@ -1,6 +1,6 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Gerenciadores/GerenciadorGrafico.hpp"
-#include "Entidades/Personagens/Inimigo.hpp"
+#include "Entidades/Personagens/Inimigos/Inimigo.hpp"
 #include <iostream>
 
 namespace Entidades
@@ -389,8 +389,6 @@ namespace Entidades
                 if (estaAtacando)
                 {
                     pPersonagem->tomarDano(dano);
-
-                    this->ganharPontos(10);
                     dano = 0;
                 }else {
                     dano = 20;

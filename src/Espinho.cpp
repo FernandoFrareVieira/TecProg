@@ -9,9 +9,13 @@ namespace Entidades
             Obstaculo(pos, tam, vel, ID::espinho),
             dano(2)
         {
+            relogioDano.restart();
             setTextura("assets/espinho/espinho.png");
 
             corpo.setTextureRect(sf::IntRect(0, 0, 1184, 1184));
+
+            corpo.setOutlineThickness(1.0f);
+            corpo.setOutlineColor(sf::Color::Red);
         }
 
         Espinho::~Espinho()
@@ -19,6 +23,8 @@ namespace Entidades
 
         void Espinho::executar()
         {
+            relogioDano.getElapsedTime().asSeconds();
+
             desenhar();
         }
 
@@ -29,7 +35,16 @@ namespace Entidades
 
         void Espinho::obstacular(Personagens::Jogador* pJogador)
         {
-            pJogador->tomarDano(1);
+            // Se for a primeira colisão ou já se passaram 3 segundos, aplica o dano
+            if (relogioDano.getElapsedTime().asSeconds() >= 3.0f || relogioDano.getElapsedTime().asSeconds() == 0.0f)
+            {
+                pJogador->tomarDano(5);
+                relogioDano.restart(); // Reinicia o relógio para impedir novos danos por 3 segundos
+            }
+
+            // Impulso para afastar o jogador do espinho
+            pJogador->setPodePular(true);
+            pJogador->setVelocidade(sf::Vector2f(-200.0f, -400.0f));
         }
 
         void Espinho::colidir(Entidade* entidade2, sf::Vector2f ds)
@@ -38,7 +53,12 @@ namespace Entidades
                 case(ID::jogador):
                 {
                     Personagens::Jogador* pJogador = static_cast<Personagens::Jogador*>(entidade2);
-                    obstacular(pJogador);
+
+                    // Verifica se a colisão foi mais no eixo Y e se o jogador estava caindo
+                    if (ds.y < ds.x)
+                        obstacular(pJogador);
+        
+                    colisaoObstaculo(entidade2, ds);
                 }
                 break;
                 default:

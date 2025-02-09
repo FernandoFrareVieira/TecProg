@@ -11,9 +11,9 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
-#include "Entidades/Personagens/Esqueleto.hpp"
-#include "Entidades/Personagens/Arqueiro.hpp"
-#include "Entidades/Personagens/Samurai.hpp"
+#include "Entidades/Personagens/Inimigos/Esqueleto.hpp"
+#include "Entidades/Personagens/Inimigos/Arqueiro.hpp"
+#include "Entidades/Personagens/Inimigos/Samurai.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
 #include "Entidades/Obstaculos/Espinho.hpp"
 #include "Entidades/Projetil.hpp"
@@ -48,21 +48,23 @@ namespace Fases
         public:
             Fase(int id, bool dois_jogadores);
             ~Fase();
-            void teste(Listas::ListaEntidades &LO) {listaObstaculos = LO;}
-            void adicionarInimigos(Entidades::Entidade* inimigo);
-            void adicionarObstaculos(Entidades::Entidade* obstaculo);
+
+            void adicionarInimigo(Entidades::Entidade* inimigo);
+            void adicionarObstaculo(Entidades::Entidade* obstaculo);
             void adicionarJogador(Entidades::Entidade* jogador);
             void adicionarProjetil(Entidades::Entidade* projetil);
 
             void carregarMapa(std::string mapJson, std::string caminhoImagem);
-            virtual void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) = 0;
+            virtual void criarObstaculo (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) = 0;
 
-            void criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador);
+            virtual void desenhar() = 0;
             void executar();
+
             void mudarFase();
 
             virtual void setPosicoes() = 0;
             void instanciaAleatorias(std::vector<sf::Vector2f> posicoes, Entidades::ID id);
+
             //Salvamento e Carregamento
             void salvar(const std::string& caminhoArquivo);
             void carregar(const std::string& caminhoArquivo);

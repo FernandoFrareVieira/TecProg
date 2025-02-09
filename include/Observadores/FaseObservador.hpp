@@ -11,7 +11,6 @@ namespace Fases {
 namespace Observadores {
     class FaseObservador: public Observador {
     private :
-        Entidades::Personagens::Jogador* pJogador1;
         Fases::Fase* fase;
         FaseObservador();
         static FaseObservador* instancia;
@@ -22,8 +21,8 @@ namespace Observadores {
         void notificarGameOver();
         void notificarSalvamento();
         void notificarCarregamento();
-        void notificarPressionada(sf::Keyboard::Key tecla); //completar
         void notificarSolta(sf::Keyboard::Key tecla); //completar
+        void notificarPressionada(sf::Keyboard::Key tecla); //completar
         void setFase(Fases::Fase* pFase) {fase = pFase;}
     };
 }

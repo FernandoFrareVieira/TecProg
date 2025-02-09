@@ -11,7 +11,7 @@ namespace Observadores {
     ativo(true)
     {
         this->pGG = Gerenciadores::GerenciadorGrafico::getInstancia();
-        pGEventos->addObservador(this);
+        pGEventos->adicionarObservador(this);
         //this->pGE = Gerenciadores::GerenciadorEventos::getInstancia(jogador);
     }
 
@@ -32,6 +32,6 @@ namespace Observadores {
     }
     
     void Observador::adicionarObservador() {
-        pGEventos->addObservador(this);
+        pGEventos->adicionarObservador(this);
     }
 }   

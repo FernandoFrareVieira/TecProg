@@ -20,11 +20,11 @@ namespace Observadores {
         public:
             Observador();
             virtual ~Observador();
+            void adicionarObservador();
             void removerObservador();
-            virtual void notificarSolta(sf::Keyboard::Key tecla) {}
-            virtual void notificarPressionada(sf::Keyboard::Key tecla) {}
             void mudarAtivar();
             bool getAtivar() const;
-            void adicionarObservador();
+            virtual void notificarSolta(sf::Keyboard::Key tecla) = 0;
+            virtual void notificarPressionada(sf::Keyboard::Key tecla) = 0;
     };  
 }

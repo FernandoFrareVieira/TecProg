@@ -8,7 +8,7 @@ pGG(Gerenciadores::GerenciadorGrafico::getInstancia())
     //TODO - implementar a lógica do jogador de mover dentro de uma função no próprio jogador, não dependendo do gerenciador de eventos
     pGE = Gerenciadores::GerenciadorEventos::getInstancia();
     GE = Gerenciadores::GerenciadorEstados::getInstancia();
-    GE->addEstado(0);
+    GE->adicionarEstado(0);
     executar();
 }
 
@@ -19,7 +19,7 @@ Jogo::~Jogo()
 
 void Jogo::executar()
 {  
-    while(pGG->janelaAberta()) {
+    while(pGG->getJanelaAberta()) {
         pGG->limpar();
         pGE->executar();
 

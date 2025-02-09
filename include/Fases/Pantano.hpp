@@ -8,7 +8,7 @@
 
 namespace Fases
 {
-    class Fase1 : public Fase
+    class Pantano : public Fase
     {
         private:
             //Maximo de instancias
@@ -23,9 +23,9 @@ namespace Fases
 
             sf::Texture background;
         public:
-            Fase1(int id, bool dois_jogadores);
-            ~Fase1();
-            void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+            Pantano(int id, bool dois_jogadores);
+            ~Pantano();
+            void criarObstaculo (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
             void desenhar();
             void setPosicoes();
     };

@@ -5,7 +5,7 @@
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Gerenciadores/GerenciadorEstados.hpp"
 #include "Menus/MenuPrincipal.hpp"
-#include "Fases/Fase1.hpp"
+#include "Fases/Pantano.hpp"
 #include "Fases/Nether.hpp"
 
 class Jogo
@@ -16,6 +16,11 @@ class Jogo
         Gerenciadores::GerenciadorEstados* GE;
         //Gerenciadores::GerenciadorColisoes pGC;
 
+<<<<<<< HEAD
+=======
+        Fases::Pantano* pantano;
+        Fases::Nether* nether;
+>>>>>>> ebd16acbec219bd4792653727334b1bc76024434
     public:
         Jogo();
         ~Jogo();

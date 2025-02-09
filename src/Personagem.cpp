@@ -1,6 +1,6 @@
 #include "Entidades/Personagens/Personagem.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
-#include "Entidades/Personagens/Inimigo.hpp"
+#include "Entidades/Personagens/Inimigos/Inimigo.hpp"
 #include <iostream>
 
 namespace Entidades

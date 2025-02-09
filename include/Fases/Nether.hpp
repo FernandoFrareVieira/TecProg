@@ -3,7 +3,7 @@
 #include "Entidades/Personagens/Jogador.hpp"
 #include "Entidades/Obstaculos/Plataforma.hpp"
 #include "Entidades/Obstaculos/Espinho.hpp"
-#include "Entidades/Personagens/Samurai.hpp"
+#include "Entidades/Personagens/Inimigos/Samurai.hpp"
 #include <list>
 
 namespace Fases {
@@ -24,7 +24,7 @@ namespace Fases {
     public:
         Nether(int id, bool dois_jogadores);
         ~Nether();
-        void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+        void criarObstaculo (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
         void desenhar();
         void setPosicoes();
     };
