@@ -45,6 +45,8 @@ namespace Fases
             std::vector<sf::Vector2f> posicoes;
             Observadores::FaseObservador* pObservadorFase;
             bool multiplayer;
+
+            sf::Texture imagemDeFundo;
         public:
             Fase(int id, bool dois_jogadores);
             ~Fase();
@@ -55,14 +57,14 @@ namespace Fases
             void adicionarProjetil(Entidades::Entidade* projetil);
 
             void carregarMapa(std::string mapJson, std::string caminhoImagem);
-            virtual void criarObstaculo (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) = 0;
+            virtual void criarObstaculo(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) = 0;
 
             virtual void desenhar() = 0;
             void executar();
 
             void mudarFase();
 
-            virtual void setPosicoes() = 0;
+            virtual void setPosicoesAleatorias() = 0;
             void instanciaAleatorias(std::vector<sf::Vector2f> posicoes, Entidades::ID id);
 
             //Salvamento e Carregamento

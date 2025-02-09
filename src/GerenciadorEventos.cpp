@@ -29,7 +29,7 @@ namespace Gerenciadores
     }
 
     void GerenciadorEventos::adicionarObservador(Observadores::Observador* observador) {
-        LO->add(observador);
+        LO->adicionarObservador(observador);
     }
 
     void GerenciadorEventos::removerObservador(Observadores::Observador* observador) {

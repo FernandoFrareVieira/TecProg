@@ -10,7 +10,7 @@ namespace Listas {
         LO.limpar();
     }
 
-    void ListaObservadores::add(Observadores::Observador* observador) {
+    void ListaObservadores::adicionarObservador(Observadores::Observador* observador) {
         LO.incluir(observador);
     }
 

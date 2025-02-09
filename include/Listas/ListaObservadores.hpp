@@ -11,7 +11,7 @@ namespace Listas {
     public:
         ListaObservadores();
         ~ListaObservadores();
-        void add(Observadores::Observador* observador);
+        void adicionarObservador(Observadores::Observador* observador);
         void removerObservador(Observadores::Observador* observador);
         int getTam();
         Observadores::Observador* operator[](int pos);

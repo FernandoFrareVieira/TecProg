@@ -19,15 +19,15 @@ namespace Estados {
     protected:
         Gerenciadores::GerenciadorEstados* pEG;
         int id;
-        ID_Estado estado;
+        ID_Estado idEstado;
     public:
         Estado(int id = -1);
         virtual ~Estado();
         void setGerenciador(Gerenciadores::GerenciadorEstados* GE) {pEG = GE;}
         virtual void executar() = 0;
         int getID();
-        void setID_Estado(ID_Estado ID) {estado = ID;}
-        const ID_Estado getID_Estado() const {return estado;}
+        void setID_Estado(ID_Estado ID) {idEstado = ID;}
+        const ID_Estado getID_Estado() const {return idEstado;}
 
     };
 }

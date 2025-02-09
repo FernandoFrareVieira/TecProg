@@ -66,6 +66,7 @@ namespace Entidades
 
                 //Método animacao
                 virtual void adicionarAnimacoes() = 0;
+                virtual void atualizarAnimacao(float dt) = 0;
         };
     }
 }

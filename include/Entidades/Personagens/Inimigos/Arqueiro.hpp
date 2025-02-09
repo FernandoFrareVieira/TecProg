@@ -13,14 +13,12 @@ namespace Entidades
         {
             class Arqueiro : public Inimigo
             {
-                private:
-                    sf::Texture* texturaParado;
-                    
+                private:                    
                     Animacoes::Animacao animacao;
 
                     Listas::ListaEntidades* listaProjeteis;
                     
-                    sf::Clock relogio;
+                    sf::Clock relogioAtaque;
                     sf::Clock relogioAnimacao;
 
                 public:

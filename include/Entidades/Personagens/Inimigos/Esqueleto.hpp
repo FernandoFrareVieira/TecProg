@@ -12,9 +12,7 @@ namespace Entidades
         {
             class Esqueleto : public Inimigo
             {
-                private:
-                    sf::Texture* texturaParado;
-                    
+                private:                    
                     Animacoes::Animacao animacao;                
                 public:
                     Esqueleto(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador);

@@ -26,7 +26,8 @@ namespace Fases
         // adicionarInimigo(static_cast<Entidades::Entidade*>(arqueiro));
         // arqueiro->setListaProjeteis(&listaProjeteis);
 
-        setPosicoes();
+        setPosicoesAleatorias();
+
         instanciaAleatorias(posicoesGosmas, Entidades::ID::gosma);
         instanciaAleatorias(posicoesArqueiros, Entidades::ID::arqueiro);
         instanciaAleatorias(posicoesEsqueleto, Entidades::ID::esqueleto);
@@ -45,11 +46,11 @@ namespace Fases
 
     void Pantano::desenhar()
     {
-        if(!background.loadFromFile("assets/cenarios/Background.png")){ 
+        if(!imagemDeFundo.loadFromFile("assets/cenarios/Background.png")){ 
             std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
             return;
         }
-        sf::Sprite backgroundSprite(background);
+        sf::Sprite backgroundSprite(imagemDeFundo);
         backgroundSprite.setScale(7,3.4);
         backgroundSprite.setOrigin(sf::Vector2f(50,-20));
         pGG->desenharOutros(backgroundSprite);
@@ -118,7 +119,7 @@ namespace Fases
         }
     }
 
-    void Pantano::setPosicoes() 
+    void Pantano::setPosicoesAleatorias() 
     {
         posicoesGosmas.push_back(sf::Vector2f(1663,563));
         posicoesGosmas.push_back(sf::Vector2f(1630,1043));

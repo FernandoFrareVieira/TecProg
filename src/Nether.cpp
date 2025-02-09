@@ -27,7 +27,8 @@ namespace Fases {
 
         //Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 3000.f), sf::Vector2f(90.0f, 128.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         //adicionarInimigo(static_cast<Entidades::Entidade*>(samurai)); //os inimigos estao dando seg fault
-        setPosicoes();
+        setPosicoesAleatorias();
+        
         instanciaAleatorias(posicoesEspinhos,Entidades::ID::espinho);
         instanciaAleatorias(posicoesArqueiros,Entidades::ID::arqueiro);
         instanciaAleatorias(posicoesSamurais,Entidades::ID::samurai);
@@ -47,11 +48,11 @@ namespace Fases {
 
 
     void Nether::desenhar() {
-        if(!background.loadFromFile("assets/cenarios/Nether.png")){ //Está dando seg fault"
+        if(!imagemDeFundo.loadFromFile("assets/cenarios/Nether.png")){ //Está dando seg fault"
             std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
             return;
         }
-        sf::Sprite backgroundSprite(background);
+        sf::Sprite backgroundSprite(imagemDeFundo);
         backgroundSprite.setScale(6.5,3);
         backgroundSprite.setOrigin(sf::Vector2f(80,-20));
         pGG->desenharOutros(backgroundSprite);
@@ -122,7 +123,7 @@ namespace Fases {
             }
         }
     }
-    void Nether::setPosicoes()
+    void Nether::setPosicoesAleatorias()
     {
             posicoesEspinhos.push_back(sf::Vector2f(490,1035));
             posicoesEspinhos.push_back(sf::Vector2f(1115,459));

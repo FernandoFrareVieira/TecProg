@@ -13,14 +13,13 @@ namespace Entidades
         {
             class Samurai : public Inimigo
             {
-                private:
-                    sf::Texture* texturaParado;
-                    
+                private:                    
                     Animacoes::Animacao animacao;
 
                     Listas::ListaEntidades* listaProjeteis;
                     
-                    sf::Clock relogio;
+                    sf::Clock relogioAtaque;
+                    sf::Clock relogioAnimacao;
 
                 public:
                     Samurai(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, Jogador* jogador);

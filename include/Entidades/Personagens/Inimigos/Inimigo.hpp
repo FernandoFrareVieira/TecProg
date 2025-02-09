@@ -31,6 +31,7 @@ namespace Entidades
                     void colidir(Entidade* entidade2, sf::Vector2f ds);
 
                     virtual void adicionarAnimacoes() = 0;
+                    virtual void atualizarAnimacao(float dt) = 0;
 
                     void atualizarLadoOlhando();
             };

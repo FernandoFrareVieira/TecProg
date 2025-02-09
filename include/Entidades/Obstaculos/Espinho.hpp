@@ -10,7 +10,7 @@ namespace Entidades
         class Espinho : public Obstaculo
         {
             private:
-                int dano;
+                const int dano;
 
                 sf::Clock relogioDano;
             public:
