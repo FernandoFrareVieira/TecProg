@@ -13,7 +13,7 @@ namespace Entidades
         class Inimigo : public Personagem
         {
             protected:
-                Jogador *pjogador;
+                Jogador* pjogador;
                 int dano;
             private:
                 int direcaoAleatoria;

@@ -389,8 +389,6 @@ namespace Entidades
                 if (estaAtacando)
                 {
                     pPersonagem->tomarDano(dano);
-
-                    this->ganharPontos(10);
                     dano = 0;
                 }else {
                     dano = 20;

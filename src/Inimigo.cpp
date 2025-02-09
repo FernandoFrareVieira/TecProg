@@ -96,6 +96,14 @@ namespace Entidades
                         }
                     }
 
+                    if(!vivo) {
+                        Jogador* jogador = static_cast<Jogador*>(entidade2);
+                        
+                        if(jogador) {
+                            jogador->ganharPontos(10);
+                        }
+                    }
+
                     colisaoPersonagem(pPersonagem, ds);
                 }
                 break;

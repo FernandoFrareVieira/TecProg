@@ -10,7 +10,7 @@
 
 namespace Fases {
     class Fase;
-    class Fase1;
+    class Pantano;
     class Nether;
 }
 

@@ -1,9 +1,9 @@
-#include "Fases/Fase1.hpp"
+#include "Fases/Pantano.hpp"
 #include <iostream>
 
 namespace Fases
 {
-    Fase1::Fase1(int id, bool dois_jogadores):
+    Pantano::Pantano(int id, bool dois_jogadores):
         Fase(id,dois_jogadores),
         maxEsqueletos(5),
         maxArqueiros(5),
@@ -37,13 +37,13 @@ namespace Fases
         pGC.setProjeteis(&listaProjeteis);
     }
 
-    Fase1::~Fase1()
+    Pantano::~Pantano()
     {
         
     }
 
 
-    void Fase1::desenhar()
+    void Pantano::desenhar()
     {
         if(!background.loadFromFile("assets/cenarios/Background.png")){ 
             std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
@@ -55,7 +55,7 @@ namespace Fases
         pGG->desenharOutros(backgroundSprite);
     }   
 
-    void Fase1::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
+    void Pantano::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
     {
         
         switch (tipo){  
@@ -118,7 +118,7 @@ namespace Fases
         }
     }
 
-    void Fase1::setPosicoes() 
+    void Pantano::setPosicoes() 
     {
         posicoesGosmas.push_back(sf::Vector2f(1663,563));
         posicoesGosmas.push_back(sf::Vector2f(1630,1043));

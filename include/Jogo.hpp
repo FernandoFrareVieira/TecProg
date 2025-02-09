@@ -5,7 +5,7 @@
 #include "Gerenciadores/GerenciadorColisoes.hpp"
 #include "Gerenciadores/GerenciadorEstados.hpp"
 #include "Menus/MenuPrincipal.hpp"
-#include "Fases/Fase1.hpp"
+#include "Fases/Pantano.hpp"
 #include "Fases/Nether.hpp"
 
 class Jogo
@@ -17,7 +17,7 @@ class Jogo
         //Gerenciadores::GerenciadorColisoes pGC;
         Menus::MenuPrincipal* pMP;
 
-        Fases::Fase1* fase1;
+        Fases::Pantano* pantano;
         Fases::Nether* nether;
     public:
         Jogo();

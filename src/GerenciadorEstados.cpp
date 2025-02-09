@@ -1,6 +1,6 @@
 #include "Gerenciadores/GerenciadorEstados.hpp"
 #include "Gerenciadores/GerenciadorEventos.hpp"
-#include "Fases/Fase1.hpp"
+#include "Fases/Pantano.hpp"
 #include "Fases/Nether.hpp"
 #include <stdio.h>
 
@@ -47,9 +47,9 @@ namespace Gerenciadores {
             estados.push(MenuPrincipal);
         }
         else if (id == 1) {
-            Fases::Fase1* Fase1 = new Fases::Fase1(1,dois_jogadores);
-            Fase1->setID_Estado(Estados::ID_Estado::pantanal);
-            estados.push(Fase1);
+            Fases::Pantano* pantano = new Fases::Pantano(1,dois_jogadores);
+            pantano->setID_Estado(Estados::ID_Estado::pantanal);
+            estados.push(pantano);
         }
         else if (id == 2) {
             Menus::MenuPause* MenuPause = new Menus::MenuPause(2);
