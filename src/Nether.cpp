@@ -25,8 +25,6 @@ namespace Fases {
         //adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
         //arqueiro->setListaProjeteis(&listaProjeteis);
 
-<<<<<<< HEAD
-=======
         //Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 3000.f), sf::Vector2f(90.0f, 128.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
         //adicionarInimigos(static_cast<Entidades::Entidade*>(samurai)); //os inimigos estao dando seg fault
         setPosicoes();
@@ -34,22 +32,13 @@ namespace Fases {
         instanciaAleatorias(posicoesArqueiros,Entidades::ID::arqueiro);
         instanciaAleatorias(posicoesSamurais,Entidades::ID::samurai);
 
->>>>>>> 7495eee29a2c412f8b8fde003086122c8e15f5d5
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
         pGC.setInimigos(&listaInimigos);
         pGC.setProjeteis(&listaProjeteis);
-<<<<<<< HEAD
-
-
-        Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 250.0f), sf::Vector2f(50.0f, 128.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
-        adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
-        samurai->setListaProjeteis(&listaProjeteis);
-=======
         //Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(sf::Vector2f(1000.0f, 250.0f), sf::Vector2f(50.0f, 128.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
         //adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
         //samurai->setListaProjeteis(&listaProjeteis);
->>>>>>> 7495eee29a2c412f8b8fde003086122c8e15f5d5
     }
 
     Nether::~Nether() {

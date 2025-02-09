@@ -402,11 +402,11 @@ namespace Fases
                 arqueiro->setListaProjeteis(&listaProjeteis);
             }
             else if (id == Entidades::ID::esqueleto) {
-                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
             }
             else if (id == Entidades::ID::samurai) {
-                Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
                 samurai->setListaProjeteis(&listaProjeteis);
             }
