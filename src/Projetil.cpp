@@ -2,8 +2,9 @@
 
 namespace Entidades
 {
-    Projetil::Projetil(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-        Entidade(pos, tam, vel, ID::projetil)
+    Projetil::Projetil(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, bool pDireita):
+        Entidade(pos, tam, vel, ID::projetil),
+        paraDireita(pDireita)
     {
         vivo = true;
         tempoDeVida = 2.0f;
@@ -48,7 +49,11 @@ namespace Entidades
 
     void Projetil::mover()
     {
-        corpo.move(-velocidade.x, 0.0f);
+        if(paraDireita) {
+            corpo.move(velocidade.x, 0.0f);
+        }else {
+            corpo.move(-velocidade.x, 0.0f);
+        }
     }
 
     void Projetil::colidir(Entidades::Entidade* entidade2, sf::Vector2f ds)

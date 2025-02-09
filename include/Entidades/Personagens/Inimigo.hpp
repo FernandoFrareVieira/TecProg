@@ -15,7 +15,6 @@ namespace Entidades
             protected:
                 Jogador *pjogador;
                 int dano;
-
             private:
                 int direcaoAleatoria;
                 sf::Clock relogio;
@@ -30,6 +29,8 @@ namespace Entidades
                 void colidir(Entidade* entidade2, sf::Vector2f ds);
 
                 virtual void adicionarAnimacoes() = 0;
+
+                void atualizarLadoOlhando();
         };
     }
 }

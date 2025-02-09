@@ -38,6 +38,8 @@ namespace Entidades
 
                 //Animacao ataque
                 float tempoAnimacaoAtaque;
+
+                bool olhandoParaDireita;
             public:
                 Personagem(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
                 ~Personagem();
