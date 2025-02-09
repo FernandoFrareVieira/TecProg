@@ -1,6 +1,4 @@
 #include "Gerenciadores/GerenciadorGrafico.hpp"
-#include "Entidades/Personagens/Jogador.hpp"
-#include <iostream>
 #include <stdexcept>
 
 namespace Gerenciadores
@@ -43,28 +41,28 @@ namespace Gerenciadores
         return textura;
     }
 
-    bool GerenciadorGrafico::janelaAberta() const 
+    bool GerenciadorGrafico::getJanelaAberta() const 
     {
         return janela->isOpen();
     }
 
     void GerenciadorGrafico::mostrar() 
     {
-        if(janelaAberta()) {
+        if(getJanelaAberta()) {
             janela->display();
         }
     }
 
     void GerenciadorGrafico::limpar() 
     {
-        if(janelaAberta()) {
+        if(getJanelaAberta()) {
             janela->clear();
         }
     }
 
     void GerenciadorGrafico::fechar()
     {
-        if(janelaAberta()) {
+        if(getJanelaAberta()) {
             janela->close();
         }
     }

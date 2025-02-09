@@ -19,7 +19,7 @@ Jogo::~Jogo()
 
 void Jogo::executar()
 {  
-    while(pGG->janelaAberta()) {
+    while(pGG->getJanelaAberta()) {
         pGG->limpar();
         pGE->executar();
 

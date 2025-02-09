@@ -225,9 +225,11 @@ namespace Fases
         for (int i = 0; i < numInimigos; i++) {
             inimigoEntidade = listaInimigos.operator[](i);
             sf::Vector2f pos = inimigoEntidade->getCorpo()->getPosition();
+            sf::Vector2f vel = inimigoEntidade->getVelocidade();
             Entidades::ID id = inimigoEntidade->getId();
 
             arquivo.write(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            arquivo.write(reinterpret_cast<char*>(&vel), sizeof(sf::Vector2f));
             arquivo.write(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
         }
 
@@ -298,22 +300,24 @@ namespace Fases
 
         for (int i = 0; i < numInimigos; i++) {
             sf::Vector2f pos;
+            sf::Vector2f vel;
             Entidades::ID id;
 
             arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
+            arquivo.read(reinterpret_cast<char*>(&vel), sizeof(sf::Vector2f));
             arquivo.read(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
 
             if(id == Entidades::ID::esqueleto) {
-                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0, 0), pJogador1);
+                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
                 
             }else if(id == Entidades::ID::arqueiro){
-                Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(pos, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0, 0), pJogador1);
+                Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
                 arqueiro->setListaProjeteis(&listaProjeteis);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
 
             }else if(id == Entidades::ID::samurai) {
-                Entidades::Personagens::Samurai* Samurai = new Entidades::Personagens::Samurai(pos, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0, 0), pJogador1);
+                Entidades::Personagens::Samurai* Samurai = new Entidades::Personagens::Samurai(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
                 Samurai->setListaProjeteis(&listaProjeteis);
                 adicionarInimigos(static_cast<Entidades::Entidade*>(Samurai));
             }

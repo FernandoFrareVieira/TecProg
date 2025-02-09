@@ -3,11 +3,7 @@
 #define ALTURA 900
 
 #include <SFML/Graphics.hpp>
-namespace Entidades {
-    namespace Personagens {
-        class Jogador;
-    }
-}
+#include <iostream>
 
 namespace Gerenciadores
 {
@@ -15,20 +11,20 @@ namespace Gerenciadores
     {
         private:
             sf::RenderWindow* janela;
+            static GerenciadorGrafico* instancia;
+
             sf::View camera;
             sf::Clock relogio;
             float tempo;
-            Entidades::Personagens::Jogador* pJogador;
 
-            static GerenciadorGrafico* instancia;
+        private:
             GerenciadorGrafico();
-
 
         public:
             static GerenciadorGrafico* getInstancia();
             ~GerenciadorGrafico();
             sf::Texture* carregarTextura(std::string caminhoTextura);
-            bool janelaAberta() const;
+            bool getJanelaAberta() const;
             void mostrar();
             void limpar();
             void fechar();
@@ -39,7 +35,6 @@ namespace Gerenciadores
             void desenharOutros(sf::Drawable& objeto);
             void atualizarTempo();
             float getTempo();
-            void setJogador(Entidades::Personagens::Jogador* jogador) {pJogador = jogador;}
             sf::View getCamera();
     };      
 }
