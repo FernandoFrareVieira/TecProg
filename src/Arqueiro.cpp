@@ -34,7 +34,10 @@ namespace Entidades
 
             atualizarAnimacao(dt);
             atualizarPosicao();
+            atualizarLadoOlhando();
+
             atacarProjetil();
+
             desenhar();
             mover();
         }
@@ -45,31 +48,42 @@ namespace Entidades
             }
          }
 
-         void Arqueiro::atualizarAnimacao(float dt) {
-            // Obtém o tempo decorrido desde que o relógio foi iniciado ou reiniciado
+        void Arqueiro::atualizarAnimacao(float dt) {
+            std::string animacaoAtual = animacao.getAnimacaoAtual();
+            std::string novaAnimacao;
+            sf::Texture* textura = nullptr;
+            sf::Vector2f tamanhoSprite;
+        
             float tempoDecorrido = relogioAnimacao.getElapsedTime().asSeconds();
         
             if (tempoDecorrido < 1.0f) {
-                // Animação "parado"
-                if (animacao.getAnimacaoAtual() != "parado") {
-                    animacao.setTextura(texturaParado);
-                    animacao.setAnimacao("parado");
-                    corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+                if (olhandoParaDireita) {
+                    novaAnimacao = "parado";
+                } else {
+                    novaAnimacao = "paradoEsquerda";
                 }
+                textura = texturaParado;
+                tamanhoSprite = sf::Vector2f(80.0f, 80.0f);
             } else if (tempoDecorrido < 1.0f + 1.5f) {
-                // Animação "atacando"
-                if (animacao.getAnimacaoAtual() != "atacando") {
-                    animacao.setTextura(texturaAtacando);
-                    animacao.setAnimacao("atacando");
-                    corpo.setSize(sf::Vector2f(90.0f, 80.0f));
+                if (olhandoParaDireita) {
+                    novaAnimacao = "atacando";
+                } else {
+                    novaAnimacao = "atacandoEsquerda";
                 }
+                textura = texturaAtacando;
+                tamanhoSprite = sf::Vector2f(90.0f, 80.0f);
             } else {
-                // Reinicia o relógio para começar um novo ciclo
                 relogioAnimacao.restart();
+                return;
             }
         
-            // Atualiza a animação (se necessário, passe um delta time aqui)
-            animacao.atualizar(dt); // Ou use um delta time, se a animação precisar
+            if (animacaoAtual != novaAnimacao) {
+                animacao.setAnimacao(novaAnimacao);
+                animacao.setTextura(textura);
+                corpo.setSize(tamanhoSprite);
+            }
+        
+            animacao.atualizar(dt);
         }
 
         void Arqueiro::adicionarAnimacoes()
@@ -88,10 +102,27 @@ namespace Entidades
                 framesAtacando[i] = sf::IntRect(30 + 128 * i, 60, 60, 70);
             }
 
+            int numFramesParadoEsquerda = 7;
+            std::vector<sf::IntRect> framesParadoEsquerda(numFramesParadoEsquerda);
+            for (int i = 0; i < numFramesParadoEsquerda; i++)
+            {
+                framesParadoEsquerda[i] = sf::IntRect(40 + 45 + 128 * i, 65, -45, 60);
+            }
+
+            int numFramesAtacandoEsquerda = 15;
+            std::vector<sf::IntRect> framesAtacandoEsquerda(numFramesAtacandoEsquerda);
+
+            for (int i = 0; i < numFramesAtacandoEsquerda; i++){
+                framesAtacandoEsquerda[i] = sf::IntRect(30 + 60 + 128 * i, 60, -60, 70);
+            }
+
             animacao.adicionarAnimacao("parado", framesParado);
             animacao.adicionarAnimacao("atacando", framesAtacando);
 
-            animacao.setAnimacao("parado");
+            animacao.adicionarAnimacao("paradoEsquerda", framesParadoEsquerda);
+            animacao.adicionarAnimacao("atacandoEsquerda", framesAtacandoEsquerda);
+
+            animacao.setAnimacao("paradoEsquerda");
         }
 
         void Arqueiro::atacarProjetil()
@@ -99,7 +130,7 @@ namespace Entidades
             float tempoQuePassou = relogio.getElapsedTime().asSeconds();
           
             if(tempoQuePassou >= 2.5f) {
-                Entidades::Projetil* projetil = new Entidades::Projetil({corpo.getPosition().x - 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
+                Entidades::Projetil* projetil = new Entidades::Projetil({corpo.getPosition().x - 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f), olhandoParaDireita);
 
                 if(listaProjeteis)
                     listaProjeteis->adicionarEntidade(static_cast<Entidades::Entidade*>(projetil));

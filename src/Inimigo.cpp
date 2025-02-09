@@ -11,6 +11,8 @@ namespace Entidades
             pjogador = jogador;
             srand(time(NULL));
             direcaoAleatoria = rand() % 9;
+
+            olhandoParaDireita = false;
         }
 
         Inimigo::~Inimigo() {}
@@ -107,6 +109,15 @@ namespace Entidades
                     
                 }
                 break;
+            }
+        }
+
+        void Inimigo::atualizarLadoOlhando()
+        {
+            if(pjogador->getCorpo()->getPosition().x <= this->getCorpo()->getPosition().x) {
+                olhandoParaDireita = false;
+            }else {
+                olhandoParaDireita = true;
             }
         }
     }

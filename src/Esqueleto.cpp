@@ -16,6 +16,8 @@ namespace Entidades
 
             tempoAnimacaoAtaque = 0.4f;
 
+            olhandoParaDireita = false;
+
             texturaParado = pGG->carregarTextura("assets/esqueletoGuerreiro/Idle.png");
             texturaAndando = pGG->carregarTextura("assets/esqueletoGuerreiro/Walk.png");
             texturaAtacando = pGG->carregarTextura("assets/esqueletoGuerreiro/Attack_3.png");
@@ -33,6 +35,8 @@ namespace Entidades
             atualizarAnimacao(dt);
             atualizarAtaque();
             atualizarPosicao();
+            atualizarLadoOlhando();
+
             desenhar();
             mover();            
         }
@@ -43,33 +47,46 @@ namespace Entidades
             }
          }
 
-        void Esqueleto::atualizarAnimacao(float dt)
-        {
-            if(!estaAtacando) {
-                if(velocidade.x == 0) {
-                    if (animacao.getAnimacaoAtual() != "parado") { 
-                        animacao.setTextura(texturaParado);
-                        animacao.setAnimacao("parado");
-
-                        corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+         void Esqueleto::atualizarAnimacao(float dt) {
+            std::string animacaoAtual = animacao.getAnimacaoAtual();
+            std::string novaAnimacao;
+            sf::Texture* textura = nullptr;
+            sf::Vector2f tamanhoSprite;
+        
+            if (!estaAtacando) {
+                if (velocidade.x == 0) {
+                    if (olhandoParaDireita) {
+                        novaAnimacao = "parado";
+                    } else {
+                        novaAnimacao = "paradoEsquerda";
                     }
-                }else {
-                    if(animacao.getAnimacaoAtual() != "andando") {
-                        animacao.setTextura(texturaAndando);
-                        animacao.setAnimacao("andando");
-
-                        corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+                    textura = texturaParado;
+                    tamanhoSprite = sf::Vector2f(80.0f, 80.0f); 
+                } else {
+                    if (olhandoParaDireita) {
+                        novaAnimacao = "andando";
+                    } else {
+                        novaAnimacao = "andandoEsquerda";
                     }
+                    textura = texturaAndando;
+                    tamanhoSprite = sf::Vector2f(80.0f, 80.0f); 
                 }
-            }else {
-                if(animacao.getAnimacaoAtual() != "atacando" && podePular) {
-                    animacao.setTextura(texturaAtacando);
-                    animacao.setAnimacao("atacando");
-
-                    corpo.setSize(sf::Vector2f(110.0f, 100.0f));
+            } else {
+                if (olhandoParaDireita) {
+                    novaAnimacao = "atacando";
+                } else {
+                    novaAnimacao = "atacandoEsquerda";
                 }
+                textura = texturaAtacando;
+                tamanhoSprite = sf::Vector2f(110.0f, 100.0f); 
             }
-
+        
+            if (animacaoAtual != novaAnimacao) {
+                animacao.setAnimacao(novaAnimacao);
+                animacao.setTextura(textura);
+                corpo.setSize(tamanhoSprite);
+            }
+        
             animacao.atualizar(dt);
         }
 
@@ -96,11 +113,36 @@ namespace Entidades
                 framesAtacando[i] = sf::IntRect(30 + 128 * i, 45, 70, 80);
             }
 
+            int numFramesParadoEsquerda = 7;
+            std::vector<sf::IntRect> framesParadoEsquerda(numFramesParadoEsquerda);
+            for (int i = 0; i < numFramesParadoEsquerda; i++)
+            {
+                framesParadoEsquerda[i] = sf::IntRect(40 + 55 + 128 * i, 65, -55, 60);
+            }
+
+            int numFramesAndandoEsquerda = 7;
+            std::vector<sf::IntRect> framesAndandoEsquerda(numFramesAndandoEsquerda);
+
+            for (int i = 0; i < numFramesAndandoEsquerda; i++) {
+                framesAndandoEsquerda[i] = sf::IntRect(35 + 35 + 96 * i, 45, -35, 35);
+            }
+            
+            int numFramesAtacandoEsquerda = 4;
+            std::vector<sf::IntRect> framesAtacandoEsquerda(numFramesAtacandoEsquerda);
+
+            for (int i = 0; i < numFramesAtacandoEsquerda; i++){
+                framesAtacandoEsquerda[i] = sf::IntRect(30 + 70 + 128 * i, 45, -70, 80);
+            }
+
             animacao.adicionarAnimacao("parado", framesParado);
             animacao.adicionarAnimacao("andando", framesAndando);
             animacao.adicionarAnimacao("atacando", framesAtacando);
 
-            animacao.setAnimacao("parado");
+            animacao.adicionarAnimacao("paradoEsquerda", framesParadoEsquerda);
+            animacao.adicionarAnimacao("andandoEsquerda", framesAndandoEsquerda);
+            animacao.adicionarAnimacao("atacandoEsquerda", framesAtacandoEsquerda);
+
+            animacao.setAnimacao("paradoEsquerda");
         }
     }
 }

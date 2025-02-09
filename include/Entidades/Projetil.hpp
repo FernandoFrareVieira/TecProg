@@ -15,8 +15,10 @@ namespace Entidades
             sf::Texture* textura;
 
             sf::Clock relogio;
+
+            bool paraDireita;
         public:
-            Projetil(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel);
+            Projetil(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel,  bool pDireita = false);
             ~Projetil();
 
             void executar();
