@@ -2,7 +2,7 @@
 
 #include "Obstaculo.hpp"
 #include "Entidades/Personagens/Jogador.hpp"
-#include "Entidades/Personagens/Inimigo.hpp"
+#include "Entidades/Personagens/Inimigos/Inimigo.hpp"
 
 namespace Entidades
 {

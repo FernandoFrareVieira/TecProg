@@ -11,7 +11,7 @@ namespace Gerenciadores
     {
         private:
             GerenciadorGrafico* pGG;
-            Gerenciadores::GerenciadorEstados* pGE;
+            Gerenciadores::GerenciadorEstados* pGEstados;
             static Listas::ListaObservadores* LO;
 
             static GerenciadorEventos* instancia;

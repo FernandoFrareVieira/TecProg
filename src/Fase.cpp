@@ -1,5 +1,4 @@
 #include "Fases/Fase.hpp"
-#include "Fases/Fase.hpp"
 
 namespace Fases
 {
@@ -37,14 +36,14 @@ namespace Fases
         
     }
 
-    void Fase::adicionarObstaculos(Entidades::Entidade* obstaculo)
+    void Fase::adicionarObstaculo(Entidades::Entidade* obstaculo)
     {
         if(obstaculo) {
             listaObstaculos.adicionarEntidade(obstaculo);
         }
     }
 
-    void Fase::adicionarInimigos(Entidades::Entidade* inimigo)
+    void Fase::adicionarInimigo(Entidades::Entidade* inimigo)
     {
         if(inimigo) {
             listaInimigos.adicionarEntidade(inimigo);
@@ -139,60 +138,12 @@ namespace Fases
                 if(tileId != 0){
                     sf::Vector2f posicao(x * sizeTiled, y * sizeTiled);
                     sf::Vector2f tamanho(sizeTiled, sizeTiled);
-                    criarEntidade(posicao,tamanho, tileId);
+                    criarObstaculo(posicao,tamanho, tileId);
                 }
             }
         }
         
     }
-
-    void Fase::criarInimigos(std::string mapJson, std::vector<sf::Vector2f> posicoes_inimigos, Entidades::Personagens::Jogador* jogador) {
-        std::ifstream arquivo(mapJson);
-        
-        if(!arquivo.is_open()){
-            std::cerr << "Erro ao abrir o mapa " << mapJson <<std::endl;
-            return;
-        }
-
-        arquivo >> mapa;
-        
-        int sizeTiled = mapa["tilewidth"];
-        int width = mapa["width"];
-        int height = mapa["height"];
-
-        int indice = 0;
-        int firstgid = mapa["tilesets"][0]["firstgid"];
-        auto tileset = mapa["tilesets"][0]; 
-        for (const auto& objeto : mapa["layers"]) {
-            if (objeto["type"] == "objectgroup") {
-                for (const auto& objetoDetalhes : objeto["objects"]) {
-                    std::string nomeObjeto = objetoDetalhes["name"];
-                    if (nomeObjeto == "inimigo") {
-                        sf::Vector2f posicao(
-                            static_cast<float>(objetoDetalhes["x"]),
-                            static_cast<float>(objetoDetalhes["y"])
-                        );
-                        posicoes_inimigos.push_back(posicao);
-                    }
-                }
-            }
-        }
-
-        int tam = posicoes_inimigos.size();
-        int pos = rand() % tam;
-        sf::Vector2f tamanho(sizeTiled, sizeTiled);
-        /*for (int i = 0; i <  quantidade de inimigos a colocar; i++) {
-            Entidades::Personagens::Esqueleto* inimigo = new Entidades::Personagens::Esqueleto(posicoes_inimigos[pos],tamanho,sf::Vector2f(0,0),jogador);
-            adicionarInimigos(inimigo);
-            posicoes_inimigos.erase(posicoes_inimigos.begin() + pos);
-            tam--;
-            pos = rand() % tam;
-        } 
-        */ 
-        //Entidades::Personagens::Esqueleto* inimigo = new Entidades::Personagens::Esqueleto(posicoes_inimigos[pos],tamanho,sf::Vector2f(0,0),jogador);
-        //adicionarInimigos(inimigo);
-    } 
-
 
     void Fase::salvar(const std::string& caminhoArquivo)
     {
@@ -308,18 +259,18 @@ namespace Fases
             arquivo.read(reinterpret_cast<char*>(&id), sizeof(Entidades::ID));
 
             if(id == Entidades::ID::esqueleto) {
-                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
-                adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
+                Entidades::Personagens::Inimigos::Esqueleto* esqueleto = new Entidades::Personagens::Inimigos::Esqueleto(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
+                adicionarInimigo(static_cast<Entidades::Entidade*>(esqueleto));
                 
             }else if(id == Entidades::ID::arqueiro){
-                Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
+                Entidades::Personagens::Inimigos::Arqueiro* arqueiro = new Entidades::Personagens::Inimigos::Arqueiro(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
                 arqueiro->setListaProjeteis(&listaProjeteis);
-                adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+                adicionarInimigo(static_cast<Entidades::Entidade*>(arqueiro));
 
             }else if(id == Entidades::ID::samurai) {
-                Entidades::Personagens::Samurai* Samurai = new Entidades::Personagens::Samurai(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
+                Entidades::Personagens::Inimigos::Samurai* Samurai = new Entidades::Personagens::Inimigos::Samurai(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
                 Samurai->setListaProjeteis(&listaProjeteis);
-                adicionarInimigos(static_cast<Entidades::Entidade*>(Samurai));
+                adicionarInimigo(static_cast<Entidades::Entidade*>(Samurai));
             }
         }
 
@@ -337,10 +288,10 @@ namespace Fases
 
             if(id == Entidades::ID::gosma) {
                 Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(pos, sf::Vector2f(100.0f, 20.0f));
-                adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
+                adicionarObstaculo(static_cast<Entidades::Entidade*>(gosma));
             }else if(id == Entidades::ID::espinho) {
                 Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pos, sf::Vector2f(64.0f, 64.0f), sf::Vector2f(0.0f, 0.0f));
-                adicionarObstaculos(static_cast<Entidades::Entidade*>(espinho));
+                adicionarObstaculo(static_cast<Entidades::Entidade*>(espinho));
             }
         }
 
@@ -398,25 +349,25 @@ namespace Fases
 
             if (id == Entidades::ID::gosma) {
                 auto* gosma = new Entidades::Obstaculos::Gosma(posicoes[index], sf::Vector2f(100.0f, 20.0f));
-                adicionarObstaculos(static_cast<Entidades::Entidade*>(gosma));
+                adicionarObstaculo(static_cast<Entidades::Entidade*>(gosma));
             }
             else if (id == Entidades::ID::arqueiro) {
-                Entidades::Personagens::Arqueiro* arqueiro = new Entidades::Personagens::Arqueiro(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
-                adicionarInimigos(static_cast<Entidades::Entidade*>(arqueiro));
+                Entidades::Personagens::Inimigos::Arqueiro* arqueiro = new Entidades::Personagens::Inimigos::Arqueiro(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                adicionarInimigo(static_cast<Entidades::Entidade*>(arqueiro));
                 arqueiro->setListaProjeteis(&listaProjeteis);
             }
             else if (id == Entidades::ID::esqueleto) {
-                Entidades::Personagens::Esqueleto* esqueleto = new Entidades::Personagens::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
-                adicionarInimigos(static_cast<Entidades::Entidade*>(esqueleto));
+                Entidades::Personagens::Inimigos::Esqueleto* esqueleto = new Entidades::Personagens::Inimigos::Esqueleto(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
+                adicionarInimigo(static_cast<Entidades::Entidade*>(esqueleto));
             }
             else if (id == Entidades::ID::samurai) {
-                Entidades::Personagens::Samurai* samurai = new Entidades::Personagens::Samurai(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
-                adicionarInimigos(static_cast<Entidades::Entidade*>(samurai));
+                Entidades::Personagens::Inimigos::Samurai* samurai = new Entidades::Personagens::Inimigos::Samurai(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
+                adicionarInimigo(static_cast<Entidades::Entidade*>(samurai));
                 samurai->setListaProjeteis(&listaProjeteis);
             }
             else if (id == Entidades::ID::espinho) {
                 auto* espinho = new Entidades::Obstaculos::Espinho(posicoes[index], sf::Vector2f(100.0f, 20.0f));
-                adicionarObstaculos(static_cast<Entidades::Entidade*>(espinho));
+                adicionarObstaculo(static_cast<Entidades::Entidade*>(espinho));
             }
         }
     }

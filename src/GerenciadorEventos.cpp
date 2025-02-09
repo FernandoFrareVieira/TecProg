@@ -38,15 +38,15 @@ namespace Gerenciadores
 
     void GerenciadorEventos::executar()
     {
-        pGE = Gerenciadores::GerenciadorEstados::getInstancia();
+        pGEstados = Gerenciadores::GerenciadorEstados::getInstancia();
         sf::Event evento;
         while(pGG->getJanela()->pollEvent(evento)) {
             if(evento.type == sf::Event::Closed) {
                 pGG->fechar();
             }
-            if (pGE->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over) {
+            if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over) {
                     printf("ENTROU\n");
-                    pGE->executarGameOver(evento);
+                    pGEstados->executarGameOver(evento);
                     LO->notificarTeclaPressionada(evento.key.code);
                 }
             else if(evento.type == sf::Event::KeyPressed) {
@@ -54,8 +54,8 @@ namespace Gerenciadores
                 /////
                 LO->notificarTeclaPressionada(evento.key.code);
                 if (evento.key.code == sf::Keyboard::Key::Escape) {
-                    if (pGE->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantanal|| pGE->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether)
-                        pGE->adicionarEstado(2);
+                    if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantanal|| pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether)
+                        pGEstados->adicionarEstado(2);
                 }
             }
             else if(evento.type == sf::Event::KeyReleased) {

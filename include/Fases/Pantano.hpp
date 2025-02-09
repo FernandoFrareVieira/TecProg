@@ -25,7 +25,7 @@ namespace Fases
         public:
             Pantano(int id, bool dois_jogadores);
             ~Pantano();
-            void criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+            void criarObstaculo (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
             void desenhar();
             void setPosicoes();
     };
