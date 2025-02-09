@@ -1,12 +1,12 @@
 #include "Gerenciadores/GerenciadorEstados.hpp"
 #include "Gerenciadores/GerenciadorEventos.hpp"
-#include "Fases/Pantano.hpp"
+#include "Fases/Pantanal.hpp"
 #include "Fases/Nether.hpp"
 #include <stdio.h>
 
 namespace Gerenciadores {
     GerenciadorEstados* GerenciadorEstados::instancia = nullptr;
-    
+    Estados::ID_Estado Gerenciadores::GerenciadorEstados::Estado_ID = Estados::ID_Estado::pantanal;
     GerenciadorEstados::GerenciadorEstados():
     estados(),
     estadoAtual(0),
@@ -47,9 +47,9 @@ namespace Gerenciadores {
             estados.push(MenuPrincipal);
         }
         else if (id == 1) {
-            Fases::Pantano* pantano = new Fases::Pantano(1,dois_jogadores);
-            pantano->setID_Estado(Estados::ID_Estado::pantanal);
-            estados.push(pantano);
+            Fases::Pantanal* Pantanal = new Fases::Pantanal(1,dois_jogadores);
+            Pantanal->setID_Estado(Estados::ID_Estado::pantanal);
+            estados.push(Pantanal);
         }
         else if (id == 2) {
             Menus::MenuPause* MenuPause = new Menus::MenuPause(2);
@@ -97,6 +97,10 @@ namespace Gerenciadores {
     int GerenciadorEstados::getTamanho(){
         return estados.size();
     }
+    Estados::Estado* GerenciadorEstados::getPrimeiroEstado(){
+        std::deque<Estados::Estado*> &dequeInterno = *reinterpret_cast<std::deque<Estados::Estado*>*>(&estados);
+        return dequeInterno.front();
+    };
 
     
 }

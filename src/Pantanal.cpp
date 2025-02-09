@@ -1,9 +1,9 @@
-#include "Fases/Pantano.hpp"
+#include "Fases/Pantanal.hpp"
 #include <iostream>
 
 namespace Fases
 {
-    Pantano::Pantano(int id, bool dois_jogadores):
+    Pantanal::Pantanal(int id, bool dois_jogadores):
         Fase(id,dois_jogadores),
         maxEsqueletos(5),
         maxArqueiros(5),
@@ -17,6 +17,7 @@ namespace Fases
         posicoesArqueiros.clear();
         posicoesEsqueleto.clear();
         posicoesGosmas.clear();
+        posicoesFogos.clear();
 
         // TODO - Arrumar a lógica da criaçao dos objetos
         carregarMapa("include/Tilemap/Pantano.json","include/Tilemap/SwampTiles.png");
@@ -30,6 +31,7 @@ namespace Fases
         instanciaAleatorias(posicoesGosmas, Entidades::ID::gosma);
         instanciaAleatorias(posicoesArqueiros, Entidades::ID::arqueiro);
         instanciaAleatorias(posicoesEsqueleto, Entidades::ID::esqueleto);
+        instanciaAleatorias(posicoesFogos, Entidades::ID::fogo);
 
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);        
@@ -37,13 +39,13 @@ namespace Fases
         pGC.setProjeteis(&listaProjeteis);
     }
 
-    Pantano::~Pantano()
+    Pantanal::~Pantanal()
     {
         
     }
 
 
-    void Pantano::desenhar()
+    void Pantanal::desenhar()
     {
         if(!background.loadFromFile("assets/cenarios/Background.png")){ 
             std::cerr << "Erro ao carregar a textura do mapa" << std::endl;
@@ -55,7 +57,7 @@ namespace Fases
         pGG->desenharOutros(backgroundSprite);
     }   
 
-    void Pantano::criarObstaculo(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
+    void Pantanal::criarObstaculo(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo)
     {
         
         switch (tipo){  
@@ -118,7 +120,7 @@ namespace Fases
         }
     }
 
-    void Pantano::setPosicoes() 
+    void Pantanal::setPosicoes() 
     {
         posicoesGosmas.push_back(sf::Vector2f(1663,563));
         posicoesGosmas.push_back(sf::Vector2f(1630,1043));
@@ -138,6 +140,10 @@ namespace Fases
         posicoesEsqueleto.push_back(sf::Vector2f(2514,800));
         posicoesEsqueleto.push_back(sf::Vector2f(1640,850));
         
+        posicoesFogos.push_back(sf::Vector2f(102,975));
+        posicoesFogos.push_back(sf::Vector2f(1859,1007));
+        posicoesFogos.push_back(sf::Vector2f(2166,1007));
+        posicoesFogos.push_back(sf::Vector2f(1215,1601));
     }   
 
  

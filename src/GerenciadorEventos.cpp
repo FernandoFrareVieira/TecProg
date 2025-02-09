@@ -45,17 +45,15 @@ namespace Gerenciadores
                 pGG->fechar();
             }
             if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::game_over) {
-                    printf("ENTROU\n");
                     pGEstados->executarGameOver(evento);
                     LO->notificarTeclaPressionada(evento.key.code);
                 }
             else if(evento.type == sf::Event::KeyPressed) {
-                //pJogador->mover(evento.key.code);
-                /////
                 LO->notificarTeclaPressionada(evento.key.code);
                 if (evento.key.code == sf::Keyboard::Key::Escape) {
-                    if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantanal|| pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether)
+                    if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::pantanal || pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether) {
                         pGEstados->adicionarEstado(2);
+                    }
                 }
             }
             else if(evento.type == sf::Event::KeyReleased) {

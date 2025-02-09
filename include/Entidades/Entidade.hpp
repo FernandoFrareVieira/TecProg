@@ -14,7 +14,8 @@ namespace Entidades
         gosma,
         espinho,
         plataforma,
-        projetil
+        projetil,
+        fogo,
     };
 
     class Entidade : public Ente
