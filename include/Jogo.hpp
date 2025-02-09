@@ -15,10 +15,7 @@ class Jogo
         Gerenciadores::GerenciadorEventos* pGE;
         Gerenciadores::GerenciadorEstados* GE;
         //Gerenciadores::GerenciadorColisoes pGC;
-        Menus::MenuPrincipal* pMP;
 
-        Fases::Fase1* fase1;
-        Fases::Nether* nether;
     public:
         Jogo();
         ~Jogo();

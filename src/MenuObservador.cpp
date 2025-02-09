@@ -53,11 +53,12 @@ namespace Observadores {
                 pGEstados->addEstado(3);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::carregar) {
-                pGEstados->removerEstado();
                 pGEstados->addEstado(1);
                 pFaseObservador->notificarCarregamento();
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause && pMenu->getBotao() == Menus::BOTOES::salvar) {
+                pGEstados->removerEstado();
+                pGEstados->addEstado(1);
                 pFaseObservador->notificarSalvamento();
             }
             else if (pMenu->getBotao() == Menus::BOTOES::continuar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){

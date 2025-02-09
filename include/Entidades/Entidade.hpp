@@ -14,10 +14,6 @@ namespace Entidades
         gosma,
         espinho,
         plataforma,
-        Nether,
-        MenuPrincipal,
-        MenuPause,
-        pantanal,
         projetil
     };
 
