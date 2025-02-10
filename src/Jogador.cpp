@@ -35,8 +35,8 @@ namespace Entidades
                 desaceleracaoHorizontal = 300.0f;
                 velocidadeMaximaHorizontal = 300.0f;
 
-                texturaParado = pGG->carregarTextura("assets/jogador1/andando.png");
-                texturaAndando = pGG->carregarTextura("assets/jogador1/correndo.png");
+                texturaParado = pGG->carregarTextura("assets/jogador1/parado.png");
+                texturaAndando = pGG->carregarTextura("assets/jogador1/andando.png");
                 texturaAtacando = pGG->carregarTextura("assets/jogador1/atacando.png");
 
                 corpo.setTexture(texturaParado);
@@ -56,9 +56,9 @@ namespace Entidades
                 desaceleracaoHorizontal = 350.0f;
                 velocidadeMaximaHorizontal = 400.0f;
 
-                texturaParado = pGG->carregarTextura("assets/jogador2/Idle.png");
-                texturaAndando = pGG->carregarTextura("assets/jogador2/Run.png");
-                texturaAtacando = pGG->carregarTextura("assets/jogador2/Attack_1.png");
+                texturaParado = pGG->carregarTextura("assets/jogador2/parado.png");
+                texturaAndando = pGG->carregarTextura("assets/jogador2/andando.png");
+                texturaAtacando = pGG->carregarTextura("assets/jogador2/atacando.png");
 
                 tempoAnimacaoAtaque = 0.4f;
 

@@ -32,7 +32,7 @@ namespace Entidades
                     void adicionarAnimacoes();
 
                     //Método atacar
-                    void atacarProjetil();
+                    void lancarProjetil();
 
                     void setListaProjeteis(Listas::ListaEntidades* LP);
             };

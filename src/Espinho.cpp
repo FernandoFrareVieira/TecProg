@@ -15,9 +15,12 @@ namespace Entidades
             setTextura("assets/espinho/espinho.png");
 
             corpo.setTextureRect(sf::IntRect(100, 400, 1000, 800));
+<<<<<<< HEAD
 
             //corpo.setOutlineThickness(1.0f);
             //corpo.setOutlineColor(sf::Color::Red);
+=======
+>>>>>>> 426302967263e2a5d1fe7565a93d924bc9e7b5e2
         }
 
         Espinho::~Espinho()

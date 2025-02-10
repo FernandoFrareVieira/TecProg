@@ -271,7 +271,7 @@ namespace Fases
                 adicionarInimigo(static_cast<Entidades::Entidade*>(arqueiro));
 
             }else if(id == Entidades::ID::samurai) {
-                Entidades::Personagens::Inimigos::Samurai* Samurai = new Entidades::Personagens::Inimigos::Samurai(pos, sf::Vector2f(80.0f, 80.0f), vel, pJogador1);
+                Entidades::Personagens::Inimigos::Samurai* Samurai = new Entidades::Personagens::Inimigos::Samurai(pos, sf::Vector2f(50.0f, 100.0f), vel, pJogador1);
                 Samurai->setListaProjeteis(&listaProjeteis);
                 adicionarInimigo(static_cast<Entidades::Entidade*>(Samurai));
             }
@@ -359,7 +359,7 @@ namespace Fases
                 adicionarObstaculo(static_cast<Entidades::Entidade*>(gosma));
             }
             else if (id == Entidades::ID::arqueiro) {
-                Entidades::Personagens::Inimigos::Arqueiro* arqueiro = new Entidades::Personagens::Inimigos::Arqueiro(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(2.0f, 2.0f), pJogador1);
+                Entidades::Personagens::Inimigos::Arqueiro* arqueiro = new Entidades::Personagens::Inimigos::Arqueiro(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
                 adicionarInimigo(static_cast<Entidades::Entidade*>(arqueiro));
                 arqueiro->setListaProjeteis(&listaProjeteis);
             }
@@ -368,7 +368,7 @@ namespace Fases
                 adicionarInimigo(static_cast<Entidades::Entidade*>(esqueleto));
             }
             else if (id == Entidades::ID::samurai) {
-                Entidades::Personagens::Inimigos::Samurai* samurai = new Entidades::Personagens::Inimigos::Samurai(posicoes[index], sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
+                Entidades::Personagens::Inimigos::Samurai* samurai = new Entidades::Personagens::Inimigos::Samurai(posicoes[index], sf::Vector2f(50.0f, 100.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
                 adicionarInimigo(static_cast<Entidades::Entidade*>(samurai));
                 samurai->setListaProjeteis(&listaProjeteis);
             }

@@ -130,7 +130,7 @@ namespace Fases {
             posicoesEspinhos.push_back(sf::Vector2f(490,1040));
             posicoesEspinhos.push_back(sf::Vector2f(1115,465));
             posicoesEspinhos.push_back(sf::Vector2f(1775,336));
-            posicoesEspinhos.push_back(sf::Vector2f(1688,815));
+            posicoesEspinhos.push_back(sf::Vector2f(1688,820));
             posicoesEspinhos.push_back(sf::Vector2f(2537,1040));
             //posicoesEspinhos.push_back(sf::Vector2f(1115,459));
             //posicoesEspinhos.push_back(sf::Vector2f(1115,467));
