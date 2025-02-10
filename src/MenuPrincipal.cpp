@@ -3,8 +3,16 @@
 
 namespace Menus {
     MenuPrincipal::MenuPrincipal(int id):
-    Menu(6,id)
+    Menu(5,id)
     {
+        if (!fonte.loadFromFile("assets/fontes/DungeonFont.ttf")) {
+            std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
+        }
+        teste.setFont(fonte);
+        teste.setCharacterSize(80);
+        teste.setFillColor(sf::Color::Yellow);
+        teste.setPosition(430,30);
+        teste.setString("SHADOW BLADE");
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         opcoes[0]->setTexto("Singleplayer");
         opcoes[0]->setBotao(Menus::BOTOES::singleplayer);
@@ -30,6 +38,7 @@ namespace Menus {
     void MenuPrincipal::desenhar() {
         corpo.setFillColor(sf::Color::White);
         pGG->desenhar((corpo));
+        pGG->desenharOutros((teste));
         if (num_opcoes > 0) {
             for (int i = 0; i < num_opcoes; i++) {
             opcoes[i]->desenhar();
@@ -39,6 +48,7 @@ namespace Menus {
 
     void MenuPrincipal::executar() {
         desenhar();
+
     }
 
 }

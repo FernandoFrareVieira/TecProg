@@ -98,6 +98,7 @@ namespace Gerenciadores
 
     void GerenciadorGrafico::desenhar(sf::Text& texto){
         janela->draw(texto);
+
     }
 
     void GerenciadorGrafico::atualizarTempo()

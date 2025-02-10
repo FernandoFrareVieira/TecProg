@@ -14,6 +14,7 @@ namespace Fases {
         posicoesArqueiros.clear();
         posicoesSamurais.clear();
         posicoesEspinhos.clear();
+        posicoesFogos.clear();
 
         carregarMapa("include/Tilemap/Nether.json","include/Tilemap/NetherTiles.png");
 
@@ -58,7 +59,6 @@ namespace Fases {
         backgroundSprite.setScale(6.5,3);
         backgroundSprite.setOrigin(sf::Vector2f(80,-20));
         pGG->desenharOutros(backgroundSprite);
-        //pGG->centralizarCamera(jogador->getCorpo()->getPosition());
     }
 
     void Nether::criarObstaculo(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo) {
@@ -135,15 +135,15 @@ namespace Fases {
             //posicoesEspinhos.push_back(sf::Vector2f(1115,459));
             //posicoesEspinhos.push_back(sf::Vector2f(1115,467));
 
-            posicoesArqueiros.push_back(sf::Vector2f(1100,430));
-            posicoesArqueiros.push_back(sf::Vector2f(2480,900));
-            posicoesArqueiros.push_back(sf::Vector2f(1660,780));
-            posicoesArqueiros.push_back(sf::Vector2f(1642,220));
+            posicoesArqueiros.push_back(sf::Vector2f(983,300));
+            //posicoesArqueiros.push_back(sf::Vector2f(2480,900));
+            posicoesArqueiros.push_back(sf::Vector2f(1600,780));
+            posicoesArqueiros.push_back(sf::Vector2f(1600,220));
 
-            //posicoesSamurais.push_back(sf::Vector2f(1688,705));
             posicoesSamurais.push_back(sf::Vector2f(2959,900));
-            posicoesSamurais.push_back(sf::Vector2f(1775,310));
-            posicoesSamurais.push_back(sf::Vector2f(1860,705));
+            posicoesSamurais.push_back(sf::Vector2f(1735,680));
+            posicoesSamurais.push_back(sf::Vector2f(1805,180));
+            //posicoesSamurais.push_back(sf::Vector2f(2753,700));
 
             posicoesFogos.push_back(sf::Vector2f(172,1007));
             posicoesFogos.push_back(sf::Vector2f(2368,1007));

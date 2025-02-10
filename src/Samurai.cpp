@@ -30,6 +30,12 @@ namespace Entidades
 
                 corpo.setTexture(texturaParado);
 
+<<<<<<< HEAD
+                //cobrpo.setOutlineThickness(1.0f);
+                //corpo.setOutlineColor(sf::Color::Red);
+
+=======
+>>>>>>> 426302967263e2a5d1fe7565a93d924bc9e7b5e2
                 adicionarAnimacoes();
             }
 
