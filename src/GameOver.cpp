@@ -25,6 +25,7 @@ namespace Menus {
         textoPontuacao.setPosition(550, 450);
         opcoes[0]->setTexto("MENU PRINCIPAL");
         opcoes[0]->setBotao(menu_principal);
+        opcoes[0]->mudarCor();
     }
 
     GameOver::~GameOver() {
