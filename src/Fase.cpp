@@ -74,7 +74,7 @@ namespace Fases
 
     void Fase::executar() {
         //printf("%d", pJogador1->getPontosDeVida());
-        //printf("%2.f, %2.f\n", pJogador1->getCorpo()->getPosition().x, pJogador1->getCorpo()->getPosition().y);
+        printf("%2.f, %2.f\n", pJogador1->getCorpo()->getPosition().x, pJogador1->getCorpo()->getPosition().y);
         if (pObservadorFase) {
             //printf("NÃO É NULO\n");
         }

@@ -136,8 +136,8 @@ namespace Fases {
             //posicoesEspinhos.push_back(sf::Vector2f(1115,467));
 
             posicoesArqueiros.push_back(sf::Vector2f(983,300));
-            //posicoesArqueiros.push_back(sf::Vector2f(2480,900));
-            posicoesArqueiros.push_back(sf::Vector2f(1600,780));
+            posicoesArqueiros.push_back(sf::Vector2f(2480,900));
+            posicoesArqueiros.push_back(sf::Vector2f(1600,570));
             posicoesArqueiros.push_back(sf::Vector2f(1600,220));
 
             posicoesSamurais.push_back(sf::Vector2f(2959,900));

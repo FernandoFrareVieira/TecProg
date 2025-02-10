@@ -124,7 +124,7 @@ namespace Gerenciadores
 
         textoVida.setFont(fonte);  
         textoVida.setCharacterSize(24);
-        textoVida.setFillColor(sf::Color::Black);  
+        textoVida.setFillColor(sf::Color::White);  
         textoVida.setString("Vida: " + pontosDeVidaString);
 
 
