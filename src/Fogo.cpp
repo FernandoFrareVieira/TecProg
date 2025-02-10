@@ -10,7 +10,7 @@ namespace Entidades
             nivelQueimadura(3)
         {
             relogioDano.restart();
-            setTextura("assets/fogo/fogo.png");
+            setTextura("assets/Fogo/Fogo.png");
 
             corpo.setTextureRect(sf::IntRect(2, 10, 40, 52));
         }

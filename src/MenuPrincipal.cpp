@@ -5,7 +5,7 @@ namespace Menus {
     MenuPrincipal::MenuPrincipal(int id):
     Menu(5,id)
     {
-        if (!fonte.loadFromFile("assets/fontes/DungeonFont.ttf")) {
+        if (!fonte.loadFromFile("assets/fontes/ThaleahFat.ttf")) {
             std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
         }
         teste.setFont(fonte);

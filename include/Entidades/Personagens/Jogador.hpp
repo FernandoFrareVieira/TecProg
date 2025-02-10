@@ -37,6 +37,7 @@ namespace Entidades
                 //Métodos pontuação
                 void ganharPontos(int pts);
                 int getPontuacao();
+                void setPontuacao(int pts) {pontos = pts;}
         };
     }
 }

@@ -3,7 +3,7 @@
 namespace Menus {
     class MenuFases : public Menu {
     private:
-    
+        bool EntrouEmFases;
     public:
         MenuFases(int id);
         ~MenuFases();

@@ -30,12 +30,6 @@ namespace Entidades
 
                 corpo.setTexture(texturaParado);
 
-<<<<<<< HEAD
-                //cobrpo.setOutlineThickness(1.0f);
-                //corpo.setOutlineColor(sf::Color::Red);
-
-=======
->>>>>>> 426302967263e2a5d1fe7565a93d924bc9e7b5e2
                 adicionarAnimacoes();
             }
 
@@ -76,7 +70,7 @@ namespace Entidades
                             novaAnimacao = "paradoEsquerda";
                         }
                         textura = texturaParado;
-                        tamanhoSprite = sf::Vector2f(50.0f, 100.0f); 
+                        tamanhoSprite = sf::Vector2f(70.0f, 120.0f); 
                     }
                 } else {
                     if (olhandoParaDireita) {
@@ -85,7 +79,7 @@ namespace Entidades
                         novaAnimacao = "atacandoEsquerda";
                     }
                     textura = texturaAtacando;
-                    tamanhoSprite = sf::Vector2f(100.0f, 100.0f); 
+                    tamanhoSprite = sf::Vector2f(120.0f, 120.0f); 
                 }
             
                 if (animacaoAtual != novaAnimacao) {

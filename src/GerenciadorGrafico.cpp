@@ -19,6 +19,9 @@ namespace Gerenciadores
         tempo(0.0f)
     {
         janela->setFramerateLimit(60);
+        if (!fonte.loadFromFile("assets/fontes/Roboto.ttf")) {
+            std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
+        }
     }
 
     GerenciadorGrafico::~GerenciadorGrafico() 
@@ -113,5 +116,27 @@ namespace Gerenciadores
 
     sf::View GerenciadorGrafico::getCamera() {
         return camera;
+    }
+
+    void GerenciadorGrafico::desenharHUD(int pontosDeVida, sf::Vector2f offset)
+    {
+        std::string pontosDeVidaString = std::to_string(pontosDeVida);
+
+        textoVida.setFont(fonte);  
+        textoVida.setCharacterSize(24);
+        textoVida.setFillColor(sf::Color::Black);  
+        textoVida.setString("Vida: " + pontosDeVidaString);
+
+
+        sf::Vector2f cameraCentro = camera.getCenter();
+        sf::Vector2f cameraTamanho = camera.getSize();
+
+        // Calcula a posição relativa ao canto superior esquerdo da tela
+        sf::Vector2f posicaoTextoVida(cameraCentro.x - cameraTamanho.x / 2 + offset.x, 
+                                cameraCentro.y - cameraTamanho.y / 2 + offset.y);
+
+        textoVida.setPosition(posicaoTextoVida);
+
+        janela->draw(textoVida);
     }
 }

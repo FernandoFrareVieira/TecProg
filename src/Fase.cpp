@@ -22,7 +22,7 @@ namespace Fases
         adicionarJogador(static_cast<Entidades::Entidade*>(pJogador2));
         pGEstados->setListaJogadores(&listaJogadores);
         if (!multiplayer) {
-            pJogador2->getCorpo()->setPosition(sf::Vector2f(-200,0));
+            pJogador2->getCorpo()->setPosition(sf::Vector2f(-200,2000));
         }
         pObservadorFase = Observadores::FaseObservador::getInstancia();
         pObservadorFase->setFase(this);
@@ -368,7 +368,7 @@ namespace Fases
                 adicionarInimigo(static_cast<Entidades::Entidade*>(esqueleto));
             }
             else if (id == Entidades::ID::samurai) {
-                Entidades::Personagens::Inimigos::Samurai* samurai = new Entidades::Personagens::Inimigos::Samurai(posicoes[index], sf::Vector2f(50.0f, 100.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
+                Entidades::Personagens::Inimigos::Samurai* samurai = new Entidades::Personagens::Inimigos::Samurai(posicoes[index], sf::Vector2f(70.0f, 120.0f), sf::Vector2f(0.0f, 0.0f), pJogador1);
                 adicionarInimigo(static_cast<Entidades::Entidade*>(samurai));
                 samurai->setListaProjeteis(&listaProjeteis);
             }
