@@ -24,6 +24,7 @@ namespace Entidades
             tempoDesdeUltimoAtaque = 0.0f;
             olhandoParaDireita = true;
 
+            
             if (id == 1)
             {
                 pontosDeVida = 100;
@@ -84,6 +85,9 @@ namespace Entidades
             mover();
             if (this->getPosicao().y > 1090)
                 vivo = false;
+
+            std::string pontosDeVidaString = std::to_string(pontosDeVida);
+            pGG->desenharHUD("vida 10" , sf::Vector2f(50, 30));
         }
 
         void Jogador::desenhar()

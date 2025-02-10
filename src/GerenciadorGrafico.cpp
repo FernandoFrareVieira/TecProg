@@ -19,6 +19,11 @@ namespace Gerenciadores
         tempo(0.0f)
     {
         janela->setFramerateLimit(60);
+
+        sf::Font fonte;
+        if (!fonte.loadFromFile("assets/fontes/DungeonFont.ttf")) {
+            std::cerr << "Erro ao carregar a fonte DungeonFont!" << std::endl;
+        }
     }
 
     GerenciadorGrafico::~GerenciadorGrafico() 
@@ -112,5 +117,25 @@ namespace Gerenciadores
 
     sf::View GerenciadorGrafico::getCamera() {
         return camera;
+    }
+
+    void GerenciadorGrafico::desenharHUD(const std::string& textoStr, sf::Vector2f offset)
+    {
+        sf::Text texto;
+
+        texto.setFont(fonte);
+        texto.setCharacterSize(24);
+        texto.setFillColor(sf::Color::White);
+        texto.setString("diowamdwiamdwiam");
+
+        sf::Vector2f cameraCentro = camera.getCenter();
+        sf::Vector2f cameraTamanho = camera.getSize();
+
+        // Calcula a posição relativa ao canto superior esquerdo da tela
+        sf::Vector2f posicaoTexto(cameraCentro.x - cameraTamanho.x / 2 + offset.x, 
+                                cameraCentro.y - cameraTamanho.y / 2 + offset.y);
+
+        texto.setPosition(posicaoTexto);
+        janela->draw(texto);
     }
 }

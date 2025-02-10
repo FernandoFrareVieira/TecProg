@@ -11,8 +11,8 @@ namespace Menus {
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         corpo.setFillColor(sf::Color::White);
-        if (!fonte.loadFromFile("assets/fontes/Ubuntu-R.ttf")) {
-            std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
+        if (!fonte.loadFromFile("assets/fontes/DungeonFont.ttf")) {
+            std::cerr << "Erro ao carregar a fonte DungeonFont!" << std::endl;
         }
         textoNome.setFont(fonte);
         textoNome.setCharacterSize(30);

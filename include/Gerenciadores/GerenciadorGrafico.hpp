@@ -17,6 +17,8 @@ namespace Gerenciadores
             sf::Clock relogio;
             float tempo;
 
+            sf::Font fonte;
+
         private:
             GerenciadorGrafico();
 
@@ -36,5 +38,6 @@ namespace Gerenciadores
             void atualizarTempo();
             float getTempo();
             sf::View getCamera();
+            void desenharHUD(const std::string& textoStr, sf::Vector2f offset);
     };      
 }
