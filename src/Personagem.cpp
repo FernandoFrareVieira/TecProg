@@ -89,16 +89,6 @@ namespace Entidades
             }
 
             std::cout << "Pontos de vida: " << pontosDeVida << std::endl;
-
-            // if (this->getId() == ID::jogador)
-            // {
-            //     sf::Vector2f velocidade = this->getVelocidade();
-            //     if(velocidade.x > 0.0f) {
-            //         this->setVelocidade(sf::Vector2f(-(velocidade.x - 100.0f), velocidade.y));
-            //     }else {
-            //         this->setVelocidade(sf::Vector2f(-(velocidade.x + 100.0f), velocidade.y));
-            //     }
-            // }
         }
 
         void Personagem::atacar()
