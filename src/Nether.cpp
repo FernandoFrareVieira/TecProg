@@ -32,6 +32,8 @@ namespace Fases {
         instanciaAleatorias(posicoesEspinhos,Entidades::ID::espinho);
         instanciaAleatorias(posicoesArqueiros,Entidades::ID::arqueiro);
         instanciaAleatorias(posicoesSamurais,Entidades::ID::samurai);
+        instanciaAleatorias(posicoesFogos,Entidades::ID::fogo);
+        
 
         pGC.setJogadores(&listaJogadores);
         pGC.setObstaculos(&listaObstaculos);
@@ -125,11 +127,11 @@ namespace Fases {
     }
     void Nether::setPosicoesAleatorias()
     {
-            posicoesEspinhos.push_back(sf::Vector2f(490,1035));
-            posicoesEspinhos.push_back(sf::Vector2f(1115,459));
-            posicoesEspinhos.push_back(sf::Vector2f(1775,331));
-            posicoesEspinhos.push_back(sf::Vector2f(1688,810));
-            posicoesEspinhos.push_back(sf::Vector2f(2537,1033));
+            posicoesEspinhos.push_back(sf::Vector2f(490,1040));
+            posicoesEspinhos.push_back(sf::Vector2f(1115,465));
+            posicoesEspinhos.push_back(sf::Vector2f(1775,336));
+            posicoesEspinhos.push_back(sf::Vector2f(1688,815));
+            posicoesEspinhos.push_back(sf::Vector2f(2537,1040));
             //posicoesEspinhos.push_back(sf::Vector2f(1115,459));
             //posicoesEspinhos.push_back(sf::Vector2f(1115,467));
 
@@ -138,10 +140,16 @@ namespace Fases {
             posicoesArqueiros.push_back(sf::Vector2f(1660,780));
             posicoesArqueiros.push_back(sf::Vector2f(1642,220));
 
-            posicoesSamurais.push_back(sf::Vector2f(1688,705));
+            //posicoesSamurais.push_back(sf::Vector2f(1688,705));
             posicoesSamurais.push_back(sf::Vector2f(2959,900));
             posicoesSamurais.push_back(sf::Vector2f(1775,310));
             posicoesSamurais.push_back(sf::Vector2f(1860,705));
+
+            posicoesFogos.push_back(sf::Vector2f(172,1007));
+            posicoesFogos.push_back(sf::Vector2f(2368,1007));
+            posicoesFogos.push_back(sf::Vector2f(2778,1007));
+            posicoesFogos.push_back(sf::Vector2f(1678,303));
+
 
     }
 }

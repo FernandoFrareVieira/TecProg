@@ -16,6 +16,7 @@
 #include "Entidades/Personagens/Inimigos/Samurai.hpp"
 #include "Entidades/Obstaculos/Gosma.hpp"
 #include "Entidades/Obstaculos/Espinho.hpp"
+#include "Entidades/Obstaculos/Fogo.hpp"
 #include "Entidades/Projetil.hpp"
 #include "Observadores/FaseObservador.hpp"
 #include "Gerenciadores/GerenciadorEstados.hpp"
@@ -42,7 +43,7 @@ namespace Fases
             nlohmann::json mapa;
             sf::Texture tilesetTextura;
 
-            std::vector<sf::Vector2f> posicoes;
+            std::vector<sf::Vector2f> posicoesFogos;
             Observadores::FaseObservador* pObservadorFase;
             bool multiplayer;
 

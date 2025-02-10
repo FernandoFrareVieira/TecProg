@@ -54,10 +54,22 @@ namespace Observadores {
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::carregar) {
                 pGEstados->removerEstado();
-                pGEstados->adicionarEstado(1);
+                if (pGEstados->getID_Fase() == Estados::ID_Estado::pantanal) {
+                    pGEstados->adicionarEstado(1);
+                }
+                if (pGEstados->getID_Fase() == Estados::ID_Estado::nether) {
+                    pGEstados->adicionarEstado(3);
+                }
                 pFaseObservador->notificarCarregamento();
+                
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause && pMenu->getBotao() == Menus::BOTOES::salvar) {
+                if (pGEstados->getPrimeiroEstado()->getID_Estado() == Estados::ID_Estado::pantanal ) {
+                    pGEstados->setUltimoEstado(Estados::ID_Estado::pantanal);
+                }
+                else if (pGEstados->getPrimeiroEstado()->getID_Estado() == Estados::ID_Estado::nether) {
+                    pGEstados->setUltimoEstado(Estados::ID_Estado::nether);
+                }
                 pFaseObservador->notificarSalvamento();
             }
             else if (pMenu->getBotao() == Menus::BOTOES::continuar && pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_pause){

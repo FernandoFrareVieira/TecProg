@@ -8,7 +8,7 @@
 
 namespace Fases
 {
-    class Pantano : public Fase
+    class Pantanal : public Fase
     {
         private:
             //Maximo de instancias
@@ -21,9 +21,9 @@ namespace Fases
             std::vector<sf::Vector2f> posicoesArqueiros;
             std::vector<sf::Vector2f> posicoesGosmas;
         public:
-            Pantano(int id, bool dois_jogadores);
-            ~Pantano();
-            void criarObstaculo(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+            Pantanal(int id, bool dois_jogadores);
+            ~Pantanal();
+            void criarObstaculo (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
             void desenhar();
             void setPosicoesAleatorias();
     };
