@@ -393,7 +393,7 @@ namespace Entidades
                     dano = 20;
                 }
 
-                //colisaoPersonagem(pPersonagem, ds);
+                colisaoPersonagem(pPersonagem, ds);
             }
             break;
 
@@ -410,7 +410,7 @@ namespace Entidades
                     dano = 20;
                 }
 
-                // colisaoPersonagem(pPersonagem, ds);
+                colisaoPersonagem(pPersonagem, ds);
             }
             break;
 
@@ -428,7 +428,7 @@ namespace Entidades
                     dano = 20;
                 }
 
-                //colisaoPersonagem(pPersonagem, ds);
+                colisaoPersonagem(pPersonagem, ds);
             }
             break;
 
