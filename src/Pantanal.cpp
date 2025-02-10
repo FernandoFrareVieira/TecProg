@@ -133,7 +133,7 @@ namespace Fases
         posicoesArqueiros.push_back(sf::Vector2f(1979,330));
         posicoesArqueiros.push_back(sf::Vector2f(2382,835));
         posicoesArqueiros.push_back(sf::Vector2f(2997,689));
-        posicoesArqueiros.push_back(sf::Vector2f(1136, 400));
+        posicoesArqueiros.push_back(sf::Vector2f(1136,400));
         
         posicoesEsqueleto.push_back(sf::Vector2f(1918,1000));
         posicoesEsqueleto.push_back(sf::Vector2f(2539,220));

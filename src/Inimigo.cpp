@@ -30,43 +30,6 @@ namespace Entidades
                     velocidade.y += gravidade * dt;
                 }
 
-                // //Perseguição
-                // if (fabs(posicaoJogador.x - posicaoInimigo.x) <= DISTANCIA_PERSEGUIR_X && 
-                //     fabs(posicaoJogador.y - posicaoInimigo.y) <= DISTANCIA_PERSEGUIR_Y) {
-
-                //     float diferencaX = posicaoJogador.x - posicaoInimigo.x;
-                //     float diferencaY = posicaoJogador.y - posicaoInimigo.y;
-
-                //     if (fabs(diferencaX) > 0.0f) {
-                //         movimento.x = (diferencaX > 0.0f ? velocidade.x : -velocidade.x);
-                //         if (fabs(diferencaX) < fabs(movimento.x)) {
-                //             movimento.x = diferencaX;
-                //         }
-                //     }
-
-                //     //Apenas altera movimento.y se estiver no chão ou próximo ao jogador
-                //     if (podePular) {
-                //         movimento.y = (diferencaY > 0.0f ? velocidade.y : -velocidade.y);
-                //         if (fabs(diferencaY) < fabs(movimento.y)) {
-                //             movimento.y = diferencaY;
-                //         }
-                //     }
-
-                // } else {
-                
-                //     //Movimento aleatório
-                //     if(direcaoAleatoria == 0 && podePular) {
-                //         pular();
-                //     }else if(direcaoAleatoria < 5) {
-                //         //Move para a direita
-                //         movimento.x = velocidade.x;
-                //     }else{
-                //         //Move para a esquerda
-                //         movimento.x = -velocidade.x;
-                //     }
-                // }
-
-                //Adiciona o efeito da gravidade ao movimento
                 movimento.y += velocidade.y * dt;
                 corpo.move(movimento);
 
@@ -84,24 +47,26 @@ namespace Entidades
                     case(ID::jogador):
                     {       
                         Personagem* pPersonagem = static_cast<Personagem*>(entidade2);             
-                        atacar();
-                        if (estaAtacando) {
-
-                            if(this->getId() != ID::arqueiro)
-                                pPersonagem->tomarDano(dano);
-                            dano = 0;
-                        }else {
-                            if(this->getId() == ID::esqueleto) {
-                                dano = 10;
-                            }else if(this->getId() == ID::samurai) {
-                                dano = 20;
+                        
+                        // Verifica se a colisão é no eixo X (ou seja, jogador está à direita ou à esquerda do inimigo)
+                        if (ds.x < ds.y) {
+                            atacar();
+                            if (estaAtacando) {
+                                if (this->getId() != ID::arqueiro)
+                                    pPersonagem->tomarDano(dano);
+                                dano = 0;
+                            } else {
+                                if (this->getId() == ID::esqueleto) {
+                                    dano = 10;
+                                } else if (this->getId() == ID::samurai) {
+                                    dano = 20;
+                                }
                             }
                         }
 
-                        if(!vivo) {
+                        if (!vivo) {
                             Jogador* jogador = static_cast<Jogador*>(entidade2);
-                            
-                            if(jogador) {
+                            if (jogador) {
                                 jogador->ganharPontos(10);
                             }
                         }
@@ -109,14 +74,16 @@ namespace Entidades
                         colisaoPersonagem(pPersonagem, ds);
                     }
                     break;
+
                     case(ID::plataforma):
                     {
-                        
+                        // Lógica de colisão com plataforma (se necessário)
                     }
                     break;
+
                     default:
                     {
-                        
+                        // Outras interações (se necessário)
                     }
                     break;
                 }

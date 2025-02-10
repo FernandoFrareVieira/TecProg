@@ -33,7 +33,50 @@ namespace Entidades
 
         void Personagem::colisaoPersonagem(Personagem* pPersonagem, sf::Vector2f ds) 
         {
-            
+            sf::Vector2f posicao = corpo.getPosition();
+            sf::Vector2f tamanho = corpo.getSize();
+
+            sf::Vector2f posicaoEntidade = pPersonagem->getCorpo()->getPosition();
+            sf::Vector2f tamanhoEntidade = pPersonagem->getCorpo()->getSize();
+            sf::Vector2f velocidadeEntidade = pPersonagem->getVelocidade();
+
+            sf::Vector2f novaVelocidadeEntidade = velocidadeEntidade;
+
+            if (ds.x < ds.y) {
+                if (posicaoEntidade.x < posicao.x) {
+                    // pPersonagem está à esquerda do personagem atual
+                    pPersonagem->getCorpo()->setPosition(
+                        posicao.x - tamanhoEntidade.x,
+                        posicaoEntidade.y
+                    );
+
+                    novaVelocidadeEntidade.x = 0.0f;
+                } else {
+                    // pPersonagem está à direita do personagem atual
+                    pPersonagem->getCorpo()->setPosition(
+                        posicao.x + tamanho.x,
+                        posicaoEntidade.y
+                    );
+
+                    novaVelocidadeEntidade.x = 0.0f;
+                }
+            } else {
+                if (posicaoEntidade.y < posicao.y) {
+                    // pPersonagem está acima do personagem atual
+                    pPersonagem->getCorpo()->setPosition(
+                        posicaoEntidade.x,
+                        posicao.y - tamanhoEntidade.y
+                    );
+
+                    pPersonagem->setPodePular(true);
+                } else {
+                    // pPersonagem está abaixo do personagem atual
+                    pPersonagem->getCorpo()->setPosition(
+                        posicaoEntidade.x,
+                        posicao.y + tamanho.y
+                    );
+                }
+            }
         }
 
         void Personagem::tomarDano(int dano)

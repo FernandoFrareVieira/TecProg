@@ -295,11 +295,11 @@ namespace Fases
                 Entidades::Obstaculos::Gosma* gosma = new Entidades::Obstaculos::Gosma(pos, sf::Vector2f(100.0f, 20.0f));
                 adicionarObstaculo(static_cast<Entidades::Entidade*>(gosma));
             }else if(id == Entidades::ID::espinho) {
-                Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pos, sf::Vector2f(64.0f, 64.0f), sf::Vector2f(0.0f, 0.0f));
+                Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pos, sf::Vector2f(40.0f, 15.0f), sf::Vector2f(0.0f, 0.0f));
                 adicionarObstaculo(static_cast<Entidades::Entidade*>(espinho));
             }
             else if(id == Entidades::ID::fogo) {
-                Entidades::Obstaculos::Fogo* fogo = new Entidades::Obstaculos::Fogo(pos, sf::Vector2f(64.0f, 64.0f), sf::Vector2f(0.0f, 0.0f));
+                Entidades::Obstaculos::Fogo* fogo = new Entidades::Obstaculos::Fogo(pos, sf::Vector2f(30.0f, 55.0f), sf::Vector2f(0.0f, 0.0f));
                 adicionarObstaculo(static_cast<Entidades::Entidade*>(fogo));
             }
         }
@@ -318,7 +318,7 @@ namespace Fases
             arquivo.read(reinterpret_cast<char*>(&pos), sizeof(sf::Vector2f));
             arquivo.read(reinterpret_cast<char*>(&vel), sizeof(sf::Vector2f));
 
-            Entidades::Projetil* projetil = new Entidades::Projetil(pos ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
+            Entidades::Projetil* projetil = new Entidades::Projetil(pos ,sf::Vector2f(64.0f, 10.0f), sf::Vector2f(5.0f, 5.0f));
             projetil->setVelocidade(vel);
 
             adicionarProjetil(static_cast<Entidades::Entidade*>(projetil));
@@ -375,7 +375,7 @@ namespace Fases
                 samurai->setListaProjeteis(&listaProjeteis);
             }
             else if (id == Entidades::ID::espinho) {
-                auto* espinho = new Entidades::Obstaculos::Espinho(posicoes[index], sf::Vector2f(100.0f, 20.0f));
+                auto* espinho = new Entidades::Obstaculos::Espinho(posicoes[index], sf::Vector2f(40.0f, 15.0f));
                 adicionarObstaculo(static_cast<Entidades::Entidade*>(espinho));
             }
             else if (id == Entidades::ID::fogo) {

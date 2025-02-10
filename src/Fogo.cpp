@@ -13,8 +13,6 @@ namespace Entidades
             setTextura("assets/Fogo/Attack.png");
 
             corpo.setTextureRect(sf::IntRect(2, 10, 40, 52));
-            //corpo.setOutlineThickness(1.0f);
-            //corpo.setOutlineColor(sf::Color::Red);
         }
 
         Fogo::~Fogo()
@@ -35,17 +33,15 @@ namespace Entidades
         void Fogo::obstacular(Personagens::Jogador* pJogador)
         {
             // Se for a primeira colisão ou já se passaram 3 segundos, aplica o dano
-            if (relogioDano.getElapsedTime().asSeconds() >= 3.0f || relogioDano.getElapsedTime().asSeconds() == 0.0f)
+            if (relogioDano.getElapsedTime().asSeconds() >= 1.5f || relogioDano.getElapsedTime().asSeconds() == 0.0f)
             {
-                pJogador->tomarDano(20);
+                pJogador->tomarDano(10);
                 relogioDano.restart(); // Reinicia o relógio para impedir novos danos por 3 segundos
             }
 
             // Impulso para afastar o jogador do Fogo
-            printf("Tomou dano");
-            fflush(stdout);
             pJogador->setPodePular(true);
-            pJogador->setVelocidade(sf::Vector2f(-100.0f, -500.0f));
+            pJogador->setVelocidade(sf::Vector2f(-200.0f, -350.0f));
         }
 
         void Fogo::colidir(Entidade* entidade2, sf::Vector2f ds)

@@ -14,7 +14,7 @@ namespace Entidades
             relogioDano.restart();
             setTextura("assets/espinho/espinho.png");
 
-            corpo.setTextureRect(sf::IntRect(0, 0, 1184, 1184));
+            corpo.setTextureRect(sf::IntRect(100, 400, 1000, 800));
 
             //corpo.setOutlineThickness(1.0f);
             //corpo.setOutlineColor(sf::Color::Red);
@@ -38,9 +38,9 @@ namespace Entidades
         void Espinho::obstacular(Personagens::Jogador* pJogador)
         {
             // Se for a primeira colisão ou já se passaram 3 segundos, aplica o dano
-            if (relogioDano.getElapsedTime().asSeconds() >= 3.0f || relogioDano.getElapsedTime().asSeconds() == 0.0f && nocivo)
+            if (relogioDano.getElapsedTime().asSeconds() >= 1.5f || relogioDano.getElapsedTime().asSeconds() == 0.0f && nocivo)
             {
-                pJogador->tomarDano(9);
+                pJogador->tomarDano(5);
                 relogioDano.restart(); // Reinicia o relógio para impedir novos danos por 3 segundos
             }
 
