@@ -10,7 +10,7 @@ namespace Menus {
         texto.setOrigin(500, 500);
         corpo.setOrigin(500,500);
 
-        texto.setFillColor(sf::Color::Red);
+        texto.setFillColor(sf::Color::White);
 
         texto.setPosition(sf::Vector2f(LARGURA/2,ALTURA/2));
 
@@ -26,7 +26,7 @@ namespace Menus {
     }
 
     void Opcao::setTexto(const std::string text) {
-        if (!fonte.loadFromFile("assets/fontes/Ubuntu-R.ttf")) {
+        if (!fonte.loadFromFile("assets/fontes/DungeonFont.ttf")) {
             std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
         }
         texto.setFont(fonte);
@@ -39,11 +39,11 @@ namespace Menus {
     }
 
     void Opcao::mudarCor() {
-        if (texto.getFillColor() == sf::Color::Red) {
-            texto.setFillColor(sf::Color::Green);
+        if (texto.getFillColor() == sf::Color::White) {
+            texto.setFillColor(sf::Color::Yellow);
         }
         else {
-            texto.setFillColor(sf::Color::Red);
+            texto.setFillColor(sf::Color::White);
         }
     }
 }
