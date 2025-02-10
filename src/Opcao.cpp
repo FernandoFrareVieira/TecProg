@@ -12,7 +12,7 @@ namespace Menus {
 
         texto.setFillColor(sf::Color::White);
 
-        texto.setPosition(sf::Vector2f(LARGURA/2,ALTURA/2));
+        texto.setPosition(sf::Vector2f(LARGURA/2 + 350,ALTURA/2));
 
         texto.setCharacterSize(50);
     }

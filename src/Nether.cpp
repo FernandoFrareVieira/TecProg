@@ -143,7 +143,8 @@ namespace Fases {
             posicoesSamurais.push_back(sf::Vector2f(2959,900));
             posicoesSamurais.push_back(sf::Vector2f(1735,680));
             posicoesSamurais.push_back(sf::Vector2f(1805,180));
-            //posicoesSamurais.push_back(sf::Vector2f(2753,700));
+            posicoesSamurais.push_back(sf::Vector2f(2753,700));
+            posicoesSamurais.push_back(sf::Vector2f(71,800));
 
             posicoesFogos.push_back(sf::Vector2f(172,1007));
             posicoesFogos.push_back(sf::Vector2f(2368,1007));

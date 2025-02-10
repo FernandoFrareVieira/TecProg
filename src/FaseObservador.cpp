@@ -27,7 +27,7 @@ namespace Observadores {
             pGEstados->removerEstado();
             pGEstados->adicionarEstado(3);
         }
-        if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether) {
+        else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::nether) {
             pGEstados->removerEstado();
             pGEstados->setVenceu(true);
             pGEstados->adicionarEstado(4);

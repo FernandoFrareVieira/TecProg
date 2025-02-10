@@ -11,7 +11,7 @@ namespace Menus {
         nomeJogo.setFont(fonte);
         nomeJogo.setCharacterSize(80);
         nomeJogo.setFillColor(sf::Color::Yellow);
-        nomeJogo.setPosition(430,30);
+        nomeJogo.setPosition(530,30);
         nomeJogo.setString("SHADOW BLADE");
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         opcoes[0]->setTexto("Singleplayer");
