@@ -7,7 +7,8 @@ namespace Menus {
     Menus::Menu(1,id),
     pontuacao(0),
     nomeJogador(""),
-    LJ()
+    LJ(),
+    venceu(false)
     {
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         corpo.setFillColor(sf::Color::White);
@@ -44,6 +45,8 @@ namespace Menus {
     }
 
     void GameOver::executar(sf::Event evento){
+        if (venceu)
+            opcoes[0]->setTexto("GANHOU");
         if (evento.type == sf::Event::TextEntered) {
             if (evento.text.unicode < 128) {
                 char typedChar = static_cast<char>(evento.text.unicode);

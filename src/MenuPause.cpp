@@ -13,9 +13,12 @@ namespace Menus {
         opcoes[2]->setTexto("Menu Principal");
         opcoes[2]->setBotao(menu_principal);
         corpo.setFillColor(sf::Color::White);
+        entrouEmPause = true;
     }
 
-    MenuPause::~MenuPause(){}
+    MenuPause::~MenuPause(){
+        entrouEmPause = false;
+    }
 
     void MenuPause::desenhar() {
         corpo.setFillColor(sf::Color::White);

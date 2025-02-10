@@ -16,7 +16,7 @@ namespace Fases {
 
 namespace Gerenciadores {
     class GerenciadorEstados {
-        protected:
+        private:
             std::stack<Estados::Estado*, std::deque<Estados::Estado*>> estados;
             int estadoAtual;
             static GerenciadorEstados* instancia;
@@ -24,6 +24,7 @@ namespace Gerenciadores {
             Listas::ListaEntidades* LJ;
             bool dois_jogadores;
             static Estados::ID_Estado Estado_ID;
+            bool venceu;
 
         protected:
             GerenciadorEstados(); //Singleton
@@ -44,6 +45,8 @@ namespace Gerenciadores {
             void setUltimoEstado(const Estados::ID_Estado id) {Estado_ID = id;}
             const Estados::ID_Estado getID_Fase() const {return Estado_ID;}
             Estados::Estado* getPrimeiroEstado();
+            void setVenceu(bool b) {venceu = b;}
+            const bool getVenceu() const {return venceu;}
     };
 }
 

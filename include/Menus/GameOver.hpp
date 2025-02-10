@@ -20,6 +20,7 @@ namespace Menus {
 
         sf::Text  textoNome;
         sf::Text textoPontuacao;
+        bool venceu;
 
     public:
         GameOver(int id);
@@ -29,5 +30,6 @@ namespace Menus {
         void addPontuacao();
         void setListaJogadores(Listas::ListaEntidades* Lista) {LJ = Lista;}
         void salvar();
+        void setVenceu(bool b) {venceu = b;} 
     };
 }

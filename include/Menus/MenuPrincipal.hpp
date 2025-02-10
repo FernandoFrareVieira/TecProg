@@ -8,7 +8,7 @@
 namespace Menus {
     class MenuPrincipal: public Menu {
     private:
-        sf::Text teste;
+        sf::Text nomeJogo;
         sf::Font fonte;
     public:
         MenuPrincipal(int id);

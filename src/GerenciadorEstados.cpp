@@ -11,7 +11,8 @@ namespace Gerenciadores {
     estados(),
     estadoAtual(0),
     LJ(),
-    dois_jogadores(false)
+    dois_jogadores(false),
+    venceu(false)
     {
     }
 
@@ -65,6 +66,7 @@ namespace Gerenciadores {
             pGameOver = new Menus::GameOver(4);
             pGameOver->setID_Estado(Estados::ID_Estado::game_over);
             pGameOver->setListaJogadores(LJ);
+            pGameOver->setVenceu(venceu);
             estados.push(pGameOver);
         }
         else if (id == 5) {

@@ -11,6 +11,7 @@ namespace Menus {
         opcoes[1]->setBotao(Menus::BOTOES::nether);
         opcoes[2]->setTexto("Voltar");
         opcoes[2]->setBotao(Menus::BOTOES::voltar);
+        EntrouEmFases = true;
 
     }
     
@@ -19,6 +20,7 @@ namespace Menus {
             delete pMenuObservador;
         }
         pMenuObservador = nullptr;*talvez colocar*/
+        EntrouEmFases = false;
     }
 
     void MenuFases::desenhar() {

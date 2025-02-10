@@ -8,11 +8,11 @@ namespace Menus {
         if (!fonte.loadFromFile("assets/fontes/ThaleahFat.ttf")) {
             std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
         }
-        teste.setFont(fonte);
-        teste.setCharacterSize(80);
-        teste.setFillColor(sf::Color::Yellow);
-        teste.setPosition(430,30);
-        teste.setString("SHADOW BLADE");
+        nomeJogo.setFont(fonte);
+        nomeJogo.setCharacterSize(80);
+        nomeJogo.setFillColor(sf::Color::Yellow);
+        nomeJogo.setPosition(430,30);
+        nomeJogo.setString("SHADOW BLADE");
         this->corpo.setSize(sf::Vector2f(LARGURA,ALTURA));
         opcoes[0]->setTexto("Singleplayer");
         opcoes[0]->setBotao(Menus::BOTOES::singleplayer);
@@ -38,7 +38,7 @@ namespace Menus {
     void MenuPrincipal::desenhar() {
         corpo.setFillColor(sf::Color::White);
         pGG->desenhar((corpo));
-        pGG->desenharOutros((teste));
+        pGG->desenharOutros((nomeJogo));
         if (num_opcoes > 0) {
             for (int i = 0; i < num_opcoes; i++) {
             opcoes[i]->desenhar();
