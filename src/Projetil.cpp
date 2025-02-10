@@ -10,9 +10,15 @@ namespace Entidades
         tempoDeVida = 2.0f;
         dano = 10;
 
-        textura = pGG->carregarTextura("assets/arqueiro/Flecha.png");
-        corpo.setTexture(textura);
-        corpo.setTextureRect(sf::IntRect(0, 20, 48, 10));
+        if(!paraDireita) {
+            textura = pGG->carregarTextura("assets/flecha/flecha.png");
+            corpo.setTexture(textura);
+            corpo.setTextureRect(sf::IntRect(0, 20, 48, 10));
+       }else {
+            textura = pGG->carregarTextura("assets/flecha/flechaEsquerda.png");
+            corpo.setTexture(textura);
+            corpo.setTextureRect(sf::IntRect(0, 20, 48, 10));
+        }
     }
 
     Projetil::~Projetil()

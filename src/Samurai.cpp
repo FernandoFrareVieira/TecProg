@@ -12,20 +12,23 @@ namespace Entidades
             listaProjeteis(nullptr)        
             {
                 vivo = true;
+
                 pontosDeVida = 40;
+                dano = 20;
+                
                 estaAtacando = false;
                 podeAtacar = true;
                 tempoAtacarNovamente = 2.0f; 
                 tempoDesdeUltimoAtaque = 0.0f;
-                dano = 20;
+
+                tempoAnimacaoAtaque = 0.6f;
+
+                olhandoParaDireita = false;
 
                 texturaParado = pGG->carregarTextura("assets/samurai/Idle.png");
-                texturaAndando = pGG->carregarTextura("assets/samurai/Walk.png");
+                texturaAtacando = pGG->carregarTextura("assets/samurai/Attack_1.png");
 
                 corpo.setTexture(texturaParado);
-
-                corpo.setOutlineThickness(1.0f);
-                corpo.setOutlineColor(sf::Color::Red);
 
                 adicionarAnimacoes();
             }
@@ -40,7 +43,8 @@ namespace Entidades
                 atualizarAnimacao(dt);
                 atualizarPosicao();
                 atualizarAtaque();
-                atacarProjetil();
+                atualizarLadoOlhando();
+
                 desenhar();
                 mover();
             }
@@ -53,31 +57,37 @@ namespace Entidades
 
             void Samurai::atualizarAnimacao(float dt)
             {
-                if(!estaAtacando) {
-                    if(velocidade.x == 0) {
-                        if (animacao.getAnimacaoAtual() != "parado") { 
-                            animacao.setTextura(texturaParado);
-                            animacao.setAnimacao("parado");
-
-                            corpo.setSize(sf::Vector2f(80.0f, 80.0f));
+                std::string animacaoAtual = animacao.getAnimacaoAtual();
+                std::string novaAnimacao;
+                sf::Texture* textura = nullptr;
+                sf::Vector2f tamanhoSprite;
+            
+                if (!estaAtacando) {
+                    if (velocidade.x == 0) {
+                        if (olhandoParaDireita) {
+                            novaAnimacao = "parado";
+                        } else {
+                            novaAnimacao = "paradoEsquerda";
                         }
-                    }else {
-                        if(animacao.getAnimacaoAtual() != "andando") {
-                            animacao.setTextura(texturaAndando);
-                            animacao.setAnimacao("andando");
-
-                            corpo.setSize(sf::Vector2f(80.0f, 80.0f));
-                        }
+                        textura = texturaParado;
+                        tamanhoSprite = sf::Vector2f(50.0f, 100.0f); 
                     }
-                }else {
-                    if(animacao.getAnimacaoAtual() != "atacando" && podePular) {
-                        animacao.setTextura(texturaAtacando);
-                        animacao.setAnimacao("atacando");
-
-                        corpo.setSize(sf::Vector2f(110.0f, 100.0f));
+                } else {
+                    if (olhandoParaDireita) {
+                        novaAnimacao = "atacando";
+                    } else {
+                        novaAnimacao = "atacandoEsquerda";
                     }
+                    textura = texturaAtacando;
+                    tamanhoSprite = sf::Vector2f(100.0f, 100.0f); 
                 }
-
+            
+                if (animacaoAtual != novaAnimacao) {
+                    animacao.setAnimacao(novaAnimacao);
+                    animacao.setTextura(textura);
+                    corpo.setSize(tamanhoSprite);
+                }
+            
                 animacao.atualizar(dt);
             }
 
@@ -85,38 +95,39 @@ namespace Entidades
             {
                 int numFramesParado = 9;
                 std::vector<sf::IntRect> framesParado(numFramesParado);
-                for (int i = 0; i < numFramesParado; i++)
-                {
+                for (int i = 0; i < numFramesParado; i++) {
                     framesParado[i] = sf::IntRect(40 + 128 * i, 20, 40, 108);
+
                 }
 
-                int numFramesAndando = 8;
-                std::vector<sf::IntRect> framesAndando(numFramesAndando);
+                int numFramesAtacando = 5;
+                std::vector<sf::IntRect> framesAtacando(numFramesAtacando);
 
-                for (int i = 0; i < numFramesAndando; i++) {
-                    framesAndando[i] = sf::IntRect(20 + 128*i, 65, 80, 60);
+                for (int i = 0; i < numFramesAtacando; i++){
+                    framesAtacando[i] = sf::IntRect(35 + 128 * i, 20, 90, 108);
+                }
+
+                int numFramesParadoEsquerda = 9;
+                std::vector<sf::IntRect> framesParadoEsquerda(numFramesParadoEsquerda);
+                for (int i = 0; i < numFramesParadoEsquerda; i++) {
+                    framesParadoEsquerda[i] = sf::IntRect(40 + 40 + 128 * i, 20, -40, 108);
+
+                }
+
+                int numFramesAtacandoEsquerda = 5;
+                std::vector<sf::IntRect> framesAtacandoEsquerda(numFramesAtacandoEsquerda);
+
+                for (int i = 0; i < numFramesAtacandoEsquerda; i++){
+                    framesAtacandoEsquerda[i] = sf::IntRect(35 + 90 + 128 * i, 20, -90, 108);
                 }
 
                 animacao.adicionarAnimacao("parado", framesParado);
-                animacao.adicionarAnimacao("andando", framesAndando);
+                animacao.adicionarAnimacao("atacando", framesAtacando);
 
-                animacao.setAnimacao("parado");
-            }
+                animacao.adicionarAnimacao("paradoEsquerda", framesParadoEsquerda);
+                animacao.adicionarAnimacao("atacandoEsquerda", framesAtacandoEsquerda);
 
-            void Samurai::atacarProjetil()
-            {
-                float tempoQuePassou = relogioAtaque.getElapsedTime().asSeconds();
-            
-                if(tempoQuePassou >= 3.5f) {
-                    Entidades::Projetil* projetil = new Entidades::Projetil({corpo.getPosition().x - 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 10.0f), sf::Vector2f(5.0f, 5.0f));
-
-                    if(listaProjeteis)
-                        listaProjeteis->adicionarEntidade(static_cast<Entidades::Entidade*>(projetil));
-                    else
-                        delete projetil;
-
-                    relogioAtaque.restart();
-                }
+                animacao.setAnimacao("paradoEsquerda");
             }
 
             void Samurai::setListaProjeteis(Listas::ListaEntidades* LP)

@@ -57,7 +57,11 @@ namespace Entidades
                         if (!vivo) {
                             Jogador* jogador = static_cast<Jogador*>(entidade2);
                             if (jogador) {
-                                jogador->ganharPontos(10);
+                                if(this->getId() == ID::samurai) {
+                                    jogador->ganharPontos(20);
+                                }else {
+                                    jogador->ganharPontos(10);
+                                }
                             }
                         }
 

@@ -19,8 +19,8 @@ namespace Entidades
                 tempoDesdeUltimoAtaque = 0.0f;
                 dano = 0;
 
-                texturaParado = pGG->carregarTextura("assets/arqueiro/Idle.png");
-                texturaAtacando = pGG->carregarTextura("assets/arqueiro/Shot_1.png");
+                texturaParado = pGG->carregarTextura("assets/arqueiro/parado.png");
+                texturaAtacando = pGG->carregarTextura("assets/arqueiro/atirando.png");
 
                 corpo.setTexture(texturaParado);
 
@@ -38,7 +38,7 @@ namespace Entidades
                 atualizarPosicao();
                 atualizarLadoOlhando();
 
-                atacarProjetil();
+                lancarProjetil();
 
                 desenhar();
                 mover();
@@ -127,7 +127,7 @@ namespace Entidades
                 animacao.setAnimacao("paradoEsquerda");
             }
 
-            void Arqueiro::atacarProjetil()
+            void Arqueiro::lancarProjetil()
             {
                 float tempoQuePassou = relogioAtaque.getElapsedTime().asSeconds();
             

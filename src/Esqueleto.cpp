@@ -20,9 +20,8 @@ namespace Entidades
 
                 olhandoParaDireita = false;
 
-                texturaParado = pGG->carregarTextura("assets/esqueletoGuerreiro/Idle.png");
-                texturaAndando = pGG->carregarTextura("assets/esqueletoGuerreiro/Walk.png");
-                texturaAtacando = pGG->carregarTextura("assets/esqueletoGuerreiro/Attack_3.png");
+                texturaParado = pGG->carregarTextura("assets/esqueletoGuerreiro/parado.png");
+                texturaAtacando = pGG->carregarTextura("assets/esqueletoGuerreiro/atacando.png");
 
                 corpo.setTexture(texturaParado);
 
@@ -63,14 +62,6 @@ namespace Entidades
                             novaAnimacao = "paradoEsquerda";
                         }
                         textura = texturaParado;
-                        tamanhoSprite = sf::Vector2f(80.0f, 80.0f); 
-                    } else {
-                        if (olhandoParaDireita) {
-                            novaAnimacao = "andando";
-                        } else {
-                            novaAnimacao = "andandoEsquerda";
-                        }
-                        textura = texturaAndando;
                         tamanhoSprite = sf::Vector2f(80.0f, 80.0f); 
                     }
                 } else {
