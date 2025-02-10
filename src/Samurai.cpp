@@ -24,8 +24,8 @@ namespace Entidades
 
                 corpo.setTexture(texturaParado);
 
-                corpo.setOutlineThickness(1.0f);
-                corpo.setOutlineColor(sf::Color::Red);
+                //cobrpo.setOutlineThickness(1.0f);
+                //corpo.setOutlineColor(sf::Color::Red);
 
                 adicionarAnimacoes();
             }

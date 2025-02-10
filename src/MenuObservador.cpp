@@ -53,6 +53,7 @@ namespace Observadores {
                 pGEstados->adicionarEstado(3);
             }
             else if (pGEstados->getEstadoAtual()->getID_Estado() == Estados::ID_Estado::menu_principal && pMenu->getBotao() == Menus::BOTOES::carregar) {
+                removerObservador();
                 pGEstados->removerEstado();
                 if (pGEstados->getID_Fase() == Estados::ID_Estado::pantanal) {
                     pGEstados->adicionarEstado(1);

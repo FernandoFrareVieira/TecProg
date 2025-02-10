@@ -10,7 +10,7 @@ namespace Entidades
         class Fogo : public Obstaculo
         {
             private:
-                int dano;
+                const int nivelQueimadura;
 
                 sf::Clock relogioDano;
             public:

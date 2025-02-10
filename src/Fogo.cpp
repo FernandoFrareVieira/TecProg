@@ -7,7 +7,7 @@ namespace Entidades
     {
         Fogo::Fogo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
             Obstaculo(pos, tam, vel, ID::fogo),
-            dano(3)
+            nivelQueimadura(3)
         {
             relogioDano.restart();
             setTextura("assets/Fogo/Attack.png");

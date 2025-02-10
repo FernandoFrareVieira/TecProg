@@ -16,8 +16,8 @@ namespace Entidades
 
             corpo.setTextureRect(sf::IntRect(0, 0, 1184, 1184));
 
-            corpo.setOutlineThickness(1.0f);
-            corpo.setOutlineColor(sf::Color::Red);
+            //corpo.setOutlineThickness(1.0f);
+            //corpo.setOutlineColor(sf::Color::Red);
         }
 
         Espinho::~Espinho()

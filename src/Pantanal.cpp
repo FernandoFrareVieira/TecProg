@@ -121,7 +121,7 @@ namespace Fases
         }
     }
 
-    void Pantanal::setPosicoes() 
+    void Pantanal::setPosicoesAleatorias() 
     {
         posicoesGosmas.push_back(sf::Vector2f(1663,563));
         posicoesGosmas.push_back(sf::Vector2f(1630,1043));
