@@ -10,7 +10,7 @@ namespace Entidades
         class Gosma : public Obstaculo
         {
             private:
-
+                const float viscosidade;
             public:
                 Gosma(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel = sf::Vector2f(0.0f, 0.0f));
                 ~Gosma();

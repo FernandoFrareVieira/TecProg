@@ -10,7 +10,7 @@ namespace Entidades
         class Obstaculo : public Entidade
         {
             protected:   
-                int tipo;
+                int nocivo;
             public:
                 Obstaculo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador);
                 virtual ~Obstaculo();

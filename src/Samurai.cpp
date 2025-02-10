@@ -105,17 +105,17 @@ namespace Entidades
 
             void Samurai::atacarProjetil()
             {
-                float tempoQuePassou = relogio.getElapsedTime().asSeconds();
+                float tempoQuePassou = relogioAtaque.getElapsedTime().asSeconds();
             
                 if(tempoQuePassou >= 3.5f) {
-                    Entidades::Projetil* projetil = new Entidades::Projetil({corpo.getPosition().x - 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 64.0f), sf::Vector2f(5.0f, 5.0f));
+                    Entidades::Projetil* projetil = new Entidades::Projetil({corpo.getPosition().x - 20, corpo.getPosition().y} ,sf::Vector2f(64.0f, 10.0f), sf::Vector2f(5.0f, 5.0f));
 
                     if(listaProjeteis)
                         listaProjeteis->adicionarEntidade(static_cast<Entidades::Entidade*>(projetil));
                     else
                         delete projetil;
 
-                    relogio.restart();
+                    relogioAtaque.restart();
                 }
             }
 

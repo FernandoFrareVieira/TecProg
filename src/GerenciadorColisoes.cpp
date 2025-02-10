@@ -85,11 +85,21 @@ namespace Gerenciadores {
             }
         }
 
-        //Colisão inimigos com obstaculos
-        for(int i = 0; i < listaInimigos->getTamanho(); i++) {
-            Entidades::Entidade* entidade1 = listaInimigos->operator[](i);
-            for(int j = 0; j < listaObstaculos->getTamanho(); j++) {
-                Entidades::Entidade* entidade2 = listaObstaculos->operator[](j);
+        for(int i = 0; i < listaObstaculos->getTamanho(); i++) {
+            Entidades::Entidade* entidade1 = listaObstaculos->operator[](i);
+
+            for(int j = 0; j < listaInimigos->getTamanho(); j++) {
+                Entidades::Entidade* entidade2 = listaInimigos->operator[](j);
+                ds = calculaColisao(entidade1, entidade2);
+
+                if(ds.x > 0.0f && ds.y > 0.0f) {
+                    entidade1->colidir(entidade2, ds);
+                    entidade2->colidir(entidade1, ds);
+                }
+            }
+
+            for(int j = 0; j < listaProjeteis->getTamanho(); j++) {
+                Entidades::Entidade* entidade2 = listaProjeteis->operator[](j);
                 ds = calculaColisao(entidade1, entidade2);
 
                 if(ds.x > 0.0f && ds.y > 0.0f) {

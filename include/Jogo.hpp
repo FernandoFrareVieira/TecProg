@@ -13,8 +13,9 @@ class Jogo
     private:
         Gerenciadores::GerenciadorGrafico* pGG;
         Gerenciadores::GerenciadorEventos* pGE;
-        Gerenciadores::GerenciadorEstados* GE;
-        //Gerenciadores::GerenciadorColisoes pGC;
+        Gerenciadores::GerenciadorEstados* pGEstados;
+        
+        Menus::MenuPrincipal* pMP;
 
     public:
         Jogo();

@@ -19,13 +19,11 @@ namespace Fases {
         std::vector<sf::Vector2f> posicoesSamurais;
         std::vector<sf::Vector2f> posicoesEspinhos;
 
-        sf::Texture background;
-
     public:
         Nether(int id, bool dois_jogadores);
         ~Nether();
-        void criarObstaculo (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+        void criarObstaculo(sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
         void desenhar();
-        void setPosicoes();
+        void setPosicoesAleatorias();
     };
 }

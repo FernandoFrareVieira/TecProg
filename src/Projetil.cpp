@@ -12,7 +12,7 @@ namespace Entidades
 
         textura = pGG->carregarTextura("assets/arqueiro/Flecha.png");
         corpo.setTexture(textura);
-        corpo.setTextureRect(sf::IntRect(0, 0, 48, 48));
+        corpo.setTextureRect(sf::IntRect(0, 20, 48, 10));
     }
 
     Projetil::~Projetil()
@@ -27,7 +27,7 @@ namespace Entidades
     {
         float tempoQuePassou = relogio.getElapsedTime().asSeconds();
 
-        if(tempoQuePassou >= 4.0f) {
+        if(tempoQuePassou >= 2.0f) {
             dano = 0;
             vivo = false;
             relogio.restart();

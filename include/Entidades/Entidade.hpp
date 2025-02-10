@@ -34,13 +34,10 @@ namespace Entidades
             //Atributo gravidade
             bool podePular;
             float gravidade; 
-            float forçaEmpuxo;
-
-        public:
-            static int contador;
+            float forcaEmpuxo;
 
         public: 
-            Entidade(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador = vazio);
+            Entidade(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel = sf::Vector2f(0.0f, 0.0f), ID identificador = vazio);
             virtual ~Entidade();
 
             virtual void executar() = 0;

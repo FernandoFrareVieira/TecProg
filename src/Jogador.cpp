@@ -11,8 +11,7 @@ namespace Entidades
 
         Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, int idJogador, sf::Vector2f vel) : 
         Personagem(pos, tam, vel, ID::jogador),
-        animacao(&corpo, 0.1f),
-        olhandoParaDireita(true)
+        animacao(&corpo, 0.1f)
         {
             id = idJogador;
 
@@ -27,7 +26,7 @@ namespace Entidades
 
             if (id == 1)
             {
-                pontosDeVida = 50;
+                pontosDeVida = 100;
 
                 tempoAtacarNovamente = 1.5f;
                 dano = 20;
@@ -48,7 +47,7 @@ namespace Entidades
             }
             else
             {
-                pontosDeVida = 30;
+                pontosDeVida = 80;
 
                 tempoAtacarNovamente = 1.5f;
                 dano = 20;

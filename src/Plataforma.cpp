@@ -8,6 +8,9 @@ namespace Entidades
         Obstaculo(pos, tam, vel, ID::plataforma)
         {
             vivo = true;   
+            atrito = 0.0f;
+
+            nocivo = false;
             //corpo.setFillColor(sf::Color::White);
             //corpo.setSize(sf::Vector2f(LARGURA, ALTURA/7.5f));
         }
@@ -27,7 +30,9 @@ namespace Entidades
 
         void Plataforma::obstacular(Personagens::Jogador* jogador)
         {
-            //Quando tiver colisão
+            sf::Vector2f velocidadeJogador = jogador->getVelocidade();
+
+            jogador->setVelocidade(sf::Vector2f(velocidadeJogador.x*(1.0f - atrito), velocidadeJogador.y));
         }
 
         void Plataforma::colidir(Entidade* entidade2, sf::Vector2f ds)
@@ -36,7 +41,11 @@ namespace Entidades
             {
                 case(ID::jogador):
                 {
-                    colisaoObstaculo(entidade2, ds);
+                    if(!nocivo)
+                        colisaoObstaculo(entidade2, ds);
+                        
+                        Entidades::Personagens::Jogador* pJogador = static_cast<Entidades::Personagens::Jogador*>(entidade2);
+                        obstacular(pJogador);
                 }break;
                 case(ID::esqueleto):
                 {
@@ -51,6 +60,13 @@ namespace Entidades
                     colisaoObstaculo(entidade2, ds);
                 }
                 break;
+                case(ID::projetil):
+                {
+                    colisaoObstaculo(entidade2, ds);
+
+                    Entidades::Projetil* pProjetil = static_cast<Entidades::Projetil*>(entidade2);
+                    pProjetil->setVelocidade(sf::Vector2f(0.0f, 0.0f));
+                }
             }   
         }
     }

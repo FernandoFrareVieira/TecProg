@@ -11,7 +11,8 @@ namespace Fases
         corpo(),
         pGC(),
         multiplayer(dois_jogadores),
-        posicoesFogos()
+        posicoesFogos(),
+        imagemDeFundo()
     {
         pGEstados = Gerenciadores::GerenciadorEstados::getInstancia();
         pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(400.0f, 700.0f), sf::Vector2f(60.0f, 110.0f), 1, sf::Vector2f(0.0f, 0.0f));

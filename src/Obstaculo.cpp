@@ -5,9 +5,10 @@ namespace Entidades
     namespace Obstaculos
     {
         Obstaculo::Obstaculo(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel, ID identificador):
-            Entidade(pos, tam, vel, identificador)
+            Entidade(pos, tam, vel, identificador),
+            nocivo(false)
         {
-            forçaEmpuxo =  600.0f;
+            forcaEmpuxo =  600.0f;
         }
 
         Obstaculo::~Obstaculo()

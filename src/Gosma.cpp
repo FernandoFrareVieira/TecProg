@@ -6,8 +6,11 @@ namespace Entidades
     namespace Obstaculos
     {
         Gosma::Gosma(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f vel):
-            Obstaculo(pos, tam, vel, ID::gosma)
+            Obstaculo(pos, tam, vel, ID::gosma),
+            viscosidade(0.1f)
         {
+            nocivo = false;
+
             setTextura("assets/plataformas/gosma.png");
         }
 
@@ -26,8 +29,10 @@ namespace Entidades
 
         void Gosma::obstacular(Personagens::Jogador* pJogador)
         {
-            sf::Vector2f velocidadeAtual = pJogador->getVelocidade();
-            pJogador->setVelocidade(sf::Vector2f(velocidadeAtual.x * 0.9f, velocidadeAtual.y)); // Reduz a velocidade horizontal pela metade
+            if(!nocivo) {
+                sf::Vector2f velocidadeAtual = pJogador->getVelocidade();
+                pJogador->setVelocidade(sf::Vector2f(velocidadeAtual.x * (1.0f - viscosidade), velocidadeAtual.y));
+            }
         }
 
         void Gosma::colidir(Entidade* entidade2, sf::Vector2f ds)

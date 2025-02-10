@@ -9,6 +9,8 @@ namespace Entidades
             Obstaculo(pos, tam, vel, ID::espinho),
             dano(9)
         {
+            nocivo = true;
+
             relogioDano.restart();
             setTextura("assets/espinho/espinho.png");
 
@@ -36,7 +38,7 @@ namespace Entidades
         void Espinho::obstacular(Personagens::Jogador* pJogador)
         {
             // Se for a primeira colisão ou já se passaram 3 segundos, aplica o dano
-            if (relogioDano.getElapsedTime().asSeconds() >= 3.0f || relogioDano.getElapsedTime().asSeconds() == 0.0f)
+            if (relogioDano.getElapsedTime().asSeconds() >= 3.0f || relogioDano.getElapsedTime().asSeconds() == 0.0f && nocivo)
             {
                 pJogador->tomarDano(9);
                 relogioDano.restart(); // Reinicia o relógio para impedir novos danos por 3 segundos
@@ -44,7 +46,7 @@ namespace Entidades
 
             // Impulso para afastar o jogador do espinho
             pJogador->setPodePular(true);
-            pJogador->setVelocidade(sf::Vector2f(-200.0f, -400.0f));
+            pJogador->setVelocidade(sf::Vector2f(-200.0f, -470.0f));
         }
 
         void Espinho::colidir(Entidade* entidade2, sf::Vector2f ds)
