@@ -152,8 +152,6 @@ namespace Fases
 
     void Fase::salvar(const std::string& caminhoArquivo)
     {
-        printf("SALVOU");
-        fflush(stdout);
         std::ofstream arquivo(caminhoArquivo, std::ios::binary);
         if(!arquivo.is_open()) {
             std::cout << "Erro ao salvar o jogo";

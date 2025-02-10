@@ -11,9 +11,6 @@ namespace Entidades
             Personagem(pos, tam, vel, identificador)
             {
                 pjogador = jogador;
-                srand(time(NULL));
-                direcaoAleatoria = rand() % 9;
-
                 olhandoParaDireita = false;
             }
 
@@ -31,14 +28,7 @@ namespace Entidades
                 }
 
                 movimento.y += velocidade.y * dt;
-                corpo.move(movimento);
-
-                //Atualiza direção aleatória
-                float tempoQuePassou = relogio.getElapsedTime().asSeconds();
-                if (tempoQuePassou >= 1.0f) {
-                    direcaoAleatoria = rand() % 9;
-                    relogio.restart();
-                }
+                corpo.move(movimento);            
             }
 
             void Inimigo::colidir(Entidade* entidade2, sf::Vector2f ds)

@@ -382,75 +382,45 @@ namespace Entidades
         {
             switch (entidade2->getId())
             {
-            case (ID::esqueleto):
-            {
-                Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
-                if (estaAtacando)
+                case (ID::esqueleto):
+                case (ID::arqueiro):
+                case (ID::samurai):
                 {
-                    pPersonagem->tomarDano(dano);
-                    dano = 0;
-                }else {
-                    dano = 20;
+                    Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
+                    if (estaAtacando)
+                    {
+                        pPersonagem->tomarDano(dano);
+                        dano = 0;
+                    }else {
+                        dano = 20;
+                    }
+                    //colisaoPersonagem(pPersonagem, ds);
                 }
+                break;
 
-                colisaoPersonagem(pPersonagem, ds);
-            }
-            break;
-
-            case (ID::arqueiro):
-            {
-                Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
-                if (estaAtacando)
+                case (ID::plataforma):
                 {
-                    pPersonagem->tomarDano(dano);
-
-                    this->ganharPontos(10);
-                    dano = 0;
-                }else {
-                    dano = 20;
                 }
+                break;
 
-                colisaoPersonagem(pPersonagem, ds);
-            }
-            break;
-
-            case(ID::samurai):
-            {
-                Personagem *pPersonagem = static_cast<Personagem *>(entidade2);
-                if (estaAtacando)
+                case (ID::projetil):
                 {
-                    pPersonagem->tomarDano(dano);
-
-                    this->ganharPontos(10);
-
-                    dano = 0;
-                }else {
-                    dano = 20;
+                    sf::Vector2f velocidade = this->getVelocidade();
+                    if (velocidade.x > 0.0f)
+                    {
+                        this->setVelocidade(sf::Vector2f(-(velocidade.x - 100.0f), velocidade.y));
+                    }
+                    else
+                    {
+                        this->setVelocidade(sf::Vector2f(-(velocidade.x + 100.0f), velocidade.y));
+                    }
                 }
+                break;
 
-                colisaoPersonagem(pPersonagem, ds);
-            }
-            break;
-
-            case (ID::plataforma):
-            {
-            }
-            break;
-
-            case(ID::projetil):
-            {
-                sf::Vector2f velocidade = this->getVelocidade();
-                if(velocidade.x > 0.0f) {
-                    this->setVelocidade(sf::Vector2f(-(velocidade.x - 100.0f), velocidade.y));
-                }else {
-                    this->setVelocidade(sf::Vector2f(-(velocidade.x + 100.0f), velocidade.y));
+                default:
+                {
                 }
-            }break;
-
-            default:
-            {
-            }
-            break;
+                break;
             }
         }
 
