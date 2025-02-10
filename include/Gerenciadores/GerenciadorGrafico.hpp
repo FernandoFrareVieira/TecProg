@@ -18,9 +18,6 @@ namespace Gerenciadores
             float tempo;
             sf::Text textoVida;
             sf::Font fonte;
-
-            sf::Font fonte;
-
         private:
             GerenciadorGrafico();
 
@@ -40,10 +37,6 @@ namespace Gerenciadores
             void atualizarTempo();
             float getTempo();
             sf::View getCamera();
-<<<<<<< HEAD
             void desenharHUD(int pontosDeVida,sf::Vector2f offset);
-=======
-            void desenharHUD(const std::string& textoStr, sf::Vector2f offset);
->>>>>>> 1b9222d136fd38220475b7520100bcb5fb81e54c
     };      
 }

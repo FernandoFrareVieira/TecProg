@@ -85,17 +85,11 @@ namespace Entidades
             mover();
             if (this->getPosicao().y > 1090)
                 vivo = false;
-<<<<<<< HEAD
             if(id == 1) {
                 pGG->desenharHUD(pontosDeVida,sf::Vector2f(30.0f, 30.0f));
             }else {
                 pGG->desenharHUD(pontosDeVida, sf::Vector2f(30.0f, 80.0f));
             }
-=======
-
-            std::string pontosDeVidaString = std::to_string(pontosDeVida);
-            pGG->desenharHUD("vida 10" , sf::Vector2f(50, 30));
->>>>>>> 1b9222d136fd38220475b7520100bcb5fb81e54c
         }
 
         void Jogador::desenhar()

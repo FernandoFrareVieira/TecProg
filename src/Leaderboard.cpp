@@ -5,13 +5,8 @@ namespace Menus {
     Leaderboard::Leaderboard(int id):
     Menu(1,id)  
     {
-<<<<<<< HEAD
         if (!fonte.loadFromFile("assets/fontes/ThaleahFat.ttf")) {
             std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
-=======
-        if (!fonte.loadFromFile("assets/fontes/DungeonFont.ttf")) {
-            std::cerr << "Erro ao carregar a fonte DungeonFont!" << std::endl;
->>>>>>> 1b9222d136fd38220475b7520100bcb5fb81e54c
         }
         textoLeaderboard.setFont(fonte);
         textoLeaderboard.setCharacterSize(30);

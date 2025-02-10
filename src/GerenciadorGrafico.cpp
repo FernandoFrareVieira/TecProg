@@ -19,15 +19,8 @@ namespace Gerenciadores
         tempo(0.0f)
     {
         janela->setFramerateLimit(60);
-<<<<<<< HEAD
         if (!fonte.loadFromFile("assets/fontes/Roboto.ttf")) {
             std::cerr << "Erro ao carregar a fonte Ubuntu!" << std::endl;
-=======
-
-        sf::Font fonte;
-        if (!fonte.loadFromFile("assets/fontes/DungeonFont.ttf")) {
-            std::cerr << "Erro ao carregar a fonte DungeonFont!" << std::endl;
->>>>>>> 1b9222d136fd38220475b7520100bcb5fb81e54c
         }
     }
 
@@ -125,7 +118,6 @@ namespace Gerenciadores
         return camera;
     }
 
-<<<<<<< HEAD
     void GerenciadorGrafico::desenharHUD(int pontosDeVida, sf::Vector2f offset)
     {
         std::string pontosDeVidaString = std::to_string(pontosDeVida);
@@ -135,34 +127,16 @@ namespace Gerenciadores
         textoVida.setFillColor(sf::Color::Black);  
         textoVida.setString("Vida: " + pontosDeVidaString);
 
-=======
-    void GerenciadorGrafico::desenharHUD(const std::string& textoStr, sf::Vector2f offset)
-    {
-        sf::Text texto;
-
-        texto.setFont(fonte);
-        texto.setCharacterSize(24);
-        texto.setFillColor(sf::Color::White);
-        texto.setString("Vida");
->>>>>>> 1b9222d136fd38220475b7520100bcb5fb81e54c
 
         sf::Vector2f cameraCentro = camera.getCenter();
         sf::Vector2f cameraTamanho = camera.getSize();
 
         // Calcula a posição relativa ao canto superior esquerdo da tela
-<<<<<<< HEAD
         sf::Vector2f posicaoTextoVida(cameraCentro.x - cameraTamanho.x / 2 + offset.x, 
                                 cameraCentro.y - cameraTamanho.y / 2 + offset.y);
 
         textoVida.setPosition(posicaoTextoVida);
 
         janela->draw(textoVida);
-=======
-        sf::Vector2f posicaoTexto(cameraCentro.x - cameraTamanho.x / 2 + offset.x, 
-                                cameraCentro.y - cameraTamanho.y / 2 + offset.y);
-
-        texto.setPosition(posicaoTexto);
-        janela->draw(texto);
->>>>>>> 1b9222d136fd38220475b7520100bcb5fb81e54c
     }
 }
