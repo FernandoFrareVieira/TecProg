@@ -1,5 +1,5 @@
 # SHADOW BLADE
-   jogo desenvolvido para o projeto final da disciplina de tecnicas de programação, realizado pelos alunos Felipe dos Reis Garcez e Fernando Frare Vieira
+   jogo desenvolvido para o projeto final da disciplina de técnicas de programação, realizado pelos alunos Felipe dos Reis Garcez e Fernando Frare Vieira.
 ## Creditos Sprites
    Jogador principal: https://xzany.itch.io/samurai-2d-pixel-art  
    Samurai : https://craftpix.net/freebies/free-samurai-pixel-art-sprite-sheets/?srsltid=AfmBOooFHXlZegE1snQaE7NmrrbryMp7Ga1uumN4GoyUioO3LGWzsOYY  
