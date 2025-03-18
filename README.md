@@ -26,7 +26,7 @@
    • Graphic Library : SFML 2.6.1
 
    
-   ![image](https://github.com/user-attachments/assets/628aaadb-6f21-4d8d-82cf-135fed2d73c8)
+   <img src="https://github.com/user-attachments/assets/628aaadb-6f21-4d8d-82cf-135fed2d73c8" width: 400 height: 350>
 
 ## 📜 Credits 
    ### :technologist: Developers 
