@@ -24,7 +24,7 @@
          ```sh
             ./main
          ```
-   ## Tested Configurations  
+   ## ⚙️ Tested Configurations  
    • OS : Linux Ubuntu    
    • Compiler : g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0  
    • Graphic Library : SFML 2.6.1
