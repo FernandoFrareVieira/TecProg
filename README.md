@@ -6,7 +6,7 @@
    • **Two levels** : You can choose to play in two levels : Pantanal or Nether, but you can play them consecutively! <br>
    • **Menus**: Main Menu, Leaderboard, Pause Menu, menu to choose levels and Game-saving functionality. <br>
    • **Enemies and Obstacles** : 3  enemies and 4 obstacles, each one having their own behavior. <br>
-   <img src="assets/imagens/fase2.png"width="750" height="460">
+   <img src="assets/imagens/fase2.png" width="750" height="460">
 ## 🚀 Installation & Running
    ### Prerequisites
    • C++ compiler (GCC, Clang or MSVC) <br>
