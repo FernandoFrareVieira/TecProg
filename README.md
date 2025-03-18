@@ -24,6 +24,8 @@
    • OS : Linux Ubuntu    
    • Compiler : g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0  
    • Graphic Library : SFML 2.6.1
+
+   
    ![image](https://github.com/user-attachments/assets/628aaadb-6f21-4d8d-82cf-135fed2d73c8)
 
 ## 📜 Credits 
