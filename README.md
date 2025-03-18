@@ -1,10 +1,10 @@
 # SHADOW BLADE
    A 2D platformer game developed in C++ using SFML Graphics Library. Defeat skeletons, samurais and archers to advance through levels!
    ![image](https://github.com/user-attachments/assets/7bc7de15-8e5f-435e-96f1-6a37bb6666b9)
-## Credits
-   ### Developers
+## Credits 📜
+   ### Developers :technologist:
    Felipe dos Reis Garcez and Fernando Frare Vieira
-   ### Sprite Credits
+   ### Sprite Credits 
    Main player:https://xzany.itch.io/samurai-2d-pixel-art  
    Samurai : https://craftpix.net/freebies/free-samurai-pixel-art-sprite-sheets/?srsltid=AfmBOooFHXlZegE1snQaE7NmrrbryMp7Ga1uumN4GoyUioO3LGWzsOYY  
    Ninja : https://craftpix.net/freebies/free-ninja-sprite-sheets-pixel-art/?srsltid=AfmBOorGOsljvE7rUzstf4PwUKbwJh88DChnSk7Ht1q7IB-33w3Epwz4  
