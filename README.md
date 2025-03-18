@@ -40,10 +40,10 @@
 ## 🎯 Development Overview
    This project was fully implemented using Object-Oriented Programming (OOP) principles, besides utilizing UML (Unified Modeling Language) diagrams to guide architecture and implementation.
    ### 🧠 Desing Patterns Used 
-   ✅ Singleton - Ensures a single instance for managers like graphics, input and state handling. <br>
-   ✅ Iterator - Efficient entity traversal. <br>
-   ✅ Observer - Input management and UI updates.<br>
-   ✅ State - Managing game states (levels and menus). <br>
+      ✅ Singleton - Ensures a single instance for managers like graphics, input and state handling. <br>
+      ✅ Iterator - Efficient entity traversal. <br>
+      ✅ Observer - Input management and UI updates.<br>
+      ✅ State - Managing game states (levels and menus). <br>
 ## 📜 Credits 
    ### :technologist: Developers 
    • Felipe dos Reis Garcez <br>
