@@ -1,5 +1,6 @@
 # SHADOW BLADE
-   jogo desenvolvido para o projeto final da disciplina de técnicas de programação, realizado pelos alunos Felipe dos Reis Garcez e Fernando Frare Vieira.
+   A 2D platformer game developed in C++ using SFML Graphics Library.
+   ![image](https://github.com/user-attachments/assets/7bc7de15-8e5f-435e-96f1-6a37bb6666b9)
 ## Creditos Sprites
    Jogador principal: https://xzany.itch.io/samurai-2d-pixel-art  
    Samurai : https://craftpix.net/freebies/free-samurai-pixel-art-sprite-sheets/?srsltid=AfmBOooFHXlZegE1snQaE7NmrrbryMp7Ga1uumN4GoyUioO3LGWzsOYY  
