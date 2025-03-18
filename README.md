@@ -37,7 +37,13 @@
    
    <img src="assets/imagens/menu.png" width="650" height="450"> <br>
 
-
+## 🎯 Development Overview
+   This project was fully implemented using Object-Oriented Programming (OOP) principles, besides utilizing UML (Unified Modeling Language) diagrams to guide architecture and implementation.
+   ### 🧠 Desing Patterns Used 
+   ✅ Singleton - Ensures a single instance for managers like graphics, input and state handling.
+   ✅ Iterator - Efficient entity traversal.
+   ✅ Observer - Input management and UI updates.
+   ✅ State - Managing game states (levels and menus).
 ## 📜 Credits 
    ### :technologist: Developers 
    • Felipe dos Reis Garcez <br>
