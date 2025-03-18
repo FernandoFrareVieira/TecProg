@@ -1,6 +1,6 @@
 # SHADOW BLADE
    A 2D platformer game developed in C++ using SFML Graphics Library. Defeat skeletons, samurais and archers to advance through levels! <br>
-   
+
    <img src="assets/imagens/fase1.png" width="750" height="500"> <br>
 
 ## 🕹️ Features 
@@ -40,10 +40,10 @@
 ## 🎯 Development Overview
    This project was fully implemented using Object-Oriented Programming (OOP) principles, besides utilizing UML (Unified Modeling Language) diagrams to guide architecture and implementation.
    ### 🧠 Desing Patterns Used 
-   ✅ Singleton - Ensures a single instance for managers like graphics, input and state handling.
-   ✅ Iterator - Efficient entity traversal.
-   ✅ Observer - Input management and UI updates.
-   ✅ State - Managing game states (levels and menus).
+   ✅ Singleton - Ensures a single instance for managers like graphics, input and state handling. <br>
+   ✅ Iterator - Efficient entity traversal. <br>
+   ✅ Observer - Input management and UI updates.<br>
+   ✅ State - Managing game states (levels and menus). <br>
 ## 📜 Credits 
    ### :technologist: Developers 
    • Felipe dos Reis Garcez <br>
