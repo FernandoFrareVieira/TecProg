@@ -3,9 +3,9 @@
    <img src="assets/imagens/fase1.png" width="750" height="500">
 ## 🚀 Installation & Running
    ### Prerequisites
-   • C++ compiler (GCC, Clang or MSVC)
-   • Makefile 
-   • SFML library
+   • C++ compiler (GCC, Clang or MSVC) <br>
+   • Makefile <br>
+   • SFML library <br>
    ### Building the Game
    1. Clone the repository 
       ```sh
