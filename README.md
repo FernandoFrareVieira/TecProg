@@ -2,9 +2,9 @@
    A 2D platformer game developed in C++ using SFML Graphics Library. Defeat skeletons, samurais and archers to advance through levels! <br>
    <img src="assets/imagens/fase1.png" width="750" height="500">
 ## Features 
-   • **Singleplayer & Multiplayer** : You can play singleplayer with a samurai or with a friend in cooperative mode (adding a warrior gueisha!)
-   • **Two levels** : You can choose to play in two levels : Pantanal or Nether, but you can play them consecutively!
-   • **Menus**: Main Menu, Leaderboard, Pause Menu, menu to choose levels and Game-saving functionality.
+   • **Singleplayer & Multiplayer** : You can play singleplayer with a samurai or with a friend in cooperative mode (adding a warrior gueisha!) <br>
+   • **Two levels** : You can choose to play in two levels : Pantanal or Nether, but you can play them consecutively! <br>
+   • **Menus**: Main Menu, Leaderboard, Pause Menu, menu to choose levels and Game-saving functionality. <br>
 ## 🚀 Installation & Running
    ### Prerequisites
    • C++ compiler (GCC, Clang or MSVC) <br>
