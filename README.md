@@ -35,7 +35,7 @@
 
 ## 📜 Credits 
    ### :technologist: Developers 
-   • Felipe dos Reis Garcez
+   • Felipe dos Reis Garcez <br>
    • Fernando Frare Vieira
    ### Sprite Credits 
    Main player:https://xzany.itch.io/samurai-2d-pixel-art  
