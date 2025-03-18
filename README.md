@@ -1,6 +1,10 @@
 # SHADOW BLADE
    A 2D platformer game developed in C++ using SFML Graphics Library. Defeat skeletons, samurais and archers to advance through levels! <br>
    <img src="assets/imagens/fase1.png" width="750" height="500">
+## Features 
+   • **Singleplayer & Multiplayer** : You can play singleplayer with a samurai or with a friend in cooperative mode (adding a warrior gueisha!)
+   • **Two levels** : You can choose to play in two levels : Pantanal or Nether, but you can play them consecutively!
+   • **Menus**: Main Menu, Leaderboard, Pause Menu, menu to choose levels and Game-saving functionality.
 ## 🚀 Installation & Running
    ### Prerequisites
    • C++ compiler (GCC, Clang or MSVC) <br>
@@ -31,7 +35,8 @@
 
 ## 📜 Credits 
    ### :technologist: Developers 
-   Felipe dos Reis Garcez and Fernando Frare Vieira
+   • Felipe dos Reis Garcez
+   • Fernando Frare Vieira
    ### Sprite Credits 
    Main player:https://xzany.itch.io/samurai-2d-pixel-art  
    Samurai : https://craftpix.net/freebies/free-samurai-pixel-art-sprite-sheets/?srsltid=AfmBOooFHXlZegE1snQaE7NmrrbryMp7Ga1uumN4GoyUioO3LGWzsOYY  
