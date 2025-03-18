@@ -26,7 +26,7 @@
    • Graphic Library : SFML 2.6.1
 
    
-   <img src="assets/imagens/menu.png" width="400" height="350">
+   <img src="assets/imagens/menu.png" width="550" height="450">
 
 
 ## 📜 Credits 
