@@ -8,9 +8,9 @@
    • SFML library
    ### Building the Game
    1. Clone the repository 
-   ```sh
-      https://github.com/FernandoFrareVieira/TecProg.git
-   ```
+      ```sh
+         https://github.com/FernandoFrareVieira/TecProg.git
+      ```
 ## 📜 Credits 
    ### :technologist: Developers 
    Felipe dos Reis Garcez and Fernando Frare Vieira
