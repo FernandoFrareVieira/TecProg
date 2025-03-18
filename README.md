@@ -26,7 +26,7 @@
    • Graphic Library : SFML 2.6.1
 
    
-   <img src"![image](https://github.com/user-attachments/assets/e92e1c97-d7e3-4a30-9a48-b1e996cf62b8)">
+   <img src="/home/felipereis96/Imagens/Capturas de tela/" width="400" height="350">
 
 
 ## 📜 Credits 
