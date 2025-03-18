@@ -10,7 +10,16 @@
    1. Clone the repository 
       ```sh
          https://github.com/FernandoFrareVieira/TecProg.git
+         cd TecProg
       ```
+   2. Build using Makefile
+         ```sh
+            make
+         ```
+   3. Run the Game
+         ```sh
+            ./main
+         ```
 ## 📜 Credits 
    ### :technologist: Developers 
    Felipe dos Reis Garcez and Fernando Frare Vieira
